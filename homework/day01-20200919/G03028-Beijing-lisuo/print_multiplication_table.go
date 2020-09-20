@@ -2,6 +2,7 @@ package main
 
 /*
 a short code to print 9 X 9 mutiplication chart
+author: lisuo
 */
 
 import (
