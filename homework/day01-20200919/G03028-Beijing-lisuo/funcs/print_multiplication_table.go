@@ -1,4 +1,4 @@
-package main
+package funcs
 
 /*
 a short code to print 9 X 9 mutiplication chart
@@ -10,7 +10,7 @@ import (
 )
 
 // print 9 X 9 mutiplication chart
-func main() {
+func PrintMultiplicationChart() {
 	// print vertical
 	for i := 1; i <= 9; i++ {
 		// print horizontal line
