@@ -7,8 +7,8 @@ import (
 )
 
 func main() {
-	fmt.Println("Running NumGuess...")
+	fmt.Println("\nRunning NumGuess...")
 	lisuo.NumGuess()
-	fmt.Println("Running PrintMultiplicationChart...")
+	fmt.Println("\nRunning PrintMultiplicationChart...")
 	lisuo.PrintMultiplicationChart()
 }

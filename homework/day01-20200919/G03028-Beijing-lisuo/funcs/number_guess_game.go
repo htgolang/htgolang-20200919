@@ -24,7 +24,9 @@ func NumGuess() {
 		// make sure the input is legal
 		if err != nil {
 			fmt.Println("You are not input a number.")
-			break
+			// give one more chance
+			threshold += 1
+			continue
 		} else if guess < 1 || guess > 100 {
 			fmt.Println("Input the number between 1 and 100.")
 			// give one more chance
@@ -42,6 +44,7 @@ func NumGuess() {
 		}
 		if i == threshold {
 			fmt.Println("Oh no, all your luck have been taken!")
+			fmt.Printf("The target is: %v\n", criteria)
 			break
 		}
 	}
