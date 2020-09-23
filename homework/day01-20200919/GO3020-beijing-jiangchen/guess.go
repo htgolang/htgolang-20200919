@@ -32,6 +32,7 @@ func Guess() {
 					count--
 					if count == 0 {
 						fmt.Printf("太笨了, 真实数字是%d, 程序结束\n", number)
+						break
 					}
 					fmt.Printf("输入的数字小于真实数字, 还有%d次机会\n", count)
 				} else {
