@@ -28,7 +28,6 @@ PS D:\Golang-03\Go-day01\homework> go run .\guess_nuber_v2.go
 您已连续失败[5]次，继续或退出(yes|no)?: no
 您已连续失败[5]次，程序退出
 
-# 乘法口诀表打印内容
 ```
 #乘法口诀打印表
 
