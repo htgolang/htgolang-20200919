@@ -25,5 +25,14 @@ func main() {
 		}
 		fmt.Println(oneLine)
 	}
+	fmt.Println("=============")
+
+	// 方法三，可对齐打印方案
+	for i := 1; i <= 9; i++ {
+		for j := 1; j <= i; j++ {
+			fmt.Printf("%d*%d=%-2d  ", j, i, j*i)
+		}
+		fmt.Println()
+	}
 }
 
