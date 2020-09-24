@@ -7,9 +7,10 @@ import (
 )
 
 func main() {
-
+	var flag bool
 	for i := 0; i < 5; i++ {
 		var Num int
+
 		for {
 			fmt.Println("请输入你要猜测的数字，100 以内：")
 			fmt.Scan(&Num)
@@ -25,16 +26,22 @@ func main() {
 		randNum := rand.Intn(100)
 		// fmt.Println(reflect.TypeOf(Num))
 		// fmt.Println(reflect.TypeOf(randNum))
-		fmt.Println(randNum)
+		// fmt.Println(randNum)
 
 		if Num == randNum {
 			fmt.Println("恭喜你，猜对了！！！")
+			flag = true
 			break
 		} else if Num < randNum {
 			fmt.Println("太小了")
+			continue
 		} else if Num > randNum {
 			fmt.Println("太大了")
+			continue
 		}
+	}
+	if flag != true {
+		fmt.Println("too fool")
 	}
 
 }
