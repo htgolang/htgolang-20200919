@@ -1,0 +1,122 @@
+1. 所有资料, 上课代码, 同学作业 => github
+    web链接: https://github.com/htgolang/htgolang-20200919
+    目录说明:
+    a. course: 课程PPT、复习、代码、截图等所有课程资料
+    b. homework: 学生作业
+    c. course/homework子目录使用"课程编号+日期"命名方式, 用于区分课堂资料和作业
+    d. 学生在对应课程目录"homework/课程编号+日期"下创建自己"学号+姓名"命名的文件夹, 存放个人作业代码
+    e. 每次作业记录于"homework/课程编号+日期/readme"文件中
+
+2. git
+    GIT 使用方法
+        https://pan.baidu.com/s/1yBSDO_4GV0gpKf7QiYFJCw
+        https://pan.baidu.com/s/1Okj6yoRi9ud1tUG_niK82g
+    VSCODE => git
+    Goland => git
+    小乌龟
+
+    git clone
+    git add file/.
+    git commit -sv
+    git push -u origin master
+    git pull
+
+3. 视频
+    a. 腾讯自己录制
+        清晰度
+
+    b. 我会录制 => 上传到腾讯课堂上
+
+4. 课程进度 按照课表
+5. 作业
+    a. 作业太简单/作业太少 => 作业做完
+        自己找一些练习
+            打印杨辉三角形
+            1001 => 壹仟零壹圆
+    b. 作业难
+        咨询助教/我/其他同学
+        查看其他同学代码 => 理思路 => 自己的思路 => 写代码
+
+6. 作业讲解/课堂过程中练习/要不要复习
+    复习: 30分钟~1小时 => 1小时
+    课堂过程中练习: 每天15分钟 => 有必要的练习
+    作业讲解: 作业课堂上就不处理了
+        => 助教
+
+课程流程
+1. 复习 1个小时
+2. 课程内容
+3. 练习: 每天最后15分钟练习
+4. 课堂过程中问题处理 一段完整知识点讲完后5-10分钟答疑
+
+
+var (
+    n1 type1
+    n2 type2
+)
+
+
+const (
+    n1 = value // 除第一个标识符外可省略类型名和值, 使用常量定义之前常量值来进行初始化
+    n2
+    n3
+)
+
+if cond_1 {
+
+} else if cond_2 {
+
+...
+
+} else if cond_n {
+
+} else {
+
+}
+
+
+switch name {
+    case value1:
+    case value2:
+    ....
+    default:
+}
+
+switch {
+    case cond_1:
+    case cond_2:
+    ...
+    default:
+}
+
+for cond {
+
+}
+
+for init; cond; post {
+
+}
+
+for range
+
+
+序列
+    有序的数据集
+    数组
+    切片
+    字符串
+    相同的特征=>相同的操作
+映射
+
+=> 数据结构 => c语言的数据 => go语言去实现
+集合
+树
+图
+
+
+[32]string
+key => int % 32 => value
+key 数字 自己 % 32
+32 => 0
+64
+0
