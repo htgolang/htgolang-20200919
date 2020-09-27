@@ -8,6 +8,7 @@ import (
 
 func main() {
 	var x string
+	//生成个map
 	mp := make(map[string]int, 26)
 	for i := 'a'; i <= 'z'; i++ {
 		x = fmt.Sprintf("%c", i)
@@ -19,12 +20,12 @@ func main() {
 		return
 	}
 	data := string(bytes)
-	//fmt.Printf("%v\n",data)
 
 	for i := 0; i < len(data); i++ {
 		str := string(data[i])
+		//转换小写
 		str = strings.ToLower(str)
-		//fmt.Println(str)
+		//不存在 则跳过
 		if _, ok := mp[str]; !ok {
 			continue
 		}
