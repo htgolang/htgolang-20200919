@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+//不影响其他顺序,只把最大数放到最后
 func main() {
 	sliOri := []int{108, 107, 105, 109, 103, 102}
 	tmpValue := 0
