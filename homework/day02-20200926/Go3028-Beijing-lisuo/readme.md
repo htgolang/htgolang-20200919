@@ -34,3 +34,30 @@ letter: w, count: 164
 letter: l, count: 340
 letter: f, count: 224
 ```
+
+# /funcs/bubble_sort.go
+
+```go
+# go run main.go
+...
+Running func bubbleSort...
+Sorted numsArray: [102 103 105 107 108 109]
+```
+
+# /funcs/get_max_num.go
+
+```go
+# go run main.go
+...
+Running func GetMaxNum...
+The max number is: 109 , index is: 3
+```
+
+# /funcs/move_max_num_to_last.go
+
+```go
+# go run main.go
+...
+Running func MoveToLast...
+Move max to last: [108 107 105 103 102 109]
+```
