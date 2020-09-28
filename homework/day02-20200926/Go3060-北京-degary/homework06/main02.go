@@ -6,10 +6,10 @@ import (
 	"time"
 )
 
-func getRandInt(m, n int) (int, error) {
+func getRandInt(max, min int) (int, error) {
 	var x int
-	if n <= m {
-		err := fmt.Errorf("%s\n", fmt.Sprintln("第二个参数要大于第一个参数"))
+	if max <= min {
+		err := fmt.Errorf("%s\n", fmt.Sprintln("mix要大于min"))
 		return 0, err
 
 	}
@@ -24,8 +24,8 @@ func getRandInt(m, n int) (int, error) {
 		}
 
 	*/
-	x = rand.Intn(n - m)
-	x += m
+	x = rand.Intn(max - min)
+	x += min
 	return x, nil
 }
 
