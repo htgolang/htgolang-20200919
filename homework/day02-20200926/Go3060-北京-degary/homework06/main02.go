@@ -13,7 +13,17 @@ func getRandInt(m, n int) (int, error) {
 		return 0, err
 
 	}
+
 	rand.Seed(time.Now().Unix())
+	/*
+		for {
+			x = rand.Intn(n)
+			if m < x && x < n {
+				break
+			}
+		}
+
+	*/
 	x = rand.Intn(n - m)
 	x += m
 	return x, nil
