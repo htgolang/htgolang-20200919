@@ -1,12 +1,12 @@
 package main
 
 import (
-"fmt"
-"strings"
+	"fmt"
+	"strings"
 )
 
-func main (){
-    const ss string=`I am happy to join with you today in what will go down in history as the greatest demonstration for freedom in the history of our nation.
+func main() {
+	const ss string = `I am happy to join with you today in what will go down in history as the greatest demonstration for freedom in the history of our nation.
 
 Five score years ago, a great American, in whose symbolic shadow we stand today, signed the Emancipation Proclamation. This momentous decree came as a great beacon light of hope to millions of Negro slaves who had been seared in the flames of withering injustice. It came as a joyous daybreak to end the long night of their captivity.
 
@@ -14,9 +14,9 @@ But one hundred years later, the Negro still is not free. One hundred years late
 	// Convert ss to lower rune
 	ss_low := []rune(strings.ToLower(ss))
 	//fmt.Println(ss_low)
-	static :=  map[string]int{}
-	for _,v := range ss_low {
-		// Limit the statistical scope from 'a' to 'z' 
+	static := map[string]int{}
+	for _, v := range ss_low {
+		// Limit the statistical scope from 'a' to 'z'
 		if v >= 'a' && v <= 'z' {
 			static[string(v)]++
 		}
