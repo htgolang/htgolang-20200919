@@ -29,7 +29,10 @@ func main () {
 			tmp = sl[i]
 		} 
 	}
+	//
 	copy(sl[tmp_idx:],sl[tmp_idx+1:])
 	sl[len(sl)-2] = tmp
 	fmt.Println("Q3==The second max follows the lessers:",sl)
+
+	//
 }
