@@ -42,8 +42,8 @@ func (s *UserService) HasUser(userId int) (int, error) {
 	return -1, errors.New("查无此用户")
 }
 
-func (s UserService) GetUser(idx int) model.User {
-	return s.users[idx]
+func (s UserService) GetUser(idx int) []model.User {
+	return []model.User{s.users[idx]}
 }
 
 func (s *UserService) Add(user model.User) bool {

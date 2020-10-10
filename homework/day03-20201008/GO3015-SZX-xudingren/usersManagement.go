@@ -4,6 +4,9 @@ import (
 	"GO3015-SZX-xudingren/model"
 	"GO3015-SZX-xudingren/service"
 	"fmt"
+	"github.com/olekukonko/tablewriter"
+	"os"
+	"strconv"
 )
 
 //显示主菜单
@@ -15,7 +18,7 @@ type UserView struct {
 	userService *service.UserService
 }
 
-func (v UserView) add() {
+func (v *UserView) add() {
 	fmt.Println("添加用户")
 	fmt.Print("用户名：")
 	var name string
@@ -34,7 +37,7 @@ func (v UserView) add() {
 	}
 }
 
-func (v UserView) delete() {
+func (v *UserView) delete() {
 	fmt.Println("删除用户")
 	if v.userService.GetUserNum() == 0 {
 		fmt.Println("用户管理列表为空")
@@ -49,11 +52,7 @@ func (v UserView) delete() {
 		return
 	}
 	user := v.userService.GetUser(idx)
-	fmt.Println("+---------------------------------------------------------------+")
-	fmt.Printf("|%-11s|%-12s|%-11s|%-11s|\n", "用户编号", "用户名", "电话号码", "联系地址")
-	fmt.Println("+---------------------------------------------------------------+")
-	fmt.Printf("|%-15d|%-15s|%-15s|%-15s|\n", user.Id, user.Name, user.Phone, user.Address)
-	fmt.Println("+---------------------------------------------------------------+")
+	v.tableFormat(user)
 	fmt.Print("确认删除：（y/n）")
 	var cfm string
 	fmt.Scanln(&cfm)
@@ -68,7 +67,7 @@ func (v UserView) delete() {
 	}
 }
 
-func (v UserView) modify() {
+func (v *UserView) modify() {
 	fmt.Println("修改用户")
 	if v.userService.GetUserNum() == 0 {
 		fmt.Println("用户管理列表为空")
@@ -83,11 +82,7 @@ func (v UserView) modify() {
 		return
 	}
 	user := v.userService.GetUser(idx)
-	fmt.Println("+---------------------------------------------------------------+")
-	fmt.Printf("|%-11s|%-12s|%-11s|%-11s|\n", "用户编号", "用户名", "电话号码", "联系地址")
-	fmt.Println("+---------------------------------------------------------------+")
-	fmt.Printf("|%-15d|%-15s|%-15s|%-15s|\n", user.Id, user.Name, user.Phone, user.Address)
-	fmt.Println("+---------------------------------------------------------------+")
+	v.tableFormat(user)
 	fmt.Print("确认修改：（y/n）")
 	var cfm string
 	fmt.Scanln(&cfm)
@@ -116,7 +111,7 @@ func (v UserView) modify() {
 	}
 }
 
-func (v UserView) query() {
+func (v *UserView) query() {
 	fmt.Println("搜索用户")
 	fmt.Print("请输入关键字：")
 	if v.userService.GetUserNum() == 0 {
@@ -127,32 +122,18 @@ func (v UserView) query() {
 	fmt.Scanln(&keyword)
 	matchUsers := v.userService.Query(keyword)
 	if len(matchUsers) != 0 {
-		fmt.Println("+---------------------------------------------------------------+")
-		fmt.Printf("|%-11s|%-12s|%-11s|%-11s|\n", "用户编号", "用户名", "电话号码", "联系地址")
-		fmt.Println("+---------------------------------------------------------------+")
-
-		for _, v := range matchUsers {
-			fmt.Printf("|%-15d|%-15s|%-15s|%-15s|\n", v.Id, v.Name, v.Phone, v.Address)
-		}
-		fmt.Println("+---------------------------------------------------------------+")
+		v.tableFormat(matchUsers)
 	} else {
 		fmt.Println("无匹配用户")
 	}
 }
 
-func (v UserView) list() {
+func (v *UserView) list() {
 	users := v.userService.List()
-	fmt.Println("+---------------------------------------------------------------+")
-	fmt.Printf("|%-11s|%-12s|%-11s|%-11s|\n", "用户编号", "用户名", "电话号码", "联系地址")
-	fmt.Println("+---------------------------------------------------------------+")
-
-	for _, v := range users {
-		fmt.Printf("|%-15d|%-15s|%-15s|%-15s|\n", v.Id, v.Name, v.Phone, v.Address)
-	}
-	fmt.Println("+---------------------------------------------------------------+")
+	v.tableFormat(users)
 }
 
-func (v UserView) menu() {
+func (v *UserView) menu() {
 	fmt.Println("*********用户管理系统*********")
 	fmt.Printf("%15s\n", "a）添加用户")
 	fmt.Printf("%15s\n", "m）修改用户")
@@ -162,6 +143,19 @@ func (v UserView) menu() {
 	fmt.Printf("%15s\n", "h）帮助信息")
 	fmt.Printf("%15s\n", "exit）退出系统")
 	fmt.Println("****************************")
+}
+
+func (v *UserView) tableFormat(data []model.User) {
+	fmtData := [][]string{}
+	for _, v := range data {
+		fmtData = append(fmtData, []string{strconv.Itoa(v.Id), v.Name, v.Phone, v.Address})
+	}
+	table := tablewriter.NewWriter(os.Stdout)
+	table.SetHeader([]string{"用户编号", "用户名", "电话号码", "联系地址"})
+	for _, v := range fmtData {
+		table.Append(v)
+	}
+	table.Render()
 }
 
 func (v *UserView) mainMenu() {
