@@ -38,11 +38,11 @@ func (v *UserView) add() {
 }
 
 func (v *UserView) delete() {
-	fmt.Println("删除用户")
 	if v.userService.GetUserNum() == 0 {
 		fmt.Println("用户管理列表为空")
 		return
 	}
+	fmt.Println("删除用户")
 	fmt.Print("用户编号：")
 	var userId int
 	fmt.Scanln(&userId)
@@ -68,11 +68,11 @@ func (v *UserView) delete() {
 }
 
 func (v *UserView) modify() {
-	fmt.Println("修改用户")
 	if v.userService.GetUserNum() == 0 {
 		fmt.Println("用户管理列表为空")
 		return
 	}
+	fmt.Println("修改用户")
 	fmt.Print("用户编号：")
 	var userId int
 	fmt.Scanln(&userId)
@@ -112,12 +112,12 @@ func (v *UserView) modify() {
 }
 
 func (v *UserView) query() {
-	fmt.Println("搜索用户")
-	fmt.Print("请输入关键字：")
 	if v.userService.GetUserNum() == 0 {
 		fmt.Println("用户管理列表为空")
 		return
 	}
+	fmt.Println("搜索用户")
+	fmt.Print("请输入关键字：")
 	var keyword string
 	fmt.Scanln(&keyword)
 	matchUsers := v.userService.Query(keyword)
@@ -186,7 +186,7 @@ func (v *UserView) mainMenu() {
 }
 
 func main() {
-	userView := UserView{}                          //初始化视图
+	userView := &UserView{}                         //初始化视图
 	userView.userService = service.NewUserService() //初始化user结构体字段
 	userView.mainMenu()                             //启动
 }
