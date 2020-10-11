@@ -14,7 +14,7 @@ func Run() {
 
 	Motd()
 	for {
-		input, err := line.State.Prompt("command > ")
+		input, err := line.State.Prompt("CMS > ")
 		if err != nil {
 			return
 		}
@@ -34,6 +34,7 @@ func Run() {
 		} else if input == "h" {
 			Motd()
 		} else if input == "q" {
+			fmt.Println("Bye :)")
 			break
 		} else {
 			fmt.Println("input error...please try again.")
