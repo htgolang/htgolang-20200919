@@ -15,6 +15,7 @@ type UserService struct {
 	curId   int //当前用户ID
 }
 
+//工厂函数
 func NewUserService() *UserService {
 	userService := &UserService{}
 	userService.userNum = 1

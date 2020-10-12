@@ -8,6 +8,7 @@ type User struct {
 	Address string
 }
 
+//工厂函数
 func NewUser(name, phone, address string) User {
 	return User{
 		Name:    name,
