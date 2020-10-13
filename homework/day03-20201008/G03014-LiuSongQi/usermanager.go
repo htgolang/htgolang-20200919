@@ -8,6 +8,9 @@ import (
 
 var users = []map[string]string{}
 
+/*
+	将相同的逻辑提取为函数, 提高代码简洁性
+*/
 func commonInput() (string, string, string) {
 	var name, phone, address string
 	fmt.Printf("请输入用户名字: ")
@@ -28,6 +31,11 @@ func commonInput() (string, string, string) {
 func add() {
 	name, phone, address := commonInput()
 
+	/*
+		匿名函数
+		slice为空ID=0, slice不为空，新增时slice中最大的ID+1
+		切记不可len(slice)+1, 这样会有个bug，当删除一个元素时，再新增会导致相同ID的元素有两个
+	*/
 	maxId := func(users []map[string]string) string {
 		if len(users) == 0 {
 			return "1"
