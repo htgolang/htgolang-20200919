@@ -11,10 +11,6 @@ func main() {
 	fmt.Println("Running func CharNumsInDream...")
 	lisuo.CharNumsInDream()
 
-	fmt.Println("\nRunning func BubbleSort...")
-	lisuo.BubbleSort(numsArray)
-	fmt.Printf("Sorted numsArray: %v\n", numsArray)
-
 	fmt.Println("\nRunning func GetMaxNum...")
 	var numsArrayMax = []int{108, 107, 105, 109, 103, 102}
 	max, idx := lisuo.GetMaxNum(numsArrayMax)
@@ -23,4 +19,9 @@ func main() {
 	fmt.Println("\nRunning func MoveToLast...")
 	movedNums := lisuo.MoveToLast(numsArrayMax)
 	fmt.Printf("Move max to last: %v\n", movedNums)
+
+	fmt.Println("\nRunning func BubbleSort...")
+	fmt.Printf("The original  numsArray: %v\n", numsArray)
+	lisuo.BubbleSort(numsArray)
+	fmt.Printf("Sorted numsArray: %v\n", numsArray)
 }
