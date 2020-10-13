@@ -1,18 +1,12 @@
 package funcs
 
 import (
-	"crypto/rand"
 	"fmt"
-	"math/big"
+
+	_ "github.com/htgolang/htgolang-20200919/tree/master/homework/day03-20201008/Go3028-Beijing-lisuo/utils"
 )
 
-func main() {
-}
-func GenId() {
-	// gen a number in [)
-	result, _ := rand.Int(rand.Reader, big.NewInt(999999999999))
-	fmt.Println(result)
-}
 func Init() {
-	GenId()
+	res := GenId()
+	fmt.Println(res)
 }
