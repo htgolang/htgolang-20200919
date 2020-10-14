@@ -5,12 +5,14 @@ import (
 	"math/big"
 )
 
+// gen a int64 number got Maximum 12 digits
 func GenId() (res int64) {
 	// gen a random number in [0, 999999999999)
 	result, _ := rand.Int(rand.Reader, big.NewInt(999999999999))
 	return result.Int64()
 }
 
+// to verify if a string contains only digits
 func JustDigits(s string) bool {
 	var a bool = true
 	for _, c := range s {

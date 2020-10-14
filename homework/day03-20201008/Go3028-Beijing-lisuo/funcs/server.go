@@ -15,30 +15,30 @@ func Serv() {
 		fmt.Scanln(&opt)
 		switch opt {
 		case "1":
-			fmt.Println("addUser")
+			fmt.Print("\n|addUser|\n")
 			AddCurrentUser()
 			opt = ""
 			continue
 		case "2":
-			fmt.Println("delUser")
+			fmt.Printf("\n|delUser|\n")
 			DelUser()
 			opt = ""
 			continue
 		case "3":
-			fmt.Println("modUser")
+			fmt.Printf("\n|modUser|\n")
 			opt = ""
 			continue
 		case "4":
-			fmt.Println("queryUser")
+			fmt.Printf("\n|queryUser|\n")
 			opt = ""
 			continue
 		case "5":
-			fmt.Println("showUserList")
+			fmt.Printf("\n|showUserList|\n")
 			ShowUserList()
 			opt = ""
 			continue
 		case "h":
-			fmt.Println("showHelp")
+			fmt.Printf("\n|showHelp|\n")
 			help()
 			opt = ""
 			continue
@@ -46,7 +46,7 @@ func Serv() {
 		case "q", "Q":
 			return
 		default:
-			fmt.Println("Illegal input")
+			fmt.Printf("\n|Illegal input|\n")
 			opt = ""
 			continue
 		}
