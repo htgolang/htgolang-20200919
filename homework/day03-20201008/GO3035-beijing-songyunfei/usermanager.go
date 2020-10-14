@@ -6,10 +6,10 @@ import (
 	"strings"
 )
 
-
+var users []map[string]string
 
 //添加用户函数
-func addUser(users []map[string]string ) []map[string]string {
+func addUser() {
 	for {
 		var name, tel, addr, yesOrno string
 		fmt.Printf("添加用户:\n请输入用户名:")
@@ -62,11 +62,10 @@ func addUser(users []map[string]string ) []map[string]string {
 			}
 		}
 	}
-	return users
 }
 
 //通过ID查找用户
-func findByid(id int, users []map[string]string) (index int,err error) {
+func findByid(id int) (index int,err error) {
 	for k,v := range users{
 		uid,err := strconv.Atoi(v["id"])
 		if err != nil {
@@ -82,7 +81,7 @@ func findByid(id int, users []map[string]string) (index int,err error) {
 }
 
 //关键字查找用户函数
-func queryUser(users []map[string]string)  {
+func queryUser()  {
 	var str string
 	var f int
 	fmt.Printf("请出入关键字:")
@@ -102,7 +101,7 @@ func queryUser(users []map[string]string)  {
 
 
 // 删除用户函数
-func delUser(users []map[string]string) []map[string]string {
+func delUser() {
 	for {
 		var uid string
 		fmt.Printf("提示:按q 退出\n请输入用户ID:")
@@ -111,7 +110,7 @@ func delUser(users []map[string]string) []map[string]string {
 			break
 		}
 		fid,_ := strconv.Atoi(uid)
-		index, err := findByid(fid, users)
+		index, err := findByid(fid)
 		fmt.Println(index)
 		if err != nil {
 			fmt.Println("未找到用户id:", uid)
@@ -139,12 +138,10 @@ func delUser(users []map[string]string) []map[string]string {
 			}
 		}
 	}
-	return users
-
 }
 
 // 修改用户函数
-func modifyUser(users []map[string]string)  {
+func modifyUser()  {
 	for {
 		var input string
 		fmt.Printf("提示:按q 退出\n请输入用户ID:")
@@ -153,7 +150,7 @@ func modifyUser(users []map[string]string)  {
 			break
 		}
 		uid, _ := strconv.Atoi(input)
-		index, err := findByid(uid, users)
+		index, err := findByid(uid)
 		if err != nil {
 			fmt.Println("未找到ID:",uid)
 			continue
@@ -188,7 +185,7 @@ func modifyUser(users []map[string]string)  {
 }
 
 func main()  {
-	var users []map[string]string
+
 	quit := true
 	for quit {
 		var s int
@@ -197,19 +194,19 @@ func main()  {
 		switch s {
 		// 增加用户
 		case 1:
-			users = addUser(users)
+			addUser()
 			fmt.Println(users)
 		// 删除用户
 		case 2:
-			users = delUser(users)
+			delUser()
 			fmt.Println(users)
 		// 修改用户
 		case 3:
-			modifyUser(users)
+			modifyUser()
 			fmt.Println(users)
 		// 查找用户
 		case 4:
-			queryUser(users)
+			queryUser()
 		// 退出
 		case 5:
 			fmt.Println("Bey...")
@@ -217,8 +214,6 @@ func main()  {
 
 		default:
 			fmt.Println("输入错误...")
-
-		
 		}
 	}
 }
