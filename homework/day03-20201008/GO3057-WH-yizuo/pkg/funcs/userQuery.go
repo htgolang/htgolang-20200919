@@ -51,7 +51,7 @@ func UserQueryPerfrom(elemet string) {
 	for _, v := range models.Users {
 		// 判断如果遍历的数据与需要搜索的数据相同
 		if v[elemet] == UserData {
-			// 根据检索出的位置信息，将数据添加的切片中
+			// 根据检索出的代码数据，将数据添加的切片中
 			Users = append(Users, v)
 			state = "True"
 		}

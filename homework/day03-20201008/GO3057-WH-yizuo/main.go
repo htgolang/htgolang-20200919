@@ -5,7 +5,7 @@ import (
 )
 
 /*
-   参照GO3020-beijing-jiangchen同学的代码写出
+   主执行函数
 */
 func main() {
 	funcs.Run()
