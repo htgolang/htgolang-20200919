@@ -2,4 +2,4 @@ module github.com/htgolang/htgolang-20200919/tree/master/homework/day03-20201008
 
 go 1.13
 
-require github.com/gizak/termui/v3 v3.1.0 // indirect
+require github.com/gizak/termui/v3 v3.1.0

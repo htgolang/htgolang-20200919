@@ -14,3 +14,7 @@ type User struct {
 
 // map id to User
 var UserList []map[int64]User
+
+/*
+[map[450001057600:{lisuo 999 Beijing}] map[450001057600:{lisuo 999 Beijing}] map[450001057600:{lisuo 999 Beijing}]]
+*/
