@@ -8,7 +8,7 @@ func Serv() {
 	var opt string
 	help := func() {
 		fmt.Print("1. addUser\n2. delUser\n3. modifyUser\n" +
-			"4. queryUser\n5. showUserList\nh. showHelp\nq. Quit\n\n")
+			"4. queryUser\n5. showUserList\nh. showHelp\nq. Quit\n\n> ")
 	}
 	help()
 	for {
@@ -26,6 +26,7 @@ func Serv() {
 			continue
 		case "3":
 			fmt.Printf("\n|modUser|\n")
+			ModifyUser()
 			opt = ""
 			continue
 		case "4":
@@ -43,10 +44,11 @@ func Serv() {
 			opt = ""
 			continue
 		case "":
+			fmt.Print("> ")
 		case "q", "Q":
 			return
 		default:
-			fmt.Printf("\n|Illegal input|\n")
+			fmt.Print("\n|Illegal input|\ntype \"h\" show help list.\n> ")
 			opt = ""
 			continue
 		}

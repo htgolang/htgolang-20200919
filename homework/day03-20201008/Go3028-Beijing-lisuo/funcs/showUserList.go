@@ -10,6 +10,8 @@ import (
 )
 
 func ShowUserList() {
+	fmt.Println("|...Users list...|")
+	fmt.Println("|...Id...|...Name...|...Phone...|...Address...|")
 	for _, user := range define.UserList {
 		for k, v := range user {
 			w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', 0|tabwriter.Debug)
@@ -18,4 +20,5 @@ func ShowUserList() {
 			w.Flush()
 		}
 	}
+	fmt.Println("")
 }

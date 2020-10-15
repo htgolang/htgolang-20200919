@@ -13,10 +13,10 @@ import (
 // if input a Id, find the user use this Id
 // if input a Name, find the user use this Name
 // if no this user, prompt error
-func DelUser() {
+func ModifyUser() {
 	var name string
 	var input string
-	fmt.Print("Who you want to del(Id/Name)?\n> ")
+	fmt.Print("Who you want to modify(Id/Name)?\n> ")
 	fmt.Scanln(&input)
 	if s, err := strconv.Atoi(strings.TrimSpace(input)); err == nil {
 		id := int64(s)
@@ -25,13 +25,13 @@ func DelUser() {
 		if user.Name == "" {
 			fmt.Println("No such user.", user)
 		} else {
-			fmt.Printf("Find user %v --> %v, are you sure to delete %v?(y/n) ", name, user, name)
+			fmt.Printf("Find user %v --> %v, are you sure to modify %v?(y/n) ", name, user, name)
 			fmt.Scanln(&input)
 			if strings.ToLower(input) == "y" {
-				fmt.Println("del...........")
-				utils.IdDelUser(&define.UserList, id)
+				fmt.Println("modifying...........")
+				utils.IdModUser(&define.UserList, id)
 			} else if strings.ToLower(input) == "n" {
-				fmt.Println("abort del...........")
+				fmt.Println("abort modify...........")
 			}
 		}
 	} else {
@@ -44,10 +44,10 @@ func DelUser() {
 			fmt.Printf("Find user %v --> %v, are you sure to delete %v?(y/n) ", name, user, name)
 			fmt.Scanln(&input)
 			if strings.ToLower(input) == "y" {
-				fmt.Println("del...........")
-				utils.NameDelUser(&define.UserList, name)
+				fmt.Println("modifying...........")
+				utils.NameModUser(&define.UserList, name)
 			} else if strings.ToLower(input) == "n" {
-				fmt.Println("abort del...........")
+				fmt.Println("abort modify...........")
 			}
 		}
 	}
