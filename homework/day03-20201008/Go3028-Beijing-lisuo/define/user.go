@@ -2,7 +2,7 @@ package define
 
 // User to contain user's info
 // UserList to contain all the users
-// Id is a int64 number for for each user, contains 12 digits
+// Id is a int64 number for for each user
 
 var Id int64
 
