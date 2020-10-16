@@ -17,37 +17,37 @@ func DelUser() {
 	var name string
 	var input string
 	fmt.Print("Who you want to del(Id/Name)?\n> ")
-	fmt.Scanln(&input)
+	input = utils.Read()
 	if s, err := strconv.Atoi(strings.TrimSpace(input)); err == nil {
 		id := int64(s)
-		fmt.Printf("idType: %T  idValue: %v\n", id, id)
+		//fmt.Printf("idType: %T  idValue: %v\n", id, id)
 		user := utils.IdFindUser(define.UserList, id)
 		if user.Name == "" {
 			fmt.Println("No such user.", user)
 		} else {
-			fmt.Printf("Find user %v --> %v, are you sure to delete %v?(y/n) ", name, user, name)
-			fmt.Scanln(&input)
+			fmt.Printf("Find user %v --> %v\nAre you sure to delete %v?(y/n) ", name, user, name)
+			input = utils.Read()
 			if strings.ToLower(input) == "y" {
-				fmt.Println("del...........")
+				fmt.Println("deleted...........")
 				utils.IdDelUser(&define.UserList, id)
 			} else if strings.ToLower(input) == "n" {
-				fmt.Println("abort del...........")
+				fmt.Println("Nothing changes.")
 			}
 		}
 	} else {
 		name = strings.ToLower(strings.TrimSpace(input))
-		fmt.Printf("nameType: %T  nameValue: %v\n", name, name)
+		//fmt.Printf("nameType: %T  nameValue: %v\n", name, name)
 		user := utils.NameFindUser(name)
 		if user == nil {
 			fmt.Println("No such user.", user)
 		} else {
-			fmt.Printf("Find user %v --> %v, are you sure to delete %v?(y/n) ", name, user, name)
-			fmt.Scanln(&input)
+			fmt.Printf("Find user %v --> %v\nAre you sure to delete %v?(y/n) ", name, user, name)
+			input = utils.Read()
 			if strings.ToLower(input) == "y" {
-				fmt.Println("del...........")
+				fmt.Println("deleted...........")
 				utils.NameDelUser(&define.UserList, name)
 			} else if strings.ToLower(input) == "n" {
-				fmt.Println("abort del...........")
+				fmt.Println("Nothing changes.")
 			}
 		}
 	}

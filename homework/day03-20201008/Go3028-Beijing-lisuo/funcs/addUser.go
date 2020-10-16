@@ -20,9 +20,9 @@ func AddUser(usersList *[]map[int64]define.User, user define.User) {
 func AddCurrentUser() {
 	var name, phone, address string
 	fmt.Print("Please input the user's name: \n> ")
-	fmt.Scan(&name)
+	name = utils.Read()
 	fmt.Print("Please input the user's phone: \n> ")
-	fmt.Scan(&phone)
+	phone = utils.Read()
 	// make sure the phone number contains only pure digits
 	for utils.JustDigits(phone) == false {
 		fmt.Print("Please input a legal phone number: \n> ")
@@ -32,6 +32,6 @@ func AddCurrentUser() {
 		}
 	}
 	fmt.Print("Please input the user's address: \n> ")
-	fmt.Scan(&address)
+	address = utils.Read()
 	AddUser(&define.UserList, NewUser(name, phone, address))
 }

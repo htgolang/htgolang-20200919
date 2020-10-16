@@ -1,21 +1,22 @@
 package utils
 
 import (
-	"crypto/rand"
+	"bufio"
 	"fmt"
-	"math/big"
 	"os"
+	"os/exec"
+	"runtime"
 	"strconv"
 	"text/tabwriter"
+	"time"
 
 	define "github.com/htgolang/htgolang-20200919/tree/master/homework/day03-20201008/Go3028-Beijing-lisuo/define"
 )
 
-// gen a int64 number got Maximum 12 digits
+// gen a id by UnixNano() who's type is int64
 func GenId() (res int64) {
-	// gen a random number in [0, 999999999999)
-	result, _ := rand.Int(rand.Reader, big.NewInt(999999999999))
-	return result.Int64()
+	result := time.Now().UnixNano()
+	return result
 }
 
 // to verify if a string contains only digits
@@ -28,6 +29,14 @@ func JustDigits(s string) bool {
 		}
 	}
 	return a
+}
+
+// read content from standard input
+func Read() string {
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan() // use `for scanner.Scan()` to keep reading
+	line := scanner.Text()
+	return line
 }
 
 // show a user based on Id
@@ -98,29 +107,37 @@ func NameDelUser(user *[]map[int64]define.User, name string) {
 
 // modify user based on Id
 func IdModUser(user *[]map[int64]define.User, id int64) define.User {
-	var input string
+	var iname, iaddress, iphone string
 	var newUser define.User
 	for _, u := range *user {
 		for k, v := range u {
 			if int64(k) == id {
 				fmt.Printf("Input new Name [%v]: ", v.Name)
-				fmt.Scanln(&input)
-				if input == "" {
+				iname = Read()
+				newUser.Name = iname
+				if iname == "" {
 					newUser.Name = v.Name
 				}
-				newUser.Name = input
 				fmt.Printf("Input new Address [%v]: ", v.Address)
-				fmt.Scanln(&input)
-				if input == "" {
+				iaddress = Read()
+				newUser.Address = iaddress
+				if iaddress == "" {
 					newUser.Address = v.Address
 				}
-				newUser.Address = input
 				fmt.Printf("Input new Phone [%v]: ", v.Phone)
-				fmt.Scanln(&input)
-				if input == "" {
+				iphone = Read()
+				// make sure the phone number contains only pure digits
+				for JustDigits(iphone) == false {
+					fmt.Print("Please input a legal phone number: \n> ")
+					iphone = Read()
+					if JustDigits(iphone) == true {
+						break
+					}
+				}
+				newUser.Phone = iphone
+				if iphone == "" {
 					newUser.Phone = v.Phone
 				}
-				newUser.Phone = input
 				u[k] = newUser
 				fmt.Printf("Modified user is: %v:%v\n", k, newUser)
 			}
@@ -131,32 +148,64 @@ func IdModUser(user *[]map[int64]define.User, id int64) define.User {
 
 // modify user based on Name
 func NameModUser(user *[]map[int64]define.User, name string) {
-	var input string
+	var iname, iaddress, iphone string
 	var newUser define.User
 	for _, u := range *user {
 		for k, v := range u {
 			if v.Name == name {
 				fmt.Printf("Input new Name [%v]: ", v.Name)
-				fmt.Scanln(&input)
-				if input == "" {
+				iname = Read()
+				newUser.Name = iname
+				if iname == "" {
 					newUser.Name = v.Name
 				}
-				newUser.Name = input
 				fmt.Printf("Input new Address [%v]: ", v.Address)
-				fmt.Scanln(&input)
-				if input == "" {
+				iaddress = Read()
+				newUser.Address = iaddress
+				if iaddress == "" {
 					newUser.Address = v.Address
 				}
-				newUser.Address = input
 				fmt.Printf("Input new Phone [%v]: ", v.Phone)
-				fmt.Scanln(&input)
-				if input == "" {
+				iphone = Read()
+				// make sure the phone number contains only pure digits
+				for JustDigits(iphone) == false {
+					fmt.Print("Please input a legal phone number: \n> ")
+					iphone = Read()
+					if JustDigits(iphone) == true {
+						break
+					}
+				}
+				newUser.Phone = iphone
+				if iphone == "" {
 					newUser.Phone = v.Phone
 				}
-				newUser.Phone = input
 				u[k] = newUser
 				fmt.Printf("Modified user is: %v:%v\n", k, newUser)
 			}
 		}
+	}
+}
+
+// clear the console
+var clear map[string]func() //create a map for storing clear funcs
+func init() {
+	clear = make(map[string]func()) //Initialize it
+	clear["linux"] = func() {
+		cmd := exec.Command("clear") //Linux example, its tested
+		cmd.Stdout = os.Stdout
+		cmd.Run()
+	}
+	clear["windows"] = func() {
+		cmd := exec.Command("cmd", "/c", "cls") //Windows example, its tested
+		cmd.Stdout = os.Stdout
+		cmd.Run()
+	}
+}
+func CallClear() {
+	value, ok := clear[runtime.GOOS] //runtime.GOOS -> linux, windows, darwin etc.
+	if ok {                          //if we defined a clear func for that platform:
+		value() //we execute it
+	} else { //unsupported platform
+		panic("Your platform is unsupported! I can't clear terminal screen :(")
 	}
 }

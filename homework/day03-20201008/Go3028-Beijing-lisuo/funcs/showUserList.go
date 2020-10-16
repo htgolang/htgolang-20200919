@@ -9,6 +9,7 @@ import (
 	define "github.com/htgolang/htgolang-20200919/tree/master/homework/day03-20201008/Go3028-Beijing-lisuo/define"
 )
 
+// show user list when init
 func ShowUserList() {
 	fmt.Println("|...Users list...|")
 	fmt.Println("|...Id...|...Name...|...Phone...|...Address...|")
