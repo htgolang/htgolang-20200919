@@ -1,0 +1,21 @@
+package main
+
+import "fmt"
+
+func main() {
+        nums := []int{1024, 108, 107, 688, 96381, 31, 105, 11111, 15, 109, 103, 102, 333, 8063}
+        for i, _ := range nums {
+                if nums[i] > nums[len(nums)-1] {
+                        nums[i], nums[len(nums)-1] = nums[len(nums)-1], nums[i]
+                }
+        }
+        fmt.Println(nums)
+
+
+        for j := 0; j < len(nums)-2; j++ {
+                if nums[len(nums)-2] < nums[j] {
+                        nums[j], nums[len(nums)-2] = nums[len(nums)-2], nums[j]
+                }
+        }
+        fmt.Println(nums)
+}

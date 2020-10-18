@@ -1,0 +1,11 @@
+func main() {
+        char, err := ioutil.ReadFile("./i have a dream.txt")
+        if err != nil {
+                fmt.Println("error : %s", err)
+                return
+        }
+        lowerchar := strings.ToLower(string(char))
+        for i := 'a'; i <= 'z'; i++ {
+                fmt.Printf("%q %d\n", string(i), strings.Count(lowerchar, string(i)))
+        }
+}

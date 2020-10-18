@@ -1,0 +1,19 @@
+package main
+
+import "fmt"
+
+func main() {
+        nums := []int{108, 107, 688, 105, 109, 103, 102, 333}
+        maxn := 0
+        index := 0 //索引的值也需要先定义变量，找到最大的元素后，把对应索引的值重新赋给变量
+        for i, _ := range nums {
+                if maxn < nums[i] {
+                        maxn = nums[i]
+                        index = i
+                }
+        }
+ 
+        nums = append(nums[:index], nums[index+1:]...)
+        nums = append(nums, maxn)
+        fmt.Println(nums)
+}
