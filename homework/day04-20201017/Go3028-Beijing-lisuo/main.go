@@ -7,7 +7,6 @@ import (
 )
 
 func main() {
-	funcs.Init()
 	funcs.Serv()
 	fmt.Println("Exit.")
 }

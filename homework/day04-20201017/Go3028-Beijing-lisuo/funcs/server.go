@@ -11,34 +11,39 @@ import (
 func Serv() {
 	var opt string
 	help := func() {
-		fmt.Print("1. addUser\n2. delUser\n3. modifyUser\n" +
-			"4. queryUser\n5. showUserList\nc. clearConsole\nh. showHelp\nq. Quit\n\n> ")
+		fmt.Print("  add:    addUser\n  del:    delUser\n  mod:    modifyUser\n" +
+			"query:    queryUser\n show:    showUserList\n  cls:    clearConsole\n" +
+			"    h:    showHelp\n  Q|q:    Quit\n\n> ")
 	}
+	if !Login() {
+		return
+	}
+	Init()
 	help()
 	for {
 		fmt.Scanln(&opt)
 		switch opt {
-		case "1":
+		case "add", "a":
 			fmt.Print("\n|addUser|\n")
 			AddCurrentUser()
 			opt = ""
 			continue
-		case "2":
+		case "del", "d":
 			fmt.Printf("\n|delUser|\n")
 			DelUser()
 			opt = ""
 			continue
-		case "3":
+		case "mod", "m":
 			fmt.Printf("\n|modUser|\n")
 			ModifyUser()
 			opt = ""
 			continue
-		case "4":
+		case "query":
 			fmt.Printf("\n|queryUser|\n")
 			SearchUser(&define.UserList)
 			opt = ""
 			continue
-		case "5":
+		case "show", "s":
 			fmt.Printf("\n|showUserList|\n")
 			ShowUserList()
 			opt = ""
@@ -48,7 +53,7 @@ func Serv() {
 			help()
 			opt = ""
 			continue
-		case "c":
+		case "cls", "c":
 			fmt.Printf("\n|clearConsole|\n")
 			utils.CallClear()
 			fmt.Print("[\"h\" for help]> ")
