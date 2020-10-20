@@ -1,0 +1,15 @@
+import "fmt"
+
+func main() {
+    //冒泡排序
+    nums := []int{988, 119, 107, 909, 1024, 15, 105, 66, 109, 103, 102, 69, 303, 108}
+    for i := 0; i < len(nums); i++ {
+        for j := 0; j < len(nums)-1; j++ { 
+            if nums[j] > nums[j+1] { 
+                nums[j], nums[j+1] = nums[j+1], nums[j] 
+            }
+        }
+        //fmt.Println(nums) 
+    }
+    fmt.Println(nums)
+}

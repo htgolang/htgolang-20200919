@@ -6,7 +6,7 @@ func main() {
 	// 复制nums中的所有数据到nums2(两个不会有相互影响)
 	// v1
 	// nums := []int{1, 2, 3, 4, 5}
-	// nums2 := []int{}
+	// nums2 := make([]int, len(nums))
 	// copy(nums2, nums)
 	// v2
 	// nums := []int{1, 2, 3, 4, 5}
