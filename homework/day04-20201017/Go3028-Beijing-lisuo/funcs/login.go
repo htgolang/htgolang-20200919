@@ -7,7 +7,7 @@ import (
 	utils "github.com/htgolang/htgolang-20200919/tree/master/homework/day04-20201017/Go3028-Beijing-lisuo/utils"
 )
 
-var p string = "suo"
+var p string = "   "
 var password [16]byte = md5.Sum([]byte(p))
 
 func Login() bool {

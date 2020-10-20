@@ -23,7 +23,5 @@ func SearchUser(user *[]map[int64]define.User) {
 				utils.ShowUser(k)
 			}
 		}
-
 	}
 }
-
