@@ -25,3 +25,7 @@ func SearchUser(user *[]map[int64]define.User) {
 		}
 	}
 }
+
+func QueryCurrentUser() {
+	SearchUser(&define.UserList)
+}
