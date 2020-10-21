@@ -2,4 +2,4 @@ module testtablewriter
 
 go 1.14
 
-require github.com/olekukonko/tablewriter v0.0.4 // indirect
+require github.com/olekukonko/tablewriter v0.0.4
