@@ -98,11 +98,14 @@ func NameDelUser(user *[]map[int64]define.User, name string) {
 	for i, u := range *user {
 		for _, v := range u {
 			if v.Name == name {
+				if i == len(*user) {
+					*user = append(define.UserList[:i], define.UserList[i:]...)
+					return
+				}
 				*user = append(define.UserList[:i], define.UserList[i+1:]...)
 			}
 		}
 	}
-
 }
 
 // modify user based on Id

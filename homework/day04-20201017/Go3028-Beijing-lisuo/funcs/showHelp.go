@@ -7,7 +7,7 @@ import (
 func ShowHelp() {
 	fmt.Print("  add:    addUser\n  del:    delUser\n  mod:    modifyUser\n" +
 		"query:    queryUser\n show:    showUserList\n  cls:    clearConsole\n" +
-		"    h:    showHelp\n  Q|q:    Quit\n\n> ")
+		" help:    showHelp\n  Q|q:    Quit\n\n> ")
 }
 
 func Default() {
