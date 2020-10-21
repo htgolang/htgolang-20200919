@@ -26,6 +26,8 @@ func SearchUser(user *[]map[int64]define.User) {
 	}
 }
 
+// make SearchUser() a normal func() type, then it
+// can be placed in a map of type map[string]func()
 func QueryCurrentUser() {
 	SearchUser(&define.UserList)
 }

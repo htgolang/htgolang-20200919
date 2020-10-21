@@ -14,6 +14,7 @@ func NewUser(n, p, a string) define.User {
 }
 
 // add three users to define.Userlist
+// map input cmd to corresponding func
 func Init() {
 	user0 := NewUser("lisuo", "18811738208", "HaidianDistrict,BeijingXinParkRestaurants,BeixiaguanSubdistrict,HaidianDistrict,China")
 	user1 := NewUser("jaccyli", "13899998888", "London,England,Earth")
@@ -22,4 +23,5 @@ func Init() {
 	AddUser(&define.UserList, user1)
 	AddUser(&define.UserList, user2)
 	ShowUserList()
+	FuncMap()
 }
