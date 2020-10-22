@@ -16,7 +16,7 @@ func md5check() (Bool bool) {
 	*/
 
 	var Passwd string
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 3; i++ {
 		if i == 0 {
 			fmt.Println(`请输入密码：`)
 			fmt.Scan(&Passwd)
@@ -31,7 +31,7 @@ func md5check() (Bool bool) {
 			return Bool
 		}
 	}
-	fmt.Println("密码错误次数超过五次，已退出。Bay~，")
+	fmt.Println("密码错误次数超过三次，已退出。Bay~，")
 	return Bool
 }
 
