@@ -27,6 +27,7 @@ func ShowHelp() {
 	t.SetHeader([]string{"CMD", "Function"})
 	t.Append([]string{"add", "Add a User"})
 	t.Append([]string{"del", "Delete a User"})
+	t.Append([]string{"mod", "Modify a User"})
 	t.Append([]string{"query", "Search User"})
 	t.Append([]string{"show", "Show User List"})
 	t.Append([]string{"cls", "Clean the terminal"})
