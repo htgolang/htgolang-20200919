@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/htgolang/htgolang-20200919/tree/master/homework/day03-20201008/Go3028-Beijing-lisuo/utils"
+	"github.com/htgolang/htgolang-20200919/tree/master/homework/day04-20201017/Go3028-Beijing-lisuo/utils"
 
-	define "github.com/htgolang/htgolang-20200919/tree/master/homework/day03-20201008/Go3028-Beijing-lisuo/define"
+	define "github.com/htgolang/htgolang-20200919/tree/master/homework/day04-20201017/Go3028-Beijing-lisuo/define"
 )
 
 // if define.User.Name or define.User.Address or define.User.Phone
@@ -23,7 +23,11 @@ func SearchUser(user *[]map[int64]define.User) {
 				utils.ShowUser(k)
 			}
 		}
-
 	}
 }
 
+// make SearchUser() a normal func() type, then it
+// can be placed in a map of type map[string]func()
+func QueryCurrentUser() {
+	SearchUser(&define.UserList)
+}
