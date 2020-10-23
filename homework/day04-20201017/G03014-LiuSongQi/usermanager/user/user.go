@@ -190,6 +190,10 @@ func query() {
 	}
 }
 
+func exit() {
+	os.Exit(0)
+}
+
 /*
 	help
 */
@@ -197,7 +201,7 @@ func Help() {
 	t := tablewriter.NewWriter(os.Stdout)
 	data := [][]string{
 		{"add", "add user"},
-		{"delete", "del user"},
+		{"del", "del user"},
 		{"modify", "modify user"},
 		{"query", "query user"},
 		{"exit", "quit"},
@@ -212,23 +216,22 @@ func Help() {
 }
 
 func Run() {
+	var command = map[string]func(){
+		"add":    add,
+		"modify": modify,
+		"query":  query,
+		"delete": del,
+		"help":   Help,
+		"exit":   exit,
+	}
 	for {
 		var choiceOne string
+
 		fmt.Printf("Please enter the command: ")
 		fmt.Scan(&choiceOne)
-		switch choiceOne {
-		case "add":
-			add()
-		case "query":
-			query()
-		case "del":
-			del()
-		case "modify":
-			modify()
-		case "exit", "quit":
-			os.Exit(0)
-		case "help":
-			Help()
+		action, ok := command[choiceOne]
+		if ok {
+			action()
 		}
 	}
 }
