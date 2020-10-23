@@ -1,5 +1,5 @@
-module testtablewriter
+module usermanager
 
-go 1.14
+go 1.12
 
 require github.com/olekukonko/tablewriter v0.0.4

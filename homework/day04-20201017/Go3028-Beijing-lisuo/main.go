@@ -11,5 +11,4 @@ func main() {
 	//funcs.ExecFunc()
 	funcs.ServMapFunc()
 	fmt.Println("Exit.")
-
 }

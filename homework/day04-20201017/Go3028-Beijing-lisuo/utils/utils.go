@@ -7,10 +7,10 @@ import (
 	"os/exec"
 	"runtime"
 	"strconv"
-	"text/tabwriter"
 	"time"
 
 	define "github.com/htgolang/htgolang-20200919/tree/master/homework/day04-20201017/Go3028-Beijing-lisuo/define"
+	"github.com/olekukonko/tablewriter"
 )
 
 // gen a id by UnixNano() who's type is int64
@@ -41,16 +41,18 @@ func Read() string {
 
 // show a user based on Id
 func ShowUser(Id int64) {
+	t := tablewriter.NewWriter(os.Stdout)
+	//t.SetAutoFormatHeaders(false)
+	//t.SetAutoWrapText(false)
+	//t.SetReflowDuringAutoWrap(false)
+	//t.SetHeader([]string{"ID", "Name", "Phone", "Location"})
 	for _, userMap := range define.UserList {
-		if val, ok := userMap[Id]; ok {
-			//fmt.Println(i, Id, val)
-			//fmt.Println(val.Name, val.Address, val.Phone)
-			w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', 0|tabwriter.Debug)
+		if v, ok := userMap[Id]; ok {
 			s := strconv.FormatInt(Id, 10)
-			fmt.Fprintln(w, "|"+s+"\t"+val.Name+"\t"+val.Phone+"\t"+val.Address+" |")
-			w.Flush()
+			t.Append([]string{s, v.Name, v.Phone, v.Address})
 		}
 	}
+	t.Render()
 }
 
 // find user based on Id

@@ -21,6 +21,10 @@ func AddCurrentUser() {
 	var name, phone, address string
 	fmt.Print("Please input the user's name: \n> ")
 	name = utils.Read()
+	if name == "" {
+		fmt.Println("The man/women must have a name.")
+		return
+	}
 	fmt.Print("Please input the user's phone: \n> ")
 	phone = utils.Read()
 	// make sure the phone number contains only pure digits
@@ -30,8 +34,15 @@ func AddCurrentUser() {
 		if utils.JustDigits(phone) == true {
 			break
 		}
+		if phone == "" {
+			phone = "999"
+		}
 	}
 	fmt.Print("Please input the user's address: \n> ")
 	address = utils.Read()
+	if address == "" {
+		address = "Beijing"
+		fmt.Printf("The default address will be %v.\n", phone)
+	}
 	AddUser(&define.UserList, NewUser(name, phone, address))
 }
