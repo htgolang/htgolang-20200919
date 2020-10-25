@@ -7,7 +7,7 @@ import (
 	"userManagement/model"
 )
 
-//具体业务逻辑处理：增删查改
+//具体业务逻辑处理
 
 type UserService struct {
 	users   []model.User

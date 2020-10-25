@@ -1,4 +1,4 @@
-module GO3015-SZX-xudingren
+module userManagementV2
 
 go 1.14
 
