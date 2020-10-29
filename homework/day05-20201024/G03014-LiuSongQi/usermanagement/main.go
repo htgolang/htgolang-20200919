@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"usermanagement/controllers"
 	"usermanagement/manager"
 	"usermanagement/modules"
@@ -21,16 +20,6 @@ func help() {
 	utils.OutputTable(data, header)
 }
 
-func auth(passwd string) bool {
-	for i := 0; i < 3; i++ {
-		if utils.Md5Text(utils.Input("请输入密码: ")) == passwd {
-			return true
-		} else {
-			fmt.Println("密码输入错误")
-		}
-	}
-	return false
-}
 
 func main() {
 	lib := modules.NewUserManager()
