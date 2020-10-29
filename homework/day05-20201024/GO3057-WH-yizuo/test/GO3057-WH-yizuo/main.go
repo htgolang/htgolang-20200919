@@ -1,13 +1,12 @@
 package main
 
 import (
-	"yizuo/manager"
-	_ "yizuo/routers"
+	"GO3057-WH-yizuo/pkg/funcs"
 )
 
 /*
    主执行函数
 */
 func main() {
-	manager.Run()
+	funcs.Run()
 }
