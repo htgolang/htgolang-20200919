@@ -3,6 +3,7 @@ package utils
 import (
 	"bufio"
 	"crypto/md5"
+	"fmt"
 	"os"
 	"os/exec"
 	"runtime"
@@ -13,6 +14,11 @@ import (
 func GenId() (res int64) {
 	result := time.Now().UnixNano()
 	return result
+}
+
+// Message print debug info
+func Message(s string) {
+	fmt.Println(s)
 }
 
 // to verify if a string contains only digits
@@ -41,11 +47,7 @@ func GenPasswd() [16]uint8 {
 	return md5.Sum(d)
 }
 
-// make sure the input date is formatted
-func DateCheck(d string) error {
-	_, err := time.Parse("2006.01.02", d)
-	return err
-}
+
 
 // clear the console
 var clear map[string]func() //create a map for storing clear funcs

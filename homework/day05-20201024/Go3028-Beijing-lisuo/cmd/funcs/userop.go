@@ -1,4 +1,4 @@
-package userop
+package funcs
 
 import (
 	"crypto/md5"
@@ -30,7 +30,8 @@ func NewUser(id int64, name, cell, address, born, passwd string) define.User {
 
 // Init add some users to define.UserList
 func Init(ul *[]define.User) {
-	user0 := NewUser(0, "admin", "18811992299", "HaidianDistrict,BeijingXinParkRestaurants,BeixiaguanSubdistrict,HaidianDistrict,China", time.Now().Format("2006.01.02"), "qwert")
+	user0 := NewUser(0, "admin", "18811992299", "HaidianDistrict,BeijingXinParkRestaurants,BeixiaguanSubdistrict,HaidianDistrict,China",
+		time.Now().Format("2006.01.02"), "qwert")
 	user1 := NewUser(1, "jack ma", "18800009999", "Hangzhou, China", time.Now().Format("2006.01.02"), "hello")
 	user3 := NewUser(3, "steve", "18800002222", "Mars", time.Now().Format("2006.01.02"), "hi")
 	define.UserList = append(*ul, user0, user1, user3)
