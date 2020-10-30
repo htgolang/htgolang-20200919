@@ -89,9 +89,9 @@ func ModifyUser(UserID int) bool {
 				}
 				v.UserData.Name = name
 				v.UserData.Password = utils.Md5sum(utils.Input("请输入要变更的用户密码："))
-				v.UserData.Phone = utils.Input("请输入要变更的联系方式：")
-				v.UserData.Address = utils.Input("请输入要变更的联系地址：")
-				v.UserData.Birthday = utils.TimeConversion(utils.Input("请输入要变更的生日："))
+				v.UserData.Phone = utils.Input("请输入要变更的联系方式（例如：17612345678）：")
+				v.UserData.Address = utils.Input("请输入要变更的联系地址（例如：WuHan）：")
+				v.UserData.Birthday = utils.TimeConversion(utils.Input("请输入要变更的生日（例如：1994-04-06 18:08）："))
 				// 打印变更后的信息
 				fmt.Println("变更成功。变更后的信息如下：")
 				FormatTableOut(v.UserData)

@@ -21,9 +21,9 @@ func AddUser() {
 		return
 	}
 	passwd := utils.Input("请输入用户密码: ")
-	phone := utils.Input("请输入联系方式: ")
-	address := utils.Input("请输入联系地址: ")
-	birthday := utils.Input("请输入你的生日: ")
+	phone := utils.Input("请输入联系方式（例如：17612345678）: ")
+	address := utils.Input("请输入联系地址（例如：WuHan）: ")
+	birthday := utils.Input("请输入你的生日（例如：1994-04-06 18:08）: ")
 
 	models.AddUser(name,passwd,phone,address,birthday)
 	fmt.Println("用户添加成功，现所有用户如下：")
