@@ -1,4 +1,4 @@
-package aux
+package utils
 
 import (
 	"bufio"
@@ -36,9 +36,15 @@ func Read() string {
 }
 
 // gen [16]uint8 password
-func GenPasswd() ([16]uint8, error) {
-	data := []byte(Read())
-	return md5.Sum(data), err
+func GenPasswd() [16]uint8 {
+	d := []byte(Read())
+	return md5.Sum(d)
+}
+
+// make sure the input date is formatted
+func DateCheck(d string) error {
+	_, err := time.Parse("2006.01.02", d)
+	return err
 }
 
 // clear the console

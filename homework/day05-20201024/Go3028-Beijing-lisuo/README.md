@@ -1,6 +1,5 @@
-Demo
+jd
 ===
-
 
  map[string]string => User
     id int
@@ -22,12 +21,14 @@ Demo
     添加 => 1 aaa => aaa => 不能通过
 
 
-    User
+## import deps
 
-    user
+define
 
-    add 
-    del 
-    mod
-    find
-    show
+utils
+
+userOp ---- define,utils
+
+funcs  ---- userOp, define, utils
+
+aux    ---- define,utils,userOp
