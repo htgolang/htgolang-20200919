@@ -4,14 +4,13 @@ import (
 	"crypto/md5"
 	"errors"
 	"fmt"
-	"os"
-	"strconv"
 	"time"
 
 	"github.com/htgolang/htgolang-20200919/tree/master/homework/day05-20201024/Go3028-Beijing-lisuo/cmd/define"
 	"github.com/htgolang/htgolang-20200919/tree/master/homework/day05-20201024/Go3028-Beijing-lisuo/cmd/utils"
-	"github.com/olekukonko/tablewriter"
 )
+
+const adminID int64 = 0
 
 // NewUser make a new user contains user's info
 func NewUser(id int64, name, cell, address, born, passwd string) define.User {
@@ -38,24 +37,11 @@ func Init(ul *[]define.User) {
 	fmt.Printf("user %v added\n", user0.Name)
 	fmt.Printf("user %v added\n", user1.Name)
 	fmt.Printf("user %v added\n", user3.Name)
+	AddFunc()
 }
 
-// ShowUser show a user based on Id
-func ShowUser(id int64) {
-	t := tablewriter.NewWriter(os.Stdout)
-	for _, user := range define.UserList {
-		if user.Id == id {
-			s := strconv.FormatInt(id, 10)
-			p := fmt.Sprintf("%x", user.Passwd)
-			t.Append([]string{s, user.Name, user.Cell, user.Address, user.Born.Format("2006.01.02"), p})
-			//md5.Sum([]byte(user.Passwd))})
-		}
-	}
-	t.Render()
-}
-
-// find user based on Id
-func IdFindUser(ul *[]define.User, id int64) (define.User, error) {
+// IDFindUser find user based on Id
+func IDFindUser(ul *[]define.User, id int64) (define.User, error) {
 	for _, user := range *ul {
 		if user.Id == id {
 			return user, nil
@@ -65,7 +51,7 @@ func IdFindUser(ul *[]define.User, id int64) (define.User, error) {
 	return define.User{}, err
 }
 
-// find user based on Name
+// NameFindUser find user based on Name
 func NameFindUser(ul *[]define.User, Name string) (define.User, error) {
 	for _, user := range *ul {
 		if user.Name == Name {
@@ -76,8 +62,8 @@ func NameFindUser(ul *[]define.User, Name string) (define.User, error) {
 	return define.User{}, err
 }
 
-// del user based on Id
-func IdDelUser(ul *[]define.User, id int64) {
+// IDDelUser del user based on Id
+func IDDelUser(ul *[]define.User, id int64) {
 	for i, user := range *ul {
 		if int64(user.Id) == id {
 			*ul = append(define.UserList[:i], define.UserList[i+1:]...)
@@ -85,7 +71,7 @@ func IdDelUser(ul *[]define.User, id int64) {
 	}
 }
 
-// del user based on Name
+// NameDelUser del user based on Name
 func NameDelUser(ul *[]define.User, name string) {
 	for i, user := range *ul {
 		if user.Name == name {
@@ -98,7 +84,7 @@ func NameDelUser(ul *[]define.User, name string) {
 	}
 }
 
-// get max id
+// GetMaxID get max id of current define.UserList
 func GetMaxID(ul *[]define.User) int64 {
 	var MaxID int64 = -1
 	for _, user := range *ul {
@@ -110,25 +96,31 @@ func GetMaxID(ul *[]define.User) int64 {
 	return MaxID
 }
 
-// modify user based on Id
-func IdModUser(ul *[]define.User, id int64) define.User {
-	var iname, iaddress, cell string
-	var ipasswd string
-	var newUser define.User
-	for i, user := range *ul {
+// IDModUser modify user based on Id
+func IDModUser(ul *[]define.User, id int64) (define.User, error) {
+	var iname, iaddress, cell, ipasswd string
+	newUser := define.User{Id: id}
+	for _, user := range *ul {
 		if user.Id == id {
+			if id == adminID {
+				err := errors.New("you'r not allowed to modify admin, nothing changed")
+				return newUser, err
+			}
+
 			fmt.Printf("Input new Name [%v]: ", user.Name)
 			iname = utils.Read()
 			newUser.Name = iname
 			if iname == "" {
 				newUser.Name = user.Name
 			}
+
 			fmt.Printf("Input new Address [%v]: ", user.Address)
 			iaddress = utils.Read()
 			newUser.Address = iaddress
 			if iaddress == "" {
 				newUser.Address = user.Address
 			}
+
 			fmt.Printf("Input new Phone [%v]: ", user.Cell)
 			cell = utils.Read()
 			// make sure the phone number contains only pure digits
@@ -143,57 +135,63 @@ func IdModUser(ul *[]define.User, id int64) define.User {
 			if cell == "" {
 				newUser.Cell = user.Cell
 			}
+
 			fmt.Printf("Input new passwd [%v]: ", user.Passwd)
-			newUser.Passwd = utils.GenPasswd()
+			ipasswd = utils.Read()
+			newUser.Passwd = md5.Sum([]byte(ipasswd))
 			if ipasswd == "" {
 				newUser.Passwd = user.Passwd
 			}
-
-			(*ul)[i] = newUser
-			fmt.Printf("Modified user is: %v\n", (*ul)[i])
 		}
 	}
-	return newUser
+	return newUser, nil
 }
 
-// to recap =================================
-// modify user based on Name
-//func NameModUser(user *[]map[int64]define.User, name string) {
-//	var iname, iaddress, iphone string
-//	var newUser define.User
-//	for _, u := range *user {
-//		for k, v := range u {
-//			if v.Name == name {
-//				fmt.Printf("Input new Name [%v]: ", v.Name)
-//				iname = utils.Read()
-//				newUser.Name = iname
-//				if iname == "" {
-//					newUser.Name = v.Name
-//				}
-//				fmt.Printf("Input new Address [%v]: ", v.Address)
-//				iaddress = utils.Read()
-//				newUser.Address = iaddress
-//				if iaddress == "" {
-//					newUser.Address = v.Address
-//				}
-//				fmt.Printf("Input new Phone [%v]: ", v.Phone)
-//				iphone = utils.Read()
-//				// make sure the phone number contains only pure digits
-//				for utils.JustDigits(iphone) == false {
-//					fmt.Print("Please input a legal phone number: \n> ")
-//					iphone = utils.Read()
-//					if utils.JustDigits(iphone) == true {
-//						break
-//					}
-//				}
-//				newUser.Phone = iphone
-//				if iphone == "" {
-//					newUser.Phone = v.Phone
-//				}
-//				u[k] = newUser
-//				fmt.Printf("Modified user is: %v:%v\n", k, newUser)
-//			}
-//		}
-//	}
-//}
-//
+// NameModUser modify user based on Name
+func NameModUser(ul *[]define.User, name string) define.User {
+	var iname, iaddress, iphone, ipasswd string
+	newUser := define.User{}
+	for _, u := range *ul {
+		if u.Name == name {
+			newUser.Id = u.Id
+			fmt.Printf("Input new Name [%v]: ", u.Name)
+			iname = utils.Read()
+			newUser.Name = iname
+			if iname == "" {
+				newUser.Name = u.Name
+			}
+
+			fmt.Printf("Input new Address [%v]: ", u.Address)
+			iaddress = utils.Read()
+			newUser.Address = iaddress
+			if iaddress == "" {
+				newUser.Address = u.Address
+			}
+
+			fmt.Printf("Input new Phone [%v]: ", u.Cell)
+			iphone = utils.Read()
+			// make sure the phone number contains only pure digits
+			for utils.JustDigits(iphone) == false {
+				fmt.Print("Please input a legal phone number: \n> ")
+				iphone = utils.Read()
+				if utils.JustDigits(iphone) == true {
+					break
+				}
+			}
+			newUser.Cell = iphone
+			if iphone == "" {
+				newUser.Cell = u.Cell
+			}
+
+			fmt.Printf("Input new passwd [%v]: ", u.Passwd)
+			ipasswd = utils.Read()
+			newUser.Passwd = md5.Sum([]byte(ipasswd))
+			if ipasswd == "" {
+				newUser.Passwd = u.Passwd
+			}
+			fmt.Printf("Modified user is: %v:%v\n", newUser.Name, newUser)
+			return newUser
+		}
+	}
+	return define.User{}
+}

@@ -3,6 +3,8 @@ package funcs
 import (
 	"errors"
 	"fmt"
+
+	"github.com/htgolang/htgolang-20200919/tree/master/homework/day05-20201024/Go3028-Beijing-lisuo/cmd/utils"
 )
 
 // CmdToFuncMap mapping the cmd to corresponding func
@@ -20,6 +22,13 @@ func CmdToFunc(cmd string, f func()) {
 func AddFunc() {
 	CmdToFunc("add", AddUser)
 	CmdToFunc("del", DelUser)
+	CmdToFunc("mod", ModifyUser)
+	CmdToFunc("show", ShowUserList)
+	CmdToFunc("help", ShowHelp)
+	CmdToFunc("h", ShowHelp)
+	CmdToFunc("cls", utils.ClearScreen)
+
+	fmt.Printf("CmdToFuncMap: %#v\n", CmdToFuncMap)
 }
 
 // ExecFunc execute the func of a cmd

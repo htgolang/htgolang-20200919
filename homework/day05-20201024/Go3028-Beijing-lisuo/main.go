@@ -3,43 +3,35 @@ package main
 import (
 	"fmt"
 
-	"github.com/htgolang/htgolang-20200919/tree/master/homework/day05-20201024/Go3028-Beijing-lisuo/cmd/aux"
 	"github.com/htgolang/htgolang-20200919/tree/master/homework/day05-20201024/Go3028-Beijing-lisuo/cmd/define"
 	"github.com/htgolang/htgolang-20200919/tree/master/homework/day05-20201024/Go3028-Beijing-lisuo/cmd/funcs"
+	"github.com/htgolang/htgolang-20200919/tree/master/homework/day05-20201024/Go3028-Beijing-lisuo/cmd/utils"
 )
 
 func main() {
-	Serv()
+	serv()
 	fmt.Println("Exit.")
 }
 
-func Serv() {
+func serv() {
 	var opt string
 
 	// add some users and map cmd to funcs
-	userop.Init(&define.UserList)
+	funcs.Init(&define.UserList)
 
-	if !aux.Login() {
+	// login
+	if !funcs.Login() {
 		return
 	}
 
+	// main loop for manager users
 	for {
-		fmt.Scanln(&opt)
+		opt = utils.Read()
 		// exec the corresponding func of the cmd
-		funcs.ExecFunc(opt)
-		switch opt {
-		case "":
-			fmt.Print("[\"help\" for help]> ")
-		case "q", "Q":
-			return
-		default:
-			defaultTip()
-			opt = ""
-			continue
+		err := funcs.ExecFunc(opt)
+		if err != nil {
+			fmt.Println(err)
+			funcs.DefaultTip()
 		}
 	}
-}
-
-func defaultTip() {
-	fmt.Print("\n|Illegal input|\ntype \"h\" show help list.\n> ")
 }

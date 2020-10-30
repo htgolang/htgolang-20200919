@@ -2,31 +2,34 @@ package funcs
 
 import (
 	"fmt"
+	"os"
 
-	"time"
-	"github.com/htgolang/htgolang-20200919/tree/master/homework/day05-20201024/Go3028-Beijing-lisuo/cmd/define"
-	"github.com/htgolang/htgolang-20200919/tree/master/homework/day05-20201024/Go3028-Beijing-lisuo/cmd/utils"
+
+	"github.com/olekukonko/tablewriter"
 )
 
-// GetField prompt input the User's field
-func GetField(f string) string {
-	for _, field := range define.UserField {
-		if field == f {
-			fmt.Printf("Please input %v: ", f)
-			input := utils.Read()
-			return input
-		}
-	}
-	return f
+// ShowHelp display help info
+func ShowHelp() {
+	t := tablewriter.NewWriter(os.Stdout)
+	t.SetAutoFormatHeaders(false)
+	t.SetAutoWrapText(false)
+	t.SetReflowDuringAutoWrap(false)
+
+	//fmt.Println("|CMD help list|")
+	t.SetHeader([]string{"CMD", "Function"})
+	t.Append([]string{"add", "Add a User"})
+	t.Append([]string{"del", "Delete a User"})
+	t.Append([]string{"mod", "Modify a User"})
+	t.Append([]string{"query", "Search User"})
+	t.Append([]string{"show", "Show User List"})
+	t.Append([]string{"cls", "Clean the terminal"})
+	t.Append([]string{"help", "Show this help list"})
+	t.Append([]string{"Q|q", "Exit"})
+	t.Render()
 }
 
-// DateCheck make sure the input date is formatted
-func DateCheck(d string) error {
-	_, err := time.Parse("2006.01.02", d)
-	return err
+// DefaultTip show default prompt in main
+func DefaultTip() {
+	fmt.Print("\n|type \"h\" show help list|\n> ")
 }
 
-// Message print debug info
-func Message(v string) {
-	fmt.Println(v)
-}
