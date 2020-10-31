@@ -1,0 +1,6 @@
+github.com/imsilence/testpkg v0.0.0-20201031025250-2a591c4081d2 h1:Yb+IzkrzBxm8e/GUFaCO7wbSHnZkEK7FmocWlQifB0M=
+github.com/imsilence/testpkg v0.0.0-20201031025250-2a591c4081d2/go.mod h1:sAoXtaOdtEq4nHisLLRgegHYrOLuMGfuFFEne8SdTrg=
+github.com/imsilence/testpkg v0.0.2 h1:DlDrFJABkXlHBQMD6hM8X6XksoYuEEUPZDPNAqsqcDk=
+github.com/imsilence/testpkg v0.0.2/go.mod h1:sAoXtaOdtEq4nHisLLRgegHYrOLuMGfuFFEne8SdTrg=
+github.com/imsilence/testpkg v0.0.3 h1:1hq/uhwv1UbWKubkqmubSUosh6rBH/JH3XnBDuQVgts=
+github.com/imsilence/testpkg v0.0.3/go.mod h1:sAoXtaOdtEq4nHisLLRgegHYrOLuMGfuFFEne8SdTrg=

@@ -1,0 +1,15 @@
+#id,name,password,tel,addr
+
+name, password, tel, addr中不可能存在的一个字符作为分隔符 ,
+
+# 每一行是一个用户数据
+1,kk,123123123,142,西安
+2,degary,xxxx,xxxx,xxxx
+3,xxx,xxx,xxxx,xxx
+
+// users []User => 文件内容 => 编码
+    fmt.Fprintf
+// 文件内容 => users []User => 解码
+    读取一行
+    ,分隔 strings.Split(",", -1)
+    转换格式 => User => append
