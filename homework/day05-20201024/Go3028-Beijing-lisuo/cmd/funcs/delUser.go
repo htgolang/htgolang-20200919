@@ -10,14 +10,14 @@ import (
 )
 
 // DelUser del a user
-// one can use Id or Name to find a user and del it
-// if input a Id, find the user use this Id
+// one can use ID or Name to find a user and del it
+// if input a ID, find the user use this ID
 // if input a Name, find the user use this Name
 // if no this user, prompt error
 func DelUser() {
 	var name string
 	var input string
-	utils.Message("Who you want to del(Id/Name)?\n> ")
+	utils.Message("Who you want to del(ID/Name)?\n> ")
 	input = utils.GetField("Name")
 	if s, err := strconv.Atoi(strings.TrimSpace(input)); err == nil {
 		id := int64(s)
@@ -43,7 +43,7 @@ func DelUser() {
 		if (user == define.User{}) {
 			fmt.Println("No such user.", user)
 		} else {
-			ShowUser(user.Id)
+			ShowUser(user.ID)
 			fmt.Printf("Find user: %v\nAre you sure to delete %v?(y/n)\n> ", user.Name, user.Name)
 			input = utils.Read()
 			if strings.ToLower(input) == "y" {

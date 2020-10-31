@@ -92,3 +92,8 @@ func ClearScreen() {
 func Message(v string) {
 	fmt.Println(v)
 }
+
+// Quit cause program exit
+func Quit() {
+	os.Exit(define.USER_QUIT)
+}

@@ -15,7 +15,7 @@ const adminID int64 = 0
 // NewUser make a new user contains user's info
 func NewUser(id int64, name, cell, address, born, passwd string) define.User {
 	return define.User{
-		Id:      id,
+		ID:      id,
 		Name:    name,
 		Cell:    cell,
 		Address: address,
@@ -40,10 +40,10 @@ func Init(ul *[]define.User) {
 	AddFunc()
 }
 
-// IDFindUser find user based on Id
+// IDFindUser find user based on ID
 func IDFindUser(ul *[]define.User, id int64) (define.User, error) {
 	for _, user := range *ul {
-		if user.Id == id {
+		if user.ID == id {
 			return user, nil
 		}
 	}
@@ -62,10 +62,10 @@ func NameFindUser(ul *[]define.User, Name string) (define.User, error) {
 	return define.User{}, err
 }
 
-// IDDelUser del user based on Id
+// IDDelUser del user based on ID
 func IDDelUser(ul *[]define.User, id int64) {
 	for i, user := range *ul {
-		if int64(user.Id) == id {
+		if int64(user.ID) == id {
 			*ul = append(define.UserList[:i], define.UserList[i+1:]...)
 		}
 	}
@@ -88,7 +88,7 @@ func NameDelUser(ul *[]define.User, name string) {
 func GetMaxID(ul *[]define.User) int64 {
 	var MaxID int64 = -1
 	for _, user := range *ul {
-		var i int64 = user.Id
+		var i int64 = user.ID
 		if i > MaxID {
 			MaxID = i
 		}
@@ -96,12 +96,12 @@ func GetMaxID(ul *[]define.User) int64 {
 	return MaxID
 }
 
-// IDModUser modify user based on Id
+// IDModUser modify user based on ID
 func IDModUser(ul *[]define.User, id int64) (define.User, error) {
 	var iname, iaddress, cell, ipasswd string
-	newUser := define.User{Id: id}
+	newUser := define.User{ID: id}
 	for _, user := range *ul {
-		if user.Id == id {
+		if user.ID == id {
 			if id == adminID {
 				err := errors.New("you'r not allowed to modify admin, nothing changed")
 				return newUser, err
@@ -153,7 +153,7 @@ func NameModUser(ul *[]define.User, name string) define.User {
 	newUser := define.User{}
 	for _, u := range *ul {
 		if u.Name == name {
-			newUser.Id = u.Id
+			newUser.ID = u.ID
 			fmt.Printf("Input new Name [%v]: ", u.Name)
 			iname = utils.Read()
 			newUser.Name = iname

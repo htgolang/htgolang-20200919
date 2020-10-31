@@ -10,7 +10,6 @@ import (
 
 func main() {
 	serv()
-	fmt.Println("Exit.")
 }
 
 func serv() {
@@ -31,7 +30,7 @@ func serv() {
 		err := funcs.ExecFunc(opt)
 		if err != nil {
 			fmt.Println(err)
-			funcs.DefaultTip()
+			//funcs.DefaultTip()
 		}
 	}
 }

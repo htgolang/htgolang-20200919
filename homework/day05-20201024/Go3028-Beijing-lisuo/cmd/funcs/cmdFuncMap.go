@@ -23,12 +23,16 @@ func AddFunc() {
 	CmdToFunc("add", AddUser)
 	CmdToFunc("del", DelUser)
 	CmdToFunc("mod", ModifyUser)
-	CmdToFunc("show", ShowUserList)
+	CmdToFunc("get", QueryUser)
+	CmdToFunc("show", ShowCurrentUserList)
 	CmdToFunc("help", ShowHelp)
 	CmdToFunc("h", ShowHelp)
 	CmdToFunc("cls", utils.ClearScreen)
+	CmdToFunc("q", utils.Quit)
+	CmdToFunc("Q", utils.Quit)
+	CmdToFunc("quit", utils.Quit)
 
-	fmt.Printf("CmdToFuncMap: %#v\n", CmdToFuncMap)
+	//fmt.Printf("CmdToFuncMap: %#v\n", CmdToFuncMap)
 }
 
 // ExecFunc execute the func of a cmd

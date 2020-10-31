@@ -10,13 +10,13 @@ import (
 )
 
 // ModifyUser modify user based on ID or Name,
-// if input a Id, find the user use this Id and prompt to input new value
+// if input a ID, find the user use this ID and prompt to input new value
 // if input a Name, find the user use this Name and prompt to input new value
 // if no this user, prompt error
 func ModifyUser() {
 	var input string
 	var name string
-	fmt.Print("Who you want to modify(Id/Name)?\n> ")
+	fmt.Print("Who you want to modify(ID/Name)?\n> ")
 	input = utils.Read()
 	if s, err := strconv.Atoi(strings.TrimSpace(input)); err == nil {
 		id := int64(s)
@@ -48,7 +48,7 @@ func ModifyUser() {
 		if err != nil {
 			fmt.Println("No such user.", user)
 		} else {
-			ShowUser(user.Id)
+			ShowUser(user.ID)
 			fmt.Printf("Find user: %v\nAre you sure to modify %v?(y/n)\n> ", user.Name, user.Name)
 			input = utils.Read()
 			if strings.ToLower(input) == "y" {
