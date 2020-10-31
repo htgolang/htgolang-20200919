@@ -10,8 +10,6 @@ import (
 	"github.com/htgolang/htgolang-20200919/tree/master/homework/day05-20201024/Go3028-Beijing-lisuo/cmd/utils"
 )
 
-const adminID int64 = 0
-
 // NewUser make a new user contains user's info
 func NewUser(id int64, name, cell, address, born, passwd string) define.User {
 	return define.User{
@@ -63,25 +61,33 @@ func NameFindUser(ul *[]define.User, Name string) (define.User, error) {
 }
 
 // IDDelUser del user based on ID
-func IDDelUser(ul *[]define.User, id int64) {
+func IDDelUser(ul *[]define.User, id int64) error {
 	for i, user := range *ul {
 		if int64(user.ID) == id {
-			*ul = append(define.UserList[:i], define.UserList[i+1:]...)
-		}
-	}
-}
-
-// NameDelUser del user based on Name
-func NameDelUser(ul *[]define.User, name string) {
-	for i, user := range *ul {
-		if user.Name == name {
-			if i == len(*ul) {
-				*ul = append(define.UserList[:i], define.UserList[i:]...)
-				return
+			if id == define.AdminID {
+				err := errors.New("you'r not allowed to modify admin, nothing changed")
+				return err
 			}
 			*ul = append(define.UserList[:i], define.UserList[i+1:]...)
 		}
 	}
+	return nil
+}
+
+// NameDelUser del user based on Name
+func NameDelUser(ul *[]define.User, name string) error {
+	for i, user := range *ul {
+		if user.Name == name {
+			err := errors.New("you'r not allowed to modify admin, nothing changed")
+			return err
+		}
+		if i == len(*ul) {
+			*ul = append(define.UserList[:i], define.UserList[i:]...)
+			return nil
+		}
+		*ul = append(define.UserList[:i], define.UserList[i+1:]...)
+	}
+	return nil
 }
 
 // GetMaxID get max id of current define.UserList
@@ -102,7 +108,7 @@ func IDModUser(ul *[]define.User, id int64) (define.User, error) {
 	newUser := define.User{ID: id}
 	for _, user := range *ul {
 		if user.ID == id {
-			if id == adminID {
+			if id == define.AdminID {
 				err := errors.New("you'r not allowed to modify admin, nothing changed")
 				return newUser, err
 			}
@@ -148,11 +154,16 @@ func IDModUser(ul *[]define.User, id int64) (define.User, error) {
 }
 
 // NameModUser modify user based on Name
-func NameModUser(ul *[]define.User, name string) define.User {
+func NameModUser(ul *[]define.User, name string) (define.User, error) {
 	var iname, iaddress, iphone, ipasswd string
 	newUser := define.User{}
 	for _, u := range *ul {
 		if u.Name == name {
+			if u.Name == define.AdminName {
+				err := errors.New("you'r not allowed to modify admin, nothing changed")
+				return newUser, err
+			}
+
 			newUser.ID = u.ID
 			fmt.Printf("Input new Name [%v]: ", u.Name)
 			iname = utils.Read()
@@ -190,8 +201,8 @@ func NameModUser(ul *[]define.User, name string) define.User {
 				newUser.Passwd = u.Passwd
 			}
 			fmt.Printf("Modified user is: %v:%v\n", newUser.Name, newUser)
-			return newUser
+			return newUser, nil
 		}
 	}
-	return define.User{}
+	return define.User{}, nil
 }

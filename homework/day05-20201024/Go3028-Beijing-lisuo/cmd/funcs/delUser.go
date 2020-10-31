@@ -30,8 +30,11 @@ func DelUser() {
 			fmt.Printf("Find user: %v\nAre you sure to delete %v?(y/n)\n> ", user.Name, user.Name)
 			input = utils.Read()
 			if strings.ToLower(input) == "y" {
-				fmt.Println("deleted...........")
-				IDDelUser(&define.UserList, id)
+				if err := IDDelUser(&define.UserList, id); err != nil {
+					fmt.Println(err)
+				} else {
+					fmt.Println("deleted...........")
+				}
 			} else if strings.ToLower(input) == "n" {
 				fmt.Println("Nothing changes.")
 			}
@@ -47,8 +50,11 @@ func DelUser() {
 			fmt.Printf("Find user: %v\nAre you sure to delete %v?(y/n)\n> ", user.Name, user.Name)
 			input = utils.Read()
 			if strings.ToLower(input) == "y" {
-				fmt.Println("deleted...........")
-				NameDelUser(&define.UserList, name)
+				if err := NameDelUser(&define.UserList, name); err != nil {
+					fmt.Println(err)
+				} else {
+					fmt.Println("deleted...........")
+				}
 			} else if strings.ToLower(input) == "n" {
 				fmt.Println("Nothing changes.")
 			}

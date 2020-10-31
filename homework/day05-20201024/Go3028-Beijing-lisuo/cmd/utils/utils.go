@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/exec"
 	"runtime"
+	"strings"
 	"time"
 
 	"github.com/htgolang/htgolang-20200919/tree/master/homework/day05-20201024/Go3028-Beijing-lisuo/cmd/define"
@@ -40,7 +41,7 @@ func JustDigits(s string) bool {
 func Read() string {
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan() // use `for scanner.Scan()` to keep reading
-	line := scanner.Text()
+	line := strings.TrimSpace(scanner.Text())
 	return line
 }
 
@@ -60,6 +61,21 @@ func GetField(f string) string {
 func GenPasswd() [16]uint8 {
 	d := []byte(Read())
 	return md5.Sum(d)
+}
+
+// GetKeyByValue return the same value's different keys
+func GetKeyByValue(m map[string]string, value string) string {
+	var keys = make([]string, 5)
+	var cmds string
+	for k, v := range m {
+		if v == value {
+			keys = append(keys, k)
+		}
+	}
+	for _, key := range keys {
+		cmds += fmt.Sprintf("%s ", key)
+	}
+	return cmds
 }
 
 // clear the console
@@ -95,5 +111,5 @@ func Message(v string) {
 
 // Quit cause program exit
 func Quit() {
-	os.Exit(define.USER_QUIT)
+	os.Exit(define.UserQuit)
 }

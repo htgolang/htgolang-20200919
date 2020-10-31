@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 
-
 	"github.com/olekukonko/tablewriter"
 )
 
@@ -20,11 +19,12 @@ func ShowHelp() {
 	t.Append([]string{"add", "Add a User"})
 	t.Append([]string{"del", "Delete a User"})
 	t.Append([]string{"mod", "Modify a User"})
-	t.Append([]string{"query", "Search User"})
+	t.Append([]string{"get", "Search User"})
 	t.Append([]string{"show", "Show User List"})
 	t.Append([]string{"cls", "Clean the terminal"})
 	t.Append([]string{"help", "Show this help list"})
-	t.Append([]string{"Q|q", "Exit"})
+	t.Append([]string{"mycmd", "Binding a new cmd to a exist func"})
+	t.Append([]string{"Q|q|quit|exit", "Exit"})
 	t.Render()
 }
 
@@ -32,4 +32,3 @@ func ShowHelp() {
 func DefaultTip() {
 	fmt.Print("\n|type \"h\" show help list|\n> ")
 }
-

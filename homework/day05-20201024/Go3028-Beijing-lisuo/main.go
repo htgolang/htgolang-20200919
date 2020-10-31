@@ -23,14 +23,17 @@ func serv() {
 		return
 	}
 
+	// login prompt
+	funcs.ShowHelp()
+	fmt.Print("> ")
 	// main loop for manager users
 	for {
 		opt = utils.Read()
 		// exec the corresponding func of the cmd
 		err := funcs.ExecFunc(opt)
+		fmt.Print("> ")
 		if err != nil {
-			fmt.Println(err)
-			//funcs.DefaultTip()
+			fmt.Print(err)
 		}
 	}
 }
