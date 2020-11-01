@@ -29,12 +29,12 @@ func NewUser(id int64, name, cell, address, born, passwd string) define.User {
 func Init(ul *[]define.User) {
 	user0 := NewUser(0, "admin", "18811992299", "HaidianDistrict,BeijingXinParkRestaurants,BeixiaguanSubdistrict,HaidianDistrict,China",
 		time.Now().Format("2006.01.02"), "qwert")
-	user1 := NewUser(1, "jack ma", "18800009999", "Hangzhou, China", time.Now().Format("2006.01.02"), "hello")
-	user3 := NewUser(3, "steve", "18800002222", "Mars", time.Now().Format("2006.01.02"), "hi")
-	define.UserList = append(*ul, user0, user1, user3)
-	fmt.Printf("user %v added\n", user0.Name)
-	fmt.Printf("user %v added\n", user1.Name)
-	fmt.Printf("user %v added\n", user3.Name)
+	//user1 := NewUser(1, "jack ma", "18800009999", "Hangzhou, China", time.Now().Format("2006.01.02"), "hello")
+	//user3 := NewUser(3, "steve", "18800002222", "Mars", time.Now().Format("2006.01.02"), "hi")
+	(*ul) = append((*ul), user0)
+	//fmt.Printf("user %v added\n", user0.Name)
+	//fmt.Printf("user %v added\n", user1.Name)
+	//fmt.Printf("user %v added\n", user3.Name)
 	AddFunc()
 }
 
@@ -76,17 +76,18 @@ func IDDelUser(ul *[]define.User, id int64) error {
 
 // NameDelUser del user based on Name
 func NameDelUser(ul *[]define.User, name string) error {
-	for i, user := range *ul {
-		if user.Name == name {
-			err := errors.New("you'r not allowed to modify admin, nothing changed")
-			return err
-		}
-		if i == len(*ul) {
-			*ul = append(define.UserList[:i], define.UserList[i:]...)
-			return nil
-		}
-		*ul = append(define.UserList[:i], define.UserList[i+1:]...)
+	var index int
+	idx, err := GetUserIndex(ul, name)
+	if err != nil {
+		fmt.Println(err)
 	}
+	if name == define.AdminName {
+		err := errors.New("you'r not allowed to modify admin, nothing changed")
+		return err
+	} else if (*ul)[idx].Name == name {
+		index = idx
+	}
+	(*ul) = append(define.UserList[:index], define.UserList[index+1:]...)
 	return nil
 }
 
@@ -102,17 +103,29 @@ func GetMaxID(ul *[]define.User) int64 {
 	return MaxID
 }
 
+// GetUserIndex return a user's index in define.UserList and a error
+func GetUserIndex(ul *[]define.User, name string) (int, error) {
+	var index int = -1
+	for i, u := range *ul {
+		if u.Name == name {
+			index = i
+			return index, nil
+		}
+	}
+	return index, errors.New("not fund index")
+}
+
 // IDModUser modify user based on ID
 func IDModUser(ul *[]define.User, id int64) (define.User, error) {
 	var iname, iaddress, cell, ipasswd string
 	newUser := define.User{ID: id}
+	if id == define.AdminID {
+		err := errors.New("you'r not allowed to modify admin, nothing changed")
+		return newUser, err
+	}
 	for _, user := range *ul {
 		if user.ID == id {
-			if id == define.AdminID {
-				err := errors.New("you'r not allowed to modify admin, nothing changed")
-				return newUser, err
-			}
-
+			fmt.Println("modifying...........")
 			fmt.Printf("Input new Name [%v]: ", user.Name)
 			iname = utils.Read()
 			newUser.Name = iname
@@ -156,14 +169,16 @@ func IDModUser(ul *[]define.User, id int64) (define.User, error) {
 // NameModUser modify user based on Name
 func NameModUser(ul *[]define.User, name string) (define.User, error) {
 	var iname, iaddress, iphone, ipasswd string
+	//var index int
 	newUser := define.User{}
+	if name == define.AdminName {
+		err := errors.New("you'r not allowed to modify admin, nothing changed")
+		return newUser, err
+	}
 	for _, u := range *ul {
 		if u.Name == name {
-			if u.Name == define.AdminName {
-				err := errors.New("you'r not allowed to modify admin, nothing changed")
-				return newUser, err
-			}
 
+			fmt.Println("modifying...........")
 			newUser.ID = u.ID
 			fmt.Printf("Input new Name [%v]: ", u.Name)
 			iname = utils.Read()

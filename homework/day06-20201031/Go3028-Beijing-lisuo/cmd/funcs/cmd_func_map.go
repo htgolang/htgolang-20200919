@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/htgolang/htgolang-20200919/tree/master/homework/day06-20201031/Go3028-Beijing-lisuo/cmd/db"
 	"github.com/htgolang/htgolang-20200919/tree/master/homework/day06-20201031/Go3028-Beijing-lisuo/utils"
 	"github.com/olekukonko/tablewriter"
 )
@@ -12,13 +13,14 @@ import (
 // CmdToFuncMap mapping the cmd to corresponding func
 var CmdToFuncMap = map[string]func(){}
 
-// FuncList contains the funcs
+// FuncList is a map contains the default cmd to func
 var FuncList = map[string]string{
 	"add":   "AddUser",
 	"del":   "DelUser",
 	"mod":   "ModifyUser",
 	"get":   "QueryUser",
 	"show":  "ShowCurrentUserList",
+	"save":  "SaveUsers",
 	"help":  "ShowHelp",
 	"h":     "ShowHelp",
 	"cls":   "utils.ClearScreen",
@@ -30,7 +32,7 @@ var FuncList = map[string]string{
 }
 
 // CmdList contains default commands binding to funcs
-var CmdList = []string{}
+//var CmdList = []string{}
 
 // CmdToFunc mapping cmd to corresponding funcs
 func CmdToFunc(cmd string, f func()) {
@@ -71,12 +73,15 @@ func DoMap() {
 		CmdToFunc(cmd, ShowCurrentUserList)
 		(*f)[cmd] = "ShowCurrentUserList"
 	case "6":
+		CmdToFunc(cmd, db.SaveUsers)
+		(*f)[cmd] = "SaveUsers"
+	case "7":
 		CmdToFunc(cmd, ShowHelp)
 		(*f)[cmd] = "ShowHelp"
-	case "7":
+	case "8":
 		CmdToFunc(cmd, utils.ClearScreen)
 		(*f)[cmd] = "utils.ClearScreen"
-	case "8":
+	case "9":
 		CmdToFunc(cmd, utils.Quit)
 		(*f)[cmd] = "utils.Quit"
 	}
@@ -91,14 +96,24 @@ func ShowFuncList() {
 	t.SetReflowDuringAutoWrap(false)
 
 	t.SetHeader([]string{"Nu", "Function", "What they do", "Current binding cmds"})
-	t.Append([]string{"1", "AddUser", "Add a User", utils.GetKeyByValue(FuncList, "AddUser")})
-	t.Append([]string{"2", "DelUser", "Delete a User", utils.GetKeyByValue(FuncList, "DelUser")})
-	t.Append([]string{"3", "ModifyUser", "Modify a User", utils.GetKeyByValue(FuncList, "ModifyUser")})
-	t.Append([]string{"4", "QueryUser", "Search User", utils.GetKeyByValue(FuncList, "QueryUser")})
-	t.Append([]string{"5", "ShowCurrentUserList", "Show User List", utils.GetKeyByValue(FuncList, "ShowCurrentUserList")})
-	t.Append([]string{"6", "ShowHelp", "Show help list", utils.GetKeyByValue(FuncList, "ShowHelp")})
-	t.Append([]string{"7", "utils.ClearScreen", "Clean the terminal", utils.GetKeyByValue(FuncList, "utils.ClearScreen")})
-	t.Append([]string{"8", "utils.Quit", "Exit this program", utils.GetKeyByValue(FuncList, "utils.Quit")})
+	t.Append([]string{"1", "AddUser", "Add a User",
+		utils.ArrayToString(utils.GetKeyByValue(FuncList, "AddUser"))})
+	t.Append([]string{"2", "DelUser", "Delete a User",
+		utils.ArrayToString(utils.GetKeyByValue(FuncList, "DelUser"))})
+	t.Append([]string{"3", "ModifyUser", "Modify a User",
+		utils.ArrayToString(utils.GetKeyByValue(FuncList, "ModifyUser"))})
+	t.Append([]string{"4", "QueryUser", "Search User",
+		utils.ArrayToString(utils.GetKeyByValue(FuncList, "QueryUser"))})
+	t.Append([]string{"5", "ShowCurrentUserList", "Show User List",
+		utils.ArrayToString(utils.GetKeyByValue(FuncList, "ShowCurrentUserList"))})
+	t.Append([]string{"6", "ShowHelp", "Show help list",
+		utils.ArrayToString(utils.GetKeyByValue(FuncList, "ShowHelp"))})
+	t.Append([]string{"7", "SaveUsers", "Save Users to file",
+		utils.ArrayToString(utils.GetKeyByValue(FuncList, "SaveUsers"))})
+	t.Append([]string{"8", "utils.ClearScreen", "Clean the terminal",
+		utils.ArrayToString(utils.GetKeyByValue(FuncList, "utils.ClearScreen"))})
+	t.Append([]string{"9", "utils.Quit", "Exit this program",
+		utils.ArrayToString(utils.GetKeyByValue(FuncList, "utils.Quit"))})
 	t.Render()
 }
 
@@ -109,6 +124,8 @@ func AddFunc() {
 	CmdToFunc("mod", ModifyUser)
 	CmdToFunc("get", QueryUser)
 	CmdToFunc("show", ShowCurrentUserList)
+	CmdToFunc("save", db.SaveUsers)
+	CmdToFunc("read", db.ReadUsers)
 	CmdToFunc("help", ShowHelp)
 	CmdToFunc("h", ShowHelp)
 	CmdToFunc("cls", utils.ClearScreen)
@@ -123,8 +140,27 @@ func AddFunc() {
 func ExecFunc(input string) error {
 	if f, ok := CmdToFuncMap[input]; ok {
 		f()
+		//SaveIfCall(input)
 	} else {
 		return errors.New("[wrong cmd type \"h\" for help]\n> ")
 	}
 	return nil
+}
+
+// SaveIfCall will save the Users in define.UserList to file when some func be called
+func SaveIfCall(inputCmd string) {
+	var cmds []string
+	CRUDFunc := []string{"AddUser", "DelUser", "ModifyUser"}
+	for _, f := range CRUDFunc {
+		fmt.Printf("current CRUDFunc: %#v\n", f)
+		for _, cmd := range utils.GetKeyByValue(FuncList, f) {
+			fmt.Printf("current cmd: %#v\n", cmd)
+			if inputCmd == cmd {
+				fmt.Printf("imputCmd: %#v, cmd: %#v\n", inputCmd, cmd)
+				db.SaveUsers()
+			}
+			cmds = append(cmds, cmd)
+		}
+	}
+	fmt.Printf("[current registerd CRUD cmds: %#v]\n", cmds)
 }

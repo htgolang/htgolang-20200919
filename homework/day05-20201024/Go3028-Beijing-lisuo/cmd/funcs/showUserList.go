@@ -12,8 +12,9 @@ import (
 
 // ShowUser show a user based on ID
 func ShowUser(id int64) {
+	ul := &define.UserList
 	t := tablewriter.NewWriter(os.Stdout)
-	for _, user := range define.UserList {
+	for _, user := range *ul {
 		if user.ID == id {
 			s := strconv.FormatInt(id, 10)
 			p := fmt.Sprintf("%x", user.Passwd)

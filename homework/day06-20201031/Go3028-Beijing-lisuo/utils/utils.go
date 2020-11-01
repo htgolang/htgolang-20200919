@@ -3,6 +3,7 @@ package utils
 import (
 	"bufio"
 	"crypto/md5"
+	"encoding/json"
 	"fmt"
 	"os"
 	"os/exec"
@@ -64,18 +65,24 @@ func GenPasswd() [16]uint8 {
 }
 
 // GetKeyByValue return the same value's different keys
-func GetKeyByValue(m map[string]string, value string) string {
-	var keys = make([]string, 5)
-	var cmds string
+func GetKeyByValue(m map[string]string, value string) []string {
+	var keys []string
 	for k, v := range m {
 		if v == value {
 			keys = append(keys, k)
 		}
 	}
-	for _, key := range keys {
-		cmds += fmt.Sprintf("%s ", key)
+	return keys
+}
+
+// ArrayToString convert a string array to string
+func ArrayToString(s []string) string {
+	// b is a type of []uint8
+	b, err := json.Marshal(s)
+	if err != nil {
+		fmt.Println(err)
 	}
-	return cmds
+	return string(b)
 }
 
 // clear the console

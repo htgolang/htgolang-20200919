@@ -40,7 +40,7 @@ func DelUser() {
 			}
 		}
 	} else {
-		name = strings.ToLower(strings.TrimSpace(input))
+		name = strings.TrimSpace(input)
 		//fmt.Printf("nameType: %T  nameValue: %v\n", name, name)
 		user, _ := NameFindUser(&define.UserList, name)
 		if (user == define.User{}) {

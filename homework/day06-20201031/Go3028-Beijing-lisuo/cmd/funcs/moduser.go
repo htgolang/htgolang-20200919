@@ -29,7 +29,6 @@ func ModifyUser() {
 			fmt.Printf("Find user: %v\nAre you sure to modify %v?(y/n)\n> ", user.Name, user.Name)
 			input = utils.Read()
 			if strings.ToLower(input) == "y" {
-				fmt.Println("modifying...........")
 				user, err := IDModUser(&define.UserList, id)
 				if err != nil {
 					fmt.Println(err)
@@ -52,8 +51,13 @@ func ModifyUser() {
 			fmt.Printf("Find user: %v\nAre you sure to modify %v?(y/n)\n> ", user.Name, user.Name)
 			input = utils.Read()
 			if strings.ToLower(input) == "y" {
-				fmt.Println("modifying...........")
-				NameModUser(&define.UserList, name)
+				user, err := NameModUser(&define.UserList, name)
+				if err != nil {
+					fmt.Println(err)
+				} else {
+					fmt.Printf("Modified user: %v\n", user.Name)
+					ShowUser(user.ID)
+				}
 			} else if strings.ToLower(input) == "n" {
 				fmt.Println("Nothing changed.")
 			}

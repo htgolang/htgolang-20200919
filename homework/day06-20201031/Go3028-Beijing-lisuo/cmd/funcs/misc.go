@@ -21,6 +21,7 @@ func ShowHelp() {
 	t.Append([]string{"mod", "Modify a User"})
 	t.Append([]string{"get", "Search User"})
 	t.Append([]string{"show", "Show User List"})
+	t.Append([]string{"save", "Save User List to file"})
 	t.Append([]string{"cls", "Clean the terminal"})
 	t.Append([]string{"help", "Show this help list"})
 	t.Append([]string{"mycmd", "Binding a new cmd to a exist func"})
