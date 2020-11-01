@@ -140,7 +140,7 @@ func AddFunc() {
 func ExecFunc(input string) error {
 	if f, ok := CmdToFuncMap[input]; ok {
 		f()
-		//SaveIfCall(input)
+		SaveIfCall(input)
 	} else {
 		return errors.New("[wrong cmd type \"h\" for help]\n> ")
 	}
@@ -152,11 +152,11 @@ func SaveIfCall(inputCmd string) {
 	var cmds []string
 	CRUDFunc := []string{"AddUser", "DelUser", "ModifyUser"}
 	for _, f := range CRUDFunc {
-		fmt.Printf("current CRUDFunc: %#v\n", f)
+		//fmt.Printf("current CRUDFunc: %#v\n", f)
 		for _, cmd := range utils.GetKeyByValue(FuncList, f) {
-			fmt.Printf("current cmd: %#v\n", cmd)
+			//fmt.Printf("current cmd: %#v\n", cmd)
 			if inputCmd == cmd {
-				fmt.Printf("imputCmd: %#v, cmd: %#v\n", inputCmd, cmd)
+				//fmt.Printf("imputCmd: %#v, cmd: %#v\n", inputCmd, cmd)
 				db.SaveUsers()
 			}
 			cmds = append(cmds, cmd)

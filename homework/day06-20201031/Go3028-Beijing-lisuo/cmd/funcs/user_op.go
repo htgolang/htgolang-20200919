@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/htgolang/htgolang-20200919/tree/master/homework/day06-20201031/Go3028-Beijing-lisuo/cmd/db"
 	"github.com/htgolang/htgolang-20200919/tree/master/homework/day06-20201031/Go3028-Beijing-lisuo/define"
 	"github.com/htgolang/htgolang-20200919/tree/master/homework/day06-20201031/Go3028-Beijing-lisuo/utils"
 )
@@ -36,6 +37,7 @@ func Init(ul *[]define.User) {
 	//fmt.Printf("user %v added\n", user1.Name)
 	//fmt.Printf("user %v added\n", user3.Name)
 	AddFunc()
+	db.ReadUsers()
 }
 
 // IDFindUser find user based on ID

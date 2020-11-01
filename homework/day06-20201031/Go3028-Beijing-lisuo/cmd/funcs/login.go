@@ -26,7 +26,7 @@ func Login() bool {
 		} else {
 			fmt.Print("Input the PassWord[qwert]: \n> ")
 			input := utils.Read()
-			inputPasswd := md5.Sum([]byte(input))
+			inputPasswd := md5.Sum([]byte(fmt.Sprintf("%x", md5.Sum([]byte(input)))))
 			if user.Passwd == inputPasswd {
 				fmt.Printf("User %s logged in.\n", user.Name)
 				return logged
