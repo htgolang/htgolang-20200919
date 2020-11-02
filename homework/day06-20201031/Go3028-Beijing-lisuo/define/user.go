@@ -19,7 +19,7 @@ type User struct {
 	Address string
 	Cell    string
 	Born    time.Time
-	Passwd  [16]byte
+	Passwd  string
 }
 
 // UserList contains users

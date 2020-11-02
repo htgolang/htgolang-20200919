@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/htgolang/htgolang-20200919/tree/master/homework/day06-20201031/Go3028-Beijing-lisuo/cmd/db"
 	"github.com/htgolang/htgolang-20200919/tree/master/homework/day06-20201031/Go3028-Beijing-lisuo/utils"
@@ -15,12 +16,12 @@ var CmdToFuncMap = map[string]func(){}
 
 // FuncList is a map contains the default cmd to func
 var FuncList = map[string]string{
-	"add":   "AddUser",
-	"del":   "DelUser",
-	"mod":   "ModifyUser",
-	"get":   "QueryUser",
-	"show":  "ShowCurrentUserList",
-	"save":  "SaveUsers",
+	"add":  "AddUser",
+	"del":  "DelUser",
+	"mod":  "ModifyUser",
+	"get":  "QueryUser",
+	"show": "ShowCurrentUserList",
+	//"save":  "SaveUsers",
 	"help":  "ShowHelp",
 	"h":     "ShowHelp",
 	"cls":   "utils.ClearScreen",
@@ -72,16 +73,16 @@ func DoMap() {
 	case "5":
 		CmdToFunc(cmd, ShowCurrentUserList)
 		(*f)[cmd] = "ShowCurrentUserList"
+	//case "6":
+	//	CmdToFunc(cmd, db.SaveUsers)
+	//	(*f)[cmd] = "SaveUsers"
 	case "6":
-		CmdToFunc(cmd, db.SaveUsers)
-		(*f)[cmd] = "SaveUsers"
-	case "7":
 		CmdToFunc(cmd, ShowHelp)
 		(*f)[cmd] = "ShowHelp"
-	case "8":
+	case "7":
 		CmdToFunc(cmd, utils.ClearScreen)
 		(*f)[cmd] = "utils.ClearScreen"
-	case "9":
+	case "8":
 		CmdToFunc(cmd, utils.Quit)
 		(*f)[cmd] = "utils.Quit"
 	}
@@ -108,8 +109,8 @@ func ShowFuncList() {
 		utils.ArrayToString(utils.GetKeyByValue(FuncList, "ShowCurrentUserList"))})
 	t.Append([]string{"6", "ShowHelp", "Show help list",
 		utils.ArrayToString(utils.GetKeyByValue(FuncList, "ShowHelp"))})
-	t.Append([]string{"7", "SaveUsers", "Save Users to file",
-		utils.ArrayToString(utils.GetKeyByValue(FuncList, "SaveUsers"))})
+	//t.Append([]string{"7", "SaveUsers", "Save Users to file",
+	//utils.ArrayToString(utils.GetKeyByValue(FuncList, "SaveUsers"))})
 	t.Append([]string{"8", "utils.ClearScreen", "Clean the terminal",
 		utils.ArrayToString(utils.GetKeyByValue(FuncList, "utils.ClearScreen"))})
 	t.Append([]string{"9", "utils.Quit", "Exit this program",
@@ -124,8 +125,8 @@ func AddFunc() {
 	CmdToFunc("mod", ModifyUser)
 	CmdToFunc("get", QueryUser)
 	CmdToFunc("show", ShowCurrentUserList)
-	CmdToFunc("save", db.SaveUsers)
-	CmdToFunc("read", db.ReadUsers)
+	//CmdToFunc("save", db.SaveUsers)
+	//CmdToFunc("read", db.ReadUsers)
 	CmdToFunc("help", ShowHelp)
 	CmdToFunc("h", ShowHelp)
 	CmdToFunc("cls", utils.ClearScreen)
@@ -162,5 +163,12 @@ func SaveIfCall(inputCmd string) {
 			cmds = append(cmds, cmd)
 		}
 	}
-	fmt.Printf("[current registerd CRUD cmds: %#v]\n", cmds)
+	fmt.Printf("[current registered CRUD cmds: %#v]\n",
+		func() string {
+			var cmdlist string
+			for _, c := range cmds {
+				cmdlist += c + " "
+			}
+			return strings.TrimSpace(cmdlist)
+		}())
 }

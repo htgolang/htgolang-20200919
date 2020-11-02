@@ -1,7 +1,6 @@
 package db
 
 import (
-	"crypto/md5"
 	"encoding/csv"
 	"fmt"
 	"io"
@@ -50,7 +49,7 @@ func Read(dbName string, ul *[]define.User) {
 					t, _ := time.Parse("2006.01.02", line[4])
 					return t
 				}(),
-				Passwd: md5.Sum([]byte(line[5])),
+				Passwd: line[5],
 			})
 	}
 	// assign the read users to define.UserList

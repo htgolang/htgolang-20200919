@@ -22,7 +22,7 @@ func NewUser(id int64, name, cell, address, born, passwd string) define.User {
 			t, _ := time.Parse("2006.01.02", born)
 			return t
 		}(),
-		Passwd: md5.Sum([]byte(passwd)),
+		Passwd: fmt.Sprintf("%x", md5.Sum([]byte(passwd))),
 	}
 }
 
@@ -120,25 +120,29 @@ func GetUserIndex(ul *[]define.User, name string) (int, error) {
 // IDModUser modify user based on ID
 func IDModUser(ul *[]define.User, id int64) (define.User, error) {
 	var iname, iaddress, cell, ipasswd string
+	var index int
 	newUser := define.User{ID: id}
 	if id == define.AdminID {
 		err := errors.New("you'r not allowed to modify admin, nothing changed")
 		return newUser, err
 	}
-	for _, user := range *ul {
+	for i, user := range *ul {
 		if user.ID == id {
+			index = i
 			fmt.Println("modifying...........")
 			fmt.Printf("Input new Name [%v]: ", user.Name)
 			iname = utils.Read()
-			newUser.Name = iname
-			if iname == "" {
+			if iname != "" {
+				newUser.Name = iname
+			} else {
 				newUser.Name = user.Name
 			}
 
 			fmt.Printf("Input new Address [%v]: ", user.Address)
 			iaddress = utils.Read()
-			newUser.Address = iaddress
-			if iaddress == "" {
+			if iaddress != "" {
+				newUser.Address = iaddress
+			} else {
 				newUser.Address = user.Address
 			}
 
@@ -152,74 +156,88 @@ func IDModUser(ul *[]define.User, id int64) (define.User, error) {
 					break
 				}
 			}
-			newUser.Cell = cell
-			if cell == "" {
+			if cell != "" {
+				newUser.Cell = cell
+			} else {
 				newUser.Cell = user.Cell
 			}
 
 			fmt.Printf("Input new passwd [%v]: ", user.Passwd)
-			ipasswd = utils.Read()
-			newUser.Passwd = md5.Sum([]byte(ipasswd))
-			if ipasswd == "" {
+			ipasswd = fmt.Sprintf("%x", md5.Sum([]byte(utils.Read())))
+			if ipasswd != "" {
+				newUser.Passwd = ipasswd
+			} else {
 				newUser.Passwd = user.Passwd
 			}
+			newUser.Born = user.Born
 		}
+
 	}
-	return newUser, nil
+	(*ul)[index] = newUser
+	return (*ul)[index], nil
 }
 
 // NameModUser modify user based on Name
 func NameModUser(ul *[]define.User, name string) (define.User, error) {
 	var iname, iaddress, iphone, ipasswd string
-	//var index int
+	var index int
 	newUser := define.User{}
 	if name == define.AdminName {
-		err := errors.New("you'r not allowed to modify admin, nothing changed")
-		return newUser, err
+		fmt.Println("in if")
+		return newUser,
+			errors.New("you'r not allowed to modify admin, nothing changed")
 	}
-	for _, u := range *ul {
+	for i, u := range *ul {
 		if u.Name == name {
+			fmt.Printf("range if u.Name: %v, name: %v\n", u.Name, name)
 
+			index = i
 			fmt.Println("modifying...........")
 			newUser.ID = u.ID
 			fmt.Printf("Input new Name [%v]: ", u.Name)
 			iname = utils.Read()
-			newUser.Name = iname
-			if iname == "" {
+			if iname != "" {
+				newUser.Name = iname
+			} else {
 				newUser.Name = u.Name
 			}
 
 			fmt.Printf("Input new Address [%v]: ", u.Address)
 			iaddress = utils.Read()
-			newUser.Address = iaddress
-			if iaddress == "" {
+			if iaddress != "" {
+				newUser.Address = iaddress
+			} else {
 				newUser.Address = u.Address
+
 			}
 
 			fmt.Printf("Input new Phone [%v]: ", u.Cell)
 			iphone = utils.Read()
-			// make sure the phone number contains only pure digits
-			for utils.JustDigits(iphone) == false {
-				fmt.Print("Please input a legal phone number: \n> ")
-				iphone = utils.Read()
-				if utils.JustDigits(iphone) == true {
-					break
+			if iphone != "" {
+				// make sure the phone number contains only pure digits
+				for utils.JustDigits(iphone) == false {
+					fmt.Print("Please input a legal phone number: \n> ")
+					iphone = utils.Read()
+					if utils.JustDigits(iphone) == true {
+						break
+					}
 				}
-			}
-			newUser.Cell = iphone
-			if iphone == "" {
+				newUser.Cell = iphone
+			} else {
 				newUser.Cell = u.Cell
 			}
 
 			fmt.Printf("Input new passwd [%v]: ", u.Passwd)
-			ipasswd = utils.Read()
-			newUser.Passwd = md5.Sum([]byte(ipasswd))
-			if ipasswd == "" {
+			ipasswd = fmt.Sprintf("%x", md5.Sum([]byte(utils.Read())))
+			if ipasswd != "" {
+				newUser.Passwd = ipasswd
+			} else {
 				newUser.Passwd = u.Passwd
 			}
-			fmt.Printf("Modified user is: %v:%v\n", newUser.Name, newUser)
-			return newUser, nil
+			newUser.Born = u.Born
+			(*ul)[index] = newUser
+			return (*ul)[index], nil
 		}
 	}
-	return define.User{}, nil
+	return newUser, errors.New("not modified")
 }

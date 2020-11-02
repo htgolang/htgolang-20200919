@@ -1,7 +1,6 @@
 package funcs
 
 import (
-	"fmt"
 	"os"
 	"strconv"
 
@@ -16,8 +15,7 @@ func ShowUser(id int64) {
 	for _, user := range define.UserList {
 		if user.ID == id {
 			s := strconv.FormatInt(id, 10)
-			p := fmt.Sprintf("%x", user.Passwd)
-			t.Append([]string{s, user.Name, user.Cell, user.Address, user.Born.Format("2006.01.02"), p})
+			t.Append([]string{s, user.Name, user.Cell, user.Address, user.Born.Format("2006.01.02"), user.Passwd})
 			//md5.Sum([]byte(user.Passwd))})
 		}
 	}
@@ -34,9 +32,8 @@ func ShowUserList(ul *[]define.User) {
 	t.SetHeader([]string{"ID", "Name", "Cell", "Address", "Born", "Passwd"})
 	for _, user := range *ul {
 		id := strconv.FormatUint(uint64(user.ID), 10)
-		p := fmt.Sprintf("%x", user.Passwd)
 		t.Append([]string{id, user.Name, user.Cell, user.Address,
-			user.Born.Format("2006.01.02"), p})
+			user.Born.Format("2006.01.02"), user.Passwd})
 	}
 	t.Render()
 }

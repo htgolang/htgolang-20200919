@@ -19,7 +19,7 @@ func Save(ul *[]define.User) {
 	writer := csv.NewWriter(csvFile)
 	for _, user := range *ul {
 		writer.Write([]string{strconv.FormatInt(user.ID, 10), user.Name, user.Cell, user.Address,
-			user.Born.Format("2006.01.02"), fmt.Sprintf("%x", user.Passwd)})
+			user.Born.Format("2006.01.02"), user.Passwd})
 	}
 	writer.Flush()
 }

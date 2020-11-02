@@ -52,6 +52,7 @@ func ModifyUser() {
 			input = utils.Read()
 			if strings.ToLower(input) == "y" {
 				user, err := NameModUser(&define.UserList, name)
+				fmt.Printf("user: %#v\nerr: %v", user, err)
 				if err != nil {
 					fmt.Println(err)
 				} else {
