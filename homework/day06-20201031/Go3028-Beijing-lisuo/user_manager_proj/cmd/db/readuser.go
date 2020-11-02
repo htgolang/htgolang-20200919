@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/htgolang/htgolang-20200919/tree/master/homework/day06-20201031/Go3028-Beijing-lisuo/define"
+	"github.com/htgolang/htgolang-20200919/tree/master/homework/day06-20201031/Go3028-Beijing-lisuo/user_manager_proj/define"
 )
 
 // Read read Users from dbAbsFile, append them to a UserList
