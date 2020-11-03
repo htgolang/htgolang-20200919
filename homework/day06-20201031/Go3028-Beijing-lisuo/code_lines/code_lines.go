@@ -11,6 +11,8 @@ import (
 )
 
 var fileOrdir string
+var tempFileList []string
+var line int = 0
 
 func main() {
 	// cmd flag
@@ -41,18 +43,23 @@ func main() {
 				fmt.Printf("file: %-25v   dir: %v\n", file.Name(), file.IsDir())
 				absfile = filepath.Join(fileAbs, file.Name())
 				data, err := ioutil.ReadFile(absfile)
-				line := 0
 				if err != nil {
 					log.Fatal(err)
 				}
 				filedata := string(data)
 				tempFile := strings.Split(filedata, "\n")
-				for range tempFile {
-					line++
-				}
-				fmt.Printf("file %v has %v lines\n", file.Name(), line)
+				tempFileList = append(tempFileList, tempFile...)
+				//for range tempFile {
+				//	line++
+				//}
+				//fmt.Printf("file %v has %v lines\n", file.Name(), line)
+				//line = 0
 			}
 		}
+		for range tempFileList {
+			line++
+		}
+		fmt.Printf("all the files in dir %v end with .go&.cgo has %v lines\n", fileAbs, line)
 
 	} else {
 		fileDir := filepath.Dir(fileAbs)
@@ -66,19 +73,24 @@ func main() {
 			if suffix == ".go" || suffix == ".cgo" {
 				fmt.Printf("file: %-25v   dir: %v\n", file.Name(), file.IsDir())
 				data, err := ioutil.ReadFile(absfile)
-				line := 0
+				//line := 0
 				if err != nil {
 					log.Fatal(err)
 				}
 				filedata := string(data)
 				tempFile := strings.Split(filedata, "\n")
-				for range tempFile {
-					line++
-				}
-				fmt.Printf("file %v has %v lines\n", file.Name(), line)
+				tempFileList = append(tempFileList, tempFile...)
+				//for range tempFile {
+				//	line++
+				//}
+				//fmt.Printf("file %v has %v lines\n", file.Name(), line)
 			}
 
 		}
+		for range tempFileList {
+			line++
+		}
+		fmt.Printf("all the files at %v end with .go&.cgo has %v lines\n", fileDir, line)
 	}
 
 }
