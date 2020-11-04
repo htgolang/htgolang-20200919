@@ -19,28 +19,31 @@ var destFile *os.File
 
 func main() {
 	// cmd flag define
-	flagSrc := flag.String("src", "./foo.file", "specify source file location")
-	flagDest := flag.String("dest", "./bar.file", "sepcify dest file location")
+	flagSrc := flag.String("src", "/bar/foo.file", "specify source file location")
+	flagDest := flag.String("dest", "/foo/bar/", "sepcify dest file location")
 	// parse flag
 	flag.Parse()
+	if *flagSrc == "/bar/foo.flie" {
+		fmt.Println("Usage: go run cp_cmd.go --src ./foo.file --dest /foo/bar/")
+	}
 
 	srcAbs, _ := filepath.Abs(*flagSrc)
 	destAbs, _ := filepath.Abs(*flagDest)
 	destAbsInfo, errDestAbs := os.Stat(destAbs)
 	srcBase := filepath.Base(srcAbs)
 	destBase = filepath.Base(destAbs)
-	srcDir := filepath.Dir(srcAbs)
+	//srcDir := filepath.Dir(srcAbs)
 	destDir = filepath.Dir(destAbs)
 
-	fmt.Printf("flagSrc: %v\n", *flagSrc)
-	fmt.Printf("flagDest: %v\n", *flagDest)
-	fmt.Printf("srcAbs: %v\n", srcAbs)
-	fmt.Printf("destAbs: %v\n", destAbs)
+	//fmt.Printf("flagSrc: %v\n", *flagSrc)
+	//fmt.Printf("flagDest: %v\n", *flagDest)
+	//fmt.Printf("srcAbs: %v\n", srcAbs)
+	//fmt.Printf("destAbs: %v\n", destAbs)
 	//fmt.Printf("destAbsInfo IsDir: %v\n", destAbsInfo.IsDir())
-	fmt.Printf("srcBase: %v\n", srcBase)
-	fmt.Printf("destBase b: %v\n", destBase)
-	fmt.Printf("srcDir: %v\n", srcDir)
-	fmt.Printf("destDir: %v\n", destDir)
+	//fmt.Printf("srcBase: %v\n", srcBase)
+	//fmt.Printf("destBase b: %v\n", destBase)
+	//fmt.Printf("srcDir: %v\n", srcDir)
+	//fmt.Printf("destDir: %v\n", destDir)
 
 	// if user not specify a file in src, prompt error
 	srcAbsInfo, err := os.Stat(srcAbs)
@@ -66,7 +69,7 @@ func joinSrcDirToDestBase(fi os.FileInfo, e error, srcAbs, destAbs *string) {
 	if e != nil {
 		log.Fatal(e)
 	} else if fi.IsDir() {
-		fmt.Println("isDirrrrrrrrr")
+		//fmt.Println("isDirrrrrrrrr")
 		(*destAbs) = filepath.Join((*destAbs), filepath.Base(*srcAbs))
 		destDir = filepath.Dir(*destAbs)
 		destBase = filepath.Base(*destAbs)

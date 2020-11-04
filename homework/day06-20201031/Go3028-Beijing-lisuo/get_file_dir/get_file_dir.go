@@ -14,6 +14,9 @@ var fileOrdir string
 func main() {
 	// cmd flag
 	fileOrdir := flag.String("f", "file-or-dir", "specify the file or dir")
+	if *fileOrdir == "file-or-dir" {
+		fmt.Print("Usage: go run get_file_dir.go -f /path/to/fileOrDir\n")
+	}
 	flag.Parse()
 
 	// get file'a abs path
