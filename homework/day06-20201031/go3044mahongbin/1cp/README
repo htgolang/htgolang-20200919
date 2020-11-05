@@ -1,0 +1,8 @@
+PS D:\go_project\golang_practice\day06\go3044mahongbin\1cp> .\cp.exe  -s src.txt -d dst.txt
+CP执行成功
+PS D:\go_project\golang_practice\day06\go3044mahongbin\1cp> .\cp.exe  -s src.txt -d dst.txt
+dst.txt已经存在,是否覆盖? y/N : 
+不执行覆盖,cp失败
+PS D:\go_project\golang_practice\day06\go3044mahongbin\1cp> .\cp.exe  -s src.txt -d dst.txt
+dst.txt已经存在,是否覆盖? y/N : y
+文件覆盖成功
