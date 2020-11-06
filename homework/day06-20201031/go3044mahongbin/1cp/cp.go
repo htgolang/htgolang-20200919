@@ -4,27 +4,23 @@ import (
 	"flag"
 	"fmt"
 	"io"
+	"bufio"
 	"os"
 )
 
 // 两个文件指针 从sf读 覆盖写入df
+//buffer版本
 func overWrite(sf, df *os.File) {
 	err := df.Truncate(0)
 	if err != nil {
 		fmt.Println(err.Error())
 	} else {
-		content := make([]byte, 20)
-		for {
-			n, err := sf.Read(content)
-			if err != io.EOF {
-				df.Write(content[:n])
-			} else {
-				break
-			}
-		}
+		newRdr := bufio.NewReader(sf)
+		newRdr.WriteTo(df)
 	}
 }
 
+//无buffer版本
 func overWrite2(sf, df *os.File) {
 	err := df.Truncate(0)
 	if err != nil {
