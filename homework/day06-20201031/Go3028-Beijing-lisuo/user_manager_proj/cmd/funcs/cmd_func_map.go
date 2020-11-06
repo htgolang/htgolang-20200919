@@ -111,9 +111,9 @@ func ShowFuncList() {
 		utils.ArrayToString(utils.GetKeyByValue(FuncList, "ShowHelp"))})
 	//t.Append([]string{"7", "SaveUsers", "Save Users to file",
 	//utils.ArrayToString(utils.GetKeyByValue(FuncList, "SaveUsers"))})
-	t.Append([]string{"8", "utils.ClearScreen", "Clean the terminal",
+	t.Append([]string{"7", "utils.ClearScreen", "Clean the terminal",
 		utils.ArrayToString(utils.GetKeyByValue(FuncList, "utils.ClearScreen"))})
-	t.Append([]string{"9", "utils.Quit", "Exit this program",
+	t.Append([]string{"8", "utils.Quit", "Exit this program",
 		utils.ArrayToString(utils.GetKeyByValue(FuncList, "utils.Quit"))})
 	t.Render()
 }
