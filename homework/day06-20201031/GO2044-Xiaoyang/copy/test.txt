@@ -1,0 +1,27 @@
+package main
+
+import (
+	"bufio"
+	"io"
+	"log"
+	"os"
+)
+
+func main() {
+
+	file, err := os.Create("t_bufio.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+
+	write := bufio.NewWriterSize(file, 1024)
+	write.WriteString("123\n")
+	write.WriteString("123\n")
+	write.Flush()
+
+	// a := write.Size()
+	// fmt.Println(a)
+
+	io.Copy(os.Stdout, file)
+}
