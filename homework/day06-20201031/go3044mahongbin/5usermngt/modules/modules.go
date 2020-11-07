@@ -1,7 +1,7 @@
 package modules
 
 import (
-	"bufio"
+	"encoding/csv"
 	"fmt"
 	"go3044/utils"
 	"os"
@@ -33,27 +33,12 @@ const dbFilePath = "userList.csv"
 func UsrListSave() {
 	dbf, _ := os.OpenFile(dbFilePath, os.O_CREATE|os.O_TRUNC|os.O_RDWR, os.ModePerm)
 	defer dbf.Close()
-	nwt := bufio.NewWriter(dbf)
+	nwt := csv.NewWriter(dbf)
 	for i, u := range SliceU {
-		sprtr := "\t|\t"
-		nwt.WriteString(strconv.Itoa(u.ID))
-		nwt.WriteString(sprtr)
-		nwt.WriteString(u.Name)
-		nwt.WriteString(sprtr)
-		nwt.WriteString(u.Password)
-		nwt.WriteString(sprtr)
-		nwt.WriteString(u.Tel)
-		nwt.WriteString(sprtr)
-		nwt.WriteString(u.Addr)
-		nwt.WriteString(sprtr)
-		nwt.WriteString(u.Birthday.Format("2006-01-02"))
-		nwt.WriteString(sprtr)
-		nwt.WriteString(strconv.FormatBool(u.Deleted))
-		nwt.WriteString(sprtr)
-		nwt.WriteString(strconv.FormatBool(u.Ifadmin))
+		nwt.Write([]string{strconv.Itoa(u.ID), u.Name, u.Password, u.Tel, u.Addr, u.Birthday.Format("2006-01-02"), strconv.FormatBool(u.Deleted), strconv.FormatBool(u.Ifadmin)})
 		//最后一次遍历，不写入换行符
 		if i != len(SliceU)-1 {
-			nwt.WriteString("\n")
+			nwt.Write([]string{"\n"})
 		}
 	}
 	nwt.Flush()
