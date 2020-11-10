@@ -15,9 +15,9 @@ func (user User) String() string {
 }
 
 func main() {
-	var user User = User{"xxx", "yyy"}
+	var user User = User{0, "xxx", "yyy"}
 	fmt.Println(user)
-	puser := &User{"xxx", "yyy"}
+	puser := &User{1, "xxx", "yyy"}
 	fmt.Println(puser)
 
 }

@@ -21,11 +21,11 @@ func main() {
 	// cmd flag define
 	flagSrc := flag.String("src", "/bar/foo.file", "specify source file location")
 	flagDest := flag.String("dest", "/foo/bar/", "sepcify dest file location")
+	flag.Usage = func() {
+		fmt.Println("Usage: go run cp_cmd.go --src ./bar/foo.file --dest /foo/bar/")
+	}
 	// parse flag
 	flag.Parse()
-	if *flagSrc == "/bar/foo.flie" {
-		fmt.Println("Usage: go run cp_cmd.go --src ./foo.file --dest /foo/bar/")
-	}
 
 	srcAbs, _ := filepath.Abs(*flagSrc)
 	destAbs, _ := filepath.Abs(*flagDest)
@@ -69,7 +69,6 @@ func joinSrcDirToDestBase(fi os.FileInfo, e error, srcAbs, destAbs *string) {
 	if e != nil {
 		log.Fatal(e)
 	} else if fi.IsDir() {
-		//fmt.Println("isDirrrrrrrrr")
 		(*destAbs) = filepath.Join((*destAbs), filepath.Base(*srcAbs))
 		destDir = filepath.Dir(*destAbs)
 		destBase = filepath.Base(*destAbs)

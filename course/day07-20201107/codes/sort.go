@@ -38,7 +38,12 @@ func main() {
 		{88, "kk6", "password6"},
 		{99, "kk7", "password7"},
 	})
+	var sl1 = []int{0, 33, 1, 3, 5, 3, 3, 7, 2}
+	sort.Ints(sl1)
 	sort.Sort(users)
 
 	fmt.Println(users)
+	fmt.Println(sl1)
+	fmt.Println(sort.IsSorted(users))
+	fmt.Println(sort.IntsAreSorted(sl1))
 }
