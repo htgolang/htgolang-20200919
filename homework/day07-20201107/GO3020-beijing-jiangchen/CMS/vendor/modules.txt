@@ -1,0 +1,29 @@
+# github.com/adampresley/simdb v1.0.5
+## explicit
+github.com/adampresley/simdb
+# github.com/mattn/go-runewidth v0.0.7
+github.com/mattn/go-runewidth
+# github.com/olekukonko/tablewriter v0.0.4
+## explicit
+github.com/olekukonko/tablewriter
+# github.com/peterh/liner v1.2.0
+## explicit
+github.com/peterh/liner
+# github.com/spf13/afero v1.4.1
+## explicit
+github.com/spf13/afero
+github.com/spf13/afero/mem
+# github.com/timshannon/bolthold v0.0.0-20200817130212-4a25ab140645
+## explicit
+github.com/timshannon/bolthold
+# go.etcd.io/bbolt v1.3.5
+## explicit
+go.etcd.io/bbolt
+# golang.org/x/sys v0.0.0-20200202164722-d101bd2416d5
+golang.org/x/sys/unix
+# golang.org/x/text v0.3.3
+golang.org/x/text/transform
+golang.org/x/text/unicode/norm
+# moul.io/banner v1.0.1
+## explicit
+moul.io/banner
