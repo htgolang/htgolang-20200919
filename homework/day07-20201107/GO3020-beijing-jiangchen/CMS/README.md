@@ -33,7 +33,7 @@ type MemoryUsersEntity struct {
 * ## **如何编译**
 
 ```go
-~# go build
+~# CGO_ENABLED=0 go build
 ```
 
 * ## **如何使用**
