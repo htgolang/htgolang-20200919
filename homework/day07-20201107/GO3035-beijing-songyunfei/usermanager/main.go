@@ -16,6 +16,7 @@ func main()  {
 	var r = flag.Bool("init",false,"初始化")
 	var p = flag.String("p","./","指定用户文件存储目录,默认为当前目录")
 	var t = flag.String("t","json","指定用户文件存储类型. 支持json, csv, 默认json.")
+	var l = flag.Int("l",3,"指定保存最后n次更改")
 	flag.Parse()
 	switch *t {
 	case "json":
@@ -26,7 +27,6 @@ func main()  {
 		var db users.CsvUserDb
 		udb = &db
 		users.Savepath = path.Join(*p,"user.csv")
-		fmt.Println(users.Savepath)
 	default:
 		fmt.Printf("不支持的类型:%s\n",*t)
 		return
@@ -85,7 +85,7 @@ func main()  {
 		}
 
 	}
-
+	users.QueueLen = *l
 	controller.Run(udb)
 	//同步到文件
 	err := udb.RotateSave()

@@ -6,5 +6,5 @@ import (
 
 var Savepath = ""
 var Filefd *os.File
-var QueueLen = 3
+var QueueLen int
 var queue [][]Userinfo

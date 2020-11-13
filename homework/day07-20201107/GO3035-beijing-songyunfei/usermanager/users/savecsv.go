@@ -4,6 +4,8 @@ import (
 	"encoding/csv"
 	"fmt"
 	"io"
+	"os"
+	"path"
 	"strconv"
 	"time"
 )
@@ -56,31 +58,84 @@ func (u *CsvUserDb) Load() error {
 
 //写入csv
 func (u *CsvUserDb) Sync() error {
-
 	queue = append(queue,u.UserSlice)
 	return nil
-	//write := csv.NewWriter(Filefd)
-	//for _, user := range u.UserSlice{
-	//	id := strconv.Itoa(user.Id)
-	//	b := user.Birthday.Format("2006-1-2")
-	//	record := []string{id,user.Name,user.Addr,user.Tel,b,user.Passwd}
-	//	err := write.Write(record)
-	//	if err != nil{
-	//		fmt.Printf("写入错误:%s",err)
-	//		return err
-	//	}
-	//}
-	//write.Flush()
-	//return nil
+}
+
+func writetocsv(u []Userinfo, f *os.File) error {
+	w := csv.NewWriter(f)
+	for _, user := range u{
+		id := strconv.Itoa(user.Id)
+		b := user.Birthday.Format("2006-1-2")
+		record := []string{id,user.Name,user.Addr,user.Tel,b,user.Passwd}
+		err := w.Write(record)
+		if err != nil{
+			fmt.Printf("写入错误:%s",err)
+			return err
+		}
+	}
+	w.Flush()
+	return nil
 }
 // 滚动存储
 func (u *CsvUserDb) RotateSave() error {
 	l := len(queue)
 	if l <= QueueLen {
+		for i:=0;i<l;i++{
+			if i == l-1{
+				err := writetocsv(queue[i],Filefd)
+				if err != nil{
+					fmt.Println(err)
+					return err
+				}
+				continue
+			}
+			name := path.Dir(Savepath)
+			filename := path.Join(name,fmt.Sprintf("user.csv.%d",i))
+			file,err := os.OpenFile(filename,os.O_RDWR|os.O_TRUNC|os.O_CREATE, 0766)
+			if err != nil {
+				return fmt.Errorf("创建失败:%s",err)
+			}
+			err = writetocsv(queue[i],file)
+			if err != nil{
+				fmt.Println(err)
+				return err
+			}
+		}
 
 	}
-	fmt.Println("test")
-	return nil
+	if l > QueueLen{
+		for k,v := range queue[l-QueueLen:]{
+			if k == QueueLen -1 {
+				write := csv.NewWriter(Filefd)
+				for _, user := range v{
+					id := strconv.Itoa(user.Id)
+					b := user.Birthday.Format("2006-1-2")
+					record := []string{id,user.Name,user.Addr,user.Tel,b,user.Passwd}
+					err := write.Write(record)
+					if err != nil{
+						fmt.Printf("写入错误:%s",err)
+						return err
+					}
+				}
+				write.Flush()
+				continue
+			}
+			name := path.Dir(Savepath)
+			filename := path.Join(name,fmt.Sprintf("user.csv.%d",k))
+			file,err := os.OpenFile(filename,os.O_RDWR|os.O_TRUNC|os.O_CREATE, 0766)
+			if err != nil {
+				return fmt.Errorf("创建失败:%s",err)
+			}
+			err = writetocsv(v,file)
+			if err != nil{
+				fmt.Println(err)
+				return err
+			}
+		}
+		return nil
+	}
+	return fmt.Errorf("未知错误")
 
 }
 
