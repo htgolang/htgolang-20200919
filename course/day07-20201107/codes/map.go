@@ -1,5 +1,7 @@
 package main
 
+type KV struct {}
+
 type Less interface {
 	Less(v interface{}) bool
 }

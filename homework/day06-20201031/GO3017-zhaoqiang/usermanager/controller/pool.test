@@ -1,0 +1,33 @@
+// package controller
+
+import (
+	"bufio"
+	"os"
+	"sync"
+)
+
+var (
+	ObjPools []sync.Pool
+)
+
+func inti() {
+	scannerPool := sync.Pool{
+		New: func() interface{} {
+			return bufio.NewScanner(os.Stdin)
+		},
+	}
+	ObjPools = append(ObjPools, scannerPool)
+}
+
+func GetPoolobj() {
+	for _, objinter := range ObjPools {
+		obj := objinter.Get()
+		switch v := obj.(type) {
+		case *bufio.Scanner:
+			GetInput(v)
+			objinter.Put(v)
+		default:
+
+		}
+	}
+}
