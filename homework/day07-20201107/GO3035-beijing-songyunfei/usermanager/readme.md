@@ -5,4 +5,4 @@ go run main.go -init -t json -p ./
 -p 指定存储目录，默认为当前目录。
 -init 是否初始化，默认false。
 
-还未实现滚动存储功能
+csv还未时间滚动功能
