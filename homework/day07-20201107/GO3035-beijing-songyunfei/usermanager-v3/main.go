@@ -41,7 +41,6 @@ func main()  {
 				if err !=nil{
 					fmt.Println(fmt.Errorf("打开文件失败:%s",err))
 				}
-				os.NewFile()
 				_ = file.Sync()
 				_ = file.Close()
 				controller.Add(udb)
