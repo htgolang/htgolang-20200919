@@ -4,7 +4,6 @@ import (
 	"encoding/csv"
 	"fmt"
 	"io"
-	"os"
 	"strconv"
 	"time"
 )
@@ -15,15 +14,15 @@ type CsvUserDb struct {
 
 //增加load方法
 func (u *CsvUserDb) Load() error {
-	file,err := os.OpenFile(Savepath,os.O_CREATE|os.O_RDONLY,os.ModePerm)
-	defer func() {
-		_ = file.Close()
-	}()
-	if err != nil{
-		fmt.Println(err)
-		return err
-	}
-	newrd := csv.NewReader(file)
+	//file,err := os.OpenFile(Savepath,os.O_CREATE|os.O_RDONLY,os.ModePerm)
+	//defer func() {
+	//	_ = file.Close()
+	//}()
+	//if err != nil{
+	//	fmt.Println(err)
+	//	return err
+	//}
+	newrd := csv.NewReader(Filefd)
 	for{
 		line,err := newrd.Read()
 		if err != nil{
@@ -57,26 +56,31 @@ func (u *CsvUserDb) Load() error {
 
 //写入csv
 func (u *CsvUserDb) Sync() error {
-	file,err := os.OpenFile(Savepath,os.O_TRUNC|os.O_WRONLY|os.O_CREATE,os.ModePerm)
-	if err !=nil{
-		fmt.Println(err)
-		return err
-	}
-	defer func() {
-		_ = file.Close()
-	}()
-	write := csv.NewWriter(file)
-	for _, user := range u.UserSlice{
-		id := strconv.Itoa(user.Id)
-		b := user.Birthday.Format("2006-1-2")
-		record := []string{id,user.Name,user.Addr,user.Tel,b,user.Passwd}
-		err := write.Write(record)
-		if err != nil{
-			fmt.Printf("写入错误:%s",err)
-			return err
-		}
-	}
-	write.Flush()
+
+	queue = append(queue,u.UserSlice)
 	return nil
+	//write := csv.NewWriter(Filefd)
+	//for _, user := range u.UserSlice{
+	//	id := strconv.Itoa(user.Id)
+	//	b := user.Birthday.Format("2006-1-2")
+	//	record := []string{id,user.Name,user.Addr,user.Tel,b,user.Passwd}
+	//	err := write.Write(record)
+	//	if err != nil{
+	//		fmt.Printf("写入错误:%s",err)
+	//		return err
+	//	}
+	//}
+	//write.Flush()
+	//return nil
+}
+// 滚动存储
+func (u *CsvUserDb) RotateSave() error {
+	l := len(queue)
+	if l <= QueueLen {
+
+	}
+	fmt.Println("test")
+	return nil
+
 }
 

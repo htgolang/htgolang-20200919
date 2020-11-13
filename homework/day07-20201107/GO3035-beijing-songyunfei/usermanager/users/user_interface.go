@@ -12,4 +12,5 @@ type Mydb interface {
 	Auth(username, passwd string) bool
 	Load() error
 	Sync() error
+	RotateSave() error
 }

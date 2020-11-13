@@ -32,26 +32,64 @@ func main()  {
 		return
 	}
 	if *r {
-		if err := udb.Load(); err == io.EOF {
-			controller.Add(udb)
-		}else if err == nil {
+		isexist := func(s string) bool{
+			_,err := os.Stat(s)
+			if err == nil {
+				return true
+			}
+			if os.IsNotExist(err){
+				return false
+			}
+			return false
+		}
+		if isexist(users.Savepath){
 			y := userutils.Input("DB文件已经存在确认要覆盖吗? [y/n]:")
 			if y == "y" || y == "Y" {
-				file,err := os.OpenFile(users.Savepath,os.O_TRUNC|os.O_WRONLY|os.O_CREATE,os.ModePerm)
+				file,err := os.OpenFile(users.Savepath,os.O_TRUNC|os.O_RDWR|os.O_CREATE,os.ModePerm)
 				if err !=nil{
 					fmt.Println(fmt.Errorf("打开文件失败:%s",err))
 				}
-				_ = file.Sync()
-				_ = file.Close()
+				users.Filefd = file
+				_ = users.Filefd.Sync()
 				controller.Add(udb)
 			}
 		}
+
+		file,err := os.OpenFile(users.Savepath,os.O_RDWR|os.O_CREATE,os.ModePerm)
+		if err !=nil{
+			fmt.Println(fmt.Errorf("打开文件失败:%s",err))
+		}
+		defer func() {
+			_ = file.Close()
+		}()
+		users.Filefd = file
+		err = udb.Load()
+		if  err == io.EOF {
+			controller.Add(udb)
+		}
+
+
 	}else {
-		err := udb.Load()
+		file,err := os.OpenFile(users.Savepath,os.O_CREATE|os.O_RDWR,os.ModePerm)
+		defer func() {
+			_ = file.Close()
+		}()
+		if err !=nil{
+			fmt.Println(fmt.Errorf("打开文件失败:%s",err))
+		}
+		users.Filefd = file
+		err = udb.Load()
 		if err != nil {
 			fmt.Println(err)
 			return
 		}
+
 	}
+
 	controller.Run(udb)
+	//同步到文件
+	err := udb.RotateSave()
+	if err != nil{
+		fmt.Println(err)
+	}
 }

@@ -24,6 +24,7 @@ func Add(udb users.Mydb){
 			}else {
 				if err = udb.Sync(); err == nil{
 					fmt.Println("添加成功.")
+
 				}
 
 			}
