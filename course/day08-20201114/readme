@@ -1,0 +1,34 @@
+1. 复习
+    type interfaceName interface {
+        方法的签名
+    }
+    switch convertVar := varname.(type) {
+        case TypeName1:
+
+        case TypeName2:
+        ....
+        case TypeNameN:
+        default:
+    }
+
+    var interfaceVar interface{
+        方法签名
+    }
+
+    type EmptyInterface interface{}
+    var emptyInterface interface{}
+
+    type Children interface{
+        A
+        B
+    }
+
+    type Parent interface {
+        Children
+        C
+        D
+    }
+2. 作业
+3. 新内容
+    并发编程
+    应用 =》 业务
