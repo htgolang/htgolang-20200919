@@ -13,15 +13,15 @@ import (
 	"time"
 )
 
-var pathname = "./test.tail"
-var mask uint32 = 755
+//var pathname = "./test.tail"
+//var mask uint32 = 755
 
 func main() {
 	// to implement
 	fileToTail := flag.String("f", "foo", "Specify a file to tail.")
 	lastLines := flag.Int("n", 10, "Specify to display last n lines.")
 	flag.Usage = func() {
-		fmt.Println("Usage: go run tail.go -f /path/to/foo -n <NUM>")
+		fmt.Println("Usage: go run tail.go -f <FILE> -n <NUM>")
 	}
 	flag.Parse()
 	if *fileToTail == "foo" {
@@ -29,12 +29,8 @@ func main() {
 		os.Exit(1)
 	}
 
-	tail(*fileToTail, *lastLines)
-}
-
-// tail
-func tail(file string, lastLines int) error {
-	f, e := os.Open(file)
+	f, e := os.Open(*fileToTail)
+	defer f.Close()
 	if e != nil {
 		log.Fatal(e)
 	}
@@ -42,37 +38,51 @@ func tail(file string, lastLines int) error {
 	if err != nil {
 		log.Fatal(err)
 	}
-	_, errW := syscall.InotifyAddWatch(fd, file, syscall.IN_MODIFY)
+	_, errW := syscall.InotifyAddWatch(fd, *fileToTail, syscall.IN_MODIFY)
 	if errW != nil {
 		log.Fatal(errW)
 	}
-	r := bufio.NewReader(f)
 
 	// print last n lines
-	if err := showLastLines(f, lastLines); err != nil {
+	if err := showLastLines(f, *lastLines); err != nil {
 		fmt.Println("err: ", err)
 	}
-	var rbytes []byte
+
 	for {
-		rbytes, err = r.ReadBytes('\n')
+		errWa := watchForModify(fd)
+		if errWa == nil {
+			tail(f, *lastLines, fd)
+		} else {
+			return
+		}
+	}
+}
+
+// tail
+func tail(f *os.File, lastLines int, fd int) error {
+
+	r := bufio.NewReader(f)
+
+	//var rbytes []byte
+	for {
+		rbytes, err := r.ReadBytes('\n')
 		if err != nil && err != io.EOF {
 			return err
 		}
 		// print added lines
 		fmt.Print(string(rbytes))
 		if err == io.EOF {
-			time.Sleep(2 * time.Second)
+			time.Sleep(500 * time.Millisecond)
 			continue
 		}
-		if err = watchForModify(fd); err != nil {
-			return err
+		errW := watchForModify(fd)
+		if errW != nil {
+			return errW
 		}
-
 	}
-
 }
 
-// wath a fd's modify event
+// watch a fd's modify event
 func watchForModify(fd int) error {
 	for {
 		var tmpBuf [syscall.SizeofInotifyEvent]byte
@@ -117,5 +127,6 @@ func showLastLines(f *os.File, n int) error {
 	for i := 0; i < lastLines; i++ {
 		fmt.Println(string(<-lastLinesChan))
 	}
+	//close(lastLinesChan)
 	return nil
 }

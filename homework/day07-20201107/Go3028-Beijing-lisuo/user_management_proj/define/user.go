@@ -14,12 +14,12 @@ const (
 // User to contain user's info
 // UserList to contain all the users
 type User struct {
-	ID      int64
-	Name    string
-	Address string
-	Cell    string
-	Born    time.Time
-	Passwd  string
+	ID      int64     `json:"id"`
+	Name    string    `json:"name"`
+	Address string    `json:"address"`
+	Cell    string    `json:"cell"`
+	Born    time.Time `json:"born"`
+	Passwd  string    `json:"passwd"`
 }
 
 // UserList contains users

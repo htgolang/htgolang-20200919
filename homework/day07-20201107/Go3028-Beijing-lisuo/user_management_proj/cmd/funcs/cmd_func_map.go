@@ -16,12 +16,12 @@ var CmdToFuncMap = map[string]func(){}
 
 // FuncList is a map contains the default cmd to func
 var FuncList = map[string]string{
-	"add":  "AddUser",
-	"del":  "DelUser",
-	"mod":  "ModifyUser",
-	"get":  "QueryUser",
-	"show": "ShowCurrentUserList",
-	//"save":  "SaveUsers",
+	"add":   "AddUser",
+	"del":   "DelUser",
+	"mod":   "ModifyUser",
+	"get":   "QueryUser",
+	"show":  "ShowCurrentUserList",
+	"save":  "SaveUsers",
 	"help":  "ShowHelp",
 	"h":     "ShowHelp",
 	"cls":   "utils.ClearScreen",
@@ -89,7 +89,7 @@ func DoMap() {
 
 }
 
-// ShowFuncList display the func and what they do
+// ShowFuncList display the func and what they do when customize cmd
 func ShowFuncList() {
 	t := tablewriter.NewWriter(os.Stdout)
 	t.SetAutoFormatHeaders(false)
@@ -125,7 +125,7 @@ func AddFunc() {
 	CmdToFunc("mod", ModifyUser)
 	CmdToFunc("get", QueryUser)
 	CmdToFunc("show", ShowCurrentUserList)
-	//CmdToFunc("save", db.SaveUsers)
+	CmdToFunc("save", db.SaveUsers)
 	//CmdToFunc("read", db.ReadUsers)
 	CmdToFunc("help", ShowHelp)
 	CmdToFunc("h", ShowHelp)

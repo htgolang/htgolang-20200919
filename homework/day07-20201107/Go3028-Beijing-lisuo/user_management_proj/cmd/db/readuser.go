@@ -1,9 +1,14 @@
 package db
 
 import (
+	"bufio"
+	"bytes"
 	"encoding/csv"
+	"encoding/gob"
+	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -14,16 +19,19 @@ import (
 
 // Read read Users from dbAbsFile, append them to a UserList
 func Read(dbName string, ul *[]define.User) {
+	switch dbName {
+	case dbNameCSV:
+		readFromCSV(dbNameCSV, ul)
+	case dbNameGob:
+		readFromGob(dbNameGob, ul)
+	case dbNameJSON:
+		readFromJSON(dbNameJSON, ul)
+	default:
+		readFromCSV(dbNameCSV, ul)
+	}
+}
 
-	//path, err := filepath.Abs(base)
-	//if err != nil {
-	//	fmt.Println(err)
-	//}
-
-	//absDir = filepath.Dir(path)
-	//dbLocation = filepath.Join(absDir, dbDir)
-	//dbAbsFile = filepath.Join(dbLocation, dbName)
-
+func readFromCSV(dbName string, ul *[]define.User) {
 	csvFile, err := os.Open(filepath.Join(dbDir, dbName))
 	if err != nil {
 		fmt.Println(err)
@@ -53,12 +61,47 @@ func Read(dbName string, ul *[]define.User) {
 			})
 	}
 	// assign the read users to define.UserList
-	(*ul) = tmpUsers
+	*ul = tmpUsers
 	// purge the tmpUsers
 	tmpUsers = []define.User{}
 }
 
+func readFromGob(dbName string, ul *[]define.User) {
+	gobFile, err := os.Open(filepath.Join(dbDir, dbName))
+	if err != nil {
+		log.Fatal(err)
+		os.Exit(1)
+	}
+	defer gobFile.Close()
+
+	gobDecoder := gob.NewDecoder(gobFile)
+	if err := gobDecoder.Decode(ul); err != nil {
+		log.Fatal(err)
+		os.Exit(1)
+	}
+	//fmt.Print(ul)
+}
+
+func readFromJSON(dbName string, ul *[]define.User) error {
+	jsonFile, err := os.Open(filepath.Join(dbDir, dbName))
+	if err != nil {
+		return err
+	}
+	defer jsonFile.Close()
+
+	jsonReader := bufio.NewReader(jsonFile)
+	jsonBuffer := new(bytes.Buffer)
+	jsonReader.WriteTo(jsonBuffer)
+	decoder := json.NewDecoder(jsonBuffer)
+
+	if err := decoder.Decode(ul); err != nil {
+		return err
+	}
+	return nil
+
+}
+
 // ReadUsers wrap Read
 func ReadUsers() {
-	Read(dbName, &define.UserList)
+	Read(SaveFlag, &define.UserList)
 }
