@@ -13,9 +13,6 @@ import (
 	"time"
 )
 
-//var pathname = "./test.tail"
-//var mask uint32 = 755
-
 func main() {
 	// to implement
 	fileToTail := flag.String("f", "foo", "Specify a file to tail.")
@@ -127,6 +124,6 @@ func showLastLines(f *os.File, n int) error {
 	for i := 0; i < lastLines; i++ {
 		fmt.Println(string(<-lastLinesChan))
 	}
-	//close(lastLinesChan)
+	//closelastLinesChan)
 	return nil
 }

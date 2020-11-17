@@ -38,18 +38,15 @@ func SaveToCSV(dbName string, ul *[]define.User) error {
 
 // SaveToGob encode the UserList to a gob file
 func SaveToGob(dbName string, ul *[]define.User) error {
-	//dbDir += "/gob"
 	var subDir = "gob"
 	gob.Register(define.User{})
 	gobFile, err := os.Create(filepath.Join(filepath.Join(dbDir, subDir), dbName))
 	if err != nil {
-		//log.Fatal(err)
 		return err
 	}
 	defer gobFile.Close()
 	gobEncoder := gob.NewEncoder(gobFile)
 	if err := gobEncoder.Encode(&ul); err != nil {
-		//log.Fatal(err)
 		return err
 	}
 	return nil
@@ -57,7 +54,6 @@ func SaveToGob(dbName string, ul *[]define.User) error {
 
 // SaveToJSON encode the UserList to a json file
 func SaveToJSON(dbName string, ul *[]define.User) error {
-	//dbDir += "/json"
 	var subDir = "json"
 	jsonBuffer := new(bytes.Buffer)
 	encoder := json.NewEncoder(jsonBuffer)
@@ -84,7 +80,6 @@ func SaveToJSON(dbName string, ul *[]define.User) error {
 // BackupDB copy a copy of userDB.json/userDB.csv/userDB.gob
 func BackupDB(dbDir, subDir, dbName string) error {
 	// copy a backup
-
 	fmt.Println("about to copy: ", filepath.Join(filepath.Join(dbDir, subDir), dbName))
 	jsonFile, err := os.Open(filepath.Join(filepath.Join(dbDir, subDir), dbName))
 	if err != nil {

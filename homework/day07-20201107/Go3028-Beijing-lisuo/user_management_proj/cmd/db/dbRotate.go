@@ -40,11 +40,8 @@ func fileNameHandle() {
 		timeStamp = append(timeStamp, timestamp)
 		timeStampToFileName[timestamp] = file.Name()
 	}
-	//utils.SuffleInt64Slice(&timeStamp)
-	//fmt.Println(timeStamp)
 	// desc sort timeStamp
 	utils.SortInt64Slice(&timeStamp)
-	//fmt.Println("after sort: ", timeStamp)
 	for index, time := range timeStamp {
 		if index > backups-1 {
 			// get files to del
@@ -52,7 +49,6 @@ func fileNameHandle() {
 			if err := os.Remove(filepath.Join(path, timeStampToFileName[time])); err != nil {
 				log.Fatal(err)
 			}
-			//fmt.Println(timeStampToFileName[time])
 		}
 	}
 }
@@ -62,8 +58,4 @@ func genFileNameSuffix() string {
 	return fmt.Sprintf("%d-%02d-%02d_%02d-%02d-%02d.%d",
 		t.Year(), t.Month(), t.Day(),
 		t.Hour(), t.Minute(), t.Second(), t.UnixNano())
-}
-
-func getFileNameList() {
-
 }
