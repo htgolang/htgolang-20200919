@@ -30,6 +30,7 @@ var FuncList = map[string]string{
 	"quit":  "utils.Quit",
 	"exit":  "utils.Quit",
 	"mycmd": "DoMap",
+	"rot":   "Rotate",
 }
 
 // CmdList contains default commands binding to funcs
@@ -135,6 +136,7 @@ func AddFunc() {
 	CmdToFunc("quit", utils.Quit)
 	CmdToFunc("exit", utils.Quit)
 	CmdToFunc("mycmd", DoMap)
+	CmdToFunc("rot", db.Rotate)
 }
 
 // ExecFunc execute the func of a cmd

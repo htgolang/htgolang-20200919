@@ -1,11 +1,13 @@
 package db
 
 import (
+	"bufio"
 	"bytes"
 	"encoding/csv"
 	"encoding/gob"
 	"encoding/json"
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -17,7 +19,9 @@ import (
 // SaveToCSV will flush the define.UserList's contents into a CSV file when
 // define.UserList is modified
 func SaveToCSV(dbName string, ul *[]define.User) error {
-	csvFile, err := os.Create(filepath.Join(dbDir, dbName))
+	//dbName = dbName + "." + genFileNameSuffix()
+	var subDir = "csv"
+	csvFile, err := os.Create(filepath.Join(filepath.Join(dbDir, subDir), dbName))
 	if err != nil {
 		fmt.Println(err)
 		return err
@@ -34,8 +38,10 @@ func SaveToCSV(dbName string, ul *[]define.User) error {
 
 // SaveToGob encode the UserList to a gob file
 func SaveToGob(dbName string, ul *[]define.User) error {
+	//dbDir += "/gob"
+	var subDir = "gob"
 	gob.Register(define.User{})
-	gobFile, err := os.Create(filepath.Join(dbDir, dbName))
+	gobFile, err := os.Create(filepath.Join(filepath.Join(dbDir, subDir), dbName))
 	if err != nil {
 		//log.Fatal(err)
 		return err
@@ -50,25 +56,57 @@ func SaveToGob(dbName string, ul *[]define.User) error {
 }
 
 // SaveToJSON encode the UserList to a json file
-func SaveToJSON(dbName string, ul *[]define.User) (int, error) {
+func SaveToJSON(dbName string, ul *[]define.User) error {
+	//dbDir += "/json"
+	var subDir = "json"
 	jsonBuffer := new(bytes.Buffer)
 	encoder := json.NewEncoder(jsonBuffer)
 	encoder.SetIndent("", "\t")
 	err := encoder.Encode(ul)
 	if err != nil {
-		return 0, err
+		return err
 	}
 
-	jsonFile, err := os.Create(filepath.Join(dbDir, dbName))
+	jsonFile, err := os.Create(filepath.Join(filepath.Join(dbDir, subDir), dbName))
 	if err != nil {
-		return 0, err
+		return err
+	}
+	defer jsonFile.Close()
+
+	_, errjsonW := jsonFile.Write(jsonBuffer.Bytes())
+	if errjsonW != nil {
+		return errjsonW
 	}
 
-	numberOfBytesWritten, err := jsonFile.Write(jsonBuffer.Bytes())
+	return nil
+}
+
+// BackupJSON copy a copy of userDB.json
+func BackupJSON(dbDir, subDir, dbName string) error {
+	// copy a backup
+
+	fmt.Println("about to copy: ", filepath.Join(filepath.Join(dbDir, subDir), dbName))
+	jsonFile, err := os.Open(filepath.Join(filepath.Join(dbDir, subDir), dbName))
 	if err != nil {
-		return 0, err
+		return err
 	}
-	return numberOfBytesWritten, nil
+	defer jsonFile.Close()
+
+	srcReader := bufio.NewReader(jsonFile)
+	backupDBName := dbName + "." + genFileNameSuffix()
+	backupFile, err := os.Create(filepath.Join(filepath.Join(dbDir, subDir), backupDBName))
+	if err != nil {
+		log.Fatal(err)
+		return err
+	}
+	defer backupFile.Close()
+
+	_, errW := srcReader.WriteTo(backupFile)
+	if errW != nil {
+		log.Fatal(errW)
+		return errW
+	}
+	return nil
 }
 
 // SaveUsers Wrap the SaveToXXX funcs
@@ -83,6 +121,7 @@ func SaveUsers() {
 		return
 	} else if SaveFlag == "json" {
 		SaveToJSON(dbNameJSON, &define.UserList)
+		BackupJSON(dbDir, "json", dbNameJSON)
 		fmt.Println("You already saved via json, change will be saved automatically.")
 		return
 	} else {

@@ -32,7 +32,8 @@ func Read(dbName string, ul *[]define.User) {
 }
 
 func readFromCSV(dbName string, ul *[]define.User) {
-	csvFile, err := os.Open(filepath.Join(dbDir, dbName))
+	var subDir = "csv"
+	csvFile, err := os.Open(filepath.Join(filepath.Join(dbDir, subDir), dbName))
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -67,7 +68,8 @@ func readFromCSV(dbName string, ul *[]define.User) {
 }
 
 func readFromGob(dbName string, ul *[]define.User) {
-	gobFile, err := os.Open(filepath.Join(dbDir, dbName))
+	var subDir = "gob"
+	gobFile, err := os.Open(filepath.Join(filepath.Join(dbDir, subDir), dbName))
 	if err != nil {
 		log.Fatal(err)
 		os.Exit(1)
@@ -83,7 +85,8 @@ func readFromGob(dbName string, ul *[]define.User) {
 }
 
 func readFromJSON(dbName string, ul *[]define.User) error {
-	jsonFile, err := os.Open(filepath.Join(dbDir, dbName))
+	var subDir = "json"
+	jsonFile, err := os.Open(filepath.Join(filepath.Join(dbDir, subDir), dbName))
 	if err != nil {
 		return err
 	}

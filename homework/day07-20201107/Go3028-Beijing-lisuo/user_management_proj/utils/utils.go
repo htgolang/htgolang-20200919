@@ -5,6 +5,7 @@ import (
 	"crypto/md5"
 	"encoding/json"
 	"fmt"
+	"math/rand"
 	"os"
 	"os/exec"
 	"runtime"
@@ -109,6 +110,44 @@ func ClearScreen() {
 	} else { //unsupported platform
 		panic("Your platform is unsupported! I can't clear terminal screen :(")
 	}
+}
+
+// SortInt64Slice sort a slice
+func SortInt64Slice(s *[]int64) {
+	for i := 0; i < len(*s); i++ {
+		// if all the number shifted, sweep(nums, i) will return false
+		if !sweep(s, i) {
+			return
+		}
+	}
+}
+
+func sweep(nums *[]int64, passesDone int) bool {
+	var firstIndex, secondIndex int = 0, 1
+	doSwap := false
+	// those already shifted is passesDone, minus them
+	for secondIndex < len(*nums)-passesDone {
+		var firstNum = (*nums)[firstIndex]
+		var secondNum = (*nums)[secondIndex]
+		// shift big one backward
+		if firstNum < secondNum {
+			(*nums)[firstIndex], (*nums)[secondIndex] = secondNum, firstNum
+			doSwap = true
+		}
+		firstIndex++
+		secondIndex++
+	}
+	return doSwap
+}
+
+// SuffleInt64Slice suffles a slice
+func SuffleInt64Slice(s *[]int64) {
+	rand.Seed(time.Now().UnixNano())
+	for i := len(*s) - 1; i > 0; i-- { // Fisher–Yates shuffle
+		j := rand.Intn(i + 1)
+		(*s)[i], (*s)[j] = (*s)[j], (*s)[i]
+	}
+
 }
 
 // Message print debug info
