@@ -81,8 +81,8 @@ func SaveToJSON(dbName string, ul *[]define.User) error {
 	return nil
 }
 
-// BackupJSON copy a copy of userDB.json
-func BackupJSON(dbDir, subDir, dbName string) error {
+// BackupDB copy a copy of userDB.json/userDB.csv/userDB.gob
+func BackupDB(dbDir, subDir, dbName string) error {
 	// copy a backup
 
 	fmt.Println("about to copy: ", filepath.Join(filepath.Join(dbDir, subDir), dbName))
@@ -113,15 +113,17 @@ func BackupJSON(dbDir, subDir, dbName string) error {
 func SaveUsers() {
 	if SaveFlag == "csv" {
 		SaveToCSV(dbNameCSV, &define.UserList)
+		BackupDB(dbDir, "csv", dbNameCSV)
 		fmt.Println("You already saved via csv, change will be saved automatically.")
 		return
 	} else if SaveFlag == "gob" {
 		SaveToGob(dbNameGob, &define.UserList)
+		BackupDB(dbDir, "gob", dbNameGob)
 		fmt.Println("You already saved via gob, change will be saved automatically.")
 		return
 	} else if SaveFlag == "json" {
 		SaveToJSON(dbNameJSON, &define.UserList)
-		BackupJSON(dbDir, "json", dbNameJSON)
+		BackupDB(dbDir, "json", dbNameJSON)
 		fmt.Println("You already saved via json, change will be saved automatically.")
 		return
 	} else {
