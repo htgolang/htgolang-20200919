@@ -6,8 +6,10 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"time"
 )
 
+const bfsize = 1024
 func main() {
 	n := flag.Int("n",5,"最后行数")
 	f := flag.String("f","","文件")
@@ -26,17 +28,21 @@ func main() {
 	if err != nil{
 		fmt.Println(err)
 	}
+	line := make([]byte,bfsize)
 	for {
-		line,_,err := rd.ReadLine()
+		n,err := rd.Read(line)
 		if err != nil {
 			if err == io.EOF{
-				fmt.Println("xx结束了")
-				return
+				//等待1s
+				time.Sleep(time.Second * 1)
+				continue
 			}
 			fmt.Println(err)
 			break
+		}else {
+			fmt.Print(string(line[:n]))
 		}
-		fmt.Println(string(line))
+
 	}
 
 }

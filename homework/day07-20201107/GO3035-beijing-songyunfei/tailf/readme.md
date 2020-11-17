@@ -1,2 +1,2 @@
 示例:
-还未完成监听功能。
+tail -n lastN -f FILENAME 
