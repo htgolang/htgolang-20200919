@@ -19,10 +19,10 @@ var destFile *os.File
 
 func main() {
 	// cmd flag define
-	flagSrc := flag.String("src", "/bar/foo.file", "specify source file location")
-	flagDest := flag.String("dest", "/foo/bar/", "sepcify dest file location")
+	flagSrc := flag.String("src", "/bar/foo", "specify source file location")
+	flagDest := flag.String("dest", "/foo/bar", "sepcify dest file location")
 	flag.Usage = func() {
-		fmt.Println("Usage: go run cp_cmd.go --src ./bar/foo.file --dest /foo/bar/")
+		fmt.Println("Usage: go run cp_cmd.go --src ./bar/foo --dest /foo/bar")
 	}
 	// parse flag
 	flag.Parse()
@@ -32,18 +32,7 @@ func main() {
 	destAbsInfo, errDestAbs := os.Stat(destAbs)
 	srcBase := filepath.Base(srcAbs)
 	destBase = filepath.Base(destAbs)
-	//srcDir := filepath.Dir(srcAbs)
 	destDir = filepath.Dir(destAbs)
-
-	//fmt.Printf("flagSrc: %v\n", *flagSrc)
-	//fmt.Printf("flagDest: %v\n", *flagDest)
-	//fmt.Printf("srcAbs: %v\n", srcAbs)
-	//fmt.Printf("destAbs: %v\n", destAbs)
-	//fmt.Printf("destAbsInfo IsDir: %v\n", destAbsInfo.IsDir())
-	//fmt.Printf("srcBase: %v\n", srcBase)
-	//fmt.Printf("destBase b: %v\n", destBase)
-	//fmt.Printf("srcDir: %v\n", srcDir)
-	//fmt.Printf("destDir: %v\n", destDir)
 
 	// if user not specify a file in src, prompt error
 	srcAbsInfo, err := os.Stat(srcAbs)
@@ -127,10 +116,9 @@ func fileCopy(srcAbs, destAbs, srcBase, destDir *string) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	n, err := srcReader.WriteTo(destFile)
-	n = n
-	if err != nil {
-		log.Fatal(err)
+	_, errww := srcReader.WriteTo(destFile)
+	if errww != nil {
+		log.Fatal(errww)
 	}
 
 }
