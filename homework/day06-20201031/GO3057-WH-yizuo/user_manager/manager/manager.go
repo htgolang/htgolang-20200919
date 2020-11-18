@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strings"
 	"yizuo/controllers"
+	"yizuo/models"
 
 	"yizuo/utils"
 )
@@ -32,7 +33,8 @@ func Run() {
 	for {
 		text := utils.Input("请输入指令: ")
 		if text == "exit" || text == "quit" || text == "q" {
-			fmt.Println("退出")
+			models.WritesUsersDataToCsv()
+			fmt.Println("保存用户数据并退出！")
 			break
 		}
 		if action, ok := routers[strings.ToLower(text)]; !ok {

@@ -24,16 +24,13 @@ type Users struct {
 }
 
 var UserList = make([]Users ,0)
+var UserDataFile string = "models/csv/userData.csv"
 
 func init() {
 	/*
 	   初始化数据
 	   初始化Users，并添加4条基础数据
 	   初始化UserPasswd，并转换为十六进制MD5值
-	 */
-
-	AddUser("yizuo", "yizuo", "17612345678", "888@qq.com", "1994-04-06 18:00")
-	AddUser("admin", "admin", "17612345678", "123@qq.com", "1995-04-06 18:00")
-	AddUser("root", "root", "17612345678", "456@qq.com", "1996-04-06 18:00")
-
+	*/
+	InitUsers()
 }

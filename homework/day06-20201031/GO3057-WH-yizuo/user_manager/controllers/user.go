@@ -26,6 +26,7 @@ func AddUser() {
 	birthday := utils.Input("请输入你的生日（例如：1994-04-06 18:08）: ")
 
 	models.AddUser(name,passwd,phone,address,birthday)
+	models.WritesUsersDataToCsv()
 	fmt.Println("用户添加成功，现所有用户如下：")
 	ListUser()
 }
@@ -36,13 +37,12 @@ func DeleteUser(){
 	根据用户输入的用户ID，将Status调整为0，软删除数据，打印时Status为0的数据将不再显示。
 	 */
 	// 获取用户输入的用户ID
-	var UserID int
-	fmt.Println("请输入要删除的用户ID： ")
-	_, _ = fmt.Scan(&UserID)
+	UserID := utils.IntInput("请输入要删除的用户ID：")
 
 	// 在数据中检索查询ID是否存在
 	if models.FindElementID(UserID) {
 		if models.DeleteUser(UserID) {
+			models.WritesUsersDataToCsv()
 			fmt.Println("用户删除成功！")
 		} else {
 			fmt.Println("用户删除失败！")
@@ -58,17 +58,14 @@ func ModifyUser()  {
 		用户输入用户ID，根据用户ID变更对应的条目数据
 	*/
 	// 获取用户输入的用户ID
-	var UserID int
-	fmt.Println("请输入要变更的用户ID： ")
-	_, _ = fmt.Scan(&UserID)
+	UserID := utils.IntInput("请输入要变更的用户ID：")
 
 	// 在数据中检索查询ID是否存在
 	if models.FindElementID(UserID) {
-		if models.ModifyUser(UserID) {
-			fmt.Println("用户信息变更成功！")
-		} else {
+		if !models.ModifyUser(UserID) {
 			fmt.Println("用户信息变更失败！")
 		}
+		models.WritesUsersDataToCsv()
 	}   else  {
 		fmt.Println("未找到此ID对应的用户数据，已退出。")
 	}
@@ -76,9 +73,8 @@ func ModifyUser()  {
 
 // 根据用户输入的信息查询ID/用户名称是否存在
 func QueryUser()  {
-	var UserName string
-	fmt.Println("请输入要查询的用户名称： ")
-	_, _ = fmt.Scan(&UserName)
+	// 获取用户输入的用户名称
+	UserName := utils.Input("请输入要查询的用户名称:")
 
 	u,ok := models.QueryUser(UserName)
 	if ok != nil {

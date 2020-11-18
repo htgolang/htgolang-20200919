@@ -2,6 +2,8 @@ package models
 
 import (
 	"fmt"
+	"github.com/spf13/cast"
+	"os"
 	"strings"
 	"yizuo/utils"
 )
@@ -9,6 +11,55 @@ import (
 /*
 所有跟数据相关操作在此文件中进行
 */
+
+// 用户数据初始化
+func InitUsers()  {
+	_, err := os.Lstat(UserDataFile)
+	// Check for presence
+	if os.IsNotExist(err){
+		AddUser("yizuo", "yizuo", "17612345678", "WuHan", "1994-04-06 18:00:00")
+		AddUser("admin", "admin", "17612345678", "ShangHai", "1995-04-06 18:00:00")
+		AddUser("root", "root", "17612345678", "BeiJing", "1996-04-06 18:00:00")
+		return
+	}
+	ReadUsersDataToCsv()
+}
+
+
+// 根据传递参数添加用户数据
+func ReadUserList(curId, Status, Id, Name, Password, Phone, Address, Birthday string )  {
+	/*
+		根据传递的用户信息添加至对应的数据库
+		u 用户数据信息
+			Id			固定值不允许变更，每次新增在现有数据中检索最大值+1作为新用户的ID
+			Name		用户名称
+			Password	用户密码
+			Phone		手机号
+			Address		邮箱地址
+			Birthday	生日
+		users
+			curId		唯一值，值与用户的ID值保持一致
+			Status		用户状态信息，用于软删除。0位用户不再使用，1位用户正在使用中，默认为1。
+			UserData	用户数据信息
+	*/
+	// 根据输入值插入数据
+	var u = &User {
+		Id:			cast.ToInt(Id),                     // 用户id
+		Name:		Name, 					// 名称
+		Password:	Password,               // 密码
+		Phone:		Phone, 					// 联系方式
+		Address:	Address, 				// 地址
+		Birthday:	utils.StrConversionTime(Birthday), // 生日
+	}
+
+	var users = Users{
+		curId:		cast.ToInt(curId),     // ID
+		Status:		cast.ToInt(Status),    // 用户状态。0为软删除，1为在使用
+		UserData:	u,         // 传入数据
+	}
+	UserList = append(UserList,users)
+}
+
 
 // 根据传递参数添加用户数据
 func AddUser(Name, Password, Phone, Address, Birthday string )  {
@@ -33,7 +84,7 @@ func AddUser(Name, Password, Phone, Address, Birthday string )  {
 		Password:	utils.Md5sum(Password), // 密码
 		Phone:		Phone, 					// 联系方式
 		Address:	Address, 				// 地址
-		Birthday:	utils.TimeConversion(Birthday), // 生日
+		Birthday:	utils.StrConversionTime(Birthday), // 生日
 	}
 
 	var users = Users{
@@ -85,21 +136,21 @@ func ModifyUser(UserID int) bool {
 				name := utils.Input("请输入要变更的用户名：")
 				if FindElementUser(name) {
 					fmt.Printf("用户%v已存在，已退出。\n",name)
-					break
+					return false
 				}
 				v.UserData.Name = name
 				v.UserData.Password = utils.Md5sum(utils.Input("请输入要变更的用户密码："))
 				v.UserData.Phone = utils.Input("请输入要变更的联系方式（例如：17612345678）：")
 				v.UserData.Address = utils.Input("请输入要变更的联系地址（例如：WuHan）：")
-				v.UserData.Birthday = utils.TimeConversion(utils.Input("请输入要变更的生日（例如：1994-04-06 18:08）："))
+				v.UserData.Birthday = utils.StrConversionTime(utils.Input("请输入要变更的生日（例如：1994-04-06 18:08:06）："))
 				// 打印变更后的信息
 				fmt.Println("变更成功。变更后的信息如下：")
 				FormatTableOut(v.UserData)
 				return true
 			}
+			break
 		}
 	}
-	fmt.Println("变更失败！")
 	return false
 }
 
