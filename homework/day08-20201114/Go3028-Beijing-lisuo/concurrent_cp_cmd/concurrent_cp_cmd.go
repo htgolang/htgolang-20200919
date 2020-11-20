@@ -8,7 +8,6 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"strings"
 	"sync"
 )
 
@@ -36,34 +35,37 @@ func main() {
 	// file
 	case 0:
 		fmt.Printf("%v is a file\n", *flagSrc)
-		fileCopy(flagSrc, flagDest, wg)
+		wg.Add(1)
+		go fileCopy(flagSrc, flagDest, wg)
+		wg.Wait()
 		return
-	// dir
 	case 1:
 		fmt.Printf("%v is a dir\n", *flagSrc)
-		deepestFile, err := walkReturnDeepestDir(*flagSrc)
+		//var walkedFilesAbs, walkedDirAbs []string
+		walkedDirs, walkedFiles, err := walkReturnDirSlice(*flagSrc)
 		if err != nil {
 			fmt.Println(err)
 			return
 		}
+		fmt.Println("walkedDirs: ", walkedDirs)
+		fmt.Println("walkedFiles: ", walkedFiles)
+
 		// TODO
 		// there are multi dirs, not only deepest
 		// should save all the dir to a []string
 		// if not same dir, then os.MkdirAll
-		errMkdir := os.MkdirAll(filepath.Dir(deepestFile), os.ModePerm)
-		if errMkdir != nil {
-			fmt.Println(errMkdir)
-			return
+
+		for _, file := range walkedFiles {
+			wg.Add(1)
+			makedDir, err := makeDir(file, *flagDest)
+			if err != nil {
+				fmt.Println(err)
+				return
+			}
+			fmt.Printf("copying file: %v to: %v\n", file, makedDir)
+			go fileCopy(&file, &makedDir, wg)
 		}
-		files, err := listFiles(*flagSrc)
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
-		// TODO
-		// save all walked file to a []string, then os.MkdirAll
-		// then calc the file amount, start corresponding goroutines to cp
-		// --src /path/to/file --desc /path/to/file
+		wg.Wait()
 		return
 	// not exists
 	case -1:
@@ -72,15 +74,8 @@ func main() {
 	default:
 		fmt.Printf("strange things happened.\n")
 	}
-	wg.Add(1)
-	go fileCopy(flagSrc, flagDest, wg)
-	wg.Wait()
 	fmt.Println(files)
-	//files, err := listFiles("../concurrent_cp_cmd")
-	//if err != nil {
-	//	fmt.Println(err)
-	//}
-	//fmt.Println("files: ", files)
+
 }
 
 // dir return 1, file return 0, not exist return -1
@@ -97,24 +92,39 @@ func isDir(file string) int {
 	return 0
 }
 
-func walkReturnDeepestDir(dir string) (string, error) {
-	var walkedFiles []string
-	err := filepath.Walk(".", func(path string, info os.FileInfo, err error) error {
+// make dir by abs file path
+func makeDir(walkedFile, destDir string) (string, error) {
+	fileDir := filepath.Dir(walkedFile)
+	dirToMake := filepath.Join(destDir, fileDir)
+	fmt.Println("dirToMake: ", dirToMake)
+	errMkdir := os.MkdirAll(dirToMake, os.ModePerm)
+	if errMkdir != nil {
+		return "", errMkdir
+	}
+	return dirToMake, nil
+}
+
+// return walked dirs slice and walked files slice
+func walkReturnDirSlice(dir string) ([]string, []string, error) {
+	var walkedFiles, walkedDirs []string
+	err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			fmt.Printf("prevent panic by handling failure accessing a path %q: %v\n", path, err)
 			return err
 		}
-		walkedFiles = append(walkedFiles, path)
+		if isDir(path) == 1 {
+			walkedDirs = append(walkedDirs, path)
+		} else if isDir(path) == 0 {
+			walkedFiles = append(walkedFiles, path)
+		}
 		return nil
 	})
 
-	if longest := allLongestStrings(walkedFiles); len(longest) != 0 {
-		return longest[0], nil
+	if err != nil {
+		return []string{}, []string{}, err
 	}
 
-	if err != nil {
-		return "", err
-	}
+	return walkedDirs, walkedFiles, nil
 }
 
 // list files in a dir, return as a []string
@@ -143,11 +153,11 @@ func listFiles(dir string) ([]string, error) {
 
 // file copy op
 func fileCopy(flagSrc, flagDest *string, wg *sync.WaitGroup) {
-	var opt string
+	//var opt string
 	srcAbs, _ := filepath.Abs(*flagSrc)
 	destAbs, _ := filepath.Abs(*flagDest)
 	destAbsInfo, errDestAbs := os.Stat(destAbs)
-	srcBase := filepath.Base(srcAbs)
+	//srcBase := filepath.Base(srcAbs)
 	destBase = filepath.Base(destAbs)
 	destDir = filepath.Dir(destAbs)
 
@@ -180,36 +190,6 @@ func fileCopy(flagSrc, flagDest *string, wg *sync.WaitGroup) {
 
 	srcReader := bufio.NewReader(srcFile)
 
-	// if dest dir already have a same name file, abort
-	fileInfoList, err := ioutil.ReadDir(destDir)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	for _, file := range fileInfoList {
-		if file.Name() == srcBase {
-			fmt.Printf("There's also a file named %v in %v\nAre you want to overwrite it?(y/n): ", srcBase, destDir)
-			fmt.Scanln(&opt)
-			opt = strings.TrimSpace(strings.ToLower(opt))
-			if opt == "y" {
-				destFile, err := os.Create(destAbs)
-				fmt.Printf("destFile type: %T, value: %v: \n", destFile, destFile)
-				defer destFile.Close()
-				if err != nil {
-					log.Fatal(err)
-				}
-				srcReader.WriteTo(destFile)
-				return
-			} else if opt == "n" {
-				fmt.Println("Nothing changed.")
-				return
-			} else {
-				fmt.Println("Nothing changed.")
-				return
-			}
-
-		}
-	}
 	destFile, err := os.Create(destAbs)
 	fmt.Printf("destFile type: %T, value: %v: \n", destFile, destFile)
 	defer destFile.Close()
