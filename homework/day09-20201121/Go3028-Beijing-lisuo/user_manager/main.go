@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/htgolang/htgolang-20200919/tree/master/homework/day08-20201114/Go3028-Beijing-lisuo/user_management_proj/cmd/funcs"
-	"github.com/htgolang/htgolang-20200919/tree/master/homework/day08-20201114/Go3028-Beijing-lisuo/user_management_proj/define"
-	"github.com/htgolang/htgolang-20200919/tree/master/homework/day08-20201114/Go3028-Beijing-lisuo/user_management_proj/utils"
+	"github.com/htgolang/htgolang-20200919/tree/master/homework/day09-20201121/Go3028-Beijing-lisuo/user_manager/cmd/funcs"
+	"github.com/htgolang/htgolang-20200919/tree/master/homework/day09-20201121/Go3028-Beijing-lisuo/user_manager/define"
+	"github.com/htgolang/htgolang-20200919/tree/master/homework/day09-20201121/Go3028-Beijing-lisuo/user_manager/utils"
 )
 
 func main() {

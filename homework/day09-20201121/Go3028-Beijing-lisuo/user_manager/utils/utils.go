@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/htgolang/htgolang-20200919/tree/master/homework/day08-20201114/Go3028-Beijing-lisuo/user_management_proj/define"
+	"github.com/htgolang/htgolang-20200919/tree/master/homework/day09-20201121/Go3028-Beijing-lisuo/user_manager/define"
 )
 
 // DateCheck make sure the input date is formatted

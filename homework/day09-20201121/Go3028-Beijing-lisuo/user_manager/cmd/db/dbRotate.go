@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/htgolang/htgolang-20200919/tree/master/homework/day08-20201114/Go3028-Beijing-lisuo/user_management_proj/utils"
+	"github.com/htgolang/htgolang-20200919/tree/master/homework/day09-20201121/Go3028-Beijing-lisuo/user_manager/utils"
 )
 
 // Rotate do the rotate things
