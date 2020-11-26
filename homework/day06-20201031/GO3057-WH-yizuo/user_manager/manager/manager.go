@@ -25,7 +25,7 @@ func Run() {
 	// 帮助信息
 	utils.View()
 	// 用户登录系统，如果登录失败则打印错误信息并推出。
-	if ! controllers.UserLoginAuth() {
+	if !controllers.UserLoginAuth() {
 		fmt.Println("密码错误次数超过三次，已退出。Bay~，")
 		return
 	}
@@ -37,7 +37,9 @@ func Run() {
 			fmt.Println("保存用户数据并退出！")
 			break
 		}
+		// fmt.Println(text)
 		if action, ok := routers[strings.ToLower(text)]; !ok {
+			// fmt.Println(action, ok)
 			fmt.Println("指令错误")
 		} else {
 			action()

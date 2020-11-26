@@ -8,6 +8,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"strings"
 	"sync"
 )
 
@@ -50,20 +51,15 @@ func main() {
 		fmt.Println("walkedDirs: ", walkedDirs)
 		fmt.Println("walkedFiles: ", walkedFiles)
 
-		// TODO
-		// there are multi dirs, not only deepest
-		// should save all the dir to a []string
-		// if not same dir, then os.MkdirAll
-
 		for _, file := range walkedFiles {
-			wg.Add(1)
 			makedDir, err := makeDir(file, *flagDest)
 			if err != nil {
 				fmt.Println(err)
 				return
 			}
 			fmt.Printf("copying file: %v to: %v\n", file, makedDir)
-			go fileCopy(&file, &makedDir, wg)
+			wg.Add(1)
+			fileCopy(&file, &makedDir, wg)
 		}
 		wg.Wait()
 		return
@@ -152,45 +148,45 @@ func listFiles(dir string) ([]string, error) {
 }
 
 // file copy op
-func fileCopy(flagSrc, flagDest *string, wg *sync.WaitGroup) {
-	//var opt string
-	srcAbs, _ := filepath.Abs(*flagSrc)
-	destAbs, _ := filepath.Abs(*flagDest)
-	destAbsInfo, errDestAbs := os.Stat(destAbs)
-	//srcBase := filepath.Base(srcAbs)
-	destBase = filepath.Base(destAbs)
-	destDir = filepath.Dir(destAbs)
+func fileCopy(fileToCopy, destDir *string, wg *sync.WaitGroup) {
 
-	// if user not specify a file in src, prompt error
-	_, err := os.Stat(srcAbs)
-	if os.IsNotExist(err) {
-		log.Fatal(err)
-		return
-	}
-	// if the dest not contains the file name, then join
-	// the file name in src to dest dir
-	func(fi os.FileInfo, e error, srcAbs, destAbs *string) {
-		// if user not specify the file name in dest, make it happen
-		if e != nil {
-			log.Fatal(e)
-		} else if fi.IsDir() {
-			(*destAbs) = filepath.Join((*destAbs), filepath.Base(*srcAbs))
-			destDir = filepath.Dir(*destAbs)
-			destBase = filepath.Base(*destAbs)
-		}
-	}(destAbsInfo, errDestAbs, &srcAbs, &destAbs)
-
+	var opt string
 	// file copy op
-	srcFile, err := os.Open(srcAbs)
+	srcFile, err := os.Open(*fileToCopy)
 	if err != nil {
 		log.Fatal(err)
 	}
-	//fmt.Println("srcFile: ", srcFile)
+	fmt.Println("srcFile: ", srcFile)
 	defer srcFile.Close()
 
 	srcReader := bufio.NewReader(srcFile)
 
-	destFile, err := os.Create(destAbs)
+	destFileToCreate := filepath.Join(*destDir, filepath.Base(*fileToCopy))
+	if isDir(destFileToCreate) == 0 {
+		fmt.Printf("There is a file named %v, overwrite it(y/n)?\n> ", destFileToCreate)
+		fmt.Scanln(&opt)
+		opt = strings.TrimSpace(strings.ToLower(opt))
+		if opt == "y" {
+			destFile, err := os.Create(destFileToCreate)
+			fmt.Printf("destFile type: %T, value: %v: \n", destFile, destFile)
+			defer destFile.Close()
+			if err != nil {
+				log.Fatal(err)
+			}
+			srcReader.WriteTo(destFile)
+			wg.Done()
+			return
+		} else if opt == "n" {
+			fmt.Println("Nothing changed.")
+			wg.Done()
+			return
+		} else {
+			fmt.Println("Nothing changed.")
+			wg.Done()
+			return
+		}
+	}
+	destFile, err := os.Create(destFileToCreate)
 	fmt.Printf("destFile type: %T, value: %v: \n", destFile, destFile)
 	defer destFile.Close()
 	if err != nil {

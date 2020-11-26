@@ -6,7 +6,7 @@ import (
 
 	"github.com/olekukonko/tablewriter"
 
-	"github.com/htgolang/htgolang-20200919/tree/master/homework/day07-20201107/Go3028-Beijing-lisuo/user_management_proj/define"
+	"github.com/htgolang/htgolang-20200919/tree/master/homework/day08-20201114/Go3028-Beijing-lisuo/user_management_proj/define"
 )
 
 // ShowUser show a user based on ID
