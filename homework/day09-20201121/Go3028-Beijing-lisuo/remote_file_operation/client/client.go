@@ -5,8 +5,10 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"net"
 	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 )
@@ -18,9 +20,10 @@ file:
 */
 
 var (
-	addr        = "suosuoli.cn:8889"
-	defaultPath = "/tmp/"
-	headLen     = 5
+	addr         = "suosuoli.cn:8889"
+	defaultPath  = "/tmp/"
+	headLen      = 5
+	downloadPath = "/tmp/down/"
 )
 
 type CommandBody struct {
@@ -42,7 +45,7 @@ func main() {
 		panic(err)
 	}
 
-	cmd := CommandBody{"ls", "/", "tmpfile.tail", 0}
+	cmd := CommandBody{"get", "/", "tmpfile.tail", 0}
 	WriteHeadLen(conn, cmd)
 	WriteHeadBody(conn, cmd)
 	if cmd.Cmd == "put" {
@@ -50,7 +53,8 @@ func main() {
 	}
 	resB := ReadHeadBody(conn)
 	fmt.Println("resB: ", resB)
-	HandleLS(conn, &resB)
+	//HandleLS(conn, &resB)
+	HandleGET(conn, &cmd, &resB)
 	conn.Close()
 
 	//	}
@@ -64,6 +68,7 @@ func Input(s string) string {
 	return strings.TrimSpace(scanner.Text())
 }
 
+// =========== protocol ===========
 func WriteHeadLen(c net.Conn, cmd CommandBody) {
 	bt, err := json.Marshal(cmd)
 	if err != nil {
@@ -121,16 +126,45 @@ func ReadHeadBody(c net.Conn) ResponseBody {
 	return response
 }
 
+// =========== data transfer ===========
 func HandleLS(c net.Conn, cmd *ResponseBody) {
-	// read cmd's result
 	res := ReadHeadBody(c)
-	headLen := res.FileSize
-	fmt.Println("file list len: ", headLen)
+	fileListLen := res.FileSize
+	fmt.Println("file list len: ", fileListLen)
 
-	var buf = make([]byte, headLen)
-	_, errr := c.Read(buf)
-	if errr != nil {
-		panic(errr)
+	var buf = make([]byte, fileListLen)
+	_, err := c.Read(buf)
+	if err != nil {
+		panic(err)
 	}
 	fmt.Println(string(buf))
+}
+
+func HandleGET(c net.Conn, cmd *CommandBody, res *ResponseBody) {
+	WriteHeadLen(c, *cmd)
+	WriteHeadBody(c, *cmd)
+	responseB := ReadHeadBody(c)
+	fileSize := responseB.FileSize
+	var buf = make([]byte, fileSize)
+	_, err := c.Read(buf)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("file name: %v\n", responseB.FileName)
+	fmt.Printf("file content: %v\n", string(buf))
+	filePath := filepath.Join(cmd.FilePath, cmd.FileName)
+	if err := os.MkdirAll(filePath, os.ModeDir); err != nil {
+		panic(err)
+	}
+	f, errC := os.Create(filepath.Join(downloadPath, cmd.FileName))
+	if errC != nil {
+		panic(errC)
+	}
+
+	c.Read(buf)
+	errW := ioutil.WriteFile(f.Name(), buf, os.ModeDir)
+	if errW != nil {
+		panic(errW)
+	}
+
 }

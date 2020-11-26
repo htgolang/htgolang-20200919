@@ -9,7 +9,6 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
-	"strings"
 )
 
 /*
@@ -28,7 +27,7 @@ type ResponseBody struct {
 	Cmd      string `json:"cmd"`
 	FilePath string `json:"filePath"`
 	FileName string `json:"fileName"`
-	FileSize int    `json:"fileSize"`
+	FileSize int64  `json:"fileSize"`
 	Status   int    `json:"status"`
 }
 
@@ -67,21 +66,22 @@ func main() {
 	WriteHeadLen(conn, rec)
 	WriteHeadBody(conn, rec)
 
-	HandleLS(conn, &rec)
-	//
+	//HandleLS(conn, &rec)
+	HandleGET(conn, &rec)
 	conn.Close()
 	fmt.Println("Server closed.")
 
 }
 
-func Input(s string) string {
-	fmt.Print(s)
-	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Scan()
-	return strings.TrimSpace(scanner.Text())
-}
+//func Input(s string) string {
+//	fmt.Print(s)
+//	scanner := bufio.NewScanner(os.Stdin)
+//	scanner.Scan()
+//	return strings.TrimSpace(scanner.Text())
+//}
 
 // =========== protocol ===========
+// WriteHeadLen ...
 func WriteHeadLen(c net.Conn, response ResponseBody) {
 	bt, err := json.Marshal(response)
 	if err != nil {
@@ -97,6 +97,7 @@ func WriteHeadLen(c net.Conn, response ResponseBody) {
 	}
 }
 
+// WriteHeadBody send responseBody to client
 func WriteHeadBody(c net.Conn, resBody ResponseBody) {
 	b, errMar := json.Marshal(resBody)
 	if errMar != nil {
@@ -107,9 +108,9 @@ func WriteHeadBody(c net.Conn, resBody ResponseBody) {
 		c.Close()
 		panic(errW)
 	}
-
 }
 
+// ReadHeadLen Do not use alone, read json head len from client
 func ReadHeadLen(c net.Conn) int {
 	var buf = make([]byte, contentLenStr)
 	_, errRead := c.Read(buf)
@@ -124,6 +125,7 @@ func ReadHeadLen(c net.Conn) int {
 	return len
 }
 
+// ReadHeadBody read json body from client
 func ReadHeadBody(c net.Conn) ResponseBody {
 	conLen := ReadHeadLen(c)
 	var d = make([]byte, conLen)
@@ -143,20 +145,7 @@ func ReadHeadBody(c net.Conn) ResponseBody {
 }
 
 // =========== data transfer ===========
-func ListFiles(cmd *ResponseBody, path string) []string {
-	var files []string
-	if cmd.Cmd == "ls" {
-		var err error
-		_, files, err = walkReturnDirSlice(path)
-		if err != nil {
-			panic(err)
-		}
-	} else {
-		return files
-	}
-	return files
-}
-
+// HandleLS send fileList to client
 func HandleLS(c net.Conn, cmd *ResponseBody) {
 	if cmd.Cmd == "ls" {
 		var files []string
@@ -169,13 +158,70 @@ func HandleLS(c net.Conn, cmd *ResponseBody) {
 		files = ListFiles(cmd, path)
 		fileListToWrite := []byte(fmt.Sprintf("Files are: \n%v\n", files))
 		len := len(fileListToWrite)
-		cmd.FileSize = len
+		cmd.FileSize = int64(len)
 		cmd.Status = 200
 		WriteHeadLen(c, *cmd)
 		WriteHeadBody(c, *cmd)
 		fmt.Println("len: ", len)
 		c.Write([]byte(fmt.Sprintf("Files are: \n%v\n", files)))
 	}
+}
+
+// HandleGET tell client file size and then send file content
+func HandleGET(c net.Conn, res *ResponseBody) {
+	//ReadHeadLen(c)
+	response := ReadHeadBody(c)
+	var filePath string
+	if response.Cmd == "get" && response.FileName != "" {
+		if response.FilePath == "/" {
+			filePath = filepath.Join(servPath, response.FileName)
+			response.FilePath = servPath
+		} else {
+			filePath = filepath.Join(response.FilePath, response.FileName)
+		}
+	} else {
+		filePath = ""
+		response.Status = 404
+		WriteHeadLen(c, response)
+		WriteHeadBody(c, response)
+		c.Close()
+		return
+	}
+	fileInfo, err := os.Stat(filePath)
+	if err != nil {
+		panic(err)
+	}
+	fileLen := fileInfo.Size()
+	response.FileSize = fileLen
+	response.Status = 200
+	WriteHeadLen(c, response)
+	WriteHeadBody(c, response)
+	f, err := os.Open(filePath)
+	if err != nil {
+		panic(err)
+	}
+	var buf = make([]byte, fileLen)
+	reader := bufio.NewReader(f)
+	reader.Read(buf)
+	c.Write(buf)
+	c.Close()
+
+}
+
+// =========== tools ===========
+// ListFiles list files in a dir recursively
+func ListFiles(cmd *ResponseBody, path string) []string {
+	var files []string
+	if cmd.Cmd == "ls" {
+		var err error
+		_, files, err = walkReturnDirSlice(path)
+		if err != nil {
+			panic(err)
+		}
+	} else {
+		return files
+	}
+	return files
 }
 
 // return walked dirs slice and walked files slice
