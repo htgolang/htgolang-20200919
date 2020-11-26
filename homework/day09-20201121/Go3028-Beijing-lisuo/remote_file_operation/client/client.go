@@ -11,17 +11,23 @@ import (
 	"strings"
 )
 
+/*
+cmds: ls, put, get, rm
+path: /tmp/xxx
+file:
+*/
+
 var (
 	addr        = "suosuoli.cn:8889"
 	defaultPath = "/tmp/"
-
-	contentLenStr = 5
+	headLen     = 5
 )
 
 type CommandBody struct {
 	Cmd      string `json:"cmd"`
 	FilePath string `json:"filePath"`
 	FileName string `json:"fileName"`
+	FileSize int    `json:"fileSize"`
 }
 
 type ResponseBody struct {
@@ -36,19 +42,15 @@ func main() {
 		panic(err)
 	}
 
-	cmd := CommandBody{"ls", "/tmp/", "server.log"}
-	WriteContentLen(conn, cmd)
-	WriteCmdBody(conn, cmd)
-	resB := ReadResponseBody(conn)
-	fmt.Println("resB: ", resB)
-
-	// read cmd's result
-	var buf = make([]byte, 200)
-	_, errr := conn.Read(buf)
-	if errr != nil {
-		panic(errr)
+	cmd := CommandBody{"ls", "/", "tmpfile.tail", 0}
+	WriteHeadLen(conn, cmd)
+	WriteHeadBody(conn, cmd)
+	if cmd.Cmd == "put" {
+		// conn.Write(filepath.Join(cmd.FilePath, cmd.FileName))
 	}
-	fmt.Println("list: ", string(buf))
+	resB := ReadHeadBody(conn)
+	fmt.Println("resB: ", resB)
+	HandleLS(conn, &resB)
 	conn.Close()
 
 	//	}
@@ -62,7 +64,22 @@ func Input(s string) string {
 	return strings.TrimSpace(scanner.Text())
 }
 
-func WriteCmdBody(c net.Conn, cmdBody CommandBody) {
+func WriteHeadLen(c net.Conn, cmd CommandBody) {
+	bt, err := json.Marshal(cmd)
+	if err != nil {
+		c.Close()
+		panic(err)
+	}
+	contentLen := len(string(bt))
+	lenStr := fmt.Sprintf("%05d", contentLen)
+	_, errW := c.Write([]byte(lenStr))
+	if errW != nil {
+		c.Close()
+		panic(errW)
+	}
+}
+
+func WriteHeadBody(c net.Conn, cmdBody CommandBody) {
 	b, _ := json.Marshal(cmdBody)
 	_, errW := c.Write(b)
 	if errW != nil {
@@ -72,8 +89,22 @@ func WriteCmdBody(c net.Conn, cmdBody CommandBody) {
 
 }
 
-func ReadResponseBody(c net.Conn) ResponseBody {
-	conLen := ReadContentLen(c)
+func ReadHeadLen(c net.Conn) int {
+	var buf = make([]byte, headLen)
+	_, errRead := c.Read(buf)
+	if errRead != nil {
+		c.Close()
+		panic(errRead)
+	}
+	len, err := strconv.Atoi(string(buf))
+	if err != nil {
+		panic(err)
+	}
+	return len
+}
+
+func ReadHeadBody(c net.Conn) ResponseBody {
+	conLen := ReadHeadLen(c)
 	var d = make([]byte, conLen)
 	buf := bytes.NewBuffer(d)
 	_, errR := c.Read(buf.Bytes())
@@ -90,31 +121,16 @@ func ReadResponseBody(c net.Conn) ResponseBody {
 	return response
 }
 
-func WriteContentLen(c net.Conn, cmd CommandBody) {
-	bt, err := json.Marshal(cmd)
-	if err != nil {
-		c.Close()
-		panic(err)
-	}
-	contentLen := len(string(bt))
-	lenStr := fmt.Sprintf("%05d", contentLen)
-	_, errW := c.Write([]byte(lenStr))
-	if errW != nil {
-		c.Close()
-		panic(errW)
-	}
-}
+func HandleLS(c net.Conn, cmd *ResponseBody) {
+	// read cmd's result
+	res := ReadHeadBody(c)
+	headLen := res.FileSize
+	fmt.Println("file list len: ", headLen)
 
-func ReadContentLen(c net.Conn) int {
-	var buf = make([]byte, contentLenStr)
-	_, errRead := c.Read(buf)
-	if errRead != nil {
-		c.Close()
-		panic(errRead)
+	var buf = make([]byte, headLen)
+	_, errr := c.Read(buf)
+	if errr != nil {
+		panic(errr)
 	}
-	len, err := strconv.Atoi(string(buf))
-	if err != nil {
-		panic(err)
-	}
-	return len
+	fmt.Println(string(buf))
 }

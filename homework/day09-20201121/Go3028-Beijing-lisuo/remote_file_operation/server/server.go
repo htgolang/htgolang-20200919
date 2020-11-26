@@ -20,7 +20,7 @@ file:
 
 var (
 	addr          = ":8889"
-	servPath      = "/tmp/"
+	servPath      = "/opt/tmp/"
 	contentLenStr = 5
 )
 
@@ -28,6 +28,7 @@ type ResponseBody struct {
 	Cmd      string `json:"cmd"`
 	FilePath string `json:"filePath"`
 	FileName string `json:"fileName"`
+	FileSize int    `json:"fileSize"`
 	Status   int    `json:"status"`
 }
 
@@ -44,15 +45,30 @@ func main() {
 		panic(err)
 	}
 
-	rec := ReadCmdBody(conn)
-	fmt.Println("rec: ", rec)
-	rec.Status = 200
-	WriteContentLen(conn, rec)
-	WriteRespondBody(conn, rec)
+	rec := ReadHeadBody(conn)
+	fmt.Println("cmd from client: ", rec)
+	if rec.Cmd == "put" {
+		// HandlePUT()
+		// make([]byte, rec.FileSize)
+		// conn.Read()
+	}
+	if rec.Cmd == "ls" {
+		// HandleLS()
+		// ListFiles(filepath.Join(rec.FilePath, rec.FileName))
+		// or ListFiles("/tmp/")
+	}
+	if rec.Cmd == "get" {
+		// HandleGET()
+	}
+	if rec.Cmd == "rm" {
+		// HandleRM()
+	}
+	//rec.Status = 200
+	WriteHeadLen(conn, rec)
+	WriteHeadBody(conn, rec)
 
-	// parse cmdBody and decide to send file or list files
-	ListFiles(conn, rec)
-
+	HandleLS(conn, &rec)
+	//
 	conn.Close()
 	fmt.Println("Server closed.")
 
@@ -65,7 +81,8 @@ func Input(s string) string {
 	return strings.TrimSpace(scanner.Text())
 }
 
-func WriteContentLen(c net.Conn, response ResponseBody) {
+// =========== protocol ===========
+func WriteHeadLen(c net.Conn, response ResponseBody) {
 	bt, err := json.Marshal(response)
 	if err != nil {
 		c.Close()
@@ -80,7 +97,20 @@ func WriteContentLen(c net.Conn, response ResponseBody) {
 	}
 }
 
-func ReadContentLen(c net.Conn) int {
+func WriteHeadBody(c net.Conn, resBody ResponseBody) {
+	b, errMar := json.Marshal(resBody)
+	if errMar != nil {
+		panic(errMar)
+	}
+	_, errW := c.Write(b)
+	if errW != nil {
+		c.Close()
+		panic(errW)
+	}
+
+}
+
+func ReadHeadLen(c net.Conn) int {
 	var buf = make([]byte, contentLenStr)
 	_, errRead := c.Read(buf)
 	if errRead != nil {
@@ -94,8 +124,8 @@ func ReadContentLen(c net.Conn) int {
 	return len
 }
 
-func ReadCmdBody(c net.Conn) ResponseBody {
-	conLen := ReadContentLen(c)
+func ReadHeadBody(c net.Conn) ResponseBody {
+	conLen := ReadHeadLen(c)
 	var d = make([]byte, conLen)
 	buf := bytes.NewBuffer(d)
 	_, errR := c.Read(buf.Bytes())
@@ -112,21 +142,75 @@ func ReadCmdBody(c net.Conn) ResponseBody {
 	return resBeforeSend
 }
 
-func WriteRespondBody(c net.Conn, resBody ResponseBody) {
-	b, errMar := json.Marshal(resBody)
-	if errMar != nil {
-		panic(errMar)
+// =========== data transfer ===========
+func ListFiles(cmd *ResponseBody, path string) []string {
+	var files []string
+	if cmd.Cmd == "ls" {
+		var err error
+		_, files, err = walkReturnDirSlice(path)
+		if err != nil {
+			panic(err)
+		}
+	} else {
+		return files
 	}
-	_, errW := c.Write(b)
-	if errW != nil {
-		c.Close()
-		panic(errW)
-	}
-
+	return files
 }
 
-func ListFiles(c net.Conn, res ResponseBody) {
-	if res.Cmd == "ls" {
-		c.Write([]byte(fmt.Sprintf("file %v is here.\n", filepath.Join(res.FilePath, res.FileName))))
+func HandleLS(c net.Conn, cmd *ResponseBody) {
+	if cmd.Cmd == "ls" {
+		var files []string
+		var path = servPath
+		if cmd.FilePath != "/" && cmd.FileName != "" {
+			path = filepath.Join(cmd.FilePath, cmd.FileName)
+		} else {
+			path = filepath.Join(servPath, cmd.FileName)
+		}
+		files = ListFiles(cmd, path)
+		fileListToWrite := []byte(fmt.Sprintf("Files are: \n%v\n", files))
+		len := len(fileListToWrite)
+		cmd.FileSize = len
+		cmd.Status = 200
+		WriteHeadLen(c, *cmd)
+		WriteHeadBody(c, *cmd)
+		fmt.Println("len: ", len)
+		c.Write([]byte(fmt.Sprintf("Files are: \n%v\n", files)))
 	}
+}
+
+// return walked dirs slice and walked files slice
+func walkReturnDirSlice(dir string) ([]string, []string, error) {
+	var walkedFiles, walkedDirs []string
+	err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			fmt.Printf("prevent panic by handling failure accessing a path %q: %v\n", path, err)
+			return err
+		}
+		if isDir(path) == 1 {
+			walkedDirs = append(walkedDirs, path)
+		} else if isDir(path) == 0 {
+			walkedFiles = append(walkedFiles, path)
+		}
+		return nil
+	})
+
+	if err != nil {
+		return []string{}, []string{}, err
+	}
+
+	return walkedDirs, walkedFiles, nil
+}
+
+// dir return 1, file return 0, not exist return -1
+func isDir(file string) int {
+	f, err := os.Stat(file)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return -1
+		}
+	}
+	if f.IsDir() {
+		return 1
+	}
+	return 0
 }
