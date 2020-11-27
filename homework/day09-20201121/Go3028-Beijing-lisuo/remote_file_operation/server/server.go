@@ -44,7 +44,7 @@ func main() {
 		panic(err)
 	}
 
-	rec := ReadHeadBody(conn)
+	rec := ReadHead(conn)
 	fmt.Println("cmd from client: ", rec)
 	if rec.Cmd == "put" {
 		// HandlePUT()
@@ -62,9 +62,9 @@ func main() {
 	if rec.Cmd == "rm" {
 		// HandleRM()
 	}
-	//rec.Status = 200
-	WriteHeadLen(conn, rec)
-	WriteHeadBody(conn, rec)
+	WriteHead(conn, rec)
+	//WriteHeadLen(conn, rec)
+	//WriteHeadBody(conn, rec)
 
 	//HandleLS(conn, &rec)
 	HandleGET(conn, &rec)
@@ -72,13 +72,6 @@ func main() {
 	fmt.Println("Server closed.")
 
 }
-
-//func Input(s string) string {
-//	fmt.Print(s)
-//	scanner := bufio.NewScanner(os.Stdin)
-//	scanner.Scan()
-//	return strings.TrimSpace(scanner.Text())
-//}
 
 // =========== protocol ===========
 // WriteHeadLen ...
@@ -95,6 +88,12 @@ func WriteHeadLen(c net.Conn, response ResponseBody) {
 		c.Close()
 		panic(errW)
 	}
+}
+
+// WriteHead wrap WriteHeadBody and WriteHeadLen
+func WriteHead(c net.Conn, resBody ResponseBody) {
+	WriteHeadLen(c, resBody)
+	WriteHeadBody(c, resBody)
 }
 
 // WriteHeadBody send responseBody to client
@@ -126,7 +125,7 @@ func ReadHeadLen(c net.Conn) int {
 }
 
 // ReadHeadBody read json body from client
-func ReadHeadBody(c net.Conn) ResponseBody {
+func ReadHead(c net.Conn) ResponseBody {
 	conLen := ReadHeadLen(c)
 	var d = make([]byte, conLen)
 	buf := bytes.NewBuffer(d)
@@ -170,7 +169,7 @@ func HandleLS(c net.Conn, cmd *ResponseBody) {
 // HandleGET tell client file size and then send file content
 func HandleGET(c net.Conn, res *ResponseBody) {
 	//ReadHeadLen(c)
-	response := ReadHeadBody(c)
+	response := ReadHead(c)
 	var filePath string
 	if response.Cmd == "get" && response.FileName != "" {
 		if response.FilePath == "/" {
@@ -182,8 +181,9 @@ func HandleGET(c net.Conn, res *ResponseBody) {
 	} else {
 		filePath = ""
 		response.Status = 404
-		WriteHeadLen(c, response)
-		WriteHeadBody(c, response)
+		WriteHead(c, response)
+		//WriteHeadLen(c, response)
+		//WriteHeadBody(c, response)
 		c.Close()
 		return
 	}
@@ -194,8 +194,9 @@ func HandleGET(c net.Conn, res *ResponseBody) {
 	fileLen := fileInfo.Size()
 	response.FileSize = fileLen
 	response.Status = 200
-	WriteHeadLen(c, response)
-	WriteHeadBody(c, response)
+	WriteHead(c, response)
+	//WriteHeadLen(c, response)
+	//WriteHeadBody(c, response)
 	f, err := os.Open(filePath)
 	if err != nil {
 		panic(err)

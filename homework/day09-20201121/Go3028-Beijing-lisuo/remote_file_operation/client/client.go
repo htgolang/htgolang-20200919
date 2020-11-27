@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bufio"
 	"bytes"
 	"encoding/json"
 	"fmt"
@@ -10,7 +9,6 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
-	"strings"
 )
 
 /*
@@ -61,14 +59,14 @@ func main() {
 	fmt.Println("Disconnected.")
 }
 
-func Input(s string) string {
-	fmt.Print(s)
-	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Scan()
-	return strings.TrimSpace(scanner.Text())
+// =========== protocol ===========
+// WriteHead wrap WriteHeadLen and WriteHeadBody
+func WriteHead(c net.Conn, cmd CommandBody) {
+	WriteHeadLen(c, cmd)
+	WriteHeadBody(c, cmd)
 }
 
-// =========== protocol ===========
+// WriteHeadLen send json head len to client
 func WriteHeadLen(c net.Conn, cmd CommandBody) {
 	bt, err := json.Marshal(cmd)
 	if err != nil {
@@ -84,6 +82,7 @@ func WriteHeadLen(c net.Conn, cmd CommandBody) {
 	}
 }
 
+// WriteHeadBody send json head to server
 func WriteHeadBody(c net.Conn, cmdBody CommandBody) {
 	b, _ := json.Marshal(cmdBody)
 	_, errW := c.Write(b)
@@ -94,7 +93,7 @@ func WriteHeadBody(c net.Conn, cmdBody CommandBody) {
 
 }
 
-func ReadHeadLen(c net.Conn) int {
+func readHeadLen(c net.Conn) int {
 	var buf = make([]byte, headLen)
 	_, errRead := c.Read(buf)
 	if errRead != nil {
@@ -108,8 +107,9 @@ func ReadHeadLen(c net.Conn) int {
 	return len
 }
 
+// ReadHeadBody read json response head from server
 func ReadHeadBody(c net.Conn) ResponseBody {
-	conLen := ReadHeadLen(c)
+	conLen := readHeadLen(c)
 	var d = make([]byte, conLen)
 	buf := bytes.NewBuffer(d)
 	_, errR := c.Read(buf.Bytes())
@@ -127,6 +127,7 @@ func ReadHeadBody(c net.Conn) ResponseBody {
 }
 
 // =========== data transfer ===========
+// HandleLS handles the ls command
 func HandleLS(c net.Conn, cmd *ResponseBody) {
 	res := ReadHeadBody(c)
 	fileListLen := res.FileSize
@@ -140,9 +141,11 @@ func HandleLS(c net.Conn, cmd *ResponseBody) {
 	fmt.Println(string(buf))
 }
 
+// HandleGET handles the get command
 func HandleGET(c net.Conn, cmd *CommandBody, res *ResponseBody) {
-	WriteHeadLen(c, *cmd)
-	WriteHeadBody(c, *cmd)
+	//WriteHeadLen(c, *cmd)
+	//WriteHeadBody(c, *cmd)
+	WriteHead(c, *cmd)
 	responseB := ReadHeadBody(c)
 	fileSize := responseB.FileSize
 	var buf = make([]byte, fileSize)
@@ -151,7 +154,7 @@ func HandleGET(c net.Conn, cmd *CommandBody, res *ResponseBody) {
 		panic(err)
 	}
 	fmt.Printf("file name: %v\n", responseB.FileName)
-	fmt.Printf("file content: %v\n", string(buf))
+	//fmt.Printf("file content: %v\n", string(buf))
 	filePath := filepath.Join(cmd.FilePath, cmd.FileName)
 	if err := os.MkdirAll(filePath, os.ModeDir); err != nil {
 		panic(err)
@@ -161,7 +164,7 @@ func HandleGET(c net.Conn, cmd *CommandBody, res *ResponseBody) {
 		panic(errC)
 	}
 
-	c.Read(buf)
+	//c.Read(buf)
 	errW := ioutil.WriteFile(f.Name(), buf, os.ModeDir)
 	if errW != nil {
 		panic(errW)
