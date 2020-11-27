@@ -3,6 +3,8 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"net"
@@ -22,8 +24,10 @@ var (
 	defaultPath  = "/tmp/"
 	headLen      = 5
 	downloadPath = "/tmp/down/"
+	cmdError     = 1
 )
 
+// CommandBody save command
 type CommandBody struct {
 	Cmd      string `json:"cmd"`
 	FilePath string `json:"filePath"`
@@ -31,6 +35,7 @@ type CommandBody struct {
 	FileSize int    `json:"fileSize"`
 }
 
+// ResponseBody wrap a status attribute
 type ResponseBody struct {
 	CommandBody
 	Status int `json:"status"`
@@ -38,21 +43,25 @@ type ResponseBody struct {
 
 func main() {
 	//for {
+	cmd := ParseCmd()
 	conn, err := net.Dial("tcp", addr)
 	if err != nil {
 		panic(err)
 	}
 
-	cmd := CommandBody{"get", "/", "tmpfile.tail", 0}
+	//cmd := CommandBody{"get", "/", "", 0}
 	WriteHeadLen(conn, cmd)
 	WriteHeadBody(conn, cmd)
 	if cmd.Cmd == "put" {
 		// conn.Write(filepath.Join(cmd.FilePath, cmd.FileName))
 	}
 	resB := ReadHeadBody(conn)
-	fmt.Println("resB: ", resB)
-	//HandleLS(conn, &resB)
-	HandleGET(conn, &cmd, &resB)
+	fmt.Printf("resB: %#v\n", resB)
+	HandleLS(conn, &resB)
+	rStatus := HandleGET(conn, &cmd, &resB)
+	if err := HandleError(rStatus); err != nil {
+		fmt.Println(err)
+	}
 	conn.Close()
 
 	//	}
@@ -60,6 +69,7 @@ func main() {
 }
 
 // =========== protocol ===========
+
 // WriteHead wrap WriteHeadLen and WriteHeadBody
 func WriteHead(c net.Conn, cmd CommandBody) {
 	WriteHeadLen(c, cmd)
@@ -127,6 +137,7 @@ func ReadHeadBody(c net.Conn) ResponseBody {
 }
 
 // =========== data transfer ===========
+
 // HandleLS handles the ls command
 func HandleLS(c net.Conn, cmd *ResponseBody) {
 	res := ReadHeadBody(c)
@@ -142,11 +153,14 @@ func HandleLS(c net.Conn, cmd *ResponseBody) {
 }
 
 // HandleGET handles the get command
-func HandleGET(c net.Conn, cmd *CommandBody, res *ResponseBody) {
+func HandleGET(c net.Conn, cmd *CommandBody, res *ResponseBody) int {
 	//WriteHeadLen(c, *cmd)
 	//WriteHeadBody(c, *cmd)
 	WriteHead(c, *cmd)
 	responseB := ReadHeadBody(c)
+	if responseB.Status != 200 {
+		return responseB.Status
+	}
 	fileSize := responseB.FileSize
 	var buf = make([]byte, fileSize)
 	_, err := c.Read(buf)
@@ -169,5 +183,47 @@ func HandleGET(c net.Conn, cmd *CommandBody, res *ResponseBody) {
 	if errW != nil {
 		panic(errW)
 	}
+	fmt.Printf("ResponseBody: %#v\n", responseB)
+	return responseB.Status
 
+}
+
+// =========== util ===========
+
+// ParseCmd parse user cmd and fill HeadBody
+func ParseCmd() CommandBody {
+	/*
+		type CommandBody struct {
+			Cmd      string `json:"cmd"`
+			FilePath string `json:"filePath"`
+			FileName string `json:"fileName"`
+			FileSize int    `json:"fileSize"`
+		}
+	*/
+	cmd := flag.String("cmd", "", "specify the file path")
+	filePath := flag.String("filepath", "/", "specify the file path")
+	fileName := flag.String("filename", "", "specify the file name")
+	flag.Parse()
+	if *cmd == "" {
+		fmt.Println(errors.New("must specify a command(--cmd)"))
+		defer os.Exit(cmdError)
+	}
+	cmdbody := CommandBody{
+		Cmd:      *cmd,
+		FilePath: *filePath,
+		FileName: *fileName,
+	}
+	return cmdbody
+}
+
+//HandleError handles the errors returned from server
+func HandleError(s int) error {
+	switch s {
+	case 404:
+		return errors.New("Server: can not find the file you asked")
+	case 500:
+		return errors.New("Server: server fault")
+	default:
+		return errors.New("Nodbody: something wrong")
+	}
 }

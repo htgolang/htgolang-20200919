@@ -23,6 +23,7 @@ var (
 	contentLenStr = 5
 )
 
+// ResponseBody save response head info
 type ResponseBody struct {
 	Cmd      string `json:"cmd"`
 	FilePath string `json:"filePath"`
@@ -36,7 +37,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("Server starts up, listenling: %s\n", addr)
+	fmt.Printf("Server starts up, listenling: %s\n", listener.Addr())
 
 	//for {
 	conn, err := listener.Accept()
@@ -45,7 +46,7 @@ func main() {
 	}
 
 	rec := ReadHead(conn)
-	fmt.Println("cmd from client: ", rec)
+	fmt.Printf("Head from client: %#v\n", rec)
 	if rec.Cmd == "put" {
 		// HandlePUT()
 		// make([]byte, rec.FileSize)
@@ -63,10 +64,7 @@ func main() {
 		// HandleRM()
 	}
 	WriteHead(conn, rec)
-	//WriteHeadLen(conn, rec)
-	//WriteHeadBody(conn, rec)
-
-	//HandleLS(conn, &rec)
+	HandleLS(conn, &rec)
 	HandleGET(conn, &rec)
 	conn.Close()
 	fmt.Println("Server closed.")
@@ -74,6 +72,7 @@ func main() {
 }
 
 // =========== protocol ===========
+
 // WriteHeadLen ...
 func WriteHeadLen(c net.Conn, response ResponseBody) {
 	bt, err := json.Marshal(response)
@@ -124,7 +123,7 @@ func ReadHeadLen(c net.Conn) int {
 	return len
 }
 
-// ReadHeadBody read json body from client
+// ReadHead read json body from client
 func ReadHead(c net.Conn) ResponseBody {
 	conLen := ReadHeadLen(c)
 	var d = make([]byte, conLen)
@@ -144,6 +143,7 @@ func ReadHead(c net.Conn) ResponseBody {
 }
 
 // =========== data transfer ===========
+
 // HandleLS send fileList to client
 func HandleLS(c net.Conn, cmd *ResponseBody) {
 	if cmd.Cmd == "ls" {
@@ -182,8 +182,6 @@ func HandleGET(c net.Conn, res *ResponseBody) {
 		filePath = ""
 		response.Status = 404
 		WriteHead(c, response)
-		//WriteHeadLen(c, response)
-		//WriteHeadBody(c, response)
 		c.Close()
 		return
 	}
@@ -195,8 +193,6 @@ func HandleGET(c net.Conn, res *ResponseBody) {
 	response.FileSize = fileLen
 	response.Status = 200
 	WriteHead(c, response)
-	//WriteHeadLen(c, response)
-	//WriteHeadBody(c, response)
 	f, err := os.Open(filePath)
 	if err != nil {
 		panic(err)
@@ -210,6 +206,7 @@ func HandleGET(c net.Conn, res *ResponseBody) {
 }
 
 // =========== tools ===========
+
 // ListFiles list files in a dir recursively
 func ListFiles(cmd *ResponseBody, path string) []string {
 	var files []string
