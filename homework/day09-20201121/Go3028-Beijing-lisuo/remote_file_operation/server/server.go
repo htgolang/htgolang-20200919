@@ -45,27 +45,27 @@ func main() {
 		panic(err)
 	}
 
-	rec := ReadHead(conn)
-	fmt.Printf("Head from client: %#v\n", rec)
-	if rec.Cmd == "put" {
-		// HandlePUT()
-		// make([]byte, rec.FileSize)
-		// conn.Read()
-	}
-	if rec.Cmd == "ls" {
-		// HandleLS()
-		// ListFiles(filepath.Join(rec.FilePath, rec.FileName))
-		// or ListFiles("/tmp/")
-	}
-	if rec.Cmd == "get" {
-		// HandleGET()
-	}
-	if rec.Cmd == "rm" {
-		// HandleRM()
-	}
-	WriteHead(conn, rec)
-	HandleLS(conn, &rec)
-	HandleGET(conn, &rec)
+	//rec := ReadHead(conn)
+	//fmt.Printf("Head from client: %#v\n", rec)
+	//if rec.Cmd == "put" {
+	//	// HandlePUT()
+	//	// make([]byte, rec.FileSize)
+	//	// conn.Read()
+	//}
+	//if rec.Cmd == "ls" {
+	//	// HandleLS()
+	//	// ListFiles(filepath.Join(rec.FilePath, rec.FileName))
+	//	// or ListFiles("/tmp/")
+	//}
+	//if rec.Cmd == "get" {
+	//	// HandleGET()
+	//}
+	//if rec.Cmd == "rm" {
+	//	// HandleRM()
+	//}
+	//WriteHead(conn, rec)
+	HandleLS(conn)
+	//HandleGET(conn, &rec)
 	conn.Close()
 	fmt.Println("Server closed.")
 
@@ -145,22 +145,27 @@ func ReadHead(c net.Conn) ResponseBody {
 // =========== data transfer ===========
 
 // HandleLS send fileList to client
-func HandleLS(c net.Conn, cmd *ResponseBody) {
-	if cmd.Cmd == "ls" {
+func HandleLS(c net.Conn) {
+	res := ReadHead(c)
+	if res.Cmd == "ls" {
 		var files []string
 		var path = servPath
-		if cmd.FilePath != "/" && cmd.FileName != "" {
-			path = filepath.Join(cmd.FilePath, cmd.FileName)
+		if res.FilePath != "/" && res.FileName != "" {
+			path = filepath.Join(res.FilePath, res.FileName)
 		} else {
-			path = filepath.Join(servPath, cmd.FileName)
+			path = filepath.Join(servPath, res.FileName)
 		}
-		files = ListFiles(cmd, path)
+		if isDir(path) == -1 {
+			res.Status = 404
+			WriteHead(c, res)
+			return
+		}
+		files = ListFiles(&res, path)
 		fileListToWrite := []byte(fmt.Sprintf("Files are: \n%v\n", files))
 		len := len(fileListToWrite)
-		cmd.FileSize = int64(len)
-		cmd.Status = 200
-		WriteHeadLen(c, *cmd)
-		WriteHeadBody(c, *cmd)
+		res.FileSize = int64(len)
+		res.Status = 200
+		WriteHead(c, res)
 		fmt.Println("len: ", len)
 		c.Write([]byte(fmt.Sprintf("Files are: \n%v\n", files)))
 	}

@@ -24,7 +24,6 @@ var (
 	defaultPath  = "/tmp/"
 	headLen      = 5
 	downloadPath = "/tmp/down/"
-	cmdError     = 1
 )
 
 // CommandBody save command
@@ -50,18 +49,18 @@ func main() {
 	}
 
 	//cmd := CommandBody{"get", "/", "", 0}
-	WriteHeadLen(conn, cmd)
-	WriteHeadBody(conn, cmd)
-	if cmd.Cmd == "put" {
-		// conn.Write(filepath.Join(cmd.FilePath, cmd.FileName))
-	}
-	resB := ReadHeadBody(conn)
-	fmt.Printf("resB: %#v\n", resB)
-	HandleLS(conn, &resB)
-	rStatus := HandleGET(conn, &cmd, &resB)
-	if err := HandleError(rStatus); err != nil {
-		fmt.Println(err)
-	}
+	//WriteHeadLen(conn, cmd)
+	//WriteHeadBody(conn, cmd)
+	////if cmd.Cmd == "put" {
+	////	// conn.Write(filepath.Join(cmd.FilePath, cmd.FileName))
+	////}
+	//resB := ReadHeadBody(conn)
+	//fmt.Printf("resB: %#v\n", resB)
+	HandleLS(conn, &cmd)
+	//rStatus := HandleGET(conn, &cmd, &resB)
+	//if err := HandleError(rStatus); err != nil {
+	//	fmt.Println(err)
+	//}
 	conn.Close()
 
 	//	}
@@ -139,9 +138,15 @@ func ReadHeadBody(c net.Conn) ResponseBody {
 // =========== data transfer ===========
 
 // HandleLS handles the ls command
-func HandleLS(c net.Conn, cmd *ResponseBody) {
-	res := ReadHeadBody(c)
-	fileListLen := res.FileSize
+func HandleLS(c net.Conn, cmd *CommandBody) {
+	WriteHead(c, *cmd)
+	response := ReadHeadBody(c)
+	if err := HandleError(response.Status); err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
+	fileListLen := response.FileSize
 	fmt.Println("file list len: ", fileListLen)
 
 	var buf = make([]byte, fileListLen)
@@ -206,7 +211,7 @@ func ParseCmd() CommandBody {
 	flag.Parse()
 	if *cmd == "" {
 		fmt.Println(errors.New("must specify a command(--cmd)"))
-		defer os.Exit(cmdError)
+		os.Exit(1)
 	}
 	cmdbody := CommandBody{
 		Cmd:      *cmd,
