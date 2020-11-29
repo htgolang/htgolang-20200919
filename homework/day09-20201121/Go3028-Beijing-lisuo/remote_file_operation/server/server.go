@@ -45,7 +45,7 @@ func main() {
 		panic(err)
 	}
 
-	//rec := ReadHead(conn)
+	rec := ReadHead(conn)
 	//fmt.Printf("Head from client: %#v\n", rec)
 	//if rec.Cmd == "put" {
 	//	// HandlePUT()
@@ -64,8 +64,12 @@ func main() {
 	//	// HandleRM()
 	//}
 	//WriteHead(conn, rec)
-	HandleLS(conn)
+	//HandleLS(conn)
 	//HandleGET(conn, &rec)
+	//HandlePUT(conn, &rec)
+	if rec.Cmd == "rm" {
+		HandleRM(conn, &rec)
+	}
 	conn.Close()
 	fmt.Println("Server closed.")
 
@@ -207,7 +211,51 @@ func HandleGET(c net.Conn, res *ResponseBody) {
 	reader.Read(buf)
 	c.Write(buf)
 	c.Close()
+}
 
+// HandlePUT handles put command
+func HandlePUT(c net.Conn, res *ResponseBody) {
+	resp := res
+	buf := make([]byte, resp.FileSize)
+	fmt.Println("fileSize: ", resp.FileSize)
+	filePath := ""
+	if isDir(resp.FilePath) == -1 {
+		if err := os.MkdirAll(resp.FilePath, os.ModeDir); err != nil {
+			resp.Status = 500
+			WriteHead(c, *resp)
+			panic(err)
+		}
+	} else {
+		filePath = filepath.Join(servPath, resp.FileName)
+	}
+	f, errC := os.OpenFile(filePath, os.O_CREATE|os.O_WRONLY, 0666)
+	if errC != nil {
+		resp.Status = 500
+		WriteHead(c, *resp)
+		panic(errC)
+	}
+	defer f.Close()
+	c.Read(buf)
+	_, err := f.Write(buf)
+	if err != nil {
+		resp.Status = 500
+		WriteHead(c, *resp)
+		panic(err)
+	}
+	WriteHead(c, *resp)
+}
+
+// HandleRM handles rm command
+func HandleRM(c net.Conn, res *ResponseBody) ResponseBody {
+	filePath := filepath.Join(res.FilePath, res.FileName)
+	err := os.Remove(filePath)
+	if err != nil {
+		res.Status = 500
+		WriteHead(c, *res)
+		panic(err)
+	}
+	WriteHead(c, *res)
+	return *res
 }
 
 // =========== tools ===========

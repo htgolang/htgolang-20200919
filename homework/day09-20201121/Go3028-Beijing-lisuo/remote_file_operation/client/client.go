@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"bytes"
 	"encoding/json"
 	"errors"
@@ -31,7 +32,7 @@ type CommandBody struct {
 	Cmd      string `json:"cmd"`
 	FilePath string `json:"filePath"`
 	FileName string `json:"fileName"`
-	FileSize int    `json:"fileSize"`
+	FileSize int64  `json:"fileSize"`
 }
 
 // ResponseBody wrap a status attribute
@@ -56,8 +57,13 @@ func main() {
 	////}
 	//resB := ReadHeadBody(conn)
 	//fmt.Printf("resB: %#v\n", resB)
-	HandleLS(conn, &cmd)
+	//HandleLS(conn, &cmd)
 	//rStatus := HandleGET(conn, &cmd, &resB)
+	//resB := HandlePUT(conn, &cmd)
+	//fmt.Printf("resB: %#v\n", resB)
+	resB := HandleRM(conn, &cmd)
+	fmt.Println("resB: ", resB)
+
 	//if err := HandleError(rStatus); err != nil {
 	//	fmt.Println(err)
 	//}
@@ -190,7 +196,33 @@ func HandleGET(c net.Conn, cmd *CommandBody, res *ResponseBody) int {
 	}
 	fmt.Printf("ResponseBody: %#v\n", responseB)
 	return responseB.Status
+}
 
+// HandlePUT handles put command
+func HandlePUT(c net.Conn, cmd *CommandBody) ResponseBody {
+	absFile := filepath.Join(cmd.FilePath, cmd.FileName)
+	f, err := os.Open(absFile)
+	if err != nil {
+		panic(err)
+	}
+	fStat, errS := os.Stat(absFile)
+	if errS != nil {
+		panic(errS)
+	}
+	cmd.FileSize = fStat.Size()
+	WriteHead(c, *cmd)
+	buf := make([]byte, cmd.FileSize)
+	reader := bufio.NewReader(f)
+	reader.Read(buf)
+	c.Write(buf)
+	return ReadHeadBody(c)
+
+}
+
+// HandleRM handles rm command
+func HandleRM(c net.Conn, cmd *CommandBody) ResponseBody {
+	WriteHead(c, *cmd)
+	return ReadHeadBody(c)
 }
 
 // =========== util ===========
