@@ -49,24 +49,22 @@ func main() {
 		panic(err)
 	}
 
-	//cmd := CommandBody{"get", "/", "", 0}
-	//WriteHeadLen(conn, cmd)
-	//WriteHeadBody(conn, cmd)
-	////if cmd.Cmd == "put" {
-	////	// conn.Write(filepath.Join(cmd.FilePath, cmd.FileName))
-	////}
-	//resB := ReadHeadBody(conn)
-	//fmt.Printf("resB: %#v\n", resB)
-	//HandleLS(conn, &cmd)
-	//rStatus := HandleGET(conn, &cmd, &resB)
-	//resB := HandlePUT(conn, &cmd)
-	//fmt.Printf("resB: %#v\n", resB)
-	resB := HandleRM(conn, &cmd)
-	fmt.Println("resB: ", resB)
+	switch cmd.Cmd {
+	case "ls":
+		HandleLS(conn, &cmd)
+	case "get":
+		rStatus := HandleGET(conn, &cmd)
+		if err := HandleError(rStatus); err != nil {
+			fmt.Println(err)
+		}
+	case "put":
+		resB := HandlePUT(conn, &cmd)
+		fmt.Printf("resB: %#v\n", resB)
+	case "rm":
+		resB := HandleRM(conn, &cmd)
+		fmt.Println("resB: ", resB)
+	}
 
-	//if err := HandleError(rStatus); err != nil {
-	//	fmt.Println(err)
-	//}
 	conn.Close()
 
 	//	}
@@ -145,6 +143,7 @@ func ReadHeadBody(c net.Conn) ResponseBody {
 
 // HandleLS handles the ls command
 func HandleLS(c net.Conn, cmd *CommandBody) {
+	fmt.Println("cmd: ", *cmd)
 	WriteHead(c, *cmd)
 	response := ReadHeadBody(c)
 	if err := HandleError(response.Status); err != nil {
@@ -164,9 +163,7 @@ func HandleLS(c net.Conn, cmd *CommandBody) {
 }
 
 // HandleGET handles the get command
-func HandleGET(c net.Conn, cmd *CommandBody, res *ResponseBody) int {
-	//WriteHeadLen(c, *cmd)
-	//WriteHeadBody(c, *cmd)
+func HandleGET(c net.Conn, cmd *CommandBody) int {
 	WriteHead(c, *cmd)
 	responseB := ReadHeadBody(c)
 	if responseB.Status != 200 {
@@ -180,10 +177,10 @@ func HandleGET(c net.Conn, cmd *CommandBody, res *ResponseBody) int {
 	}
 	fmt.Printf("file name: %v\n", responseB.FileName)
 	//fmt.Printf("file content: %v\n", string(buf))
-	filePath := filepath.Join(cmd.FilePath, cmd.FileName)
-	if err := os.MkdirAll(filePath, os.ModeDir); err != nil {
-		panic(err)
-	}
+	//filePath := filepath.Join(cmd.FilePath, cmd.FileName)
+	//if err := os.MkdirAll(cmd.FilePath, os.ModeDir); err != nil {
+	//	panic(err)
+	//}
 	f, errC := os.Create(filepath.Join(downloadPath, cmd.FileName))
 	if errC != nil {
 		panic(errC)
@@ -237,12 +234,13 @@ func ParseCmd() CommandBody {
 			FileSize int    `json:"fileSize"`
 		}
 	*/
-	cmd := flag.String("cmd", "", "specify the file path")
-	filePath := flag.String("filepath", "/", "specify the file path")
-	fileName := flag.String("filename", "", "specify the file name")
+	cmd := flag.String("c", "", "specify the command(ls,get,put,rm)")
+	filePath := flag.String("fp", "/", "specify the file path")
+	fileName := flag.String("fn", "", "specify the file name")
 	flag.Parse()
 	if *cmd == "" {
-		fmt.Println(errors.New("must specify a command(--cmd)"))
+		fmt.Println(errors.New("must specify a command(-c)"))
+		flag.Usage()
 		os.Exit(1)
 	}
 	cmdbody := CommandBody{
@@ -256,6 +254,8 @@ func ParseCmd() CommandBody {
 //HandleError handles the errors returned from server
 func HandleError(s int) error {
 	switch s {
+	case 200:
+		return nil
 	case 404:
 		return errors.New("Server: can not find the file you asked")
 	case 500:

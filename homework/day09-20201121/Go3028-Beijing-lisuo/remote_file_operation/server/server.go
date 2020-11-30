@@ -37,42 +37,28 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("Server starts up, listenling: %s\n", listener.Addr())
+	fmt.Printf("Server starts up, listening: %s\n", listener.Addr())
 
-	//for {
-	conn, err := listener.Accept()
-	if err != nil {
-		panic(err)
+	for {
+		conn, err := listener.Accept()
+		if err != nil {
+			panic(err)
+		}
+		rec := ReadHead(conn)
+		switch rec.Cmd {
+		case "ls":
+			HandleLS(conn, &rec)
+		case "get":
+			HandleGET(conn, &rec)
+		case "put":
+			HandlePUT(conn, &rec)
+		case "rm":
+			HandleRM(conn, &rec)
+		}
+
+		conn.Close()
+		fmt.Println("current connection closed.")
 	}
-
-	rec := ReadHead(conn)
-	//fmt.Printf("Head from client: %#v\n", rec)
-	//if rec.Cmd == "put" {
-	//	// HandlePUT()
-	//	// make([]byte, rec.FileSize)
-	//	// conn.Read()
-	//}
-	//if rec.Cmd == "ls" {
-	//	// HandleLS()
-	//	// ListFiles(filepath.Join(rec.FilePath, rec.FileName))
-	//	// or ListFiles("/tmp/")
-	//}
-	//if rec.Cmd == "get" {
-	//	// HandleGET()
-	//}
-	//if rec.Cmd == "rm" {
-	//	// HandleRM()
-	//}
-	//WriteHead(conn, rec)
-	//HandleLS(conn)
-	//HandleGET(conn, &rec)
-	//HandlePUT(conn, &rec)
-	if rec.Cmd == "rm" {
-		HandleRM(conn, &rec)
-	}
-	conn.Close()
-	fmt.Println("Server closed.")
-
 }
 
 // =========== protocol ===========
@@ -149,8 +135,7 @@ func ReadHead(c net.Conn) ResponseBody {
 // =========== data transfer ===========
 
 // HandleLS send fileList to client
-func HandleLS(c net.Conn) {
-	res := ReadHead(c)
+func HandleLS(c net.Conn, res *ResponseBody) {
 	if res.Cmd == "ls" {
 		var files []string
 		var path = servPath
@@ -161,15 +146,15 @@ func HandleLS(c net.Conn) {
 		}
 		if isDir(path) == -1 {
 			res.Status = 404
-			WriteHead(c, res)
+			WriteHead(c, *res)
 			return
 		}
-		files = ListFiles(&res, path)
+		files = ListFiles(res, path)
 		fileListToWrite := []byte(fmt.Sprintf("Files are: \n%v\n", files))
 		len := len(fileListToWrite)
-		res.FileSize = int64(len)
-		res.Status = 200
-		WriteHead(c, res)
+		(*res).FileSize = int64(len)
+		(*res).Status = 200
+		WriteHead(c, *res)
 		fmt.Println("len: ", len)
 		c.Write([]byte(fmt.Sprintf("Files are: \n%v\n", files)))
 	}
@@ -178,7 +163,8 @@ func HandleLS(c net.Conn) {
 // HandleGET tell client file size and then send file content
 func HandleGET(c net.Conn, res *ResponseBody) {
 	//ReadHeadLen(c)
-	response := ReadHead(c)
+	//response := ReadHead(c)
+	response := res
 	var filePath string
 	if response.Cmd == "get" && response.FileName != "" {
 		if response.FilePath == "/" {
@@ -190,7 +176,7 @@ func HandleGET(c net.Conn, res *ResponseBody) {
 	} else {
 		filePath = ""
 		response.Status = 404
-		WriteHead(c, response)
+		WriteHead(c, *response)
 		c.Close()
 		return
 	}
@@ -201,7 +187,7 @@ func HandleGET(c net.Conn, res *ResponseBody) {
 	fileLen := fileInfo.Size()
 	response.FileSize = fileLen
 	response.Status = 200
-	WriteHead(c, response)
+	WriteHead(c, *response)
 	f, err := os.Open(filePath)
 	if err != nil {
 		panic(err)
@@ -242,6 +228,7 @@ func HandlePUT(c net.Conn, res *ResponseBody) {
 		WriteHead(c, *resp)
 		panic(err)
 	}
+	resp.Status = 200
 	WriteHead(c, *resp)
 }
 
@@ -250,10 +237,11 @@ func HandleRM(c net.Conn, res *ResponseBody) ResponseBody {
 	filePath := filepath.Join(res.FilePath, res.FileName)
 	err := os.Remove(filePath)
 	if err != nil {
-		res.Status = 500
+		(*res).Status = 500
 		WriteHead(c, *res)
 		panic(err)
 	}
+	(*res).Status = 200
 	WriteHead(c, *res)
 	return *res
 }
