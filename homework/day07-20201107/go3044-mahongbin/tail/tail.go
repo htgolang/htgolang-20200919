@@ -58,7 +58,7 @@ func tail(lastNLines int, path string, follow bool) {
 			// 不加 -f 则退出循环
 			if !follow {
 				return
-			} // tail -f 则到文件EOF时不做操作，等待文件内容变化，新写入的
+			} // 加-f 则 读到文件EOF时不操作，等待文件内容变化
 			// fmt.Println("Lines: ", lineNum) // debug,定稿时必须去掉
 			time.Sleep(time.Second * 1) // 1秒延迟可以阻止 lineNum 自增太快，很有必要加！1秒以上的延迟会使得等待时间久
 		case nil:
