@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8" />
+		<title> Home </title>
+	</head>
+	<body style="background-color:rgb(175, 226, 255)">
+	    <h1> USER MANAGEMENT </h1>
+	    <p>A simple user management system.</p>
+	    <table border="2">
+            <thead>
+	        <tr>
+	            <td>ID</td>
+	            <td>Name</td>
+	            <td>Address</td>
+	            <td>Cell</td>
+	            <td>Born</td>
+	            <td>Passwd</td>
+	        </tr>
+        </thead>
+        <tbody>
+	        {{ range . }}
+	        <tr>
+	            <td>{{ .ID }}</td>
+	            <td>{{ .Name }}</td>
+	            <td>{{ .Address }}</td>
+	            <td>{{ .Cell }}</td>
+	            <td>{{ .Born }}</td>
+                <td>{{ .Passwd }}</td>
+                <td>
+                    <a href="/edit/?id={{ .ID }}">Edit</a>
+                </td>
+                <td>
+				    <form action="/delete/?id={{ .ID }}" method="POST">
+					<button type="submit" formmethod="post">Delete</button>
+					</form>
+                </td>
+            </tr>
+            {{ end }}
+        </tbody>
+        </table>
+        <h2><a href="/create/">Creat New User</a><h2>
+	</body>
+	
+</html>
