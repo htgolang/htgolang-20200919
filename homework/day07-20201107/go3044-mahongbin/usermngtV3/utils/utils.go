@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-//CallClear ...
+//CallClear 调用操作系统的clear清屏
 func CallClear() {
 	clear := make(map[string]func()) //Initialize it
 	clear["linux"] = func() {
@@ -51,4 +51,18 @@ func GenID(s []int) int {
 //PasswordEncrypt 传入明文密码,返回MD5密文
 func PasswordEncrypt(pas string) string {
 	return fmt.Sprintf("%X", md5.Sum([]byte(pas)))
+}
+
+//IsFileExist 判断文件路径是否存在,是否为目录
+func IsFileExist(path string) bool {
+	p, err := os.Stat(path)
+	if err != nil {
+		// fmt.Println(err)       //不存在,没权限等等
+		return os.IsExist(err) //err不为空时才有必要使用
+	}
+	if p.Mode().IsDir() {
+		fmt.Println("Attention!!", path, "Is DIR!!")
+		return false
+	}
+	return true
 }
