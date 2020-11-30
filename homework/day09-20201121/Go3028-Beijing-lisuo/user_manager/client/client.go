@@ -1,4 +1,4 @@
-package socket
+package main
 
 import (
 	"bytes"
@@ -10,82 +10,41 @@ import (
 
 const (
 	proto   = "tcp"
-	addr    = ":8081"
+	addr    = "127.0.0.1:8081"
 	headLen = 5
 )
 
-var helpMsg = `
-+-------+---------------------+
-|  CMD  |      Function       |
-+-------+---------------------+
-| help  | ShowHelp            |
-| add   | AddUser             |
-| show  | ShowCurrentUserList |
-| mod   | ModifyUser          |
-| del   | DelUser             |
-| get   | QueryUser           |
-+-------+---------------------+
-`
-
-// Head  represents operation and status
+// Head ...
 type Head struct {
+	// add, mod, show, get, del, help
 	Operation string
-	Message   string
-	Status    int
+	// id/name duplicate, phone number not a number, born time format fault
+	Message string
+	// noUser: 404
+	// error: 500 + Message: id/name duplicate, phone number not a number, born time format fault
+	// success: 200
+	Status int
 }
 
-/*
+func main() {
 
-+-------+---------------------+
-|  CMD  |      Function       |
-+-------+---------------------+
-| get   | QueryUser           |
-| h     | ShowHelp            |
-| show  | ShowCurrentUserList |
-| q     | utils.Quit          |
-| del   | DelUser             |
-| help  | ShowHelp            |
-| cls   | utils.ClearScreen   |
-| quit  | utils.Quit          |
-| mycmd | DoMap               |
-| rot   | Rotate              |
-| add   | AddUser             |
-| mod   | ModifyUser          |
-| save  | SaveUsers           |
-| Q     | utils.Quit          |
-| exit  | utils.Quit          |
-+-------+---------------------+
-
-*/
-
-// Server for remote user manager
-func Server() {
-	listener, err := net.Listen(proto, addr)
+	conn, err := net.Dial(proto, addr)
 	if err != nil {
 		panic(err)
 	}
-	conn, errA := listener.Accept()
-	if errA != nil {
-		panic(errA)
-	}
 
-	res := ReadHead(conn)
-	fmt.Println("Head: ", res)
-	if res.Operation == "help" {
-		res.Message = helpMsg
-		res.Status = 200
-		showClientHelp(conn, &res)
+	h := Head{
+		Operation: "help",
+		Message:   "request to add a user",
+		Status:    0,
 	}
-
+	WriteHead(conn, h)
+	if h.Operation == "help" {
+		h := ReadHead(conn)
+		fmt.Println("help: ", h.Message)
+	}
 	conn.Close()
-
 }
-
-func showClientHelp(c net.Conn, h *Head) {
-	WriteHead(c, *h)
-}
-
-// ============== protocol =============
 
 // WriteHead wrap WriteHeadLen and WriteHeadBody
 func WriteHead(c net.Conn, h Head) {
