@@ -6,6 +6,11 @@ import (
 	"fmt"
 	"net"
 	"strconv"
+	"time"
+
+	"github.com/htgolang/htgolang-20200919/tree/master/homework/day09-20201121/Go3028-Beijing-lisuo/user_manager/cmd/funcs"
+	"github.com/htgolang/htgolang-20200919/tree/master/homework/day09-20201121/Go3028-Beijing-lisuo/user_manager/define"
+	"github.com/htgolang/htgolang-20200919/tree/master/homework/day09-20201121/Go3028-Beijing-lisuo/user_manager/utils"
 )
 
 const (
@@ -29,9 +34,15 @@ var helpMsg = `
 
 // Head  represents operation and status
 type Head struct {
-	Operation string
-	Message   string
-	Status    int
+	Operation string    `json:"operation"`
+	Message   string    `json:"message"`
+	Status    int       `json:"status"`
+	ID        int64     `json:"id"`
+	Name      string    `json:"name"`
+	Address   string    `json:"address"`
+	Cell      string    `json:"cell"`
+	Born      time.Time `json:"born"`
+	Passwd    string    `json:"passwd"`
 }
 
 /*
@@ -71,10 +82,25 @@ func Server() {
 
 	res := ReadHead(conn)
 	fmt.Println("Head: ", res)
-	if res.Operation == "help" {
+
+	switch res.Operation {
+	case "help":
 		res.Message = helpMsg
 		res.Status = 200
 		showClientHelp(conn, &res)
+	case "add":
+		res = ReadHead(conn)
+		HandleAddUser(conn, &res)
+		fmt.Printf("user: %v added.\n", res.Name)
+	case "show":
+	case "mod":
+	case "del":
+	case "get":
+	default:
+		fmt.Println("something strange happened")
+		res.Message = "something strange happened"
+		res.Status = 500
+		WriteHead(conn, res)
 	}
 
 	conn.Close()
@@ -83,6 +109,10 @@ func Server() {
 
 func showClientHelp(c net.Conn, h *Head) {
 	WriteHead(c, *h)
+}
+
+func HandleAddUser(c net.Conn, h *Head) {
+	addUser(c, h)
 }
 
 // ============== protocol =============
@@ -150,4 +180,39 @@ func readHeadLen(c net.Conn) int {
 		panic(err)
 	}
 	return len
+}
+
+// ============ user op ===============
+func addUser(c net.Conn, h *Head) {
+	ul := &define.UserList
+	var uc define.User
+	var Name string
+	ID := funcs.GetMaxID(ul) + 1
+	Name = h.Name
+	user, err := funcs.NameFindUser(ul, Name)
+	// find the user name, so prompt reinput
+	if err == nil {
+		h.Message = "The person already exists: " + user.Name
+		WriteHead(c, *h)
+	} else if Name == "" {
+		h.Message = "damn fool, must specify a Name"
+		WriteHead(c, *h)
+	}
+	Cell := h.Cell
+	if !utils.JustDigits(Cell) {
+		h.Message = "Please input a real cell number"
+		WriteHead(c, *h)
+	}
+	Address := h.Address
+	Born := h.Born.Format("2006.01.02")
+	if err := utils.DateCheck(Born); err != nil {
+		h.Message = "Please input a legal born time[YYYY.MM.DD]: "
+		WriteHead(c, *h)
+	}
+	Passwd := h.Passwd
+	uc = funcs.NewUser(ID, Name, Cell, Address, Born, Passwd)
+	define.UserList = append(*ul, uc)
+	h.Status = 200
+	h.Message = "user: " + h.Name + " added."
+	WriteHead(c, *h)
 }

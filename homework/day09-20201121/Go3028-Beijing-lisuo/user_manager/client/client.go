@@ -1,11 +1,16 @@
 package main
 
 import (
+	"bufio"
 	"bytes"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"net"
+	"os"
 	"strconv"
+	"strings"
+	"time"
 )
 
 const (
@@ -14,16 +19,23 @@ const (
 	headLen = 5
 )
 
-// Head ...
+// Head  represents operation and status
 type Head struct {
 	// add, mod, show, get, del, help
-	Operation string
+	Operation string `json:"operation"`
 	// id/name duplicate, phone number not a number, born time format fault
-	Message string
+	// user's info
+	Message string `json:"message"`
 	// noUser: 404
 	// error: 500 + Message: id/name duplicate, phone number not a number, born time format fault
 	// success: 200
-	Status int
+	Status  int       `json:"status"`
+	ID      int64     `json:"id"`
+	Name    string    `json:"name"`
+	Address string    `json:"address"`
+	Cell    string    `json:"cell"`
+	Born    time.Time `json:"born"`
+	Passwd  string    `json:"passwd"`
 }
 
 func main() {
@@ -33,18 +45,75 @@ func main() {
 		panic(err)
 	}
 
-	h := Head{
-		Operation: "help",
-		Message:   "request to add a user",
-		Status:    0,
-	}
+	h := ParseHead(&Head{})
 	WriteHead(conn, h)
-	if h.Operation == "help" {
+	switch h.Operation {
+	case "help":
 		h := ReadHead(conn)
 		fmt.Println("help: ", h.Message)
+	case "add":
+		h = InputUser(&h)
+		WriteHead(conn, h)
+		h = ReadHead(conn)
+		fmt.Println("add return head: ", h)
+		// add user {ID, Name, Address, Cell, Born, Passwd}
+		// add
+		// input
+		// send
+	case "show":
+	case "mod":
+	case "del":
+	case "get":
+	default:
+		h := ReadHead(conn)
+		fmt.Printf("server says: %v, Status code: %v\n", h.Message, h.Status)
+		return
 	}
 	conn.Close()
 }
+
+// ============== cmd =============
+
+// ParseHead gen cmd
+func ParseHead(h *Head) Head {
+	op := flag.String("op", "help", "specify the command")
+	msg := flag.String("msg", "message", "specify message to server")
+	if len(os.Args) < 2 {
+		flag.Usage()
+		return *h
+	}
+	flag.Parse()
+	h.Operation = *op
+	h.Message = *msg
+	return *h
+}
+
+func InputUser(h *Head) Head {
+	fmt.Printf("ID: \n> ")
+	id, err := strconv.ParseInt(Read(), 10, 64)
+	if err != nil {
+		panic(err)
+	}
+	h.ID = id
+	fmt.Printf("Name: \n> ")
+	h.Name = Read()
+	fmt.Printf("Address: \n> ")
+	h.Address = Read()
+	fmt.Printf("Cell: \n> ")
+	h.Cell = Read()
+	fmt.Printf("Born: \n> ")
+	str := Read()
+	t, err := time.Parse("2006.01.02", str)
+	if err != nil {
+		panic(err)
+	}
+	h.Born = t
+	fmt.Printf("Passwd: \n> ")
+	h.Passwd = Read()
+	return *h
+}
+
+// ============== protocol =============
 
 // WriteHead wrap WriteHeadLen and WriteHeadBody
 func WriteHead(c net.Conn, h Head) {
@@ -109,4 +178,12 @@ func readHeadLen(c net.Conn) int {
 		panic(err)
 	}
 	return len
+}
+
+// Read read content from standard input
+func Read() string {
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan() // use `for scanner.Scan()` to keep reading
+	line := strings.TrimSpace(scanner.Text())
+	return line
 }
