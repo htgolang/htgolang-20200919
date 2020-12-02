@@ -1,11 +1,12 @@
 package userutils
 
 import (
-"github.com/olekukonko/tablewriter"
-"os"
+	"os"
+
+	"github.com/olekukonko/tablewriter"
 )
 
-func Showintable(header []string, data [][]string){
+func Showintable(header []string, data [][]string) {
 	table := tablewriter.NewWriter(os.Stdout)
 	table.SetHeader(header)
 	for _, v := range data {
