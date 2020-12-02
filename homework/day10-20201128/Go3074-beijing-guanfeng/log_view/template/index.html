@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>日志分析</title>
+</head>
+<body>
+<form action="/table" method="POST">
+    <label>选择查询的日志</label>
+    <select name="filename">
+        {{ range . }}
+        <option value={{.}}>{{.}}</option>
+        {{ end }}
+    </select> <br/>
+    <input type="submit" value="确认" /><br/>
+</form>
+
+
+<a href="/upload" >上传日志文件</a>
+</body>
+</html>

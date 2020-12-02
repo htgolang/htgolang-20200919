@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格</title>
+
+</head>
+<body>
+    <h1>IP请求次数TOP10</h1>
+        <form action="/table/" method="get">
+            <table>
+                <thead>
+                <tr>
+                    <th>IP</th>
+                    <th>请求次数</th>
+                </tr>>
+                </thead>
+                <tbody>
+                    {{ range . }}
+                    <tr>
+                        <td>{{ .IP }}</td>
+                        <td>{{ .Num }}</td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>>
+        </form>
+</body>
+</html>
