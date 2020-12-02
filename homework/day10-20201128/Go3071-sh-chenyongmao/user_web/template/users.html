@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>用户管理</title>
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <a href="/add/" type="button" class="btn btn-success">新增</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>用户名</th>
+                    <th>年龄</th>
+                    <th>地址</th>
+                    <th>性别</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ range . }}
+                    <tr>
+                        <td>{{ .Id }}</td>
+                        <td>{{ .Name }}</td>
+                        <td>{{ .Age }}</td>
+                        <td>{{ .Addr }}</td>
+                        <td>{{ if .Sex }}男{{ else }}女{{ end }}</td>
+                        <td>
+                            <a href="/delete/?id={{ .Id }}" type="button" class="btn btn-danger">删除</a>
+                            <a href="/update/?id={{ .Id }}" type="button" class="btn btn-info">修改</a>
+                        </td>
+                    </tr>
+                {{ end }}
+            </tbody>
+        </table>
+    </body>
+</html>
