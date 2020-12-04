@@ -1,0 +1,2 @@
+nginx 日志格式：    log_format main '$time_local $server_addr $remote_addr $status $upstream_response_time $request_method '
+                               '$server_protocol $uri $http_referer $body_bytes_sent "$http_user_agent"';  
