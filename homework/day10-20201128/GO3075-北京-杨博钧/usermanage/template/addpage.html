@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>新建用户</title>
+    </head>
+    <body>
+    <form action="/add/" method="post">
+        <label>姓名</label>
+        <input name="name" value="{{ .Name }}"/> {{ .NameError }} <br/>
+        <label>性别</label>
+        <input name="sex" type="radio" value="1" {{ .IsMale }} /> 男
+        <input name="sex" type="radio" value="0" {{ .IsFeMale }}/> 女 <br/>
+        <label>住址</label>
+        <textarea name="addr">{{ .Addr }}</textarea> <br/>
+        <label>电话号</label>
+        <input name="phone" value="{{ .Tel }}"/> <br/>
+        <label>生日</label>
+        <input name="birthday" value="{{ .Birthday }}"/> <br/>
+        <label>密码  </label>
+        <input name="password" type="password" value="{{ .Passwd }}"/> <br/>
+        <label>确认密码</label>
+        <input name="confirm" type="password" value=""/> {{ .PasswdError }} <br/>
+        <input type="submit" value="创建"/>
+    </form>
+    </body>
+</html>
