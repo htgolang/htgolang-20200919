@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>添加用户</title>
+    </head>
+    <body>
+        <form action="/add" method="POST">
+            {{ .Err }}
+            <div>
+                <label>用户名:<input type="text" name="name" value="{{ .Name }}"></label>
+            </div>
+            <div>
+                <label>密码:<input type="password" name="passwd" value="{{ .Passwd }}"></label>
+            </div>
+            <div>
+                <label>电话:<input type="text" name="tel" value="{{ .Tel }}"></label>
+            </div>
+            <div>
+                <label>地址:<input type="text" name="addr" value="{{ .Addr }}"></label>
+            </div>
+            <div>
+                生日 <input type="text" name="brithday" placeholder="2020/01/01" value="{{ .Brithday }}">
+            </div>
+            <input type="submit" value="submit">
+        </form>
+    </body>
+</html>

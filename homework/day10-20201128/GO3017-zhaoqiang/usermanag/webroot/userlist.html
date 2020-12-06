@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>用户信息列表</title>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>名字</th>
+                    <th>地址</th>
+                    <th>电话</th>
+                    <th>生日</th>
+                    <th>密码</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ range . }}
+                    <tr>
+                        <td>{{ .Name }}</td>
+                        <td>{{ .Addr }}</td>
+                        <td>{{ .Tel }}</td>
+                        <td>{{ .Brithday }}</td>
+                        <td>{{ .Passwd }}</td>
+                        <td>
+                            <a href="/modify?id={{ .ID }}">修改</a>
+                            <a href="/delete?id={{ .ID }}">删除</a>
+                        </td>
+                    </tr>
+                {{ end }}
+            </tbody>
+        </table>
+        <div class="add">
+            <a href="/add">添加用户</a>
+        </div>
+    </body>
+</html>

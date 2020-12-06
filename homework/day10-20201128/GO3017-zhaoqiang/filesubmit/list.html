@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>list</title> 
+    </head>
+    <body>
+        <table>
+            <tbody>
+                {{ range .IP }}
+                <tr>
+                    <td>{{ .Text }}</td>
+                    <td>{{ .Count }}</td>
+                </tr>
+                {{ end }}
+                {{ range .Code }}
+                <tr>
+                    <td>{{ .Text }}</td>
+                    <td>{{ .Count }}</td>
+                </tr>
+                {{ end }}
+            </tbody>
+        </table>
+    </body>
+</html>
