@@ -61,9 +61,9 @@ func DbToCsv() {
 		}
 
 		data = append(data, context)
-		w.WriteAll(data)
-	}
 
+	}
+	w.WriteAll(data)
 	w.Flush()
 }
 
