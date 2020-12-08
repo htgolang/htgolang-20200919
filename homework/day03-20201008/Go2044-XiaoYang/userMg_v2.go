@@ -26,7 +26,8 @@ func scanInput() (string, string, string) {
 }
 
 func wFile(filename string, userList []map[string]string) bool {
-	file, err := os.OpenFile(filename, os.O_CREATE|os.O_RDONLY|os.O_APPEND, os.ModePerm)
+	file, err := os.OpenFile(filename, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0777)
+	// file, err := os.OpenFile(filename, os.O_CREATE|os.O_RDONLY|os.O_APPEND, os.ModePerm)
 	if err != nil {
 		log.Fatal("file Error")
 		return false
