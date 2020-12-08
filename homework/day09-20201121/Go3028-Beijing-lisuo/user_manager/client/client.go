@@ -29,6 +29,7 @@ type Head struct {
 	// noUser: 404
 	// error: 500 + Message: id/name duplicate, phone number not a number, born time format fault
 	// success: 200
+	// ask: 101
 	Status  int       `json:"status"`
 	ID      int64     `json:"id"`
 	Name    string    `json:"name"`
@@ -40,22 +41,22 @@ type Head struct {
 
 func main() {
 
+	h := ParseHead(&Head{})
 	conn, err := net.Dial(proto, addr)
 	if err != nil {
 		panic(err)
 	}
 
-	h := ParseHead(&Head{})
-	WriteHead(conn, h)
+	WriteHead(conn, &h)
 	switch h.Operation {
 	case "help":
 		h := ReadHead(conn)
 		fmt.Println("help: ", h.Message)
 	case "add":
 		h = InputUser(&h)
-		WriteHead(conn, h)
+		WriteHead(conn, &h)
 		h = ReadHead(conn)
-		fmt.Println("add return head: ", h)
+		fmt.Println("add returned head: ", h)
 		// add user {ID, Name, Address, Cell, Born, Passwd}
 		// add
 		// input
@@ -63,10 +64,38 @@ func main() {
 	case "show":
 	case "mod":
 	case "del":
+		WriteHead(conn, &h)
+		h = ReadHead(conn)
+		if h.Status == 101 {
+			fmt.Printf("msg: %v\n", h.Message)
+			id := Read()
+			h.ID, err = strconv.ParseInt(id, 10, 64)
+			if err != nil {
+				panic(err)
+			}
+			WriteHead(conn, &h)
+			h = ReadHead(conn)
+			fmt.Printf("msg: %v\n", h.Message)
+			input := Read()
+			if input == "y" {
+				h.Message = "y"
+				WriteHead(conn, &h)
+				h = ReadHead(conn)
+				fmt.Println(h.Message)
+			} else if strings.ToLower(input) == "n" {
+				h.Message = "n"
+				WriteHead(conn, &h)
+				h = ReadHead(conn)
+				fmt.Println(h.Message)
+			}
+
+		}
+		fmt.Println("del returned head: ", h)
 	case "get":
 	default:
 		h := ReadHead(conn)
 		fmt.Printf("server says: %v, Status code: %v\n", h.Message, h.Status)
+		fmt.Println("Are you sure the command is one of: help/add/show/mod/del/get")
 		return
 	}
 	conn.Close()
@@ -78,6 +107,7 @@ func main() {
 func ParseHead(h *Head) Head {
 	op := flag.String("op", "help", "specify the command")
 	msg := flag.String("msg", "message", "specify message to server")
+	id := flag.Int64("id", 0, "specify the user id to del")
 	if len(os.Args) < 2 {
 		flag.Usage()
 		return *h
@@ -85,6 +115,7 @@ func ParseHead(h *Head) Head {
 	flag.Parse()
 	h.Operation = *op
 	h.Message = *msg
+	h.ID = *id
 	return *h
 }
 
@@ -116,13 +147,13 @@ func InputUser(h *Head) Head {
 // ============== protocol =============
 
 // WriteHead wrap WriteHeadLen and WriteHeadBody
-func WriteHead(c net.Conn, h Head) {
+func WriteHead(c net.Conn, h *Head) {
 	WriteHeadLen(c, h)
 	WriteHeadBody(c, h)
 }
 
 // WriteHeadLen send json head len to client
-func WriteHeadLen(c net.Conn, h Head) {
+func WriteHeadLen(c net.Conn, h *Head) {
 	bt, err := json.Marshal(h)
 	if err != nil {
 		c.Close()
@@ -138,7 +169,7 @@ func WriteHeadLen(c net.Conn, h Head) {
 }
 
 // WriteHeadBody send json head to server
-func WriteHeadBody(c net.Conn, h Head) {
+func WriteHeadBody(c net.Conn, h *Head) {
 	b, _ := json.Marshal(h)
 	_, errW := c.Write(b)
 	if errW != nil {

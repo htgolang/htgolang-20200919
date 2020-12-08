@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/htgolang/htgolang-20200919/tree/master/homework/day09-20201121/Go3028-Beijing-lisuo/user_manager/cmd/funcs"
@@ -20,16 +21,16 @@ const (
 )
 
 var helpMsg = `
-+-------+---------------------+
-|  CMD  |      Function       |
-+-------+---------------------+
-| help  | ShowHelp            |
-| add   | AddUser             |
-| show  | ShowCurrentUserList |
-| mod   | ModifyUser          |
-| del   | DelUser             |
-| get   | QueryUser           |
-+-------+---------------------+
++-------+-----------------------+
+|  CMD  |      Function         |
++-------+-----------------------+
+| help  | ShowHelp              |
+| add   | AddUser               |
+| show  | ShowCurrentUserList   |
+| mod   | ModifyUser            |
+| del   | DelUser (-id)         |
+| get   | QueryUser (-id/-name) |
++-------+-----------------------+
 `
 
 // Head  represents operation and status
@@ -95,6 +96,7 @@ func Server() {
 	case "show":
 	case "mod":
 	case "del":
+		removeUser(conn, &res)
 	case "get":
 	default:
 		fmt.Println("something strange happened")
@@ -215,4 +217,36 @@ func addUser(c net.Conn, h *Head) {
 	h.Status = 200
 	h.Message = "user: " + h.Name + " added."
 	WriteHead(c, *h)
+}
+
+func removeUser(c net.Conn, h *Head) {
+	var input string
+	h.Message = "Who you want to del(ID)?\n> "
+	h.Status = 101
+	WriteHead(c, *h)
+	//input = utils.GetField("Name")
+	*h = ReadHead(c)
+	user, _ := funcs.IDFindUser(&define.UserList, h.ID)
+	//ShowUser(id)
+	h.Name = user.Name
+	h.Message = "Find user: " + user.Name + ", Are you sure to delete %v?(y/n)\n> "
+	WriteHead(c, *h)
+	*h = ReadHead(c)
+
+	fmt.Println("h.Message: ", h.Message)
+	fmt.Println("h.ID: ", h.ID)
+	if strings.ToLower(h.Message) == "y" {
+		if err := funcs.IDDelUser(&define.UserList, h.ID); err != nil {
+			fmt.Println(err)
+			h.Message = fmt.Sprintf("%s", err)
+			WriteHead(c, *h)
+		} else {
+			h.Message = "deleted..........."
+			WriteHead(c, *h)
+		}
+	} else if strings.ToLower(input) == "n" {
+		h.Message = "Nothing changes."
+		WriteHead(c, *h)
+	}
+
 }
