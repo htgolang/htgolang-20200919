@@ -1,0 +1,897 @@
+2020/12/10 01:23:09 D:/go/src/usermanager_webdb/main.go:44: 启动完成...
+2020/12/10 01:37:49 D:/go/src/usermanager_webdb/main.go:44: 启动完成...
+2020/12/10 01:38:02 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56223: runtime error: invalid memory address or nil pointer dereference
+goroutine 34 [running]:
+net/http.(*conn).serve.func1(0xc000140000)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc00014a000)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00014e000, 0xc00014a000)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc00014e000, 0xc00014a000)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00014e000, 0xc00014a000)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0000f60d0, 0x8d4e60, 0xc00014e000, 0xc00014a000)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc000140000, 0x8d5620, 0xc000036540)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:38:02 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56222: runtime error: invalid memory address or nil pointer dereference
+goroutine 18 [running]:
+net/http.(*conn).serve.func1(0xc0000f80a0)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000110100)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00017e000, 0xc000110100)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc00017e000, 0xc000110100)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00017e000, 0xc000110100)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0000f60d0, 0x8d4e60, 0xc00017e000, 0xc000110100)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc0000f80a0, 0x8d5620, 0xc0000ea180)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:38:02 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56224: runtime error: invalid memory address or nil pointer dereference
+goroutine 10 [running]:
+net/http.(*conn).serve.func1(0xc00004cfa0)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc00014a200)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00014e0e0, 0xc00014a200)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc00014e0e0, 0xc00014a200)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00014e0e0, 0xc00014a200)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0000f60d0, 0x8d4e60, 0xc00014e0e0, 0xc00014a200)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00004cfa0, 0x8d5620, 0xc000036700)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:38:03 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56229: runtime error: invalid memory address or nil pointer dereference
+goroutine 37 [running]:
+net/http.(*conn).serve.func1(0xc000140140)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000168200)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00014e1c0, 0xc000168200)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc00014e1c0, 0xc000168200)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00014e1c0, 0xc000168200)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0000f60d0, 0x8d4e60, 0xc00014e1c0, 0xc000168200)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc000140140, 0x8d5620, 0xc000176100)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:38:03 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56228: runtime error: invalid memory address or nil pointer dereference
+goroutine 36 [running]:
+net/http.(*conn).serve.func1(0xc0001400a0)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000168100)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00014e2a0, 0xc000168100)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc00014e2a0, 0xc000168100)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00014e2a0, 0xc000168100)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0000f60d0, 0x8d4e60, 0xc00014e2a0, 0xc000168100)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc0001400a0, 0x8d5620, 0xc000176080)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:38:03 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56230: runtime error: invalid memory address or nil pointer dereference
+goroutine 14 [running]:
+net/http.(*conn).serve.func1(0xc00004d040)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc00014a600)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00014e380, 0xc00014a600)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc00014e380, 0xc00014a600)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00014e380, 0xc00014a600)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0000f60d0, 0x8d4e60, 0xc00014e380, 0xc00014a600)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00004d040, 0x8d5620, 0xc000036940)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:38:05 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56235: runtime error: invalid memory address or nil pointer dereference
+goroutine 39 [running]:
+net/http.(*conn).serve.func1(0xc000140280)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000168400)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00014e460, 0xc000168400)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc00014e460, 0xc000168400)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00014e460, 0xc000168400)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0000f60d0, 0x8d4e60, 0xc00014e460, 0xc000168400)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc000140280, 0x8d5620, 0xc000176300)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:38:05 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56234: runtime error: invalid memory address or nil pointer dereference
+goroutine 38 [running]:
+net/http.(*conn).serve.func1(0xc0001401e0)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000168300)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00014e540, 0xc000168300)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc00014e540, 0xc000168300)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00014e540, 0xc000168300)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0000f60d0, 0x8d4e60, 0xc00014e540, 0xc000168300)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc0001401e0, 0x8d5620, 0xc000176200)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:38:05 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56236: runtime error: invalid memory address or nil pointer dereference
+goroutine 40 [running]:
+net/http.(*conn).serve.func1(0xc000140320)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000168500)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00017e0e0, 0xc000168500)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc00017e0e0, 0xc000168500)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00017e0e0, 0xc000168500)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0000f60d0, 0x8d4e60, 0xc00017e0e0, 0xc000168500)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc000140320, 0x8d5620, 0xc000176400)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:38:10 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56246: runtime error: invalid memory address or nil pointer dereference
+goroutine 52 [running]:
+net/http.(*conn).serve.func1(0xc00004d180)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc00014ab00)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00017e1c0, 0xc00014ab00)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc00017e1c0, 0xc00014ab00)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00017e1c0, 0xc00014ab00)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0000f60d0, 0x8d4e60, 0xc00017e1c0, 0xc00014ab00)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00004d180, 0x8d5620, 0xc000036bc0)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:38:10 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56245: runtime error: invalid memory address or nil pointer dereference
+goroutine 51 [running]:
+net/http.(*conn).serve.func1(0xc00004d0e0)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc00014aa00)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00014e620, 0xc00014aa00)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc00014e620, 0xc00014aa00)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00014e620, 0xc00014aa00)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0000f60d0, 0x8d4e60, 0xc00014e620, 0xc00014aa00)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00004d0e0, 0x8d5620, 0xc000036b40)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:38:10 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56247: runtime error: invalid memory address or nil pointer dereference
+goroutine 19 [running]:
+net/http.(*conn).serve.func1(0xc0000f8140)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000110300)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc000246000, 0xc000110300)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc000246000, 0xc000110300)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc000246000, 0xc000110300)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0000f60d0, 0x8d4e60, 0xc000246000, 0xc000110300)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc0000f8140, 0x8d5620, 0xc0000ea280)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:38:40 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56281: runtime error: invalid memory address or nil pointer dereference
+goroutine 55 [running]:
+net/http.(*conn).serve.func1(0xc00004d2c0)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc00014ad00)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc0002460e0, 0xc00014ad00)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc0002460e0, 0xc00014ad00)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc0002460e0, 0xc00014ad00)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0000f60d0, 0x8d4e60, 0xc0002460e0, 0xc00014ad00)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00004d2c0, 0x8d5620, 0xc000036d40)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:38:40 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56280: runtime error: invalid memory address or nil pointer dereference
+goroutine 54 [running]:
+net/http.(*conn).serve.func1(0xc00004d220)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc00014ac00)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00014e700, 0xc00014ac00)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc00014e700, 0xc00014ac00)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00014e700, 0xc00014ac00)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0000f60d0, 0x8d4e60, 0xc00014e700, 0xc00014ac00)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00004d220, 0x8d5620, 0xc000036cc0)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:38:40 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56282: runtime error: invalid memory address or nil pointer dereference
+goroutine 57 [running]:
+net/http.(*conn).serve.func1(0xc00004d360)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc00014ae00)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00014e7e0, 0xc00014ae00)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc00014e7e0, 0xc00014ae00)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00014e7e0, 0xc00014ae00)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0000f60d0, 0x8d4e60, 0xc00014e7e0, 0xc00014ae00)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00004d360, 0x8d5620, 0xc000036e80)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:39:40 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56339: runtime error: invalid memory address or nil pointer dereference
+goroutine 23 [running]:
+net/http.(*conn).serve.func1(0xc0000f8280)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000110500)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00014e8c0, 0xc000110500)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc00014e8c0, 0xc000110500)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00014e8c0, 0xc000110500)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0000f60d0, 0x8d4e60, 0xc00014e8c0, 0xc000110500)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc0000f8280, 0x8d5620, 0xc0000ea540)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:39:40 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56338: runtime error: invalid memory address or nil pointer dereference
+goroutine 22 [running]:
+net/http.(*conn).serve.func1(0xc0000f81e0)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000110400)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc0002461c0, 0xc000110400)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc0002461c0, 0xc000110400)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc0002461c0, 0xc000110400)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0000f60d0, 0x8d4e60, 0xc0002461c0, 0xc000110400)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc0000f81e0, 0x8d5620, 0xc0000ea4c0)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:39:40 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56340: runtime error: invalid memory address or nil pointer dereference
+goroutine 25 [running]:
+net/http.(*conn).serve.func1(0xc0000f8320)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000110600)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc0002462a0, 0xc000110600)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc0002462a0, 0xc000110600)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc0002462a0, 0xc000110600)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0000f60d0, 0x8d4e60, 0xc0002462a0, 0xc000110600)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc0000f8320, 0x8d5620, 0xc0000ea640)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:39:50 D:/go/src/usermanager_webdb/main.go:44: 启动完成...
+2020/12/10 01:40:03 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56371: runtime error: invalid memory address or nil pointer dereference
+goroutine 35 [running]:
+net/http.(*conn).serve.func1(0xc00010c140)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000124200)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc000158000, 0xc000124200)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc000158000, 0xc000124200)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc000158000, 0xc000124200)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d4e60, 0xc000158000, 0xc000124200)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00010c140, 0x8d5620, 0xc0000fe280)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:40:03 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56370: runtime error: invalid memory address or nil pointer dereference
+goroutine 34 [running]:
+net/http.(*conn).serve.func1(0xc00010c0a0)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000124100)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00017e000, 0xc000124100)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc00017e000, 0xc000124100)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00017e000, 0xc000124100)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d4e60, 0xc00017e000, 0xc000124100)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00010c0a0, 0x8d5620, 0xc0000fe180)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:40:03 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56373: runtime error: invalid memory address or nil pointer dereference
+goroutine 5 [running]:
+net/http.(*conn).serve.func1(0xc0001a6000)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc00014c100)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x12a
+usermanager_webdb/controller.Index(0x8d4e60, 0xc0001580e0, 0xc00014c100)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e60, 0xc0001580e0, 0xc00014c100)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc0001580e0, 0xc00014c100)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d4e60, 0xc0001580e0, 0xc00014c100)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc0001a6000, 0x8d5620, 0xc000036140)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:41:58 D:/go/src/usermanager_webdb/main.go:44: 启动完成...
+2020/12/10 01:44:28 D:/go/src/usermanager_webdb/main.go:44: 启动完成...
+2020/12/10 01:44:35 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56652: runtime error: invalid memory address or nil pointer dereference
+goroutine 35 [running]:
+net/http.(*conn).serve.func1(0xc00010c140)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000124200)
+	D:/go/src/usermanager_webdb/controller/logformat.go:11 +0x16d
+usermanager_webdb/controller.Index(0x8d4e80, 0xc000154000, 0xc000124200)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e80, 0xc000154000, 0xc000124200)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e80, 0xc000154000, 0xc000124200)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d4e80, 0xc000154000, 0xc000124200)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00010c140, 0x8d5640, 0xc0000fe280)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:44:35 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56651: runtime error: invalid memory address or nil pointer dereference
+goroutine 34 [running]:
+net/http.(*conn).serve.func1(0xc00010c0a0)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000124100)
+	D:/go/src/usermanager_webdb/controller/logformat.go:11 +0x16d
+usermanager_webdb/controller.Index(0x8d4e80, 0xc0001540e0, 0xc000124100)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e80, 0xc0001540e0, 0xc000124100)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e80, 0xc0001540e0, 0xc000124100)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d4e80, 0xc0001540e0, 0xc000124100)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00010c0a0, 0x8d5640, 0xc0000fe180)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:44:35 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56653: runtime error: invalid memory address or nil pointer dereference
+goroutine 50 [running]:
+net/http.(*conn).serve.func1(0xc000184000)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc00019a000)
+	D:/go/src/usermanager_webdb/controller/logformat.go:11 +0x16d
+usermanager_webdb/controller.Index(0x8d4e80, 0xc0001b0000, 0xc00019a000)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e80, 0xc0001b0000, 0xc00019a000)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e80, 0xc0001b0000, 0xc00019a000)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d4e80, 0xc0001b0000, 0xc00019a000)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc000184000, 0x8d5640, 0xc000198040)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:44:36 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56657: runtime error: invalid memory address or nil pointer dereference
+goroutine 38 [running]:
+net/http.(*conn).serve.func1(0xc00010c1e0)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000124500)
+	D:/go/src/usermanager_webdb/controller/logformat.go:11 +0x16d
+usermanager_webdb/controller.Index(0x8d4e80, 0xc0001b00e0, 0xc000124500)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e80, 0xc0001b00e0, 0xc000124500)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e80, 0xc0001b00e0, 0xc000124500)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d4e80, 0xc0001b00e0, 0xc000124500)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00010c1e0, 0x8d5640, 0xc0000fe4c0)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:44:36 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56658: runtime error: invalid memory address or nil pointer dereference
+goroutine 39 [running]:
+net/http.(*conn).serve.func1(0xc00010c280)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000124600)
+	D:/go/src/usermanager_webdb/controller/logformat.go:11 +0x16d
+usermanager_webdb/controller.Index(0x8d4e80, 0xc0001b01c0, 0xc000124600)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e80, 0xc0001b01c0, 0xc000124600)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e80, 0xc0001b01c0, 0xc000124600)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d4e80, 0xc0001b01c0, 0xc000124600)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00010c280, 0x8d5640, 0xc0000fe540)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:44:36 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56659: runtime error: invalid memory address or nil pointer dereference
+goroutine 54 [running]:
+net/http.(*conn).serve.func1(0xc0001840a0)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc00019a400)
+	D:/go/src/usermanager_webdb/controller/logformat.go:11 +0x16d
+usermanager_webdb/controller.Index(0x8d4e80, 0xc0001b02a0, 0xc00019a400)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d40, 0x8d4e80, 0xc0001b02a0, 0xc00019a400)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e80, 0xc0001b02a0, 0xc00019a400)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d4e80, 0xc0001b02a0, 0xc00019a400)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc0001840a0, 0x8d5640, 0xc000198300)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:46:28 D:/go/src/usermanager_webdb/main.go:44: 启动完成...
+2020/12/10 01:46:31 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56773: runtime error: invalid memory address or nil pointer dereference
+goroutine 34 [running]:
+net/http.(*conn).serve.func1(0xc00010c0a0)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7dbee0, 0xb79cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.Index(0x8d5f20, 0xc000150000, 0xc000124100)
+	D:/go/src/usermanager_webdb/controller/index.go:16 +0x170
+net/http.HandlerFunc.ServeHTTP(0x865d40, 0x8d5f20, 0xc000150000, 0xc000124100)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb897a0, 0x8d5f20, 0xc000150000, 0xc000124100)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d5f20, 0xc000150000, 0xc000124100)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00010c0a0, 0x8d66e0, 0xc0000fe180)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:46:31 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56774: runtime error: invalid memory address or nil pointer dereference
+goroutine 36 [running]:
+net/http.(*conn).serve.func1(0xc00010c140)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7dbee0, 0xb79cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.Index(0x8d5f20, 0xc0001500e0, 0xc000124300)
+	D:/go/src/usermanager_webdb/controller/index.go:16 +0x170
+net/http.HandlerFunc.ServeHTTP(0x865d40, 0x8d5f20, 0xc0001500e0, 0xc000124300)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb897a0, 0x8d5f20, 0xc0001500e0, 0xc000124300)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d5f20, 0xc0001500e0, 0xc000124300)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00010c140, 0x8d66e0, 0xc0000fe300)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:46:31 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:56775: runtime error: invalid memory address or nil pointer dereference
+goroutine 38 [running]:
+net/http.(*conn).serve.func1(0xc00010c1e0)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7dbee0, 0xb79cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.Index(0x8d5f20, 0xc0001501c0, 0xc000124500)
+	D:/go/src/usermanager_webdb/controller/index.go:16 +0x170
+net/http.HandlerFunc.ServeHTTP(0x865d40, 0x8d5f20, 0xc0001501c0, 0xc000124500)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb897a0, 0x8d5f20, 0xc0001501c0, 0xc000124500)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d5f20, 0xc0001501c0, 0xc000124500)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00010c1e0, 0x8d66e0, 0xc0000fe400)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:47:41 D:/go/src/usermanager_webdb/main.go:44: 启动完成...
+2020/12/10 01:49:55 D:/go/src/usermanager_webdb/main.go:44: 启动完成...
+2020/12/10 01:51:35 D:/go/src/usermanager_webdb/main.go:44: 启动完成...
+2020/12/10 01:51:39 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:57161: runtime error: invalid memory address or nil pointer dereference
+goroutine 35 [running]:
+net/http.(*conn).serve.func1(0xc00010c140)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7dbee0, 0xb79cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.Index(0x8d5f40, 0xc00016a000, 0xc000124200)
+	D:/go/src/usermanager_webdb/controller/index.go:16 +0x191
+net/http.HandlerFunc.ServeHTTP(0x865d60, 0x8d5f40, 0xc00016a000, 0xc000124200)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb897a0, 0x8d5f40, 0xc00016a000, 0xc000124200)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d5f40, 0xc00016a000, 0xc000124200)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00010c140, 0x8d6700, 0xc0000fe280)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:51:39 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:57160: runtime error: invalid memory address or nil pointer dereference
+goroutine 34 [running]:
+net/http.(*conn).serve.func1(0xc00010c0a0)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7dbee0, 0xb79cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.Index(0x8d5f40, 0xc000194000, 0xc000124100)
+	D:/go/src/usermanager_webdb/controller/index.go:16 +0x191
+net/http.HandlerFunc.ServeHTTP(0x865d60, 0x8d5f40, 0xc000194000, 0xc000124100)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb897a0, 0x8d5f40, 0xc000194000, 0xc000124100)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d5f40, 0xc000194000, 0xc000124100)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00010c0a0, 0x8d6700, 0xc0000fe180)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:51:39 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:57162: runtime error: invalid memory address or nil pointer dereference
+goroutine 24 [running]:
+net/http.(*conn).serve.func1(0xc000053040)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7dbee0, 0xb79cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.Index(0x8d5f40, 0xc0001940e0, 0xc00018e100)
+	D:/go/src/usermanager_webdb/controller/index.go:16 +0x191
+net/http.HandlerFunc.ServeHTTP(0x865d60, 0x8d5f40, 0xc0001940e0, 0xc00018e100)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb897a0, 0x8d5f40, 0xc0001940e0, 0xc00018e100)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d5f40, 0xc0001940e0, 0xc00018e100)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc000053040, 0x8d6700, 0xc000054580)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:51:40 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:57169: runtime error: invalid memory address or nil pointer dereference
+goroutine 37 [running]:
+net/http.(*conn).serve.func1(0xc00010c280)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7dbee0, 0xb79cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.Index(0x8d5f40, 0xc0001941c0, 0xc000124400)
+	D:/go/src/usermanager_webdb/controller/index.go:16 +0x191
+net/http.HandlerFunc.ServeHTTP(0x865d60, 0x8d5f40, 0xc0001941c0, 0xc000124400)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb897a0, 0x8d5f40, 0xc0001941c0, 0xc000124400)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d5f40, 0xc0001941c0, 0xc000124400)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00010c280, 0x8d6700, 0xc0000fe4c0)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:51:40 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:57168: runtime error: invalid memory address or nil pointer dereference
+goroutine 36 [running]:
+net/http.(*conn).serve.func1(0xc00010c1e0)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7dbee0, 0xb79cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.Index(0x8d5f40, 0xc0001942a0, 0xc000124300)
+	D:/go/src/usermanager_webdb/controller/index.go:16 +0x191
+net/http.HandlerFunc.ServeHTTP(0x865d60, 0x8d5f40, 0xc0001942a0, 0xc000124300)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb897a0, 0x8d5f40, 0xc0001942a0, 0xc000124300)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d5f40, 0xc0001942a0, 0xc000124300)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00010c1e0, 0x8d6700, 0xc0000fe380)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:51:40 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:57170: runtime error: invalid memory address or nil pointer dereference
+goroutine 38 [running]:
+net/http.(*conn).serve.func1(0xc00010c320)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7dbee0, 0xb79cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.Index(0x8d5f40, 0xc0001ee000, 0xc000124500)
+	D:/go/src/usermanager_webdb/controller/index.go:16 +0x191
+net/http.HandlerFunc.ServeHTTP(0x865d60, 0x8d5f40, 0xc0001ee000, 0xc000124500)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb897a0, 0x8d5f40, 0xc0001ee000, 0xc000124500)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d5f40, 0xc0001ee000, 0xc000124500)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00010c320, 0x8d6700, 0xc0000fe600)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:51:45 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:57178: runtime error: invalid memory address or nil pointer dereference
+goroutine 28 [running]:
+net/http.(*conn).serve.func1(0xc0000530e0)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7dbee0, 0xb79cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.Index(0x8d5f40, 0xc0001ee0e0, 0xc00018e500)
+	D:/go/src/usermanager_webdb/controller/index.go:16 +0x191
+net/http.HandlerFunc.ServeHTTP(0x865d60, 0x8d5f40, 0xc0001ee0e0, 0xc00018e500)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb897a0, 0x8d5f40, 0xc0001ee0e0, 0xc00018e500)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d5f40, 0xc0001ee0e0, 0xc00018e500)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc0000530e0, 0x8d6700, 0xc000054780)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:51:45 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:57179: runtime error: invalid memory address or nil pointer dereference
+goroutine 29 [running]:
+net/http.(*conn).serve.func1(0xc000053180)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7dbee0, 0xb79cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.Index(0x8d5f40, 0xc000194380, 0xc00018e600)
+	D:/go/src/usermanager_webdb/controller/index.go:16 +0x191
+net/http.HandlerFunc.ServeHTTP(0x865d60, 0x8d5f40, 0xc000194380, 0xc00018e600)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb897a0, 0x8d5f40, 0xc000194380, 0xc00018e600)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d5f40, 0xc000194380, 0xc00018e600)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc000053180, 0x8d6700, 0xc000054800)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:51:45 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:57180: runtime error: invalid memory address or nil pointer dereference
+goroutine 31 [running]:
+net/http.(*conn).serve.func1(0xc000053220)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7dbee0, 0xb79cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.Index(0x8d5f40, 0xc000194460, 0xc00018e800)
+	D:/go/src/usermanager_webdb/controller/index.go:16 +0x191
+net/http.HandlerFunc.ServeHTTP(0x865d60, 0x8d5f40, 0xc000194460, 0xc00018e800)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb897a0, 0x8d5f40, 0xc000194460, 0xc00018e800)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00010a0d0, 0x8d5f40, 0xc000194460, 0xc00018e800)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc000053220, 0x8d6700, 0xc000054900)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:55:08 D:/go/src/usermanager_webdb/main.go:44: 启动完成...
+2020/12/10 01:55:17 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:57473: runtime error: invalid memory address or nil pointer dereference
+goroutine 5 [running]:
+net/http.(*conn).serve.func1(0xc000102140)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000110200)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x15d
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00013a000, 0xc000110200)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d50, 0x8d4e60, 0xc00013a000, 0xc000110200)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00013a000, 0xc000110200)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0001000d0, 0x8d4e60, 0xc00013a000, 0xc000110200)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc000102140, 0x8d5620, 0xc0000362c0)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:55:17 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:57472: runtime error: invalid memory address or nil pointer dereference
+goroutine 4 [running]:
+net/http.(*conn).serve.func1(0xc0001020a0)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000110100)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x15d
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00016e000, 0xc000110100)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d50, 0x8d4e60, 0xc00016e000, 0xc000110100)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00016e000, 0xc000110100)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0001000d0, 0x8d4e60, 0xc00016e000, 0xc000110100)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc0001020a0, 0x8d5620, 0xc0000361c0)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:55:17 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:57474: runtime error: invalid memory address or nil pointer dereference
+goroutine 35 [running]:
+net/http.(*conn).serve.func1(0xc0001a4000)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000154100)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x15d
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00016e0e0, 0xc000154100)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d50, 0x8d4e60, 0xc00016e0e0, 0xc000154100)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00016e0e0, 0xc000154100)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0001000d0, 0x8d4e60, 0xc00016e0e0, 0xc000154100)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc0001a4000, 0x8d5620, 0xc000164100)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:55:47 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:57509: runtime error: invalid memory address or nil pointer dereference
+goroutine 8 [running]:
+net/http.(*conn).serve.func1(0xc000102280)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000110500)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x15d
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00016e1c0, 0xc000110500)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d50, 0x8d4e60, 0xc00016e1c0, 0xc000110500)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00016e1c0, 0xc000110500)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0001000d0, 0x8d4e60, 0xc00016e1c0, 0xc000110500)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc000102280, 0x8d5620, 0xc000036500)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:55:47 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:57508: runtime error: invalid memory address or nil pointer dereference
+goroutine 7 [running]:
+net/http.(*conn).serve.func1(0xc0001021e0)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000110400)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x15d
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00016e2a0, 0xc000110400)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d50, 0x8d4e60, 0xc00016e2a0, 0xc000110400)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00016e2a0, 0xc000110400)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0001000d0, 0x8d4e60, 0xc00016e2a0, 0xc000110400)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc0001021e0, 0x8d5620, 0xc000036480)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:55:47 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:57510: runtime error: invalid memory address or nil pointer dereference
+goroutine 39 [running]:
+net/http.(*conn).serve.func1(0xc0001a40a0)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x7daee0, 0xb78cd0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+usermanager_webdb/controller.wlog(0xc000154500)
+	D:/go/src/usermanager_webdb/controller/logformat.go:10 +0x15d
+usermanager_webdb/controller.Index(0x8d4e60, 0xc00016e380, 0xc000154500)
+	D:/go/src/usermanager_webdb/controller/index.go:14 +0x47
+net/http.HandlerFunc.ServeHTTP(0x864d50, 0x8d4e60, 0xc00016e380, 0xc000154500)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xb887a0, 0x8d4e60, 0xc00016e380, 0xc000154500)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc0001000d0, 0x8d4e60, 0xc00016e380, 0xc000154500)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc0001a40a0, 0x8d5620, 0xc000164300)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2020/12/10 01:55:53 D:/go/src/usermanager_webdb/main.go:44: 启动完成...
+2020/12/10 01:55:57 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2020-12-10 01:55:57 127.0.0.1:57529 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2020/12/10 01:55:58 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2020-12-10 01:55:58 127.0.0.1:57529 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2020/12/10 01:56:16 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2020-12-10 01:56:16 127.0.0.1:57554 GET /add Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2020/12/10 01:56:16 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2020-12-10 01:56:16 127.0.0.1:57554 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2020/12/10 01:56:29 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2020-12-10 01:56:29 127.0.0.1:57575 POST /add Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2020/12/10 01:56:29 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2020-12-10 01:56:29 127.0.0.1:57575 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2020/12/10 01:56:29 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2020-12-10 01:56:29 127.0.0.1:57575 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2020/12/10 02:00:43 D:/go/src/usermanager_webdb/main.go:44: 启动完成...
+2020/12/10 02:00:45 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2020-12-10 02:00:45 127.0.0.1:57859 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2020/12/10 02:00:45 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2020-12-10 02:00:45 127.0.0.1:57859 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
