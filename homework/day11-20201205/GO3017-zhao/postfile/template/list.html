@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8">
+        <title>list</title>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>ip</th>
+                    <th>count</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ range .ip }}
+                <tr>
+                    <td>{{ index . 0 }}</td>
+                    <td>{{ index . 1 }}</td>
+                </tr>
+                {{ end }}
+            </tbody>
+            <table>
+                <thead>
+                    <tr>
+                        <th>code</th>
+                        <th>count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ range .code }}
+                    <tr>
+                        <td>{{ index . 0 }}</td>
+                        <td>{{ index . 1 }}</td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+        </table>
+        <a href="/">首页</a>
+    </body>
+</html>

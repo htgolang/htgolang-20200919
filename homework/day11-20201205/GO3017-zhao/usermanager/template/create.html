@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="utf8">
+    <head>
+        <meta charset="utf8">
+        <title>create user</title>
+    </head>
+    <body>
+        <form action="/create" method="POST">
+            <div>
+                用户名：<input type="text" name="name" placeholder="username">
+            </div>
+            <div>
+                密码：<input type="password" name="passwd" value="">
+            </div>
+            <div>
+                性别: 男 <input type="radio" name="sex" value="true" checked> 女 <input type="radio" name="sex" value="false">
+            </div>
+            <div>
+                address : <input type="text" name="addr">
+            </div>
+            <div>
+                tel: <input type="text" name="tel">
+            </div>
+            <div>
+                brithday: <input type="text" name="brithday" placeholder="2020-01-01">
+            </div>
+            <input type="submit" value="提交">
+        </form>
+    </body>
+</html>

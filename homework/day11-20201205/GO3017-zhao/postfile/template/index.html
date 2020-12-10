@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8">
+        <title>file_list</title>
+    </head>
+    <body>
+        <form action="/result" method="POST">
+            <div>文件 :
+                <select name="file">
+                    {{ range . }}
+                    <option value="{{ . }}">{{ . }}</option>
+                    {{ end }}
+                </select>
+            </div>
+            <input type="submit" value="query">
+        </form>
+    </body>
+</html>
