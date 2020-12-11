@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>文件查看</title>
+	<script type="text/javascript"> 
+		function setsubmit(){
+			var urlPath = "http://" + window.location.host + "/static/" + file.value;
+            window.location.assign(urlPath);
+		}
+	</script>
+</head>
+<body>
+	<a href="/upload"> 上传新文件</a> <br>
+	<a>文件列表</a> <br>
+	<select name="file" id="file">
+		{{ range . }}
+			<option value="{{ .Name }}">{{ .Name }}</option>			
+		{{ end }}				
+	</select>
+	<input type="button" id="btn" value="查看文件内容" onclick="setsubmit(this)" /> 
+
+</body>
+</html>

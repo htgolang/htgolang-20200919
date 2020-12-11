@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>修改</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script type="text/javascript">
+            function insert() {
+                $.ajax({
+                    type: "POST",
+                    url: "modify/" ,
+                    data: $('#form1').serialize(),
+                    dataType:"json", 
+                    success: function (respMsg) {  
+                        console.log(sex);      
+                        if (respMsg.result == "sucess") {
+                            console.log("111",respMsg.result,"success")
+                            //获取当前网址，如： http://127.0.0.1:8080/create/
+                            var curWwwPath=window.document.location.href;
+
+                            //获取主机地址之后的目录，如： create/
+                            var pathName=window.document.location.pathname;
+                            var pos=curWwwPath.indexOf(pathName);
+
+                            //获取主机地址，如： http://localhost:8083
+                            var localhostPaht=curWwwPath.substring(0,pos);
+                            var urlPath = "http://" + window.location.host
+                            window.location.assign(urlPath);
+                        } else {
+                            alert("姓名不可修改！");
+                        }
+                        
+                    },
+                    error : function(respMsg) {
+                        console.log(respMsg,"error")
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <h1>修改用户数据</h1>
+        <form action="/modify/" method="POST" id="form1">
+            <label>姓名</label><input name="name" value="{{ .Name }}" /><br/>
+            <label>性别</label>
+                <input name="sex" type="radio" value="1"  checked="checked"/> 男
+                <input name="sex" type="radio" value="0"  /> 女<br/>
+            <label>住址</label><input name="addr" value="{{ .Addr }}"><br/>
+            <input type="button" value="插入" onclick="insert()">
+        </form>       
+    </body>
+</html>

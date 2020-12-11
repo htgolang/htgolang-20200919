@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>新建</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script type="text/javascript">
+            function insert() {
+                $.ajax({
+                    type: "POST",
+                    url: "create/" ,
+                    data: $('#form1').serialize(),
+                    dataType:"json", 
+                    success: function (respMsg) {        
+                        if (respMsg.result == "sucess") {
+                            console.log("111",respMsg.result,"success")
+                            //获取当前网址，如： http://127.0.0.1:8080/create/
+                            var curWwwPath=window.document.location.href;
+
+                            //获取主机地址之后的目录，如： create/
+                            var pathName=window.document.location.pathname;
+                            var pos=curWwwPath.indexOf(pathName);
+
+                            //获取主机地址，如： http://localhost:8083
+                            var localhostPaht=curWwwPath.substring(0,pos);
+                            var urlPath = "http://" + window.location.host
+                            window.location.assign(urlPath);
+                        } else {
+                            alert("用户名重复！");
+                        }
+                        
+                    },
+                    error : function(respMsg) {
+                        console.log(respMsg,"error")
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <form action="##" method="POST" id="form1" target="postFrame">
+            <label>姓名</label><input name="name" value="" /><br/>
+            <label>性别</label>
+                <input name="sex" type="radio" value="1"  checked="checked"/> 男
+                <input name="sex" type="radio" value="0"  /> 女<br/>
+            <label>住址</label><textarea name="addr" value=""></textarea><br/>
+            <input type="button" value="插入" onclick="insert()">
+            <!-- <input type="submit" value="创建" /> -->
+            <!-- <iframe name="targetIfr" style="display:none"></iframe> -->
+        </form>       
+    </body>
+</html>
