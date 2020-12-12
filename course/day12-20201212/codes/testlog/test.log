@@ -1,0 +1,4 @@
+testlog2020/12/12 12:10:36 main.go:21: print
+testlog2020/12/12 12:10:36 main.go:22: println
+testlog2020/12/12 12:10:36 main.go:23: kk xxx
+testlog2020/12/12 12:10:36 main.go:30: print2

@@ -1,0 +1,48 @@
+create table tablename (
+    -- 列的信息 列名 列类型 列的描述,
+    -- 索引
+) engine=INNODB default charset utf8mb4;
+
+
+accesslog
+
+ip 2020-12-10:14:05:30 Method URL statusCode "userAgent"
+
+需要记录所有请求日志
+
+
+URL
+
+protocol://host:port/path?queryparams
+
+
+正则表达式: 匹配字符(验证)，查找字符
+数值类型: 0-9 \d
+    至少一个 [0-9]+
+    任意多个 [0-9]*
+    n,m位: [0-9]{n,m} {1,8}
+英文字母组成 a-zA-Z \w
+    由4-16位的大小写英文字母数字，下划线组成
+    [0-9a-zA-Z_]{4,16}
+
+
+处理器函数
+url
+GET 获取
+POST 创建/更新
+PUT
+DELETE
+
+restapi 一种风格web API
+resource/
+GET 获取所有资源
+POST 创建资源
+
+resource/1/
+GET 获取某个资源的详情
+DELETE 删除某个资源
+PUT 更新某个资源
+
+ResourceController
+
+resource/?:id/

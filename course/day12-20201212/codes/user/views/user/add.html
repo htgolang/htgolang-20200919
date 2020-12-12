@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Beego新建</title>
+    </head>
+    <body>
+        <form action="/user/add/" method="POST">
+            <label>姓名</label><input name="name" value="{{ .form.Name }}"/> <br/>
+            <label>性别</label>
+                <input name="sex" type="radio" value="1" checked="checked" /> 男
+                <input name="sex" type="radio" value="0" /> 女<br/>
+            <label>住址</label><textarea name="addr" ></textarea><br/>
+            <input type="submit" value="创建"/>
+        </form>
+    </body>
+</html>
