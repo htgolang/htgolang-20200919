@@ -1,18 +1,12 @@
 package funcs
 
 import (
-	"fmt"
-
 	"github.com/htgolang/htgolang-20200919/tree/master/homework/day10-20201128/Go3028-Beijing-lisuo/user_manager/define"
 	"github.com/htgolang/htgolang-20200919/tree/master/homework/day10-20201128/Go3028-Beijing-lisuo/user_manager/utils"
 )
 
 // input times
 const cnt int = 3
-
-func add() {
-	fmt.Println("heloo")
-}
 
 // AddUser ask input and add user
 func AddUser() {
