@@ -110,3 +110,7 @@ func (c *Usermanager) Query() {
 		c.TplName = "query.html"
 	}
 }
+
+func (c *Usermanager) Entrance()  {
+	c.Redirect("/usermanager/list",302)
+}

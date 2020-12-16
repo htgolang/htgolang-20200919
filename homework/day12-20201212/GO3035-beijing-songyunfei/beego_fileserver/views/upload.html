@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>上传文件</title>
+</head>
+<body>
+<form enctype="multipart/form-data" action="/loganalysis/upload" method="post">
+    <input type="file" name="uploadfile" />
+    <input type="submit" value="upload" />
+</form>
+<h3>日志文件</h3>
+<form action='/loganalysis/showweb' method="get"  id="myform">
+    <!--<select style="width: 200px" onchange="submitForm();" name="fileid">-->
+    <select style="width: 200px" , name="fileid">
+        {{range .fdata}}
+    <option value="{{.Id}}">{{.Filename}}</option>
+    {{end}}
+    </select>
+    <input type="submit" value="查看统计结果">
+    <!--<script>
+        function submitForm(){
+            var form = document.getElementById("myform");
+            form.submit();
+        }
+    </script>-->
+
+</form>
+
+<!-- <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        $.get('http://www.runoob.com/static/js/echarts_test_data.json', function (data) {
+            myChart.setOption({
+                series : [
+                    {
+                        name: '访问来源',
+                        type: 'pie',    // 设置图表类型为饼图
+                        radius: '55%',  // 饼图的半径，外半径为可视区尺寸（容器高宽中较小一项）的 55% 长度。
+                        data:data.data_pie
+                    }
+                ]
+            })
+        }, 'json')
+    </script> -->
+</body>
+</html>

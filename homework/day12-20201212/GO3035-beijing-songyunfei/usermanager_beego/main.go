@@ -51,7 +51,7 @@ func main() {
 	controller.Udb = mydb
 	log.Info("启动完成...")
 	beego.AutoRouter(&controller.Usermanager{})
-	beego.Router("/",&controller.Usermanager{},"*:List" )
+	beego.Router("/",&controller.Usermanager{},"*:Entrance" )
 	beego.Run(addr)
 
 }
