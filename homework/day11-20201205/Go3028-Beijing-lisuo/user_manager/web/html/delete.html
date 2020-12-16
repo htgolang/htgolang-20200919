@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-9"/>
+        <title>Delete a User</title>
+    </head>
+    <body>
+        <form action = "/?id={{ .ID }}" method="POST">
+            <h3>Delete page</h3>
+            <p>You sure delete user: {{ . }}?</p>
+            <input type="submit" value="Delete" />
+        </form>
+    <br/>
+        <a href="/">HOME</a>
+    </body>
+</html>

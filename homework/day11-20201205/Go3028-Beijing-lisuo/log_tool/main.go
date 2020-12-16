@@ -183,6 +183,7 @@ func NewResult() []Result {
 func GetList(file string) (ipList, statusLit, URLList []string, err error) {
 	f, err := os.Open(file)
 	if err != nil {
+		panic(err)
 		return nil, nil, nil, err
 	}
 	//io.Copy(os.Stdout, f)

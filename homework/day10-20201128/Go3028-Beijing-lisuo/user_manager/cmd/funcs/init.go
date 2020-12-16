@@ -3,12 +3,9 @@ package funcs
 import (
 	"crypto/md5"
 	"fmt"
-	"strings"
 	"time"
 
-	"github.com/htgolang/htgolang-20200919/tree/master/homework/day10-20201128/Go3028-Beijing-lisuo/user_manager/cmd/db"
 	"github.com/htgolang/htgolang-20200919/tree/master/homework/day10-20201128/Go3028-Beijing-lisuo/user_manager/define"
-	"github.com/htgolang/htgolang-20200919/tree/master/homework/day10-20201128/Go3028-Beijing-lisuo/user_manager/utils"
 )
 
 // NewUser make a new user contains user's info
@@ -28,29 +25,19 @@ func NewUser(id int64, name, cell, address, born, passwd string) define.User {
 
 // Init add some users to define.UserList
 func Init(ul *[]define.User) {
-	user0 := NewUser(0, "admin", "18811992299", "HaidianDistrict,BeijingXinParkRestaurants,BeixiaguanSubdistrict,HaidianDistrict,China",
-		time.Now().Format("2006.01.02"), "qwert")
+	user0 := NewUser(0, "admin", "18811992299", "HaidianDistrict,BeijingXinParkRestaurants,BeixiaguanSubdistrict,HaidianDistrict,China", time.Now().Format("2006.01.02"), "qwert")
+	user1 := NewUser(1, "jacky", "18811992343", "DeepValley,Venus", time.Now().Format("2006.01.02"), "qwert")
 	(*ul) = append((*ul), user0)
+	(*ul) = append((*ul), user1)
 
 	AddFunc()
-	db.ReadUsers()
+	//db.ReadUsers()
 
-	fmt.Print("There's a user admin in db, will you add yourself to db?(y/n)\n> ")
-	input := utils.Read()
-	if strings.ToLower(input) == "y" {
-		AddUser()
-	} else if strings.ToLower(input) == "n" {
-		fmt.Println("Nothing changes.")
-	}
-}
-
-// AddSomeOne may add a user when system init
-func AddSomeOne() {
-	fmt.Print("There's a user admin in db, will you add yourself to db?(y/n)\n> ")
-	input := utils.Read()
-	if strings.ToLower(input) == "y" {
-		AddUser()
-	} else if strings.ToLower(input) == "n" {
-		fmt.Println("Nothing changes.")
-	}
+	//fmt.Print("There's a user: admin in db, will you add yourself to db?(y/n)\n> ")
+	//input := utils.Read()
+	//if strings.ToLower(input) == "y" {
+	//	AddUser()
+	//} else if strings.ToLower(input) == "n" {
+	//	fmt.Println("Nothing changes.")
+	//}
 }

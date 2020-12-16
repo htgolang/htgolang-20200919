@@ -7,9 +7,11 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
+	"strings"
 	"text/template"
 	"time"
 
+	"github.com/htgolang/htgolang-20200919/tree/master/homework/day10-20201128/Go3028-Beijing-lisuo/user_manager/cmd/funcs"
 	"github.com/htgolang/htgolang-20200919/tree/master/homework/day10-20201128/Go3028-Beijing-lisuo/user_manager/define"
 )
 
@@ -34,39 +36,14 @@ func Serv() {
 		log.Fatal(err)
 	}
 	fmt.Println("current exec dir: ", dir)
-
-	users := define.UserList
-	//users := []*User{
-	//	{0, "jaccy", "Beijing", "18811738208", time.Now(), "sldfjasldfjaldhfgasdlkga"},
-	//	{1, "jack ma", "HangZhou", "18888888888", time.Now().Add(4 * time.Hour), "sdklfg adlfjkgaldffasldkfh"},
-	//	{2, "steve", "US", "18811733333", time.Now(), "dslfajflfjasdfjkasfl;fdfl;aj"},
-	//	{3, "spilman", "German", "18811118208", time.Now().Add(2 * time.Second), "sdklfasl;fjaflkkfa;fjaskl;"},
-	//	{4, "Jhon", "Venus", "18811722208", time.Now(), "klsdfjal;dfjasldfjsdklfj"},
-	//}
+	users := &define.UserList
+	fmt.Println("users: ", *users)
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		t, err := template.New("home").ParseFiles(abs + "/html/home.html")
 		if err != nil {
 			panic(err)
 		}
 		t.ExecuteTemplate(w, "home.html", users)
-
-		r.ParseForm()
-		fmt.Println("r.Form from /: ", r.Form)
-		var id int64
-		if len(r.Form["id"]) != 0 {
-			id, err = strconv.ParseInt(r.Form["id"][0], 10, 64)
-			if err != nil {
-				panic(err)
-			}
-		}
-		nUsers := make([]define.User, 0, len(users))
-		for _, user := range users {
-			if user.ID == id {
-				continue
-			}
-			nUsers = append(nUsers, user)
-		}
-		users = nUsers
 	})
 
 	http.HandleFunc("/create/", func(w http.ResponseWriter, r *http.Request) {
@@ -83,6 +60,16 @@ func Serv() {
 			if err != nil {
 				panic(err)
 			}
+			// error
+			if i == 0 {
+				t, err := template.New("error").ParseFiles(abs + "/html/error.html")
+				if err != nil {
+					panic(err)
+				}
+				t.ExecuteTemplate(w, "error.html", "id 0 belongs to admin......")
+				http.Redirect(w, r, "/", 302)
+				return
+			}
 			t, errP := time.Parse("2006.01.02", r.PostForm["born"][0])
 			if errP != nil {
 				panic(errP)
@@ -95,7 +82,7 @@ func Serv() {
 				Born:    t,
 				Passwd:  r.PostForm["passwd"][0],
 			}
-			users = append(users, userN)
+			*users = append(*users, userN)
 			// error
 			if r.PostForm["name"][0] == "jack" {
 				t, err := template.New("error").ParseFiles(abs + "/html/error.html")
@@ -111,6 +98,61 @@ func Serv() {
 	})
 
 	http.HandleFunc("/edit/", func(w http.ResponseWriter, r *http.Request) {
+		if r.Method == "GET" {
+			t, err := template.New("edit").ParseFiles(abs + "/html/edit.html")
+			if err != nil {
+				panic(err)
+			}
+			r.ParseForm()
+			fmt.Println("r.Form from /edit/:", r.Form)
+			i := r.Form["id"][0]
+			id, err := strconv.ParseInt(i, 10, 64)
+			if err != nil {
+				panic(err)
+			}
+			user, err := funcs.IDFindUser(users, id)
+			fmt.Println("use to mod: ", user)
+			if err != nil {
+				t.ExecuteTemplate(w, "error.html", "no such user......")
+				panic(err)
+			}
+			// error
+			if r.Form["id"][0] == "0" {
+				t, err := template.New("error").ParseFiles(abs + "/html/error.html")
+				if err != nil {
+					panic(err)
+				}
+				t.ExecuteTemplate(w, "error.html", "do not edit admin......")
+				return
+			}
+			t.ExecuteTemplate(w, "edit.html", user)
+		} else if r.Method == "POST" {
+			var index int
+			var id int64
+			r.ParseForm()
+			fmt.Println("from /edit/ r.PostFrom: ", r.PostForm)
+			id, err = strconv.ParseInt(r.PostForm["id"][0], 10, 64)
+			if err != nil {
+				panic(err)
+			}
+			fmt.Println("id: ", id)
+			for i, user := range *users {
+				if user.ID == id {
+					index = i
+					userO := (*users)[index]
+					userN := define.User{
+						ID:      userO.ID,
+						Name:    r.PostForm["name"][0],
+						Address: r.PostForm["address"][0],
+						Cell:    r.PostForm["cell"][0],
+						Born:    userO.Born,
+						Passwd:  r.PostForm["passwd"][0],
+					}
+					(*users)[index] = userN
+				}
+			}
+			http.Redirect(w, r, "/", 302)
+		}
 
 	})
 
@@ -133,10 +175,60 @@ func Serv() {
 			}
 			return (*users)[0]
 		}
-		fmt.Println("userToDel: ", u(&users))
-		t.ExecuteTemplate(w, "delete.html", u(&users))
+		// error
+		if r.Form["id"][0] == "0" {
+			t, err := template.New("error").ParseFiles(abs + "/html/error.html")
+			if err != nil {
+				panic(err)
+			}
+			t.ExecuteTemplate(w, "error.html", "do not delete admin......")
+			http.Redirect(w, r, "/", 302)
+			return
+		}
+		fmt.Println("userToDel: ", u(users))
+		t.ExecuteTemplate(w, "delete.html", u(users))
 
 	})
 
+	http.HandleFunc("/query/", func(w http.ResponseWriter, r *http.Request) {
+		if r.Method == "GET" {
+			t, err := template.New("query").ParseFiles(abs + "/html/query.html")
+			if err != nil {
+				panic(err)
+			}
+			t.ExecuteTemplate(w, "query.html", nil)
+		} else if r.Method == "POST" {
+			r.ParseForm()
+			fmt.Println("r.PostForm from /edit/: ", r.PostForm)
+			var gotUsers []define.User
+			inputList := []string{
+				r.PostForm["id"][0],
+				r.PostForm["name"][0],
+				r.PostForm["address"][0],
+				r.PostForm["born"][0],
+			}
+			for _, user := range *users {
+				for _, input := range inputList {
+					b := func(u define.User, input string) bool {
+						return strings.Contains(strings.ToLower(u.Name), input) ||
+							strings.Contains(strings.ToLower(u.Address), input) ||
+							strings.Contains(u.Cell, input) ||
+							strings.Contains(u.Born.Format("2006.01.02"), input)
+					}(user, input)
+					if b {
+						gotUsers = append(gotUsers, user)
+					}
+				}
+			}
+			// display
+			t, err := template.New("display").ParseFiles(abs + "/html/display.html")
+			if err != nil {
+				panic(err)
+			}
+			t.ExecuteTemplate(w, "display.html", gotUsers)
+		}
+	})
+
 	http.ListenAndServe(addr, nil)
+	fmt.Println("Server start up at: ", addr)
 }
