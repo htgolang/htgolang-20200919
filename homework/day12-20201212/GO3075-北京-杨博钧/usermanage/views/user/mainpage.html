@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>用户管理</title>
+    </head>
+    <body>
+    <a href="/user/addpage">新建用户</a> <br/>
+    <form action="/user/mainpage" method="post">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>用户名</th>
+                <th>性别</th>
+                <th>住址</th>
+                <th>电话</th>
+                <th>生日</th>
+                <th>密码</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input name="id" value="{{ .form.Id }}"/></td>
+            <td><input name="name" value="{{ .form.Name }}"/></td>
+            <td><input name="sex" value="{{ .form.Sex }}"/></td>
+            <td><input name="addr" value="{{ .form.Addr }}"/></td>
+            <td><input name="phone" value="{{ .form.Tel }}"/></td>
+            <td><input name="birthday" value="{{ .form.Birthday }}"/></td>
+            <td>{{ .Error }}</td>
+            <td>
+                <input type="submit" value="查询"/>
+            </td>
+        </tr>
+            {{ range .form.Userinfos }}
+            <tr>
+                <td>{{ .Id }}</td>
+                <td>{{ .Name }}</td>
+                <td>{{ if .Sex }}男{{ else }}女{{ end }}</td>
+                <td>{{ .Addr }}</td>
+                <td>{{ .Tel }}</td>
+                <td>{{ .Birthday }}</td>
+                <td>{{ .Password }}</td>
+                <td>
+                    <a href="/user/updatepage/?Id={{.Id}}">编辑</a>
+                    <a href="/user/deletepage/?Id={{.Id}}">删除</a>
+                </td>
+            </tr>
+                {{ end }}
+        </tbody>
+    </table>
+    </form>
+    </body>
+</html>
