@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>用户登陆</title>
+    </head>
+    <body>
+        <h1>用户登陆</h1>
+        <form action="/auth/login/" method="post">
+            <div>
+                <label>用户名: </label>
+                <input name="username" type="text" value="{{ .form.Username }}" />
+                {{ if .errors.username }}
+                <span>{{ index .errors.username 0 }}</span>
+                {{ end }}
+            </div>
+            <div>
+                <label>密码: </label>
+                <input name="password" type="password" value="" />
+            </div>
+            {{ if .errors.default }}
+            <div>{{ index .errors.default 0 }}</div>
+            {{ end }}
+            <div>
+                <input type="submit" value="登陆" />
+            </div>
+        </form>
+    </body>
+</html>

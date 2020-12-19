@@ -1,0 +1,163 @@
+1. 会话session
+    session服务器端存储
+        内存
+        本地磁盘文件
+        数据库
+    序列化
+    sid => session id
+    set-cookie session id
+    cookie
+
+    session
+        配置 => 配置文件 conf/app.conf
+                ini格式配置文件
+                [default]
+                key=value
+                [name]
+                key=value
+
+            是否开启:  SessionOn=true/false
+            存储类型: SessionProvider=memory/file/mysql/redis
+            存储的位置: SessionProviderConfig
+            失效时间: SessionGCMaxLifeTime=3600
+                     SessionCookieLifeTime
+            SID名称: SessionName=beegoSessionId
+        操作
+            Controller
+                key=>value
+                获取
+                    GetSession(key) interface{} 检查权限
+                更新
+                    SetSession(key, value) 登陆认证成功
+                删除
+                    DelSession(key)
+                销毁
+                    DestorySession() 退出
+
+            gob编码
+                自定义类型: Regsiter()
+
+        Session存储数据:
+            1. 尽量少
+            2. 可以使用基本数据类型仅使用基本类型
+            3. 自定义类型一定要gob注册
+
+    用户登陆:
+        1. 用户名，密码
+        2. 密码加密方式
+            验证
+            修改密码
+            添加用户
+
+            hash运算: md5 彩虹表查询
+                      sha1, sha256, sha512
+            text => md5 => hash
+            123456 => md5 => xxxxxxxxxxxxx
+            n:1 md5 32位16进制字符串组成 集合有限
+            m m+1个样本
+
+            验证: text => md5 => hash
+                  input => md5 => inputhash
+                  hash inputhash => text input
+
+            加盐MD5
+                text => 随机字符串(6)  salt => salt+"|"+text => md5 => hash
+                存储slat hash => slat hash
+
+            验证: text => salt => concat(salt + text) => hash
+                  input => 获取对应(name)的salt => concat(salt, input) => input hash
+
+                    hash inputhash = text input
+
+            慢速加盐算法
+            bcrypt
+                genrate
+                check/verify
+
+            hash => sha256,sha512
+
+        golang.org/x/crypto/bcrypt
+        未使用go mod
+            翻墙, 下载
+        使用go mod， goproxy
+        3. 登陆逻辑
+            a. 打开登陆页面
+            b. 用户输入用户名，密码点击登陆
+                验证: name => password hash input
+                成功 => 用户列表
+                失败 => 返回原有页面(登陆页面) 提示用户
+
+        beego 运行方式
+        dev： 开发模式
+        prod: 生产模式
+
+        app.conf
+        RunMode=""
+
+        session 存 ID => ID
+                取 ID => nil 未登录 ID存在 已登陆
+                销毁
+
+    问题：
+        登陆以后，跳转到之前访问的URL(/user/add)
+        /auth/login ? ctx.input.url
+        /auth/login?redirect=/user/add => login form
+        login form => /user/add =>
+
+    controller 函数
+
+    Init
+    Prepare
+        输出
+    Action/Get/Post/Index
+    Render
+    Finish
+
+
+    a 网站 sid=xxxxxxxxxxx => session user 1
+
+    b 用户 sid=xxxxxxxxxxxx =>
+
+2. orm
+    ORM => object relaction mapping
+    数据表/数据表的操作 <=> 面向对象
+    类， 对象, 方法
+    结构体 结构体的实例 结构体的方法
+
+    表(通过列定义) <=> 结构体(通过属性定义)
+    数据          <=> 实例
+    对数据的操作   <=> 方法
+
+    通过定义结构体 自动生成(工具) 表
+    通过对结构体实例的方法方法调用  对表进行操作
+
+    ORM框架
+
+    beego/orm
+
+    数据库 => 配置类信息
+    操作 => orm包内提供的接口（函数，方法）
+    表对应的结构体
+
+
+    // 初始化ORM
+    //
+3. Beego 配置
+    conf/app.conf
+
+    ini
+
+    Key=value
+
+    [section]
+    Key=Value
+
+    beego.AppConfig.String/Int/Strings/Float/Bool
+    DefaultString/DefaultInt/DefaultStrings/DefaultBool/DefaultFloat
+
+    app.conf include
+    ${Name||default}
+
+    [dev]
+
+    [prod]
