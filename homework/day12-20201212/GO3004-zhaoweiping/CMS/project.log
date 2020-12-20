@@ -1,0 +1,31 @@
+2020/12/18 15:24:04.621  this is a message of http
+2020/12/18 15:24:04.621  [ORM] this is a message of orm
+2020/12/18 15:24:04.621 [D]  my book is bought in the year of  2016
+2020/12/18 15:24:04.621 [I]  this yellow cat is 3 years old
+2020/12/18 15:24:04.621 [W]  json is a type of kv like map[key:2016]
+2020/12/18 15:24:04.621 [E]  1024 is a very good game
+2020/12/18 15:24:04.621 [C]  oh,crash
+2020/12/18 15:24:24.422  this is a message of http
+2020/12/18 15:24:24.422  [ORM] this is a message of orm
+2020/12/18 15:24:24.422 [D]  my book is bought in the year of  2016
+2020/12/18 15:24:24.422 [I]  this yellow cat is 3 years old
+2020/12/18 15:24:24.422 [W]  json is a type of kv like map[key:2016]
+2020/12/18 15:24:24.422 [E]  1024 is a very good game
+2020/12/18 15:24:24.422 [C]  oh,crash
+2020/12/18 15:24:33.800  this is a message of http
+2020/12/18 15:24:33.800  [ORM] this is a message of orm
+2020/12/18 15:24:33.800 [D]  my book is bought in the year of  2016
+2020/12/18 15:24:33.800 [I]  this yellow cat is 3 years old
+2020/12/18 15:24:33.801 [W]  json is a type of kv like map[key:2016]
+2020/12/18 15:24:33.801 [E]  1024 is a very good game
+2020/12/18 15:24:33.801 [C]  oh,crash
+2020/12/18 15:24:37.460  this is a message of http
+2020/12/18 15:24:37.460  [ORM] this is a message of orm
+2020/12/18 15:24:37.460 [D]  my book is bought in the year of  2016
+2020/12/18 15:24:37.460 [I]  this yellow cat is 3 years old
+2020/12/18 15:24:37.460 [W]  json is a type of kv like map[key:2016]
+2020/12/18 15:24:37.460 [E]  1024 is a very good game
+2020/12/18 15:24:37.460 [C]  oh,crash
+2020/12/18 15:29:33.802 [I]  hello beego
+2020/12/18 15:30:40.542 [I]  hello beego
+2020/12/18 15:30:41.962 [I]  hello beego

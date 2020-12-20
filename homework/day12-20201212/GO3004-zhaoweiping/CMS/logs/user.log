@@ -1,0 +1,792 @@
+2020/12/18 16:18:10.966 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:18:10.982 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:18:12.664 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.393241ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 16:18:13.175 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   2.161356ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 16:18:13.396 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   2.577405ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 16:18:13.531 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   2.364613ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 16:18:13.823 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   2.794716ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 16:18:14.175 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   2.891336ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 16:18:22.158 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   2.439125ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 16:31:40.714 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|  37.895235ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 16:31:41.548 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:31:41.584 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:32:35.176 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.329184ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 16:32:36.156 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    389.326µs|   match|[97;44m GET     [0m /user/add/   r:/user/add/*
+2020/12/18 16:36:21.717 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:36:21.758 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:36:23.013 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:36:23.029 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:36:30.652 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    716.139µs|   match|[97;44m GET     [0m /user/add/   r:/user/add/*
+2020/12/18 16:36:37.564 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|  22.199963ms|   match|[97;46m POST    [0m /user/add/   r:/user/add/*
+2020/12/18 16:36:37.578 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.388015ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 16:39:06.908 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:39:06.931 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:39:09.917 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    814.511µs|   match|[97;44m GET     [0m /user/add/   r:/user/add/*
+2020/12/18 16:39:12.754 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    567.806µs|   match|[97;44m GET     [0m /user/add/   r:/user/add/*
+2020/12/18 16:46:28.961 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    728.062µs|   match|[97;44m GET     [0m /user/add/   r:/user/add/*
+2020/12/18 16:46:30.064 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    678.191µs|   match|[97;44m GET     [0m /user/add/   r:/user/add/*
+2020/12/18 16:46:30.491 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:46:30.514 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:46:31.841 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.325603ms|   match|[97;44m GET     [0m /user/add/   r:/user/add/*
+2020/12/18 16:46:32.614 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    580.918µs|   match|[97;44m GET     [0m /user/add/   r:/user/add/*
+2020/12/18 16:46:37.930 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|  19.930572ms|   match|[97;46m POST    [0m /user/add/   r:/user/add/*
+2020/12/18 16:46:37.935 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    488.575µs|   match|[97;44m GET     [0m /user/add   r:/user/add/*
+2020/12/18 16:46:40.067 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|  10.128654ms|   match|[97;46m POST    [0m /user/add/   r:/user/add/*
+2020/12/18 16:46:40.073 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    463.266µs|   match|[97;44m GET     [0m /user/add   r:/user/add/*
+2020/12/18 16:46:53.310 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.986915ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 16:48:11.516 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   2.526193ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 16:48:32.820 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    714.528µs|   match|[97;44m GET     [0m /user/add   r:/user/add/*
+2020/12/18 16:48:33.859 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    508.175µs|   match|[97;44m GET     [0m /user/add   r:/user/add/*
+2020/12/18 16:48:34.647 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    575.458µs|   match|[97;44m GET     [0m /user/add/   r:/user/add/*
+2020/12/18 16:48:34.859 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:48:34.879 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:48:37.016 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    918.105µs|   match|[97;44m GET     [0m /user/add/   r:/user/add/*
+2020/12/18 16:48:38.408 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|     591.74µs|   match|[97;44m GET     [0m /user/add/   r:/user/add/*
+2020/12/18 16:48:38.540 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:48:38.561 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:51:39.538 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:51:39.552 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:51:45.629 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:51:45.645 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:52:07.558 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:52:07.575 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:53:44.581 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:53:44.598 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:54:52.793 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    687.546µs| nomatch|[97;44m GET     [0m /  
+2020/12/18 16:57:16.864 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    142.902µs| nomatch|[97;44m GET     [0m /  
+2020/12/18 16:57:21.089 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|   1.774555ms| nomatch|[97;44m GET     [0m /  
+2020/12/18 16:57:26.406 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    227.552µs| nomatch|[97;44m GET     [0m /user/
+2020/12/18 16:57:38.709 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    173.393µs| nomatch|[97;44m GET     [0m /user/
+2020/12/18 16:57:39.020 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    211.714µs| nomatch|[97;44m GET     [0m /favicon.ico
+2020/12/18 16:57:41.543 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:57:41.572 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:57:44.377 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    439.836µs| nomatch|[97;44m GET     [0m /  
+2020/12/18 16:57:49.883 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:57:49.941 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:57:51.236 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:57:51.247 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:57:56.315 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    489.405µs| nomatch|[97;44m GET     [0m /  
+2020/12/18 16:57:56.578 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    217.309µs| nomatch|[97;44m GET     [0m /favicon.ico
+2020/12/18 16:57:58.420 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:57:58.431 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:58:00.296 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|     558.15µs| nomatch|[97;44m GET     [0m /user/
+2020/12/18 16:58:27.571 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:58:27.582 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:58:51.548 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:58:51.574 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:58:56.556 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|   3.630286ms| nomatch|[97;44m GET     [0m /user/
+2020/12/18 16:58:56.988 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:58:57.008 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:58:59.454 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    489.329µs| nomatch|[97;44m GET     [0m /  
+2020/12/18 16:59:05.101 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:59:05.118 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:59:09.894 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    501.084µs| nomatch|[97;44m GET     [0m /  
+2020/12/18 16:59:10.962 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    142.057µs| nomatch|[97;44m GET     [0m /  
+2020/12/18 16:59:11.838 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 16:59:11.876 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 16:59:15.711 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.171069ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 16:59:19.817 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    348.219µs| nomatch|[97;44m GET     [0m /user/
+2020/12/18 16:59:49.142 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    178.434µs| nomatch|[97;44m GET     [0m /user/
+2020/12/18 16:59:51.558 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    150.004µs| nomatch|[97;44m GET     [0m /  
+2020/12/18 17:00:09.358 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 17:00:09.370 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 17:00:31.968 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 17:00:31.981 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 17:00:34.865 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    317.515µs|   match|[97;44m GET     [0m /user/index/   r:/user/index/*
+2020/12/18 17:03:34.691 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 17:03:34.711 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 17:03:37.217 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    285.639µs|   match|[97;44m GET     [0m /user/index/   r:/user/index/*
+2020/12/18 17:03:39.840 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    9.84884ms|   match|[97;44m GET     [0m /     r:/
+2020/12/18 17:03:42.185 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|  13.773098ms|   match|[97;44m GET     [0m /     r:/
+2020/12/18 17:05:53.488 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.830383ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:08:24.777 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m| 333.434552ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:08:29.619 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.412147ms|   match|[97;44m GET     [0m /     r:/
+2020/12/18 17:09:17.063 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.398741ms|   match|[97;44m GET     [0m /     r:/
+2020/12/18 17:09:19.114 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    565.103µs|   match|[97;44m GET     [0m /user/add/   r:/user/add/*
+2020/12/18 17:09:20.215 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   9.080013ms|   match|[97;46m POST    [0m /user/add/   r:/user/add/*
+2020/12/18 17:09:20.226 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.840768ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:09:22.008 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.404258ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:09:25.371 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|  14.723507ms|   match|[97;44m GET     [0m /user/delete/   r:/user/delete/*
+2020/12/18 17:09:25.381 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.661688ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:09:26.066 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   8.791361ms|   match|[97;44m GET     [0m /user/delete/   r:/user/delete/*
+2020/12/18 17:09:26.075 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.235502ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:09:26.907 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   8.345581ms|   match|[97;44m GET     [0m /user/delete/   r:/user/delete/*
+2020/12/18 17:09:26.919 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.251895ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:10:32.771 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   7.716142ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:10:33.850 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.776585ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:10:34.659 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    151.803µs| nomatch|[97;44m GET     [0m /user/modify/
+2020/12/18 17:10:56.137 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 17:10:56.156 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 17:11:04.522 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|    6.80374ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:11:04.533 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.744938ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:11:08.471 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|  15.998286ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:11:08.483 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.240506ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:11:11.868 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   5.345551ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:11:48.943 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 17:11:48.956 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 17:12:37.098 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 17:12:37.114 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 17:37:00.394 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|  18.228133ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:37:02.967 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   8.980741ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:37:02.977 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    3.00904ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:37:06.500 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   7.489872ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:38:46.661 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.481141ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:38:48.337 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.345323ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:38:50.077 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   7.565612ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:38:50.089 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.712922ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:43:34.544 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 17:43:34.587 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 17:43:41.214 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   13.48336ms|   match|[97;44m GET     [0m /     r:/
+2020/12/18 17:43:44.346 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   6.918994ms|   match|[97;44m GET     [0m /     r:/
+2020/12/18 17:44:20.170 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   7.347321ms|   match|[97;44m GET     [0m /     r:/
+2020/12/18 17:44:21.746 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    555.713µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:44:30.080 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   7.576139ms|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:44:30.092 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.288336ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:44:33.441 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    542.603µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:44:35.397 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   4.420432ms|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:44:35.419 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.498129ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:44:36.346 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.738112ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:45:50.035 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.946937ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:46:14.189 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   2.043817ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:48:28.092 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    1.18718ms|   match|[97;44m GET     [0m /user/add/   r:/user/add/*
+2020/12/18 17:48:39.193 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   7.096709ms|   match|[97;46m POST    [0m /user/add/   r:/user/add/*
+2020/12/18 17:48:39.211 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   6.265234ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:48:40.464 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   6.698185ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:48:41.574 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.100463ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:48:44.202 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   6.519338ms|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:48:44.213 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   2.293873ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:48:45.642 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   6.335856ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:50:24.571 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 17:50:24.616 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 17:50:26.114 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 17:50:26.149 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 17:50:26.207 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.564235ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:50:26.819 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    208.938µs| nomatch|[97;44m GET     [0m /favicon.ico
+2020/12/18 17:50:27.858 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 17:50:27.880 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 17:50:28.284 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    793.222µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:50:31.159 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   7.118117ms|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:50:31.168 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    2.33749ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:51:01.132 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.618354ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:51:02.924 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 17:51:02.942 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 17:51:03.544 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    980.467µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:51:10.825 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   9.928404ms|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:51:10.835 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.672412ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:51:46.156 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   5.888529ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:51:46.259 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 17:51:46.276 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 17:51:47.674 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.119245ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:51:50.554 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   6.183881ms|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:51:50.566 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    4.34169ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:54:01.820 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   5.911618ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:54:02.989 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.613444ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:54:26.104 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   8.998029ms|   match|[97;44m GET     [0m /user/delete/   r:/user/delete/*
+2020/12/18 17:54:26.113 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   2.612024ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:54:34.734 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   8.691775ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:54:36.196 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   2.262212ms|   match|[97;44m GET     [0m /user/add/   r:/user/add/*
+2020/12/18 17:54:39.161 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   5.893741ms|   match|[97;46m POST    [0m /user/add/   r:/user/add/*
+2020/12/18 17:54:39.176 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.627666ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:54:40.090 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.244621ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:54:40.883 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|      979.8µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:54:43.815 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   4.603179ms|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:54:43.825 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   2.527447ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:54:45.191 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.031116ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:55:03.603 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   7.433851ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:55:06.011 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    479.095µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:55:06.447 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 17:55:06.463 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 17:55:12.060 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   9.260744ms|   match|[97;44m GET     [0m /user/delete/   r:/user/delete/*
+2020/12/18 17:55:12.069 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    2.33807ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:55:23.741 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    613.834µs|   match|[97;44m GET     [0m /user/add/   r:/user/add/*
+2020/12/18 17:55:26.197 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   5.849769ms|   match|[97;46m POST    [0m /user/add/   r:/user/add/*
+2020/12/18 17:55:26.212 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   5.348524ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:55:27.303 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   2.439776ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:56:06.100 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   6.256368ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:57:53.011 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   8.536295ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:57:54.278 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    438.254µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:58:04.043 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|    3.87038ms|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:58:04.055 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.695235ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:58:25.206 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   6.672751ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:58:28.271 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.119899ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:58:41.823 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.928846ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:58:42.877 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    594.341µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:58:44.668 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   5.475676ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:58:45.801 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    844.947µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:58:46.449 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 17:58:46.467 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 17:58:52.579 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 17:58:52.597 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 17:58:52.743 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   7.662032ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:58:54.502 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|  11.091064ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:58:54.511 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.114682ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:59:01.781 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   8.300199ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:59:01.796 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.503356ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:59:26.987 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.301958ms|   match|[97;44m GET     [0m /user/add/   r:/user/add/*
+2020/12/18 17:59:28.875 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|  12.070583ms|   match|[97;46m POST    [0m /user/add/   r:/user/add/*
+2020/12/18 17:59:28.888 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   2.552396ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:59:35.867 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 17:59:35.883 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 17:59:41.956 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   5.235157ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 17:59:44.779 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.146014ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 17:59:46.401 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 17:59:46.415 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:00:07.442 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:00:07.459 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:00:15.200 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   6.227936ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 18:00:15.701 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    564.782µs|   match|[97;44m GET     [0m /user/add/   r:/user/add/*
+2020/12/18 18:00:17.043 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:00:17.057 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:00:19.076 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   7.072232ms|   match|[97;46m POST    [0m /user/add/   r:/user/add/*
+2020/12/18 18:00:19.089 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.567543ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 18:00:28.465 [C] [panic.go:967]  the request url is  /user/modify/
+2020/12/18 18:00:28.465 [C] [panic.go:967]  Handler crashed with error can't find templatefile in the path:views/usercontroller/modify.tpl
+2020/12/18 18:00:28.465 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/panic.go:967
+2020/12/18 18:00:28.465 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2020/12/18 18:00:28.465 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2020/12/18 18:00:28.465 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2020/12/18 18:00:28.465 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2020/12/18 18:00:28.465 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2020/12/18 18:00:28.465 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:2807
+2020/12/18 18:00:28.465 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:1895
+2020/12/18 18:00:28.465 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/asm_amd64.s:1373
+2020/12/18 18:00:28.465 [server.go:3059]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/12/18 18:09:22.759 [C] [panic.go:967]  the request url is  /user/modify/
+2020/12/18 18:09:22.759 [C] [panic.go:967]  Handler crashed with error can't find templatefile in the path:views/usercontroller/modify.tpl
+2020/12/18 18:09:22.760 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/panic.go:967
+2020/12/18 18:09:22.760 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2020/12/18 18:09:22.760 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2020/12/18 18:09:22.760 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2020/12/18 18:09:22.760 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2020/12/18 18:09:22.760 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2020/12/18 18:09:22.760 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:2807
+2020/12/18 18:09:22.778 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:1895
+2020/12/18 18:09:22.778 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/asm_amd64.s:1373
+2020/12/18 18:09:22.778 [server.go:3059]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/12/18 18:12:20.673 [C] [panic.go:967]  the request url is  /user/modify/
+2020/12/18 18:12:20.673 [C] [panic.go:967]  Handler crashed with error can't find templatefile in the path:views/usercontroller/modify.tpl
+2020/12/18 18:12:20.673 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/panic.go:967
+2020/12/18 18:12:20.673 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2020/12/18 18:12:20.673 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2020/12/18 18:12:20.673 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2020/12/18 18:12:20.673 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2020/12/18 18:12:20.673 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2020/12/18 18:12:20.673 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:2807
+2020/12/18 18:12:20.673 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:1895
+2020/12/18 18:12:20.673 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/asm_amd64.s:1373
+2020/12/18 18:12:20.674 [server.go:3059]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/12/18 18:12:51.570 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   8.465044ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 18:12:53.002 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    2.31179ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 18:12:53.076 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:12:53.122 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:12:54.014 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.000779ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:12:54.803 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:12:54.816 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:13:05.452 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    900.377µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:13:06.740 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    665.419µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:13:22.383 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:13:22.404 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:13:39.378 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:13:39.394 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:13:40.157 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.053517ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:13:42.096 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    694.353µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:13:42.676 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:13:42.690 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:13:44.103 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    1.20071ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:13:49.739 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    641.949µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:14:11.502 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   2.509992ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 18:14:11.786 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    197.978µs| nomatch|[97;44m GET     [0m /favicon.ico
+2020/12/18 18:14:15.023 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    505.214µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:14:20.954 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    463.391µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:14:21.153 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    152.282µs| nomatch|[97;44m GET     [0m /favicon.ico
+2020/12/18 18:14:22.798 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    518.397µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:14:23.049 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    194.129µs| nomatch|[97;44m GET     [0m /favicon.ico
+2020/12/18 18:14:23.402 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    446.957µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:14:23.662 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    179.632µs| nomatch|[97;44m GET     [0m /favicon.ico
+2020/12/18 18:15:25.069 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:15:25.084 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:15:29.048 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    884.785µs| nomatch|[97;44m GET     [0m /favicon.ico
+2020/12/18 18:15:29.921 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    3.31037ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 18:15:30.159 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    148.941µs| nomatch|[97;44m GET     [0m /favicon.ico
+2020/12/18 18:15:30.576 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.530338ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 18:15:30.838 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    158.121µs| nomatch|[97;44m GET     [0m /favicon.ico
+2020/12/18 18:15:32.718 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.241203ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 18:15:32.941 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    213.412µs| nomatch|[97;44m GET     [0m /favicon.ico
+2020/12/18 18:15:37.514 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    631.012µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:16:27.456 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    4.33956ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:16:27.792 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    162.621µs| nomatch|[97;44m GET     [0m /favicon.ico
+2020/12/18 18:16:28.627 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    646.851µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:16:28.948 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:16:28.966 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:16:29.034 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    641.336µs| nomatch|[97;44m GET     [0m /favicon.ico
+2020/12/18 18:16:31.208 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   5.288162ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 18:16:31.490 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    132.894µs| nomatch|[97;44m GET     [0m /favicon.ico
+2020/12/18 18:16:32.676 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    580.341µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:17:05.304 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   2.151987ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 18:17:06.378 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.325076ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 18:17:09.213 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|     626.15µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:23:33.253 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.281656ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:23:33.691 [D] [server.go:2807]  |      127.0.0.1|[97;43m 404 [0m|    217.455µs| nomatch|[97;44m GET     [0m /favicon.ico
+2020/12/18 18:23:45.113 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.798121ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:23:46.760 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:23:46.808 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:23:49.398 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.056609ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:23:50.169 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:23:50.212 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:23:51.748 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:23:51.762 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:23:51.823 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.388212ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:24:21.640 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:24:21.660 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:24:22.439 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|  13.680131ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 18:24:23.888 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.930063ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 18:24:26.503 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    696.345µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:24:27.892 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    506.958µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:24:43.633 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    619.164µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:24:47.120 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:24:47.176 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:24:47.478 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    900.001µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:24:49.071 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:24:49.088 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:25:25.102 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    904.332µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:25:31.519 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|     702.77µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:25:40.993 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    488.112µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:25:42.558 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    514.785µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:25:43.569 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:25:43.582 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:25:46.288 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    841.785µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:25:47.293 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:25:47.368 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:25:48.895 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:25:48.909 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:26:59.249 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.176069ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:27:01.370 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:27:01.393 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:27:04.767 [C] [panic.go:967]  the request url is  /user/modify/
+2020/12/18 18:27:04.767 [C] [panic.go:967]  Handler crashed with error can't find templatefile in the path:views/usercontroller/modify.tpl
+2020/12/18 18:27:04.767 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/panic.go:967
+2020/12/18 18:27:04.767 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2020/12/18 18:27:04.767 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2020/12/18 18:27:04.767 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2020/12/18 18:27:04.767 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2020/12/18 18:27:04.767 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2020/12/18 18:27:04.767 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:2807
+2020/12/18 18:27:04.769 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:1895
+2020/12/18 18:27:04.769 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/asm_amd64.s:1373
+2020/12/18 18:27:04.770 [server.go:3059]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/12/18 18:27:20.732 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:27:20.742 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:27:25.650 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:27:25.664 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:27:30.014 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:27:30.026 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:27:35.989 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:27:36.001 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:28:12.598 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:28:12.611 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:28:25.758 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:28:25.786 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:28:27.454 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.350742ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:28:29.053 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.860479ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 18:28:36.602 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:28:36.655 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:28:38.024 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:28:38.038 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:28:39.666 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   5.578391ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 18:28:41.963 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|      557.9µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:29:02.561 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:29:02.579 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:29:08.039 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    839.951µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:29:09.853 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    439.006µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:29:10.453 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    690.109µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:29:31.770 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    1.28274ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:29:42.203 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:29:42.223 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:30:18.414 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.221571ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:30:25.496 [C] [panic.go:967]  the request url is  /user/modify/
+2020/12/18 18:30:25.496 [C] [panic.go:967]  Handler crashed with error can't find templatefile in the path:views/usercontroller/modify.tpl
+2020/12/18 18:30:25.496 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/panic.go:967
+2020/12/18 18:30:25.496 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2020/12/18 18:30:25.496 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2020/12/18 18:30:25.496 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2020/12/18 18:30:25.496 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2020/12/18 18:30:25.496 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2020/12/18 18:30:25.496 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:2807
+2020/12/18 18:30:25.496 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:1895
+2020/12/18 18:30:25.496 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/asm_amd64.s:1373
+2020/12/18 18:30:25.497 [server.go:3059]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/12/18 18:31:48.297 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:31:48.313 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:31:50.236 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   8.417077ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 18:31:54.658 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    850.277µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:31:58.448 [C] [panic.go:967]  the request url is  /user/modify/
+2020/12/18 18:31:58.448 [C] [panic.go:967]  Handler crashed with error can't find templatefile in the path:views/usercontroller/modify.tpl
+2020/12/18 18:31:58.448 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/panic.go:967
+2020/12/18 18:31:58.448 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2020/12/18 18:31:58.448 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2020/12/18 18:31:58.448 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2020/12/18 18:31:58.448 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2020/12/18 18:31:58.448 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2020/12/18 18:31:58.449 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:2807
+2020/12/18 18:31:58.449 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:1895
+2020/12/18 18:31:58.449 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/asm_amd64.s:1373
+2020/12/18 18:31:58.450 [server.go:3059]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/12/18 18:33:19.575 [C] [panic.go:967]  the request url is  /user/modify/
+2020/12/18 18:33:19.575 [C] [panic.go:967]  Handler crashed with error can't find templatefile in the path:views/usercontroller/modify.tpl
+2020/12/18 18:33:19.575 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/panic.go:967
+2020/12/18 18:33:19.575 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2020/12/18 18:33:19.575 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2020/12/18 18:33:19.575 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2020/12/18 18:33:19.575 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2020/12/18 18:33:19.575 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2020/12/18 18:33:19.575 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:2807
+2020/12/18 18:33:19.576 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:1895
+2020/12/18 18:33:19.576 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/asm_amd64.s:1373
+2020/12/18 18:33:19.576 [server.go:3059]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/12/18 18:33:23.593 [C] [panic.go:967]  the request url is  /user/modify/
+2020/12/18 18:33:23.593 [C] [panic.go:967]  Handler crashed with error can't find templatefile in the path:views/usercontroller/modify.tpl
+2020/12/18 18:33:23.593 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/panic.go:967
+2020/12/18 18:33:23.593 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2020/12/18 18:33:23.593 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2020/12/18 18:33:23.593 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2020/12/18 18:33:23.593 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2020/12/18 18:33:23.593 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2020/12/18 18:33:23.595 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:2807
+2020/12/18 18:33:23.595 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:1895
+2020/12/18 18:33:23.595 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/asm_amd64.s:1373
+2020/12/18 18:33:23.595 [server.go:3059]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/12/18 18:33:40.752 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.799786ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 18:34:20.865 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   2.432581ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 18:34:22.932 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.387778ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 18:34:24.469 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 18:34:24.482 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 18:34:29.175 [C] [panic.go:967]  the request url is  /user/modify/
+2020/12/18 18:34:29.175 [C] [panic.go:967]  Handler crashed with error can't find templatefile in the path:views/usercontroller/modify.tpl
+2020/12/18 18:34:29.175 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/panic.go:967
+2020/12/18 18:34:29.175 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2020/12/18 18:34:29.175 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2020/12/18 18:34:29.175 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2020/12/18 18:34:29.175 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2020/12/18 18:34:29.175 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2020/12/18 18:34:29.175 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:2807
+2020/12/18 18:34:29.175 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:1895
+2020/12/18 18:34:29.175 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/asm_amd64.s:1373
+2020/12/18 18:34:29.176 [server.go:3059]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/12/18 22:53:58.163 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.362527ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 22:54:00.219 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 22:54:00.255 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 22:54:03.005 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|    526.211µs|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 22:54:03.024 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|  12.078417ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 22:54:04.932 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.043362ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 22:54:12.675 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    614.583µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 22:54:15.888 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|     199.84µs|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 22:54:15.900 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    5.71135ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 22:54:37.055 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 22:54:37.073 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 22:54:39.453 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.775586ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 22:54:42.882 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    582.009µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 22:55:17.586 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 22:55:17.609 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:01:12.154 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:01:12.175 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:01:34.162 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.109612ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:01:39.636 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    743.337µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:04:32.553 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.781969ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:04:34.354 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   2.808797ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:04:36.933 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    729.368µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:06:28.588 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:06:28.612 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:06:32.459 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.627647ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:06:33.674 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    473.973µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:06:58.085 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:06:58.132 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:07:00.690 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:07:00.707 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:07:06.073 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.045981ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:07:06.626 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:07:06.646 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:07:32.678 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.408286ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:07:33.403 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:07:33.424 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:07:36.140 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|    648.174µs|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:07:36.153 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.683651ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:08:26.342 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:08:26.361 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:08:32.866 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:08:32.884 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:08:41.847 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    5.45662ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:08:42.600 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    809.541µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:08:46.841 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|     112.02µs|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:08:46.853 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   5.875756ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:09:27.676 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.131271ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:09:28.356 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    532.192µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:09:30.729 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:09:30.744 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:09:30.944 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|    422.528µs|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:09:30.954 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   5.056453ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:09:38.843 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:09:38.857 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:09:53.008 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:09:53.024 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:09:57.616 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.239622ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:10:02.703 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|     97.757µs|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:10:02.715 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.337036ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:11:02.595 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:11:02.612 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:11:04.559 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    911.856µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:11:06.920 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|     96.557µs|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:11:06.932 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.704274ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:11:12.554 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|     700.67µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:12:54.219 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|    111.486µs|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:12:54.231 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.441345ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:12:54.348 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:12:54.385 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:13:01.094 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.134359ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:13:01.478 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:13:01.500 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:13:03.288 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|    497.057µs|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:13:03.298 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.274074ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:14:25.413 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:14:25.429 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:14:28.626 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    7.06413ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:14:29.524 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    522.767µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:14:31.427 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|    144.381µs|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:14:31.438 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.940628ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:14:38.899 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:14:38.938 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:14:40.313 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:14:40.328 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:14:53.020 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   5.500459ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:14:53.434 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    613.077µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:14:54.867 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:14:54.886 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:14:57.797 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|     463.14µs|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:14:57.808 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.990203ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:15:37.384 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    543.945µs|   match|[97;44m GET     [0m /user/add/   r:/user/add/*
+2020/12/18 23:18:40.882 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   2.817096ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:19:18.702 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|     655.49µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:19:21.689 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|    143.646µs|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:19:21.701 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.733874ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:19:34.229 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:19:34.262 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:19:34.314 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   6.016271ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:19:36.361 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    658.589µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:19:42.939 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|     95.763µs|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:19:42.950 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.506016ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:21:52.603 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:21:52.623 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:21:52.725 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.628209ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:21:56.259 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    735.418µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:22:05.150 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:22:05.167 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:22:06.228 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|    414.916µs|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:22:06.241 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   5.498757ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:22:32.985 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.013301ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:22:33.577 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    824.878µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:22:35.299 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|     96.649µs|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:22:35.312 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.892065ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:22:35.908 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:22:35.927 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:22:41.704 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.089296ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:22:41.754 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:22:41.778 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:22:45.250 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|    361.156µs|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:22:45.262 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.792194ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:23:34.799 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:23:34.819 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:23:36.773 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.917656ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:23:37.778 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|    116.329µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:23:37.789 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.669095ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:23:39.834 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|    108.503µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:23:39.844 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.803554ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:23:55.550 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|     83.075µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:23:55.565 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.350811ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:23:55.814 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:23:55.836 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:24:04.208 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:24:04.222 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:24:05.964 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   4.732473ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:24:07.807 [C] [panic.go:967]  the request url is  /user/modify/
+2020/12/18 23:24:07.807 [C] [panic.go:967]  Handler crashed with error can't find templatefile in the path:views/usercontroller/modify.tpl
+2020/12/18 23:24:07.807 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/panic.go:967
+2020/12/18 23:24:07.807 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2020/12/18 23:24:07.807 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2020/12/18 23:24:07.807 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2020/12/18 23:24:07.807 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2020/12/18 23:24:07.807 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2020/12/18 23:24:07.807 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:2807
+2020/12/18 23:24:07.807 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:1895
+2020/12/18 23:24:07.807 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/asm_amd64.s:1373
+2020/12/18 23:24:07.807 [server.go:3059]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/12/18 23:26:33.304 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:26:33.320 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:29:17.883 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:29:17.898 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:29:20.774 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.945059ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:29:29.669 [C] [panic.go:967]  the request url is  /user/modify/
+2020/12/18 23:29:29.669 [C] [panic.go:967]  Handler crashed with error can't find templatefile in the path:views/usercontroller/modify.tpl
+2020/12/18 23:29:29.669 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/panic.go:967
+2020/12/18 23:29:29.669 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2020/12/18 23:29:29.669 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2020/12/18 23:29:29.669 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2020/12/18 23:29:29.669 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2020/12/18 23:29:29.669 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2020/12/18 23:29:29.670 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:2807
+2020/12/18 23:29:29.670 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:1895
+2020/12/18 23:29:29.670 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/asm_amd64.s:1373
+2020/12/18 23:29:29.671 [server.go:3059]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/12/18 23:29:51.765 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:29:51.779 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:29:53.485 [C] [panic.go:967]  the request url is  /user/modify/
+2020/12/18 23:29:53.486 [C] [panic.go:967]  Handler crashed with error can't find templatefile in the path:views/usercontroller/modify.tpl
+2020/12/18 23:29:53.486 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/panic.go:967
+2020/12/18 23:29:53.486 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2020/12/18 23:29:53.486 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2020/12/18 23:29:53.486 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2020/12/18 23:29:53.486 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2020/12/18 23:29:53.486 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2020/12/18 23:29:53.494 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:2807
+2020/12/18 23:29:53.494 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:1895
+2020/12/18 23:29:53.494 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/asm_amd64.s:1373
+2020/12/18 23:29:53.495 [server.go:3059]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/12/18 23:29:54.872 [C] [panic.go:967]  the request url is  /user/modify/
+2020/12/18 23:29:54.872 [C] [panic.go:967]  Handler crashed with error can't find templatefile in the path:views/usercontroller/modify.tpl
+2020/12/18 23:29:54.872 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/panic.go:967
+2020/12/18 23:29:54.872 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2020/12/18 23:29:54.872 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2020/12/18 23:29:54.872 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2020/12/18 23:29:54.872 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2020/12/18 23:29:54.872 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2020/12/18 23:29:54.872 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:2807
+2020/12/18 23:29:54.872 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:1895
+2020/12/18 23:29:54.872 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/asm_amd64.s:1373
+2020/12/18 23:29:54.872 [server.go:3059]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/12/18 23:29:56.123 [C] [panic.go:967]  the request url is  /user/modify/
+2020/12/18 23:29:56.123 [C] [panic.go:967]  Handler crashed with error can't find templatefile in the path:views/usercontroller/modify.tpl
+2020/12/18 23:29:56.123 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/panic.go:967
+2020/12/18 23:29:56.124 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2020/12/18 23:29:56.124 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2020/12/18 23:29:56.124 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2020/12/18 23:29:56.124 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2020/12/18 23:29:56.124 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2020/12/18 23:29:56.124 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:2807
+2020/12/18 23:29:56.124 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:1895
+2020/12/18 23:29:56.124 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/asm_amd64.s:1373
+2020/12/18 23:29:56.124 [server.go:3059]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/12/18 23:30:02.436 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    843.134µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:30:02.931 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    541.534µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:30:05.587 [C] [panic.go:967]  the request url is  /user/modify/
+2020/12/18 23:30:05.588 [C] [panic.go:967]  Handler crashed with error can't find templatefile in the path:views/usercontroller/modify.tpl
+2020/12/18 23:30:05.588 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/panic.go:967
+2020/12/18 23:30:05.588 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2020/12/18 23:30:05.588 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2020/12/18 23:30:05.588 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2020/12/18 23:30:05.588 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2020/12/18 23:30:05.588 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2020/12/18 23:30:05.588 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:2807
+2020/12/18 23:30:05.588 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:1895
+2020/12/18 23:30:05.588 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/asm_amd64.s:1373
+2020/12/18 23:30:05.588 [server.go:3059]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/12/18 23:30:36.437 [C] [panic.go:967]  the request url is  /user/modify/
+2020/12/18 23:30:36.437 [C] [panic.go:967]  Handler crashed with error can't find templatefile in the path:views/usercontroller/modify.tpl
+2020/12/18 23:30:36.437 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/panic.go:967
+2020/12/18 23:30:36.437 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2020/12/18 23:30:36.437 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2020/12/18 23:30:36.437 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2020/12/18 23:30:36.437 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2020/12/18 23:30:36.437 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2020/12/18 23:30:36.437 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:2807
+2020/12/18 23:30:36.437 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:1895
+2020/12/18 23:30:36.437 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/asm_amd64.s:1373
+2020/12/18 23:30:36.437 [server.go:3059]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/12/18 23:30:38.273 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    695.498µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:30:40.663 [C] [panic.go:967]  the request url is  /user/modify/
+2020/12/18 23:30:40.663 [C] [panic.go:967]  Handler crashed with error can't find templatefile in the path:views/usercontroller/modify.tpl
+2020/12/18 23:30:40.663 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/panic.go:967
+2020/12/18 23:30:40.663 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2020/12/18 23:30:40.663 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2020/12/18 23:30:40.663 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2020/12/18 23:30:40.663 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2020/12/18 23:30:40.663 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2020/12/18 23:30:40.663 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:2807
+2020/12/18 23:30:40.663 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:1895
+2020/12/18 23:30:40.663 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/asm_amd64.s:1373
+2020/12/18 23:30:40.663 [server.go:3059]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/12/18 23:31:26.303 [C] [panic.go:967]  the request url is  /user/modify/
+2020/12/18 23:31:26.303 [C] [panic.go:967]  Handler crashed with error can't find templatefile in the path:views/usercontroller/modify.tpl
+2020/12/18 23:31:26.303 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/panic.go:967
+2020/12/18 23:31:26.303 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2020/12/18 23:31:26.303 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2020/12/18 23:31:26.303 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2020/12/18 23:31:26.303 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2020/12/18 23:31:26.303 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2020/12/18 23:31:26.303 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:2807
+2020/12/18 23:31:26.303 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:1895
+2020/12/18 23:31:26.303 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/asm_amd64.s:1373
+2020/12/18 23:31:26.304 [server.go:3059]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/12/18 23:31:26.673 [C] [panic.go:967]  the request url is  /user/modify/
+2020/12/18 23:31:26.673 [C] [panic.go:967]  Handler crashed with error can't find templatefile in the path:views/usercontroller/modify.tpl
+2020/12/18 23:31:26.673 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/panic.go:967
+2020/12/18 23:31:26.673 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2020/12/18 23:31:26.673 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2020/12/18 23:31:26.673 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2020/12/18 23:31:26.673 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2020/12/18 23:31:26.673 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2020/12/18 23:31:26.673 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:2807
+2020/12/18 23:31:26.674 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:1895
+2020/12/18 23:31:26.674 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/asm_amd64.s:1373
+2020/12/18 23:31:26.674 [server.go:3059]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/12/18 23:31:27.933 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:31:27.955 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:31:28.151 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.089819ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:31:29.289 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    606.018µs|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:31:31.809 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    636.099µs|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:32:13.106 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:32:13.131 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:32:21.069 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:32:21.129 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:32:28.594 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:32:28.614 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:32:33.638 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.303712ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:32:35.980 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    538.335µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:32:43.135 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:32:43.154 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:32:45.850 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.568794ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:32:48.413 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    827.626µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:32:52.102 [C] [panic.go:967]  the request url is  /user/modify/
+2020/12/18 23:32:52.102 [C] [panic.go:967]  Handler crashed with error can't find templatefile in the path:views/usercontroller/modify.tpl
+2020/12/18 23:32:52.103 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/panic.go:967
+2020/12/18 23:32:52.103 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2020/12/18 23:32:52.103 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2020/12/18 23:32:52.103 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2020/12/18 23:32:52.103 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2020/12/18 23:32:52.103 [C] [panic.go:967]  /Users/aomine/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2020/12/18 23:32:52.103 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:2807
+2020/12/18 23:32:52.103 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/net/http/server.go:1895
+2020/12/18 23:32:52.103 [C] [panic.go:967]  /usr/local/Cellar/go/1.14/libexec/src/runtime/asm_amd64.s:1373
+2020/12/18 23:32:52.103 [server.go:3059]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2020/12/18 23:33:33.141 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:33:33.158 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:33:36.473 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:33:36.491 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:33:44.778 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:33:44.794 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:33:50.004 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|  11.322611ms|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:33:50.016 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.764741ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:33:51.055 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:33:51.079 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:33:53.672 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   1.406894ms|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:33:55.627 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   11.89613ms|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:33:55.639 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.120691ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:34:08.372 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   2.669968ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:34:09.240 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    588.513µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:34:11.820 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|   8.740889ms|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:34:11.835 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   5.550423ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:34:16.005 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    616.347µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:34:18.432 [D] [server.go:2807]  |      127.0.0.1|[90;47m 302 [0m|  10.608723ms|   match|[97;46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/18 23:34:18.443 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.781469ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:34:19.872 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.462353ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:34:38.683 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/18 23:34:38.700 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
+2020/12/18 23:45:03.321 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.833405ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
+2020/12/18 23:45:46.691 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    869.424µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
