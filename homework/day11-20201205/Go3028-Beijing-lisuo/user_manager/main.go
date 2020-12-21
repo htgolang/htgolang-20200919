@@ -1,39 +1,25 @@
 package main
 
 import (
-	"github.com/htgolang/htgolang-20200919/tree/master/homework/day10-20201128/Go3028-Beijing-lisuo/user_manager/cmd/funcs"
-	_ "github.com/htgolang/htgolang-20200919/tree/master/homework/day10-20201128/Go3028-Beijing-lisuo/user_manager/cmd/funcs"
-	"github.com/htgolang/htgolang-20200919/tree/master/homework/day10-20201128/Go3028-Beijing-lisuo/user_manager/define"
-	"github.com/htgolang/htgolang-20200919/tree/master/homework/day10-20201128/Go3028-Beijing-lisuo/user_manager/web"
+	"fmt"
+	"user_manager/models"
+	"user_manager/services"
 )
 
 func main() {
-	serv()
-	web.Serv()
-}
+	fmt.Println("main")
+	var driverName = "mysql"
+	var dsn = "web:web@tcp(127.0.0.1:3306)/user?parseTime=true&loc=Local&charset=utf8mb4"
+	if err := models.InitDB(driverName, dsn); err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer models.CloseDB()
 
-func serv() {
-	//	var opt string
-	//
-	//	// add some users and map cmd to funcs
-	funcs.Init(&define.UserList)
-	//
-	//	// login
-	//	if !funcs.Login() {
-	//		return
-	//	}
-	//
-	//	// login prompt
-	//	funcs.ShowHelp()
-	//	fmt.Print("> ")
-	//	// main loop for manager users
-	//	for {
-	//		opt = utils.Read()
-	//		// exec the corresponding func of the cmd
-	//		err := funcs.ExecFunc(opt)
-	//		fmt.Print("> ")
-	//		if err != nil {
-	//			fmt.Print(err)
-	//		}
-	//	}
+	err := services.ListAllUser(models.DB)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("main done")
 }
