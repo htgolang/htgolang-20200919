@@ -10,7 +10,6 @@ import (
 func main() {
 	serv()
 	web.Serv()
-
 }
 
 func serv() {
