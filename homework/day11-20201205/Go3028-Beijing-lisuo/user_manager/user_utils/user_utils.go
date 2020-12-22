@@ -46,18 +46,6 @@ func Read() string {
 	return line
 }
 
-// GetField prompt input the User's field
-func GetField(f string) string {
-	for _, field := range models.UserField {
-		if field == f {
-			fmt.Printf("Please input %v: ", f)
-			input := Read()
-			return input
-		}
-	}
-	return f
-}
-
 // GenPasswd gen [16]uint8 password
 func GenPasswd() [16]uint8 {
 	d := []byte(Read())

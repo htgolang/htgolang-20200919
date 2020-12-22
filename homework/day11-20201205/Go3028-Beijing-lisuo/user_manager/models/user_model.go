@@ -18,6 +18,7 @@ const (
 type User struct {
 	ID      int64     `json:"id"`
 	Name    string    `json:"name"`
+	Sex     int       `json:"sex"`
 	Address string    `json:"address"`
 	Cell    string    `json:"cell"`
 	Born    time.Time `json:"born"`
@@ -25,22 +26,17 @@ type User struct {
 }
 
 // UserList contains users
-var UserList []User
-
-// UserField slice for GetField func
-var UserField []string = []string{"Id", "Name", "Address", "Cell", "Born", "Passwd"}
+type UserList []User
 
 // NewUser make a new user contains user's info
-func NewUser(id int64, name, cell, address, born, passwd string) User {
+func NewUser(id int64, sex int, name, cell, address, passwd string, born time.Time) User {
 	return User{
 		ID:      id,
 		Name:    name,
+		Sex:     sex,
 		Cell:    cell,
 		Address: address,
-		Born: func() time.Time {
-			t, _ := time.Parse("2006.01.02", born)
-			return t
-		}(),
-		Passwd: fmt.Sprintf("%x", md5.Sum([]byte(passwd))),
+		Born:    born,
+		Passwd:  fmt.Sprintf("%x", md5.Sum([]byte(passwd))),
 	}
 }

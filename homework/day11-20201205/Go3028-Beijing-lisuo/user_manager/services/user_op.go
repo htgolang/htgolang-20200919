@@ -13,14 +13,14 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-func ListAllUser(db *sql.DB) error {
-	rows, err := db.Query("select * from user")
+func ListAllUser() (models.UserList, error) {
+	var users models.UserList
+	rows, err := models.DB.Query("SELECT * FROM user")
 	if err != nil {
 		fmt.Println(err)
-		return err
+		return nil, err
 	}
 	defer rows.Close()
-
 	for rows.Next() {
 		var (
 			id         int64
@@ -39,75 +39,132 @@ func ListAllUser(db *sql.DB) error {
 			fmt.Println(err)
 			break
 		} else {
-			fmt.Println(id, name, password, sex, born, cell, created_at, updated_at, deleted_at)
+			user := models.NewUser(id, sex, name, cell, address, password, *born)
+			users = append(users, user)
+			//fmt.Println(id, name, password, sex, born, cell, created_at, updated_at, deleted_at)
 		}
 	}
+	return users, nil
+}
+
+// AddUser add a user to db
+func CreateUser(name, password, address, cell string, sex int, born time.Time) error {
+	sql := `
+    INSERT INTO user (name, password, sex, born, address, cell, created_at, updated_at) values (?, password(?), ?, ?, ?, ?, NOW(), NOW()) `
+	result, err := models.DB.Exec(sql, name, password, sex, born, address, cell)
+	if err != nil {
+		return err
+	}
+	fmt.Println("LastInsertID and RowsAffected: ")
+	fmt.Println(result.LastInsertId())
+	fmt.Println(result.RowsAffected())
 	return nil
 }
 
 // IDFindUser find user based on ID
-func IDFindUser(ul *[]models.User, id int64) (models.User, error) {
-	for _, user := range *ul {
-		if user.ID == id {
-			return user, nil
-		}
+func IDFindUser(db *sql.DB, Id int64) error {
+	sql := `
+    SELECT * FROM user WHERE id = ?
+    `
+	var (
+		id         int64
+		name       string
+		password   string
+		sex        int
+		born       *time.Time
+		address    string
+		cell       string
+		created_at *time.Time
+		updated_at *time.Time
+		deleted_at *time.Time
+	)
+	err := db.QueryRow(sql, Id).Scan(&id, &name, &password, &sex, &born, &address, &cell, &created_at, &updated_at, &deleted_at)
+	if err != nil {
+		fmt.Println(err)
+		return err
+	} else {
+		fmt.Println(id, name, password, sex, born, cell, created_at, updated_at, deleted_at)
 	}
-	err := errors.New("no such user")
-	return models.User{}, err
+	return nil
 }
 
 // NameFindUser find user based on Name
-func NameFindUser(ul *[]models.User, Name string) (models.User, error) {
-	for _, user := range *ul {
-		if user.Name == Name {
-			return user, nil
-		}
+func NameFindUser(db *sql.DB, Name string) error {
+	sql := `
+    SELECT * FROM user WHERE name = ?
+    `
+	var (
+		id         int64
+		name       string
+		password   string
+		sex        int
+		born       *time.Time
+		address    string
+		cell       string
+		created_at *time.Time
+		updated_at *time.Time
+		deleted_at *time.Time
+	)
+	err := db.QueryRow(sql, Name).Scan(&id, &name, &password, &sex, &born, &address, &cell, &created_at, &updated_at, &deleted_at)
+	if err != nil {
+		fmt.Println(err)
+		return err
+	} else {
+		fmt.Println(id, name, password, sex, born, cell, created_at, updated_at, deleted_at)
 	}
-	err := errors.New("no such user")
-	return models.User{}, err
+	return nil
 }
 
 // IDDelUser del user based on ID
-func IDDelUser(ul *[]models.User, id int64) error {
-	for i, user := range *ul {
-		if int64(user.ID) == id {
-			if id == models.AdminID {
-				err := errors.New("you'r not allowed to modify admin, nothing changed")
-				return err
-			}
-			*ul = append(models.UserList[:i], models.UserList[i+1:]...)
-		}
+func IDDelUser(db *sql.DB, ID int64) error {
+	sql := `
+    DELETE FROM user WHERE id = ?
+    `
+	result, err := db.Exec(sql, ID)
+	if err != nil {
+		return err
 	}
+	fmt.Println(result.LastInsertId())
+	fmt.Println(result.RowsAffected())
 	return nil
 }
 
 // NameDelUser del user based on Name
-func NameDelUser(ul *[]models.User, name string) error {
-	var index int
-	idx, err := GetUserIndex(ul, name)
+func NameDelUser(db *sql.DB, Name string) error {
+	sql := `
+    DELETE FROM user WHERE name = ?
+    `
+	result, err := db.Exec(sql, Name)
 	if err != nil {
-		fmt.Println(err)
-	}
-	if name == models.AdminName {
-		err := errors.New("you'r not allowed to modify admin, nothing changed")
 		return err
-	} else if (*ul)[idx].Name == name {
-		index = idx
 	}
-	(*ul) = append(models.UserList[:index], models.UserList[index+1:]...)
+	fmt.Println(result.LastInsertId())
+	fmt.Println(result.RowsAffected())
 	return nil
 }
 
 // GetMaxID get max id of current models.UserList
-func GetMaxID(ul *[]models.User) int64 {
-	var MaxID int64 = -1
-	for _, user := range *ul {
-		var i int64 = user.ID
-		if i > MaxID {
-			MaxID = i
-		}
+func GetMaxID(db *sql.DB) (int64, error) {
+	sql := `
+    SELECT * FROM user ORDER BY id DESC LIMIT 1
+	`
+	var (
+		id         int64
+		name       string
+		password   string
+		sex        int
+		born       *time.Time
+		address    string
+		cell       string
+		created_at *time.Time
+		updated_at *time.Time
+		deleted_at *time.Time
+	)
+	err := db.QueryRow(sql).Scan(&id, &name, &password, &sex, &born, &address, &cell, &created_at, &updated_at, &deleted_at)
+	if err != nil {
+		return id, err
 	}
-	return MaxID
+	return id, nil
 }
 
 // GetUserIndex return a user's index in models.UserList and a error
@@ -142,7 +199,6 @@ func IDModUser(ul *[]models.User, id int64) (models.User, error) {
 			} else {
 				newUser.Name = user.Name
 			}
-
 			fmt.Printf("Input new Address [%v]: ", user.Address)
 			iaddress = user_utils.Read()
 			if iaddress != "" {
@@ -150,7 +206,6 @@ func IDModUser(ul *[]models.User, id int64) (models.User, error) {
 			} else {
 				newUser.Address = user.Address
 			}
-
 			fmt.Printf("Input new Phone [%v]: ", user.Cell)
 			cell = user_utils.Read()
 			// make sure the phone number contains only pure digits
