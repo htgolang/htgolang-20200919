@@ -9,7 +9,7 @@ import (
 // UserQuit represent quit exit status code
 const (
 	AdminName string = "admin"
-	AdminID   int64  = 0
+	AdminID   int64  = 5
 	UserQuit  int    = 1
 )
 

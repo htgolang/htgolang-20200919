@@ -47,6 +47,49 @@ func ListAllUser() (models.UserList, error) {
 	return users, nil
 }
 
+func QueryUser(id, name, sex, address, cell string) (models.UserList, error) {
+	var userList = models.UserList{}
+	s := `SELECT * FROM user WHERE id = ? OR name LIKE ? OR sex = ? OR address LIKE ? OR cell LIKE ?`
+	rows, err := models.DB.Query(s, id, name, sex, address, cell)
+	if err != nil {
+		fmt.Println(err)
+		return nil, err
+	}
+	for rows.Next() {
+		var (
+			id         int64
+			name       string
+			sex        int
+			address    string
+			cell       string
+			born       string
+			passwd     string
+			created_at string
+			updated_at string
+			deleted_at sql.NullString
+		)
+		if err := rows.Scan(&id, &name, &passwd, &sex, &born, &address, &cell, &created_at, &updated_at, &deleted_at); err != nil {
+			fmt.Println(err)
+			return nil, err
+		}
+		t, err := time.Parse("2006-01-02T00:00:00+08:00", born)
+		if err != nil {
+			return nil, err
+		}
+		user := models.User{
+			ID:      id,
+			Name:    name,
+			Sex:     sex,
+			Address: address,
+			Cell:    cell,
+			Born:    t,
+			Passwd:  passwd,
+		}
+		userList = append(userList, user)
+	}
+	return userList, nil
+}
+
 // AddUser add a user to db
 func CreateUser(name, password, address, cell string, sex int, born time.Time) error {
 	sql := `
@@ -62,7 +105,8 @@ func CreateUser(name, password, address, cell string, sex int, born time.Time) e
 }
 
 // IDFindUser find user based on ID
-func IDFindUser(db *sql.DB, Id int64) error {
+func IDFindUser(Id int64) (models.User, error) {
+	var user = models.User{}
 	sql := `
     SELECT * FROM user WHERE id = ?
     `
@@ -78,18 +122,27 @@ func IDFindUser(db *sql.DB, Id int64) error {
 		updated_at *time.Time
 		deleted_at *time.Time
 	)
-	err := db.QueryRow(sql, Id).Scan(&id, &name, &password, &sex, &born, &address, &cell, &created_at, &updated_at, &deleted_at)
+	err := models.DB.QueryRow(sql, Id).Scan(&id, &name, &password, &sex, &born, &address, &cell, &created_at, &updated_at, &deleted_at)
 	if err != nil {
 		fmt.Println(err)
-		return err
+		return models.User{}, err
 	} else {
+		user = models.User{
+			ID:      id,
+			Name:    name,
+			Sex:     sex,
+			Address: address,
+			Cell:    cell,
+			Born:    *born,
+			Passwd:  password,
+		}
 		fmt.Println(id, name, password, sex, born, cell, created_at, updated_at, deleted_at)
 	}
-	return nil
+	return user, nil
 }
 
 // NameFindUser find user based on Name
-func NameFindUser(db *sql.DB, Name string) error {
+func NameFindUser(Name string) error {
 	sql := `
     SELECT * FROM user WHERE name = ?
     `
@@ -105,7 +158,7 @@ func NameFindUser(db *sql.DB, Name string) error {
 		updated_at *time.Time
 		deleted_at *time.Time
 	)
-	err := db.QueryRow(sql, Name).Scan(&id, &name, &password, &sex, &born, &address, &cell, &created_at, &updated_at, &deleted_at)
+	err := models.DB.QueryRow(sql, Name).Scan(&id, &name, &password, &sex, &born, &address, &cell, &created_at, &updated_at, &deleted_at)
 	if err != nil {
 		fmt.Println(err)
 		return err
@@ -116,11 +169,11 @@ func NameFindUser(db *sql.DB, Name string) error {
 }
 
 // IDDelUser del user based on ID
-func IDDelUser(db *sql.DB, ID int64) error {
+func IDDelUser(ID int64) error {
 	sql := `
     DELETE FROM user WHERE id = ?
     `
-	result, err := db.Exec(sql, ID)
+	result, err := models.DB.Exec(sql, ID)
 	if err != nil {
 		return err
 	}
@@ -180,61 +233,17 @@ func GetUserIndex(ul *[]models.User, name string) (int, error) {
 }
 
 // IDModUser modify user based on ID
-func IDModUser(ul *[]models.User, id int64) (models.User, error) {
-	var iname, iaddress, cell, ipasswd string
-	var index int
-	newUser := models.User{ID: id}
-	if id == models.AdminID {
-		err := errors.New("you'r not allowed to modify admin, nothing changed")
-		return newUser, err
+func IDModUser(name, address, password, cell, sex, born string, id int64) error {
+	sql := `UPDATE user SET name= ?, sex= ?, password=password(?), born= ?, address= ?, cell= ? WHERE id= ?;`
+	result, err := models.DB.Exec(sql, name, sex, password, born, address, cell, id)
+	if err != nil {
+		fmt.Println(err)
+		return err
 	}
-	for i, user := range *ul {
-		if user.ID == id {
-			index = i
-			fmt.Println("modifying...........")
-			fmt.Printf("Input new Name [%v]: ", user.Name)
-			iname = user_utils.Read()
-			if iname != "" {
-				newUser.Name = iname
-			} else {
-				newUser.Name = user.Name
-			}
-			fmt.Printf("Input new Address [%v]: ", user.Address)
-			iaddress = user_utils.Read()
-			if iaddress != "" {
-				newUser.Address = iaddress
-			} else {
-				newUser.Address = user.Address
-			}
-			fmt.Printf("Input new Phone [%v]: ", user.Cell)
-			cell = user_utils.Read()
-			// make sure the phone number contains only pure digits
-			for user_utils.JustDigits(cell) == false {
-				fmt.Print("Please input a legal phone number: \n> ")
-				cell = user_utils.Read()
-				if user_utils.JustDigits(cell) == true {
-					break
-				}
-			}
-			if cell != "" {
-				newUser.Cell = cell
-			} else {
-				newUser.Cell = user.Cell
-			}
-
-			fmt.Printf("Input new passwd [%v]: ", user.Passwd)
-			ipasswd = fmt.Sprintf("%x", md5.Sum([]byte(user_utils.Read())))
-			if ipasswd != "" {
-				newUser.Passwd = ipasswd
-			} else {
-				newUser.Passwd = user.Passwd
-			}
-			newUser.Born = user.Born
-		}
-
-	}
-	(*ul)[index] = newUser
-	return (*ul)[index], nil
+	fmt.Printf("mod user %v LastInsertID and RowsAffected: ", id)
+	fmt.Println(result.LastInsertId())
+	fmt.Println(result.RowsAffected())
+	return nil
 }
 
 // NameModUser modify user based on Name

@@ -4,9 +4,12 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"strings"
 	"text/template"
 	"time"
+	"user_manager/models"
 	"user_manager/services"
+	"user_manager/user_utils"
 )
 
 func Home(w http.ResponseWriter, r *http.Request) {
@@ -54,6 +57,13 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 		if r.PostForm["name"][0] == "admin" {
 			ErrorMsg(w, "Do not create admin.")
 			return
+		} else if err := services.NameFindUser(r.PostFormValue("name")); err == nil {
+			ErrorMsg(w, "Error: There's a user with same name: "+r.PostFormValue("name"))
+			return
+		}
+		if !user_utils.JustDigits(r.PostFormValue("cell")) {
+			ErrorMsg(w, "Error: Cell must be pure digits.")
+			return
 		}
 		fmt.Println("userToCreate:", Name)
 		if err := services.CreateUser(Name, Passwd, Address, Cell, Sex, Born); err != nil {
@@ -63,136 +73,121 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-//
-//func EditUser(w http.ResponseWriter, r *http.Request) {
-//	if r.Method == "GET" {
-//		t, err := template.New("edit").ParseFiles(abs + "/html/edit.html")
-//		if err != nil {
-//			panic(err)
-//		}
-//		r.ParseForm()
-//		fmt.Println("r.Form from /edit/:", r.Form)
-//		i := r.Form["id"][0]
-//		id, err := strconv.ParseInt(i, 10, 64)
-//		if err != nil {
-//			panic(err)
-//		}
-//		user, err := funcs.IDFindUser(users, id)
-//		fmt.Println("use to mod: ", user)
-//		if err != nil {
-//			t.ExecuteTemplate(w, "error.html", "no such user......")
-//			panic(err)
-//		}
-//		// error
-//		if r.Form["id"][0] == "0" {
-//			t, err := template.New("error").ParseFiles(abs + "/html/error.html")
-//			if err != nil {
-//				panic(err)
-//			}
-//			t.ExecuteTemplate(w, "error.html", "do not edit admin......")
-//			return
-//		}
-//		t.ExecuteTemplate(w, "edit.html", user)
-//	} else if r.Method == "POST" {
-//		var index int
-//		var id int64
-//		r.ParseForm()
-//		fmt.Println("from /edit/ r.PostFrom: ", r.PostForm)
-//		id, err = strconv.ParseInt(r.PostForm["id"][0], 10, 64)
-//		if err != nil {
-//			panic(err)
-//		}
-//		fmt.Println("id: ", id)
-//		for i, user := range *users {
-//			if user.ID == id {
-//				index = i
-//				userO := (*users)[index]
-//				userN := define.User{
-//					ID:      userO.ID,
-//					Name:    r.PostForm["name"][0],
-//					Address: r.PostForm["address"][0],
-//					Cell:    r.PostForm["cell"][0],
-//					Born:    userO.Born,
-//					Passwd:  r.PostForm["passwd"][0],
-//				}
-//				(*users)[index] = userN
-//			}
-//		}
-//		http.Redirect(w, r, "/", 302)
-//	}
-//}
-//
-//func DeleteUser(w http.ResponseWriter, r *http.Request) {
-//	t, err := template.New("delete").ParseFiles(abs + "/html/delete.html")
-//	if err != nil {
-//		panic(err)
-//	}
-//	r.ParseForm()
-//	fmt.Println("r.Form from /delete/:", r.Form)
-//	i, errP := strconv.ParseInt(r.Form["id"][0], 10, 64)
-//	if errP != nil {
-//		panic(errP)
-//	}
-//	u := func(users *[]define.User) define.User {
-//		for _, user := range *users {
-//			if user.ID == i {
-//				return user
-//			}
-//		}
-//		return (*users)[0]
-//	}
-//	// error
-//	if r.Form["id"][0] == "0" {
-//		t, err := template.New("error").ParseFiles(abs + "/html/error.html")
-//		if err != nil {
-//			panic(err)
-//		}
-//		t.ExecuteTemplate(w, "error.html", "do not delete admin......")
-//		http.Redirect(w, r, "/", 302)
-//		return
-//	}
-//	fmt.Println("userToDel: ", u(users))
-//	t.ExecuteTemplate(w, "delete.html", u(users))
-//}
-//
-//func QueryUser(w http.ResponseWriter, r *http.Request) {
-//	if r.Method == "GET" {
-//		t, err := template.New("query").ParseFiles(abs + "/html/query.html")
-//		if err != nil {
-//			panic(err)
-//		}
-//		t.ExecuteTemplate(w, "query.html", nil)
-//	} else if r.Method == "POST" {
-//		r.ParseForm()
-//		fmt.Println("r.PostForm from /edit/: ", r.PostForm)
-//		var gotUsers []define.User
-//		inputList := []string{
-//			r.PostForm["id"][0],
-//			r.PostForm["name"][0],
-//			r.PostForm["address"][0],
-//			r.PostForm["born"][0],
-//		}
-//		for _, user := range *users {
-//			for _, input := range inputList {
-//				b := func(u define.User, input string) bool {
-//					return strings.Contains(strings.ToLower(u.Name), input) ||
-//						strings.Contains(strings.ToLower(u.Address), input) ||
-//						strings.Contains(u.Cell, input) ||
-//						strings.Contains(u.Born.Format("2006.01.02"), input)
-//				}(user, input)
-//				if b {
-//					gotUsers = append(gotUsers, user)
-//				}
-//			}
-//		}
-//		// display
-//		t, err := template.New("display").ParseFiles(abs + "/html/display.html")
-//		if err != nil {
-//			panic(err)
-//		}
-//		t.ExecuteTemplate(w, "display.html", gotUsers)
-//	}
-//}
+func DeleteUser(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	id, err := strconv.ParseInt(r.FormValue("id"), 10, 64)
+	if err != nil {
+		ErrorMsg(w, err.Error())
+		return
+	}
+	if id == 5 {
+		ErrorMsg(w, "You can't delete admin, who's id is "+r.FormValue("id"))
+		return
+	}
+	services.IDDelUser(id)
+	ErrorMsg(w, "deleted user by id: "+r.FormValue("id"))
+	http.Redirect(w, r, "/", 302)
+}
+
+func EditUser(w http.ResponseWriter, r *http.Request) {
+	type cUser struct {
+		ID      int64
+		Name    string
+		Sex     int
+		Address string
+		Cell    string
+		Born    string
+		Passwd  string
+	}
+	if r.Method == "GET" {
+		t, err := template.New("edit").ParseFiles("template/edit.html")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		r.ParseForm()
+		fmt.Println("r.Form from /edit/:", r.Form)
+		i := r.FormValue("id")
+		id, err := strconv.ParseInt(i, 10, 64)
+		if err != nil {
+			ErrorMsg(w, err.Error())
+			return
+		}
+		user, errf := services.IDFindUser(id)
+		var cuser = cUser{
+			ID:      user.ID,
+			Name:    user.Name,
+			Sex:     user.Sex,
+			Address: user.Address,
+			Cell:    user.Cell,
+			Born:    strings.Split(user.Born.String(), " ")[0],
+			Passwd:  user.Passwd,
+		}
+		if errf != nil {
+			ErrorMsg(w, "No such user.")
+		}
+		t.ExecuteTemplate(w, "edit.html", cuser)
+	} else if r.Method == "POST" {
+		var id int64
+		r.ParseForm()
+		fmt.Println("from /edit/ r.PostFrom: ", r.PostForm)
+		id, err := strconv.ParseInt(r.PostFormValue("id"), 10, 64)
+		if err != nil {
+			ErrorMsg(w, err.Error())
+			return
+		}
+		if id == models.AdminID {
+			ErrorMsg(w, "Do not edit admin.")
+			return
+		}
+		fmt.Println("edit user, id is: ", id)
+		var (
+			name     = r.PostFormValue("name")
+			address  = r.PostFormValue("address")
+			password = r.PostFormValue("passwd")
+			cell     = r.PostFormValue("cell")
+			sex      = r.PostFormValue("sex")
+			born     = r.PostFormValue("born")
+		)
+		if err := services.IDModUser(name, address, password, cell, sex, born, id); err != nil {
+			ErrorMsg(w, err.Error())
+			return
+		}
+		http.Redirect(w, r, "/", 302)
+	}
+}
+
+// QueryUser get user by some sting
+func QueryUser(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "GET" {
+		t, err := template.New("query").ParseFiles("template/query.html")
+		if err != nil {
+			panic(err)
+		}
+		t.ExecuteTemplate(w, "query.html", nil)
+	} else if r.Method == "POST" {
+		r.ParseForm()
+		fmt.Println("r.PostForm from /edit/: ", r.PostForm)
+		var (
+			id      = r.PostFormValue("id")
+			name    = r.PostFormValue("name")
+			sex     = r.PostFormValue("sex")
+			address = r.PostFormValue("address")
+			cell    = r.PostFormValue("cell")
+		)
+		users, err := services.QueryUser(id, name, sex, address, cell)
+		if err != nil {
+			ErrorMsg(w, err.Error())
+			return
+		}
+		// display
+		t, err := template.New("display").ParseFiles("template/display.html")
+		if err != nil {
+			panic(err)
+		}
+		t.ExecuteTemplate(w, "display.html", users)
+	}
+}
 
 func ErrorMsg(w http.ResponseWriter, msg string) {
 	t, err := template.New("error").ParseFiles("template/error.html")
