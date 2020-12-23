@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查找用户</title>
+</head>
+<body>
+<form action="/usermanager/query" method="POST">
+    <label>
+        <input type="text" placeholder="请输入关键字..." name="querystr" />
+    </label>
+    <button>搜索</button>
+</form>
+{{if .rdata.Ok}}
+    <style>
+        table,table tr th, table tr td { border:1px solid #0094ff; }
+        table { width: 500px; min-height: 25px; line-height: 25px; text-align: center; border-collapse: collapse;}
+    </style>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>地址</th>
+        <th>电话</th>
+        <th>生日</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{.rdata.Ud.Id}}</td>
+            <td>{{.rdata.Ud.Name}}</td>
+            <td>{{.rdata.Ud.Addr}}</td>
+            <td>{{.rdata.Ud.Tel}}</td>
+            <td>{{.rdata.Ud.Birthday.Format "2006-01-02"}}</td>
+        </tr>
+    </tbody>
+</table>
+    <input type="button" value="返回主页" onclick="javascrtpt:window.location.href='/'">
+{{end}}
+<input type="button" value="退出登录" onclick="javascrtpt:window.location.href='/usermanager/logout/'">
+</body>
+</html>
