@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8">
+        <title>修改权限</title>
+    </head>
+    <body>
+        {{ if .error }}
+        <div>{{ .error }}</div>
+        {{ end }}
+        <form action="/permission/setting?id={{ .user.ID }}" method="post">
+            <div>
+                {{ .user.Name }}
+            </div>
+            <div>
+                权限: 
+                管理员 <input type="radio" name="permiss" value="true" {{ if eq .user.Admin true }}checked{{ end }}>
+                普通用户 <input type="radio" name="permiss" value="false" {{ if eq .user.Admin false }}checked{{ end }} >
+            </div>
+            <div>
+                <input type="submit" value="提交">
+            </div>
+        </form>
+    </body>
+</html>

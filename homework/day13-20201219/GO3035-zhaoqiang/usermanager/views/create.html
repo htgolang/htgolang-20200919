@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="utf8">
+    <head>
+        <meta charset="utf8">
+        <title>创建用户</title>
+    </head>
+    <body>
+        {{ if .error }}
+        <div>{{ .error }}</div>
+        {{ end }}
+        <form action="/user/create" method="POST">
+        <div>
+            用户名: <input type="text" name="name" value="" placeholder="用户名">
+        </div>
+        <div>
+            密码: <input type="password" name="password" value="">
+        </div>
+        <div>
+            性别: 
+            男<input type="radio" name="sex" value="true" checked>
+            女<input type="radio" name="sex" value="false">
+        </div>
+        <div>
+            电话: <input type="text" name="tel" value="">
+        </div>
+        <div>
+            生日: <input type="text" name="brithday" value="" placeholder="2020-01-02">
+        </div>
+        <div>
+            地址: <textarea name="addr" cols="30" rows="10"></textarea>
+        </div>
+        <input type="submit" value="创建">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="utf8">
+    <head>
+        <meta charset="utf8">
+        <title>修改用户信息</title>
+    </head>
+    <body>
+        {{ if .error }}
+        {{ .error }}
+        {{ end }}
+        <form action="/user/modify?id={{ .user.ID }}" method="POST">
+            <div>
+                用户名：<input type="text" name="name" value="{{ .user.Name }}" placeholder="username">
+            </div>
+            <div>
+                密码：<input type="password" name="password" value="">
+            </div>
+            <div>
+                性别: 
+                男 <input type="radio" name="sex" value="true" {{ if eq .user.Sex true }}checked{{end}}> 
+                女 <input type="radio" name="sex" value="false" {{ if eq .user.Sex false }}checked{{end}} >
+            </div>
+            <div>
+                address : <input type="text" name="addr" value="{{ .user.Addr }}">
+            </div>
+            <div>
+                tel: <input type="text" name="tel" value="{{ .user.Tel }}">
+            </div>
+            <div>
+                brithday: <input type="text" name="brithday" value="{{ .brith }}" placeholder="2020/01/01">
+            </div>
+            <input type="submit" value="提交">
+        </form>
+    </body>
+</html>

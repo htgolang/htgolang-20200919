@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="utf8">
+    <head>
+        <meta charset="utf8"/>
+        <title>用户列表</title>
+    </head>
+    <body>
+        {{ if .error }}
+        <div>{{ .error }}</div>
+        {{ end }}
+        <div>
+            登陆用户 {{ .userinfo }}
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>用户名</th>
+                    <th>密码</th>
+                    <th>性别</th>
+                    <th>管理员</th>
+                    <th>电话</th>
+                    <th>地址</th>
+                    <th>生日</th>
+                    <th>备注</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ range .users }}
+                <tr>
+                    <td>{{ .ID }}</td> 
+                    <td>{{ .Name }}</td>
+                    <td>**********</td>
+                    <td>{{ if eq true .Sex }}男{{ else }}女{{ end }}</td>
+                    <td>{{ if eq true .Admin }}YES{{ else }}NO{{ end }}</td>
+                    <td>{{ .Tel }}</td>
+                    <td>{{ .Addr }}</td>
+                    <td>{{ .Brithday }}</td> 
+                    <td>
+                        <a href="/user/modify?id={{ .ID }}">修改</a>
+                        <a href="/user/delete?id={{ .ID }}">删除</a>
+                        <a href="/permission/setting?id={{ .ID }}">修改用户权限</a>
+                    </td>
+                </tr>
+                {{ end }}
+            </tbody>
+        </table>
+        <div>
+            <a href="/user/create">创建用户</a>
+        </div>
+        <div>
+            <a href="/auth/logout">登出</a>
+        </div>
+    </body>
+</html>
