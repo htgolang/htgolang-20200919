@@ -1,0 +1,233 @@
+1. 复习
+
+2. 作业(有问题处理)
+    AuthController
+        Prepare
+            检查Session是否存在
+                不存在 => 跳转到登陆URL
+    Login
+    Logout
+
+    编辑:
+        打开编辑页面
+            请求
+                URL /user/modify
+                数据 ?pk=
+
+            请求处理
+                Controller
+                    获取提交的数据 pk
+
+                    检查
+
+                    user := Services.GetUserById(pk)
+
+            响应
+                模板+user => html
+
+                <input type="text/password" name="pk" value="user.ID"/>
+                隐藏 hidden
+
+        提交修改数据
+            请求
+                URL user/modify?pk=
+                数据 body 数据的主键
+
+            请求处理
+                Controller
+                    获取提交数据 form
+
+                    检查
+                        通过
+                            Services.UpdateUser()
+            响应
+                通过
+                    重定向
+                不通过
+                    编辑页面
+                        错误信息
+                        用户提交的数据
+
+                        User 不可以
+
+        services 函数
+            userService
+                AddUser => Add
+                DeleteUser =》 Delete
+                UpdateUser =》 Update
+                QueryUser => Query
+
+            var UserService *userService = new(userService)
+
+            RoleService
+                AddRole => Add
+                DeleteRole => Delete
+                UpdateRole => Update
+                QueryRole => Query
+
+            对象
+                单例模式
+
+
+3. 新内容
+    MVC模式
+        Model ORM
+        View 模板
+        Controller  路由
+
+    CSS
+        层叠样式表单
+        运行在浏览器：浏览器解析并且渲染
+            告知浏览器如何显示HTML的标签
+
+        没有毛的鸡
+        有孔雀羽毛一样的鸡
+        有一只具有孔雀羽毛一样的可以拍打翅膀去飞的鸡
+            鸡 html
+            羽毛 css
+            拍打翅膀 javascript js
+
+            html => 内容
+            css => 美观
+
+            javascript => 交互 操作的简易性 => 需要自己学习(视频)
+            数据库 => GORM
+
+        css => 知道最基本的使用方法
+               拿到别人的模板页面能进行简单修改
+
+        前端
+            UI/UE => 原型 页面设计
+            前端开发工程师 html/css/js
+
+            前端开发框架/前端打包框架/前端语言
+            vuejs/webpack/es6/typescript/dark/nodejs => js
+            sass => css
+
+        后端开发工程师 beego api
+            后端模板
+
+        css:
+            内联方式: 样式直接定义在标签上
+                     style=""
+
+            css定义在页面内
+                定义在header/style标签内
+
+            选择器: 声明css样式应用在哪些标签
+                标签选择器: 将定义的样式应用在某类标签(标签名)
+                    tagname {
+                        key: value
+                    }
+                ID选择器： 将定义的样式应用在某个标签,指定属性id=ID值
+                    #id {
+                        key: value
+                    }
+                    #myname {
+
+                    }
+                    <tag id="myname" ></tag>
+
+                    ID不能重复
+
+                class选择器：将定义的样式用用在某类标签, 标签指定属性class值中包含class名称
+                    .classname {
+                        key: value
+                    }
+
+                    <tag class="classname classname1 classname2" ></tag>
+                属性选择器
+                    [attrname]
+                    [attrname=attrvalue]
+                子孙选择器
+                    selector1 selector2 {
+
+                    }
+
+                子选择器
+                    selector1 > selector2 {
+
+                    }
+
+                组合选择器
+                    tagname.class {
+
+                    }
+                    tagname[attrname=attrvalue] {
+
+                    }
+
+                ....
+            外部方式
+                css单独文件， .css
+
+                html需要声明使用的css
+                <link href=".css" rel="stylesheet" type="text/css" />
+
+            定位
+
+    bootstrap
+
+    beego中静态资源文件存放位置
+        static
+        /static/
+
+    beego template
+
+
+    查询:
+            q => name
+
+            6 不包含name信息
+            [1, 2, 3, 4, 5, 7, 8]
+
+        <a user/query?pageNum=1&q=?>
+        <a user/query?pageNum=2&q=?>
+        <a user/query?pageNum=3&q=?>
+        ...
+        <a user/query?pageNum=maxPage&q=?>
+
+    分页:
+        数据量太大
+        Limit().Offset()
+
+        [1, 2, 3, 4, 5, 6, 7, 8]
+        [1, 2, 3]
+
+        每页展示3条数据 pageSize
+        3页 => total / 3 向上取整
+
+        最多显示页数 total/pageSize 向上取整 maxPage
+        1 2 3 ... maxPage
+
+        <a user/query?pageNum=1>
+        <a user/query?pageNum=2>
+        <a user/query?pageNum=3>
+        ...
+        <a user/query?pageNum=maxPage>
+
+        pageNum  pageSize
+
+        pageNum <= 0
+            pageNum = 1
+
+        offset (pageNum - 1) * pageSize
+
+        limit pageSize
+
+        第一页
+        上一页
+
+        N-2
+        N-1
+        N
+        N+1
+        N+2
+
+        下一页
+        最后一页
+
+        4
+
+    datatable
+        total

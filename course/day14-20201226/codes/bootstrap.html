@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>页面外部css</title>
+        <link type="text/css" rel="stylesheet" href="./bootstrap-4.5.3-dist/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <!--
+            bootstrap 定义很多class selector css
+
+            学习了解: bootstrap class
+            子孙选择器: 标签结构
+            bootstrap：
+                布局
+                定位，大小: grid
+        -->
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>名字</th>
+                    <th>性别</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>相遇</td>
+                    <td>型飞机开绿灯</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>相遇</td>
+                    <td>型飞机开绿灯</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>相遇</td>
+                    <td>型飞机开绿灯</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>相遇</td>
+                    <td>型飞机开绿灯</td>
+                </tr>
+            </tbody>
+        </table>
+        <form>
+            <input type="text" name="username"/>
+            <input type="submit" class="btn btn-danger"/>
+        </form>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    我是DIV 1
+                </div>
+                <div class="col">
+                    我是DIV
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3 offset-2">
+                    我是DIV 1
+                </div>
+                <div class="col-3">
+                    我是DIV
+                </div>
+                <div class="col-3">
+                    我是DIV
+                </div>
+                <div class="col-3">
+                    我是DIV
+                </div>
+                <div class="col-3">
+                    我是DIV
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

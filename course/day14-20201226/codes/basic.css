@@ -1,0 +1,46 @@
+/*
+background: 背景
+background-color:
+    颜色对应英文
+    6个16进制的字符表示 #XX XX XX
+                      rgb(0-255, 0-255, 0-255)
+                      0 - FF
+background-image:
+*/
+/*
+div {
+    background-color: rgb(255, 0, 0);
+}
+div {
+    background-image: url("./bg.jpg");
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    height: 600px;
+}
+*/
+div {
+    color: green;
+    text-align: center;
+    text-decoration: overline;
+    height: 200px;
+    width: 200px;
+    font-size: 35px;
+    background-color: gray;
+    position: absolute;
+    top: 300px;
+    left: 500px;
+    padding: 50px;
+    margin: 10px 20px 30px 40px;
+}
+
+/*
+table {
+    border:5px solid red;
+    width: 100%;
+    border-radius: 50px;
+}
+
+td {
+    border:1px solid green;
+}
+*/
