@@ -9,8 +9,10 @@ import (
 func init() {
 
 	beego.BConfig.WebConfig.DirectoryIndex = true
-	beego.Router("/", &controllers.MainController{})
-	beego.Router("/suo/", &controllers.SuoController{})
-	beego.Router("/add/:id", &controllers.SuoController{})
-	beego.SetStaticPath("/down", "download")
+	beego.AutoRouter(&controllers.UserController{})
+
+	//beego.Router("/", &controllers.MainController{})
+	//beego.Router("/suo/", &controllers.SuoController{})
+	//beego.Router("/add/:id", &controllers.SuoController{})
+	//beego.SetStaticPath("/down", "download")
 }
