@@ -6,16 +6,16 @@
         <title>Query a user</title>
     </head>
     <body>
-        <form action="/query/" method="POST">
+        <form action="/user/query/" method="POST">
             <label> ID </label><input name="id" value="{{ .ID }}" /> <br/><br/>
             <label> Name </label><input name="name" value="{{ .Name }}"/> <br/><br/>
-            <label> Sex </label><input name="sex" value="{{ .Sex }}"/> <br/><br/>
+            <label> Sex </label><input name="sex" value="Disabled" readonly/> <br/><br/>
             <label> Address </label><input name="address" value="{{ .Address }}"/> <br/><br/>
             <label> Cell </label><input name="cell" value="{{ .Cell }}"/> <br/><br/>
-            <label> Born </label><input name="born" value="{{ .Born }}"/> <br/><br/>
-            <label> Passwd </label><input name="passwd" value="{{ .Passwd }}" readonly/> <br/><br/>
+            <label> Born </label><input name="born" value="Disabled" readonly/> <br/><br/>
+            <label> Passwd </label><input name="passwd" value="Disabled" readonly/> <br/><br/>
             <input type="submit" value="Done"></input>
-            <a href="/">Home</a>
+            <h2><a href="/user/home">Home</a></h2><br>
         </form>
     </body>
 </html>

@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"fmt"
+	"strings"
 	"time"
 	"userMgr/models"
 	"userMgr/services"
@@ -22,6 +23,7 @@ func (c *UserController) Home() {
 		return
 	}
 	c.Data["users"] = users
+	c.Data["msg"] = "Are you sure to delete the user?"
 	c.TplName = "user/home.html"
 }
 
@@ -68,103 +70,81 @@ func (c *UserController) Delete() {
 		return
 	}
 	fmt.Println("To delete: ", c.GetString("id"))
-
-	c.Confirm("Are you sure to delete user: " + c.GetString("id"))
-
 	if errd := services.IDDelUser(id); errd == nil {
 		c.ErrorMsg("Deleted a user, who's id is: " + c.GetString("id"))
 		return
-		//c.Redirect("/user/home/", 301)
 	} else {
-		c.ErrorMsg(errd.Error())
-		return
+		HandleError(c, errd)
 	}
 }
 
-//func DeleteUser(w http.ResponseWriter, r *http.Request) {
-//	r.ParseForm()
-//	id, err := strconv.ParseInt(r.FormValue("id"), 10, 64)
-//	if err != nil {
-//		ErrorMsg(w, err.Error())
-//		return
-//	}
-//	if id == 5 {
-//		ErrorMsg(w, "You can't delete admin, who's id is "+r.FormValue("id"))
-//		return
-//	}
-//	services.IDDelUser(id)
-//	ErrorMsg(w, "deleted user by id: "+r.FormValue("id"))
-//	http.Redirect(w, r, "/", 302)
-//}
-//
-//func EditUser(w http.ResponseWriter, r *http.Request) {
-//	type cUser struct {
-//		ID      int64
-//		Name    string
-//		Sex     int
-//		Address string
-//		Cell    string
-//		Born    string
-//		Passwd  string
-//	}
-//	if r.Method == "GET" {
-//		t, err := template.New("edit").ParseFiles("template/edit.html")
-//		if err != nil {
-//			fmt.Println(err)
-//			return
-//		}
-//		r.ParseForm()
-//		fmt.Println("r.Form from /edit/:", r.Form)
-//		i := r.FormValue("id")
-//		id, err := strconv.ParseInt(i, 10, 64)
-//		if err != nil {
-//			ErrorMsg(w, err.Error())
-//			return
-//		}
-//		user, errf := services.IDFindUser(id)
-//		var cuser = cUser{
-//			ID:      user.ID,
-//			Name:    user.Name,
-//			Sex:     user.Sex,
-//			Address: user.Address,
-//			Cell:    user.Cell,
-//			Born:    strings.Split(user.Born.String(), " ")[0],
-//			Passwd:  user.Passwd,
-//		}
-//		if errf != nil {
-//			ErrorMsg(w, "No such user.")
-//		}
-//		t.ExecuteTemplate(w, "edit.html", cuser)
-//	} else if r.Method == "POST" {
-//		var id int64
-//		r.ParseForm()
-//		fmt.Println("from /edit/ r.PostFrom: ", r.PostForm)
-//		id, err := strconv.ParseInt(r.PostFormValue("id"), 10, 64)
-//		if err != nil {
-//			ErrorMsg(w, err.Error())
-//			return
-//		}
-//		if id == models.AdminID {
-//			ErrorMsg(w, "Do not edit admin.")
-//			return
-//		}
-//		fmt.Println("edit user, id is: ", id)
-//		var (
-//			name     = r.PostFormValue("name")
-//			address  = r.PostFormValue("address")
-//			password = r.PostFormValue("passwd")
-//			cell     = r.PostFormValue("cell")
-//			sex      = r.PostFormValue("sex")
-//			born     = r.PostFormValue("born")
-//		)
-//		if err := services.IDModUser(name, address, password, cell, sex, born, id); err != nil {
-//			ErrorMsg(w, err.Error())
-//			return
-//		}
-//		http.Redirect(w, r, "/", 302)
-//	}
-//}
-//
+func (c *UserController) Edit() {
+	if c.Ctx.Input.IsGet() {
+		type cUser struct {
+			ID      int64
+			Name    string
+			Sex     int
+			Address string
+			Cell    string
+			Born    string
+			Passwd  string
+		}
+		id, err := c.GetInt64("id")
+		fmt.Println(c.GetInt64("id"))
+		HandleError(c, err)
+		user, errf := services.IDFindUser(id)
+		HandleError(c, errf)
+		cuser := func(models.User) cUser {
+			return cUser{
+				ID:      user.ID,
+				Name:    user.Name,
+				Sex:     user.Sex,
+				Address: user.Address,
+				Cell:    user.Cell,
+				Born:    strings.Split(user.Born.String(), " ")[0],
+				Passwd:  user.Passwd,
+			}
+		}(user)
+		c.Data["user"] = cuser
+		c.TplName = "user/edit.html"
+	} else {
+		id, erri := c.GetInt64("id")
+		HandleError(c, erri)
+		name := c.GetString("name")
+		sex := c.GetString("sex")
+		address := c.GetString("address")
+		cell := c.GetString("cell")
+		born := c.GetString("born")
+		password := c.GetString("passwd")
+		if id == models.AdminID {
+			c.ErrorMsg("Do not edit admin.")
+			return
+		}
+		if errm := services.IDModUser(name, address, password, cell, sex, born, id); errm != nil {
+			HandleError(c, errm)
+			return
+		} else {
+			c.Redirect("/user/home/", 301)
+		}
+	}
+}
+
+func (c *UserController) Query() {
+	if c.Ctx.Input.IsGet() {
+		c.TplName = "user/query.html"
+	} else {
+		id := c.GetString("id")
+		name := c.GetString("name")
+		address := c.GetString("address")
+		cell := c.GetString("cell")
+		fmt.Printf("query input: id: %#v, name: %#v, address: %#v, cell: %#v\n", id, name, address, cell)
+		users, err := services.QueryUser(id, name, address, cell)
+		HandleError(c, err)
+		c.Data["users"] = users
+		c.TplName = "user/display.html"
+	}
+}
+
 //// QueryUser get user by some sting
 //func QueryUser(w http.ResponseWriter, r *http.Request) {
 //	if r.Method == "GET" {
@@ -197,12 +177,15 @@ func (c *UserController) Delete() {
 //	}
 //}
 //
+
 func (c *UserController) ErrorMsg(msg string) {
 	c.Data["msg"] = msg
 	c.TplName = "user/error.html"
 }
 
-func (c *UserController) Confirm(msg string) {
-	c.Data["msg"] = msg
-	c.TplName = "user/confirm.html"
+func HandleError(c *UserController, err error) {
+	if err != nil {
+		c.ErrorMsg(err.Error())
+		return
+	}
 }

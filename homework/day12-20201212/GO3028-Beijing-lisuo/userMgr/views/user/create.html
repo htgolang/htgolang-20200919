@@ -6,12 +6,12 @@
     </head>
     <body>
         <form action="/user/create/" method="POST">
-            <label> ID </label><input name="id" value="{{ .ID }}" disabled/> <br/><br/>
+            <label> ID </label><input name="id" value="Disabled" disabled/> <br/><br/>
             <label> Name </label><input name="name" value="{{ .Name }}"/> <br/><br/>
-            <label> Sex </label><input name="sex" value="{{ .Name }}"/> <br/><br/>
+            <label> Sex </label><input name="sex" value="0 or 1 (0: female, 1: male)"/> <br/><br/>
             <label> Address </label><input name="address" value="{{ .Address }}"/> <br/><br/>
             <label> Cell </label><input name="cell" value="{{ .Cell }}"/> <br/><br/>
-            <label> Born </label><input name="born" value="{{ .Born }}"/> <br/><br/>
+            <label> Born </label><input name="born" value="2006.01.02"/> <br/><br/>
             <label> Passwd </label><input name="passwd" value="{{ .Passwd }}"/> <br/><br/>
             <input type="submit" value="Create" />
         </form>

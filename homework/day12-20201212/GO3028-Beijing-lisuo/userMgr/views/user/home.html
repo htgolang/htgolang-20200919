@@ -6,7 +6,8 @@
 	</head>
 	<body style="background-color:powderblue;">
 	    <h1> USER MANAGEMENT </h1>
-	    <p>A simple user management system.</p>
+	    <p>A simple user management system based on beego.</p>
+        <h2>Personal blog: <a href="https://www.suosuoli.cn" target="_blank">suosuoli.cn</a></h2>
 	    <table border="2">
             <thead>
 	        <tr>
@@ -33,7 +34,8 @@
                     <a href="/user/edit/?id={{ .ID }}">Edit</a>
                 </td>
                 <td>
-				    <form action="/user/delete/?id={{ .ID }}" onsubmit="return confirm('Do you really want to submit the form?');" method="POST">
+                    <!-- Do you really want to submit the form? -->
+				    <form action="/user/delete/?id={{ .ID }}" onsubmit="return confirm('Are you sure to delete user {{ .Name }} by id {{ .ID }} ?');" method="POST">
 					<button type="submit" formmethod="POST">Delete</button>
 					</form>
                 </td>

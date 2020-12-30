@@ -47,10 +47,26 @@ func ListAllUser() (models.UserList, error) {
 	return users, nil
 }
 
-func QueryUser(id, name, sex, address, cell string) (models.UserList, error) {
+func QueryUser(id, name, address, cell string) (models.UserList, error) {
 	var userList = models.UserList{}
-	s := `SELECT * FROM user WHERE id = ? OR name LIKE ? OR sex = ? OR address LIKE ? OR cell LIKE ?`
-	rows, err := models.DB.Query(s, id, name, sex, address, cell)
+	var blank = ""
+	f := func(args ...string) map[int]string {
+		var queryStrs = make(map[int]string)
+		for i, v := range args {
+			if v != blank {
+				queryStrs[i] = "%" + v + "%"
+			} else {
+				queryStrs[i] = v
+			}
+		}
+		return queryStrs
+
+	}(name, address, cell)
+	fmt.Printf("query string: %#v\n", f)
+
+	s := `SELECT * FROM user WHERE id = ? OR name LIKE ? OR address LIKE ? OR cell LIKE ?`
+	rows, err := models.DB.Query(s, id, f[0], f[1], f[2])
+	fmt.Println("query sql: ", s)
 	if err != nil {
 		fmt.Println(err)
 		return nil, err
@@ -72,6 +88,7 @@ func QueryUser(id, name, sex, address, cell string) (models.UserList, error) {
 			fmt.Println(err)
 			return nil, err
 		}
+		fmt.Println("query id and name: ", id, name)
 		t, err := time.Parse("2006-01-02T00:00:00+08:00", born)
 		if err != nil {
 			return nil, err
@@ -136,6 +153,7 @@ func IDFindUser(Id int64) (models.User, error) {
 			Born:    *born,
 			Passwd:  password,
 		}
+		fmt.Println("IDFind user: ")
 		fmt.Println(id, name, password, sex, born, cell, created_at, updated_at, deleted_at)
 	}
 	return user, nil
@@ -279,9 +297,7 @@ func NameModUser(ul *[]models.User, name string) (models.User, error) {
 				newUser.Address = iaddress
 			} else {
 				newUser.Address = u.Address
-
 			}
-
 			fmt.Printf("Input new Phone [%v]: ", u.Cell)
 			iphone = utils.Read()
 			if iphone != "" {

@@ -19,7 +19,7 @@
 	        </tr>
         </thead>
         <tbody>
-	        {{ range . }}
+	        {{ range .users }}
 	        <tr>
 	            <td>{{ .ID }}</td>
 	            <td>{{ .Name }}</td>
@@ -32,7 +32,8 @@
             {{ end }}
         </tbody>
         </table>
-        <h2><a href="/">Home</a><h2>
+        <h2><a href="/user/home/">Home</a><h2>
+        <h2><a href="/user/query/">Query Again</a><h2>
 	</body>
 	
 </html>

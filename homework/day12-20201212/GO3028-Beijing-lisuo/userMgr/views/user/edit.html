@@ -6,16 +6,16 @@
         <title>Modify user {{ .Name }}</title>
     </head>
     <body>
-        <form action="/edit/?id={{ .ID }}" method="POST">
-            <label> ID </label><input name="id" value="{{ .ID }}" readonly/> <br/><br/>
-            <label> Name </label><input name="name" value="{{ .Name }}"/> <br/><br/>
-            <label> Sex </label><input name="sex" value="{{ .Sex }}"/> <br/><br/>
-            <label> Address </label><input name="address" value="{{ .Address }}"/> <br/><br/>
-            <label> Cell </label><input name="cell" value="{{ .Cell }}"/> <br/><br/>
-            <label> Born </label><input name="born" value="{{ .Born }}" readonly/> <br/><br/>
-            <label> Passwd </label><input name="passwd" value="{{ .Passwd }}"/> <br/><br/>
+        <form action="/user/edit/?id={{ .user.ID }}" method="POST">
+            <label> ID </label><input name="id" value="{{ .user.ID }}" readonly/> <br/><br/>
+            <label> Name </label><input name="name" value="{{ .user.Name }}"/> <br/><br/>
+            <label> Sex </label><input name="sex" value="{{ .user.Sex }}"/> <br/><br/>
+            <label> Address </label><input name="address" value="{{ .user.Address }}"/> <br/><br/>
+            <label> Cell </label><input name="cell" value="{{ .user.Cell }}"/> <br/><br/>
+            <label> Born </label><input name="born" value="{{ .user.Born }}" readonly/> <br/><br/>
+            <label> Passwd </label><input name="passwd" value="{{ .user.Passwd }}"/> <br/><br/>
             <input type="submit" value="Done" />
-            <a href="/">Home</a>
+            <a href="/user/home/">Home</a>
         </form>
     </body>
 </html>
