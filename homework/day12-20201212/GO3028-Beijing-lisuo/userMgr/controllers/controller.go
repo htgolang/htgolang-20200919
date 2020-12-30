@@ -59,6 +59,7 @@ func (c *UserController) Create() {
 	}
 }
 
+// Delete delete a user based on id
 func (c *UserController) Delete() {
 	id, err := c.GetInt64("id")
 	if err != nil {
@@ -78,6 +79,7 @@ func (c *UserController) Delete() {
 	}
 }
 
+// Edit edit a user by id
 func (c *UserController) Edit() {
 	if c.Ctx.Input.IsGet() {
 		type cUser struct {
@@ -129,6 +131,7 @@ func (c *UserController) Edit() {
 	}
 }
 
+// Query get users by name, address, cell or id
 func (c *UserController) Query() {
 	if c.Ctx.Input.IsGet() {
 		c.TplName = "user/query.html"
@@ -145,44 +148,13 @@ func (c *UserController) Query() {
 	}
 }
 
-//// QueryUser get user by some sting
-//func QueryUser(w http.ResponseWriter, r *http.Request) {
-//	if r.Method == "GET" {
-//		t, err := template.New("query").ParseFiles("template/query.html")
-//		if err != nil {
-//			panic(err)
-//		}
-//		t.ExecuteTemplate(w, "query.html", nil)
-//	} else if r.Method == "POST" {
-//		r.ParseForm()
-//		fmt.Println("r.PostForm from /edit/: ", r.PostForm)
-//		var (
-//			id      = r.PostFormValue("id")
-//			name    = r.PostFormValue("name")
-//			sex     = r.PostFormValue("sex")
-//			address = r.PostFormValue("address")
-//			cell    = r.PostFormValue("cell")
-//		)
-//		users, err := services.QueryUser(id, name, sex, address, cell)
-//		if err != nil {
-//			ErrorMsg(w, err.Error())
-//			return
-//		}
-//		// display
-//		t, err := template.New("display").ParseFiles("template/display.html")
-//		if err != nil {
-//			panic(err)
-//		}
-//		t.ExecuteTemplate(w, "display.html", users)
-//	}
-//}
-//
-
+// ErrorMsg send errors to client
 func (c *UserController) ErrorMsg(msg string) {
 	c.Data["msg"] = msg
 	c.TplName = "user/error.html"
 }
 
+// HandleError wrap err handle code
 func HandleError(c *UserController, err error) {
 	if err != nil {
 		c.ErrorMsg(err.Error())

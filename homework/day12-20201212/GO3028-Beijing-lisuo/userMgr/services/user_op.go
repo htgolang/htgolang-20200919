@@ -13,6 +13,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+// ListAllUser list all users to home page
 func ListAllUser() (models.UserList, error) {
 	var users models.UserList
 	rows, err := models.DB.Query("SELECT * FROM user")
@@ -47,6 +48,7 @@ func ListAllUser() (models.UserList, error) {
 	return users, nil
 }
 
+// QueryUser get user from mysql based on id, name, address or cell
 func QueryUser(id, name, address, cell string) (models.UserList, error) {
 	var userList = models.UserList{}
 	var blank = ""
