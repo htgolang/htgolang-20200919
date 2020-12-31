@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Choose result</title>
+    </head>
+
+    <body>
+
+        <h1>The analyse result:</h1>
+
+        <label for="result">Choose a info:</label>
+        <br>
+        <select id="result" name="item-list" form="statisForm">
+              <option value="all">All items</option>
+              <option value="ip">Client IP</option>
+                <option value="status">Status Code</option>
+                  <option value="method">Method</option>
+        </select>
+        <script>
+        function getSelectValue() {
+            var selectedValue = document.getElementById("result").value;
+            console.log("this is a message from result.html...");
+            return selectedValue;
+        }
+        </script>
+        <br>
+        <form onsubmit="console.log(getSelectValue());" action="/display/" id="statisForm">
+              <input type="submit">
+        </form>
+        <br>
+
+        <p>Choose a resulst to see.</p>
+    </body>
+</html>

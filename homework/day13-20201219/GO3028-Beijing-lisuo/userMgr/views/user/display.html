@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8" />
+		<title> Got users </title>
+	</head>
+	<body style="background-color:powderblue;">
+	    <h1> Got users </h1>
+	    <table border="2">
+            <thead>
+	        <tr>
+	            <td>ID</td>
+	            <td>Name</td>
+	            <td>Sex</td>
+	            <td>Address</td>
+	            <td>Cell</td>
+	            <td>Born</td>
+	            <td>Passwd</td>
+	        </tr>
+        </thead>
+        <tbody>
+	        {{ range .users }}
+	        <tr>
+	            <td>{{ .ID }}</td>
+	            <td>{{ .Name }}</td>
+	            <td>{{ .Sex }}</td>
+	            <td>{{ .Address }}</td>
+	            <td>{{ .Cell }}</td>
+	            <td>{{ .Born }}</td>
+                <td>{{ .Passwd }}</td>
+            </tr>
+            {{ end }}
+        </tbody>
+        </table>
+        <h2><a href="/user/home/">Home</a><h2>
+        <h2><a href="/user/query/">Query Again</a><h2>
+	</body>
+	
+</html>

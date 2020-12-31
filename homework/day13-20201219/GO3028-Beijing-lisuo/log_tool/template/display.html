@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title> RESULT </title>
+		<style>
+		table, th, td {
+		  border: 1px solid black;
+		}
+		
+		th, td {
+		  padding: 10px;
+		}
+		</style>
+    </head>
+    <body>
+        <h3> This is analyse result: </h3>
+		 <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Top 10 IP</th>
+                    <th>Top 10 IPNum</th>
+                    <th>Top 10 Status</th>
+                    <th>Top 10 StatusNum</th>
+                    <th>Top 10 Method</th>
+                    <th>Top 10 MethodNum</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ range . }}
+                    <tr>
+                        <td>{{ .Rank }}</td>
+                        <td>{{ .IP }}</td>
+                        <td>{{ .IPNum }}</td>
+                        <td>{{ .Status }}</td>
+                        <td>{{ .StatusNum }}</td>
+                        <td>{{ .Method }} </td>
+                        <td>{{ .MethodNum }} </td>
+                    </tr>
+                {{ end }}
+            </tbody>
+        </table>
+        <br/>
+        <a href="/">Upload another file to analyse</a>
+    </body>
+</html>
