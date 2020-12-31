@@ -1,5 +1,10 @@
-ip: 192.168.125.128
+# ip: 192.168.125.128
+# port: 3306
+# database: mydb
+# user: root
+# passwd: P@ssw0rd
+ip: 127.0.0.1
 port: 3306
-database: mydb
-user: root
-passwd: P@ssw0rd
+database: testboy
+user: test
+passwd: NDg3NTBi

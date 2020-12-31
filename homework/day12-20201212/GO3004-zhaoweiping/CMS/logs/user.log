@@ -790,3 +790,23 @@
 2020/12/18 23:34:38.700 [I] [asm_amd64.s:1373]  http server Running on http://0.0.0.0:8080
 2020/12/18 23:45:03.321 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|   3.833405ms|   match|[97;44m GET     [0m /user/query   r:/user/query/*
 2020/12/18 23:45:46.691 [D] [server.go:2807]  |      127.0.0.1|[97;42m 200 [0m|    869.424µs|   match|[97;44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/31 15:10:16.520 [I] [main.go:28]  CMS 系统启动成功！
+2020/12/31 15:10:16.634 [I] [asm_amd64.s:1374]  http server Running on http://0.0.0.0:8080
+2020/12/31 15:10:25.683 [D] [server.go:2844]  |      127.0.0.1|[42m 200 [0m|     6.0106ms|   match|[44m GET     [0m /     r:/
+2020/12/31 15:10:25.734 [D] [server.go:2844]  |      127.0.0.1|[43m 404 [0m|      466.9µs| nomatch|[44m GET     [0m /favicon.ico
+2020/12/31 15:10:27.492 [D] [server.go:2844]  |      127.0.0.1|[42m 200 [0m|     1.0042ms|   match|[44m GET     [0m /user/add/   r:/user/add/*
+2020/12/31 15:10:29.980 [D] [server.go:2844]  |      127.0.0.1|[47m 302 [0m|      500.6µs|   match|[46m POST    [0m /user/add/   r:/user/add/*
+2020/12/31 15:10:29.987 [D] [server.go:2844]  |      127.0.0.1|[42m 200 [0m|     1.5039ms|   match|[44m GET     [0m /user/query   r:/user/query/*
+2020/12/31 15:10:31.198 [D] [server.go:2844]  |      127.0.0.1|[42m 200 [0m|     1.5116ms|   match|[44m GET     [0m /user/query   r:/user/query/*
+2020/12/31 15:10:59.811 [D] [server.go:2844]  |      127.0.0.1|[42m 200 [0m|     1.5099ms|   match|[44m GET     [0m /user/add/   r:/user/add/*
+2020/12/31 15:11:01.260 [D] [server.go:2844]  |      127.0.0.1|[47m 302 [0m|    41.4894ms|   match|[46m POST    [0m /user/add/   r:/user/add/*
+2020/12/31 15:11:01.266 [D] [server.go:2844]  |      127.0.0.1|[42m 200 [0m|     1.0021ms|   match|[44m GET     [0m /user/query   r:/user/query/*
+2020/12/31 15:11:03.115 [D] [server.go:2844]  |      127.0.0.1|[47m 302 [0m|    33.3299ms|   match|[44m GET     [0m /user/delete/   r:/user/delete/*
+2020/12/31 15:11:03.121 [D] [server.go:2844]  |      127.0.0.1|[42m 200 [0m|     1.5041ms|   match|[44m GET     [0m /user/query   r:/user/query/*
+2020/12/31 15:11:04.140 [D] [server.go:2844]  |      127.0.0.1|[42m 200 [0m|     1.0291ms|   match|[44m GET     [0m /user/add/   r:/user/add/*
+2020/12/31 15:11:06.427 [D] [server.go:2844]  |      127.0.0.1|[47m 302 [0m|    25.3788ms|   match|[46m POST    [0m /user/add/   r:/user/add/*
+2020/12/31 15:11:06.434 [D] [server.go:2844]  |      127.0.0.1|[42m 200 [0m|     1.0024ms|   match|[44m GET     [0m /user/query   r:/user/query/*
+2020/12/31 15:11:07.467 [D] [server.go:2844]  |      127.0.0.1|[42m 200 [0m|     1.0054ms|   match|[44m GET     [0m /user/modify/   r:/user/modify/*
+2020/12/31 15:11:11.453 [D] [server.go:2844]  |      127.0.0.1|[47m 302 [0m|    41.6442ms|   match|[46m POST    [0m /user/modify/   r:/user/modify/*
+2020/12/31 15:11:11.460 [D] [server.go:2844]  |      127.0.0.1|[42m 200 [0m|     1.5053ms|   match|[44m GET     [0m /user/query   r:/user/query/*
+2020/12/31 15:11:12.669 [D] [server.go:2844]  |      127.0.0.1|[42m 200 [0m|     3.5317ms|   match|[44m GET     [0m /user/query   r:/user/query/*

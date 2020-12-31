@@ -12,7 +12,8 @@ import (
 func main() {
 	addr := ":8888"
 	driverName := "mysql"
-	dsn := "root:zhaO..123@tcp(172.16.212.137:3306)/usermanager?parseTime=true&loc=Local&charset=utf8mb4"
+	// dsn := "root:zhaO..123@tcp(172.16.212.137:3306)/usermanager?parseTime=true&loc=Local&charset=utf8mb4"
+	dsn := "test:NDg3NTBi@tcp(127.0.0.1:3306)/usermanager?parseTime=true&loc=Local&charset=utf8mb4"	
 	err := config.OpenDb(driverName, dsn)
 	if err != nil {
 		fmt.Println(err)

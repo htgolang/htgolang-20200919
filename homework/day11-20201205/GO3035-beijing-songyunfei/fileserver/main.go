@@ -15,7 +15,8 @@ import (
 
 func main() {
 	dbtype := "mysql"
-	dsn := "root:admin@ADMIN123456@tcp(192.168.10.128:3306)/log_analysis?parseTime=true&loc=Local&charset=utf8mb4"
+	// dsn := "root:admin@ADMIN123456@tcp(192.168.10.128:3306)/log_analysis?parseTime=true&loc=Local&charset=utf8mb4"
+	dsn := "test:NDg3NTBi@tcp(127.0.0.1:3306)/usermanager?parseTime=true&loc=Local&charset=utf8mb4"	
 	err := process.InitDB(dbtype,dsn)
 	if err != nil {
 		fmt.Println(err)
