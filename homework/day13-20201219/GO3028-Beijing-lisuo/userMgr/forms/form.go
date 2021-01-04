@@ -13,3 +13,8 @@ type UserForm struct {
 	Born    time.Time `form:"born"`
 	Passwd  string    `form:"passwd"`
 }
+
+type AuthForm struct {
+	UserName string `form:"username"`
+	PassWord string `form:"password"`
+}

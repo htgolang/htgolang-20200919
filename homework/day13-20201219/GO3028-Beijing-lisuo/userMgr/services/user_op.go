@@ -13,6 +13,11 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+// Login handle user log logic
+func Login() {
+	fmt.Println("user logged in")
+}
+
 // ListAllUser list all users to home page
 func ListAllUser() (models.UserList, error) {
 	var users models.UserList

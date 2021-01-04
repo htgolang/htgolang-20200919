@@ -15,6 +15,18 @@ type UserController struct {
 	beego.Controller
 }
 
+// Login powres user log in
+func (c *UserController) Login() {
+	if c.Ctx.Input.IsGet() {
+		c.TplName = "user/login.html"
+	} else {
+		fmt.Println("request to login")
+		username := c.GetString("username")
+		password := c.GetString("password")
+		fmt.Printf("username: %#v, password: %#v\n", username, password)
+	}
+}
+
 // Home give a default page, with a list of users
 func (c *UserController) Home() {
 	users, err := services.ListAllUser()
