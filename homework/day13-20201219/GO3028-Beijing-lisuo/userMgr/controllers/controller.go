@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strings"
 	"time"
+	"userMgr/forms"
 	"userMgr/models"
 	"userMgr/services"
 
@@ -20,6 +21,12 @@ func (c *UserController) Login() {
 	if c.Ctx.Input.IsGet() {
 		c.TplName = "user/login.html"
 	} else {
+		var loginForm = &forms.AuthForm{}
+		if err := c.ParseForm(loginForm); err != nil {
+			panic(err)
+		}
+		//service.NameFindUser(loginForm.UserName)
+		fmt.Printf("login info from form: %#v", loginForm)
 		fmt.Println("request to login")
 		username := c.GetString("username")
 		password := c.GetString("password")
@@ -105,9 +112,13 @@ func (c *UserController) Edit() {
 		}
 		id, err := c.GetInt64("id")
 		fmt.Println(c.GetInt64("id"))
-		HandleError(c, err)
+		if err != nil {
+			HandleError(c, err)
+		}
 		user, errf := services.IDFindUser(id)
-		HandleError(c, errf)
+		if errf != nil {
+			HandleError(c, errf)
+		}
 		cuser := func(models.User) cUser {
 			return cUser{
 				ID:      user.ID,
@@ -116,14 +127,16 @@ func (c *UserController) Edit() {
 				Address: user.Address,
 				Cell:    user.Cell,
 				Born:    strings.Split(user.Born.String(), " ")[0],
-				Passwd:  user.Passwd,
+				Passwd:  user.Password,
 			}
 		}(user)
 		c.Data["user"] = cuser
 		c.TplName = "user/edit.html"
 	} else {
 		id, erri := c.GetInt64("id")
-		HandleError(c, erri)
+		if erri != nil {
+			HandleError(c, erri)
+		}
 		name := c.GetString("name")
 		sex := c.GetString("sex")
 		address := c.GetString("address")
@@ -154,7 +167,10 @@ func (c *UserController) Query() {
 		cell := c.GetString("cell")
 		fmt.Printf("query input: id: %#v, name: %#v, address: %#v, cell: %#v\n", id, name, address, cell)
 		users, err := services.QueryUser(id, name, address, cell)
-		HandleError(c, err)
+		fmt.Println("users and err in services.QueryUser", users, err)
+		if err != nil {
+			HandleError(c, err)
+		}
 		c.Data["users"] = users
 		c.TplName = "user/display.html"
 	}

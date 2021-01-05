@@ -22,19 +22,32 @@ body {
 } 
 
 /* style inputs and link buttons */
-input,
-.btn {
-  width: 90%;
+input {
+  width: 42em;
   padding: 20px;
   border: none;
   border-radius: 4px;
-  margin: 5px 0;
+  margin: 10px auto;
   opacity: 0.85;
-  display: inline-block;
+  display: block;
   font-size: 17px;
   line-height: 20px;
   text-decoration: none; /* remove underline from anchors */
 }
+
+.btn {
+  width: 20em;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  margin: 5px auto;
+  opacity: 0.85;
+  display: block;
+  font-size: 17px;
+  line-height: 20px;
+  text-decoration: none; /* remove underline from anchors */
+}
+
 
 input:hover,
 .btn:hover {
@@ -68,13 +81,16 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 
+input[type="text"] {
+    margin: 0,auto;
+}
+
 /* Two-column layout */
 .col {
   float: left;
   width: 50%;
   margin: 0, auto;
-  padding: 10 50px;
-  margin-top: 6px;
+  margin-top: 5px;
 }
 
 /* Clear floats after the columns */
@@ -83,6 +99,7 @@ input[type=submit]:hover {
   display: table;
   clear: both;
 }
+
 
 /* vertical line */
 .vl {
@@ -111,6 +128,8 @@ input[type=submit]:hover {
 
 /* bottom container */
 .bottom-container {
+  width: 720px;
+  margin: 5px auto;
   text-align: center;
   background-color: #666;
   border-radius: 0px 0px 4px 4px;
@@ -140,7 +159,7 @@ input[type=submit]:hover {
   <form action="/user/login/" method="POST">
     <div class="row">
      <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
+        <input type="password" name="password" placeholder="Password" style="margin: 0, auto;" required>
         <input type="submit" value="Login">
       </div>
       
