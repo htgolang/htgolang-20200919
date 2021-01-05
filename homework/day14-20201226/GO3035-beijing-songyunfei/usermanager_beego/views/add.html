@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap-4.5.0/css/bootstrap.min.css" media="screen"/>
+    <meta charset="UTF-8">
+    <title>添加用户</title>
+    <style type="text/css">
+        div.container-fluid {
+            padding-top: 57px;
+        }
+    </style>
+</head>
+<body>
+{{ template "nav.html" . }}
+<div class="container-fluid">
+    <form action="/usermanager/add" method="POST">
+        <div class="form-group">
+            <label for="formGroupExampleInput">用户名</label>
+            <input type="text" class="form-control col-sm-2" name="username"  value="">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">密码</label>
+            <input type="password" class="form-control col-sm-2" name="password" placeholder="Password">
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="sex" value="1" checked="checked">
+            <label class="form-check-label" for="inlineRadio1">男</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="sex" value="0"}>
+            <label class="form-check-label" for="inlineRadio2">女</label>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">电话</label>
+            <input type="text" class="form-control col-sm-2" name="tel" value="">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">生日</label>
+            <input type="text" class="form-control col-sm-2" name="brth" value="">
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput2">地址</label>
+            <input type="text" class="form-control col-sm-2" name="addr" value="">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" >添加</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
