@@ -3,7 +3,6 @@ package logger
 import (
 	"encoding/json"
 	"fmt"
-	"time"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
@@ -14,6 +13,7 @@ var (
 )
 
 var logConf = make(map[string]interface{})
+var Logger = &logs.BeeLogger{}
 
 func InitLogger() {
 	logLevel, err := beego.AppConfig.Int("log::logLevel")
@@ -27,8 +27,9 @@ func InitLogger() {
 		fmt.Println(err)
 		return
 	}
-	log := logs.NewLogger(2048)
-	log.SetLevel(logLevel)
-	log.SetLogger("file", string(jsonConf))
-	log.Info("first log text" + time.Now().String())
+	Logger = logs.NewLogger(2048)
+	Logger.SetLevel(logLevel)
+	Logger.EnableFuncCallDepth(true)
+	Logger.SetLogger("file", string(jsonConf))
+	//Logger.Info("first log text" + time.Now().String())
 }

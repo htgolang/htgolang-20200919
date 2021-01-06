@@ -15,6 +15,14 @@ type UserController struct {
 	beego.Controller
 }
 
+func (c *UserController) Prepare() {
+	user := c.GetSession("user")
+	if user == nil {
+		// not logged
+		c.Redirect("/auth/login/", 302)
+	}
+}
+
 // Home give a default page, with a list of users
 func (c *UserController) Home() {
 	users, err := services.ListAllUser()

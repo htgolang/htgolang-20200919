@@ -35,5 +35,6 @@ func main() {
 	//fmt.Printf("dsn: %#v\n", beego.AppConfig.String("db::dsn"))
 	services.IfAdmin()
 
+	logger.Logger.Debug("App running...")
 	beego.Run()
 }
