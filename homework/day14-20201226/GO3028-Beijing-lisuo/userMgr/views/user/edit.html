@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Modify user {{ .Name }}</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            form {
+                display: block;
+                padding: 5px;
+                background-color: #eee;
+                text-align: center;
+            }
+            label {
+                background-color: #eef;
+                font-size: 2em;
+                display: inline-block;
+                padding: 10px;
+                width: 7em;
+                border: 1px solid #000;
+                margin: 1px;
+            }
+            input {
+                display: inline-block;
+                font-size: 2em;
+                width: 12em;
+                padding: 10px;
+                margin: 1px;
+            }
+            input[type=submit] {
+                width: 10em;
+                background-color: skyblue;
+            }
+            input[type=checkbox] {
+                display: inline-block;
+                transform: scale(2);
+                width: 12em;
+                padding: 10px;
+            }
+			#sex {
+				display: none;
+                border: 5px solid #fef;
+			}
+            div.sex {
+                display: block;
+                padding: 5px;
+                margin-left: -18px;
+            }
+            
+
+        </style>
+        <script type="text/javascript">
+			function onlyOne(checkbox) {
+    			var checkboxes = document.getElementsByName('sex');
+    			checkboxes.forEach((item) => {
+    		    	if (item !== checkbox) 
+						item.checked = false;
+    			})
+           }
+        </script>
+    </head>
+    <body>
+        <form action="/user/edit/?id={{ .user.ID }}" method="POST">
+            <label> ID </label><input name="id" value="{{ .user.ID }}" readonly/> <br/><br/>
+            <label> Name </label><input name="name" value="{{ .user.Name }}"/> <br/><br/>
+            <label> Sex </label><input name="sex" value="{{ .user.Sex }}"/> <br/><br/>
+            <label> Address </label><input name="address" value="{{ .user.Address }}"/> <br/><br/>
+            <label> Cell </label><input name="cell" value="{{ .user.Cell }}"/> <br/><br/>
+            <label> Born </label><input name="born" value="{{ .user.Born }}" readonly/> <br/><br/>
+            <label> Passwd </label><input name="passwd" value="{{ .user.Passwd }}"/> <br/><br/>
+            <input type="submit" value="Done" />
+            <a  style="display: inline-block;padding: 10px;width:10em;background-color: skyblue;margin: 1px;font-size:2em;border: 2px solid #000;" href="/user/home/">Home</a>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8" />
+		<title> Home </title>
+        <style>
+          body {
+              background-color: #efe;
+              text-align: center;
+          }
+          h1 {
+              text-align: center;
+          }
+          .hf{
+              color: #eee;
+          }
+          .hf:hover{
+              font-size: 20px;
+              color: #efe;
+          }
+          div > a:nth-child(odd){
+              background-color: #123;
+              display: inline-block;
+              text-align: center;
+              position: relative;
+              padding: 10px;
+              margin: 20px;
+              box-shadow: 4px 2px 10px skyblue;
+              top: 20px;
+              width: 180px;
+          }
+          #tb{
+              margin-left: auto;
+              margin-right: auto;
+              padding: 1em;
+          }
+          #th {
+              font-size: 2em;
+              background-color: #aef;
+          }
+        </style>
+	</head>
+	<body >
+	    <h1> USER MANAGEMENT </h1>
+	    <p>A simple user management system based on beego.</p>
+        <h2>Personal blog: <a href="https://www.suosuoli.cn" target="_blank">suosuoli.cn</a></h2>
+	    <table  id="tb" border="2">
+            <thead id="th">
+	          <tr>
+	              <td>ID</td>
+	              <td>Name</td>
+                  <td>Sex</td>
+	              <td>Address</td>
+	              <td>Cell</td>
+	              <td>Born</td>
+	              <td>Password</td>
+	          </tr>
+            </thead>
+            <tbody style="background-color: #eee;">
+	            {{ range .users }}
+	            <tr>
+	                <td>{{ .ID }}</td>
+	                <td>{{ .Name }}</td>
+                    <td>{{ if eq .Sex 1 }} male {{ else }} female {{ end }}</td>
+	                <td>{{ .Address }}</td>
+	                <td>{{ .Cell }}</td>
+	                <td>{{ .Born }}</td>
+                    <td>{{ .Password }}</td>
+                    <td style="background-color: #11ffff;padding:5px; shadow: 2px 3px #fae;">
+                        <a href="/user/edit/?id={{ .ID }}">Edit</a>
+                    </td>
+                    <td style="background-color: #a00;"  >
+                        <!-- Do you really want to submit the form? -->
+		    		    <form action="/user/delete/?id={{ .ID }}" onsubmit="return confirm('Are you sure to delete user {{ .Name }} by id {{ .ID }} ?');" method="POST">
+		    			<button type="submit" formmethod="POST" >Delete</button>
+		    			</form>
+                    </td>
+                </tr>
+                {{ end }}
+            </tbody>
+        </table>
+        <div class="hfdiv">
+        <a class="hf" href="/user/create/">Creat New User</a>
+        <br>
+        <a class="hf" href="/user/query/">Query User</a>
+        </div>
+	</body>
