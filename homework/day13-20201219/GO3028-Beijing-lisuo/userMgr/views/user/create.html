@@ -3,17 +3,80 @@
     <head>
         <meta charset="utf-8"/>
         <title>Create New User</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            form {
+                display: block;
+                padding: 5px;
+                background-color: #eee;
+                text-align: center;
+            }
+            label {
+                background-color: #eef;
+                font-size: 2em;
+                display: inline-block;
+                padding: 10px;
+                width: 7em;
+                border: 1px solid #000;
+                margin: 1px;
+            }
+            input {
+                display: inline-block;
+                font-size: 2em;
+                width: 12em;
+                padding: 10px;
+                margin: 1px;
+            }
+            input[type=submit] {
+                width: 10em;
+                background-color: skyblue;
+            }
+            input[type=checkbox] {
+                display: inline-block;
+                transform: scale(2);
+                width: 12em;
+                padding: 10px;
+            }
+			#sex {
+				display: none;
+                border: 5px solid #fef;
+			}
+            div.sex {
+                display: block;
+                padding: 5px;
+                margin-left: -18px;
+            }
+            
+
+        </style>
+        <script type="text/javascript">
+			function onlyOne(checkbox) {
+    			var checkboxes = document.getElementsByName('sex');
+    			checkboxes.forEach((item) => {
+    		    	if (item !== checkbox) 
+						item.checked = false;
+    			})
+           }
+        </script>
     </head>
     <body>
         <form action="/user/create/" method="POST">
             <label> ID </label><input name="id" value="Disabled" disabled/> <br/><br/>
             <label> Name </label><input name="name" value="{{ .Name }}"/> <br/><br/>
-            <label> Sex </label><input name="sex" value="0 or 1 (0: female, 1: male)"/> <br/><br/>
+            <label id="sex"> Sex </label>
+            <div class="sex">
+            	<label class="sex"> Male </label> <input type="checkbox" name="sex"  onclick="onlyOne(this);" value="1"/> <br/><br/>
+            	<label class="sex"> Female </label> <input type="checkbox" name="sex"  onclick="onlyOne(this);" value="0"/> <br/><br/>
+			</div>
             <label> Address </label><input name="address" value="{{ .Address }}"/> <br/><br/>
             <label> Cell </label><input name="cell" value="{{ .Cell }}"/> <br/><br/>
             <label> Born </label><input name="born" value="2006.01.02"/> <br/><br/>
             <label> Password </label><input name="passwd" value="{{ .Password }}"/> <br/><br/>
             <input type="submit" value="Create" />
+            <a id="home" style="display: inline-block;padding: 10px;width:10em;background-color: skyblue;margin: 1px;font-size:2em;border: 2px solid #000;" href="/user/home/">HOME</a>
         </form>
     </body>
 </html>

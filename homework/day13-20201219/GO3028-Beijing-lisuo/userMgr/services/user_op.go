@@ -2,10 +2,12 @@ package services
 
 import (
 	"database/sql"
+	"errors"
 	"fmt"
 	"strconv"
 	"time"
 
+	"userMgr/forms"
 	"userMgr/models"
 
 	"github.com/astaxie/beego/orm"
@@ -18,8 +20,20 @@ var (
 )
 
 // Login handle user log logic
-func Login() {
-	fmt.Println("user logged in")
+func LoginAuth(form *forms.AuthForm) (*models.User, error) {
+	user, err := NameFindUser(form.UserName)
+	fmt.Println("loginauth user, err", user, err)
+	if err != nil {
+		// user name wrong
+		return nil, errors.New("user name wrong, no such user")
+	} else {
+		if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(form.PassWord)); err != nil {
+			// user pass wrong
+			return nil, errors.New("user password wrong")
+		} else {
+			return user, nil
+		}
+	}
 }
 
 // ListAllUser list all users to home page
@@ -36,8 +50,12 @@ func ListAllUser() ([]*models.User, error) {
 
 // AddUser add a user to db
 func CreateUser(name, password, address, cell string, sex int, born time.Time) error {
+	_, errf := NameFindUser(name)
+	if errf == nil {
+		return errors.New("user exists, do not create same name user")
+	}
 	o := orm.NewOrm()
-	pass, errE := EncryptPass(password)
+	pass, errE := EncryptPass(password, models.PassCost)
 	if errE != nil {
 		return errE
 	}
@@ -74,7 +92,6 @@ func QueryUser(id string, args ...string) ([]*models.User, error) {
 		userList = append(userList, tmpUsers...)
 		tmpUsers = nil
 	} else {
-
 		var blank = ""
 		var i = 0
 		var li = []string{"Name", "Address", "Cell"}
@@ -107,30 +124,15 @@ func IDFindUser(Id int64) (models.User, error) {
 }
 
 // NameFindUser find user based on Name
-func NameFindUser(Name string) error {
-	sql := `
-    SELECT * FROM user WHERE name = ?
-    `
-	var (
-		id         int64
-		name       string
-		password   string
-		sex        int
-		born       *time.Time
-		address    string
-		cell       string
-		created_at *time.Time
-		updated_at *time.Time
-		deleted_at *time.Time
-	)
-	err := models.DB.QueryRow(sql, Name).Scan(&id, &name, &password, &sex, &born, &address, &cell, &created_at, &updated_at, &deleted_at)
-	if err != nil {
-		fmt.Println(err)
-		return err
-	} else {
-		fmt.Println(id, name, password, sex, born, cell, created_at, updated_at, deleted_at)
+func NameFindUser(n string) (*models.User, error) {
+	var user models.User
+	user.Name = n
+	o := orm.NewOrm()
+	if err := o.Read(&user, "Name"); err != nil {
+		return &user, err
+		fmt.Println("name find user: ", &user, err)
 	}
-	return nil
+	return &user, nil
 }
 
 // IDDelUser del user based on ID
@@ -169,19 +171,54 @@ func IDModUser(name, address, password, cell, sex, born string, id int64) error 
 	if errp != nil {
 		return errp
 	}
+	p, err := EncryptPass(password, models.PassCost)
+	if err != nil {
+		return err
+	}
 	user := models.User{
 		ID:       id,
 		Name:     name,
 		Address:  address,
-		Password: password,
+		Password: p,
 		Cell:     cell,
 		Sex:      s,
 		Born:     &b,
 	}
-
 	_, errU := o.Update(&user)
 	if errU != nil {
 		return errU
+	}
+	return nil
+}
+
+//IfAdmin detect if admin is exists when app run
+// if not exists, create a admin
+func IfAdmin() error {
+	o := orm.NewOrm()
+	b := time.Now()
+	p, err := EncryptPass(models.AdminPass, models.PassCost)
+	if err != nil {
+		return err
+	}
+	var adminUser = models.User{
+		ID:       models.AdminID,
+		Name:     models.AdminName,
+		Sex:      1,
+		Address:  "Beijing",
+		Password: p,
+		Cell:     "18811738844",
+		Born:     &b,
+	}
+	_, errf := NameFindUser(models.AdminName)
+	if errf != nil {
+		_, err := o.Insert(&adminUser)
+		if err != nil {
+			return err
+		}
+		return errf
+	} else {
+		fmt.Println("admin is exists.")
+		return nil
 	}
 	return nil
 }
@@ -211,7 +248,7 @@ func GetMaxID(db *sql.DB) (int64, error) {
 }
 
 // EncryptPass en
-func EncryptPass(pass string) (string, error) {
-	bt, err := bcrypt.GenerateFromPassword([]byte(pass), 8)
+func EncryptPass(pass string, cost int) (string, error) {
+	bt, err := bcrypt.GenerateFromPassword([]byte(pass), models.PassCost)
 	return string(bt), err
 }

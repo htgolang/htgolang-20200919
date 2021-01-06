@@ -1,13 +1,16 @@
 package main
 
 import (
+	"userMgr/logger"
 	_ "userMgr/models"
 	_ "userMgr/routers"
+	"userMgr/services"
 
 	beego "github.com/astaxie/beego"
 )
 
 func main() {
+	logger.InitLogger()
 	//models.Init()
 	//var driverName = "mysql"
 	//var dsn = "web:web@tcp(127.0.0.1:3306)/user?parseTime=true&loc=Local&charset=utf8mb4"
@@ -30,5 +33,7 @@ func main() {
 	//}
 	////
 	//fmt.Printf("dsn: %#v\n", beego.AppConfig.String("db::dsn"))
+	services.IfAdmin()
+
 	beego.Run()
 }

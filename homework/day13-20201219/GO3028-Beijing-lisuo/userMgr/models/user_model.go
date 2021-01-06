@@ -4,13 +4,23 @@ import (
 	"crypto/md5"
 	"fmt"
 	"time"
+
+	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/orm"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 // UserQuit represent quit exit status code
 const (
 	AdminName string = "admin"
+	AdminPass string = "admin123"
+	PassCost         = 8
 	AdminID   int64  = 1
 	UserQuit  int    = 1
+)
+
+var (
+	dsn = beego.AppConfig.String("db::dsn")
 )
 
 // User is user
@@ -41,4 +51,14 @@ func NewUser(id int64, sex int, name, cell, address, passwd string, born *time.T
 		Born:     born,
 		Password: fmt.Sprintf("%x", md5.Sum([]byte(passwd))),
 	}
+}
+
+// init get db ready
+func init() {
+	orm.RegisterDriver("mysql", orm.DRMySQL)
+	if err := orm.RegisterDataBase("default", "mysql", dsn); err != nil {
+		panic(err)
+	}
+	orm.RegisterModel(new(User))
+	orm.RunSyncdb("default", false, true)
 }
