@@ -1,7 +1,7 @@
 USER MANAGER
 ===
 
-## Getting start with bootstrap and start butify pages
+## Getting start with bootstrap and start beautify pages
 
 ## Demo
 
