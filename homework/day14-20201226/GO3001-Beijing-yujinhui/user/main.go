@@ -13,6 +13,7 @@ func main() {
 	// 同步数据库
 	orm.RunSyncdb("default", false, true)
 
+	// 创建超级管理员用户
 	if _, err := utils.GetUserByID(1); err != nil {
 		utils.AddUser("admin", "123456", "河北保定", true, 1)
 	}

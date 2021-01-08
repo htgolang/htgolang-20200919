@@ -14,12 +14,35 @@ type UserController struct {
 }
 
 func (c *UserController) Delete() {
-	id, _ := strconv.ParseInt(c.Ctx.Input.Query("id"), 10, 64)
+	var res Response
 
-	if err := utils.DeleteUserByID(id); err != nil {
-		log.Println(err)
+	//id, _ := strconv.ParseInt(c.Ctx.Input.Query("id"), 10, 64)
+
+	c.Ctx.Input.CopyBody(1024)
+	data := c.Ctx.Input.RequestBody
+	user := &models.User{}
+	if err := json.Unmarshal([]byte(data), user); err != nil {
+		log.Fatal(err)
 	}
-	c.Redirect("/", 302)
+
+	if err := utils.DeleteUserByID(user.ID); err != nil {
+		res = Response{
+			Code:    500,
+			Message: err.Error(),
+			Data:    "",
+		}
+	} else {
+		res = Response{
+			Code:    200,
+			Message: "",
+			Data:    "",
+		}
+	}
+
+	c.Ctx.ResponseWriter.Header().Set("Content-Type", "application/json")
+	c.Ctx.ResponseWriter.WriteHeader(res.Code)
+	c.Data["json"] = &res
+	c.ServeJSON()
 }
 
 func (c *UserController) Modify() {
@@ -43,11 +66,25 @@ func (c *UserController) Modify() {
 	userNow.Sex = user.Sex
 
 	ormer := orm.NewOrm()
+	var res Response
 	if _, err := ormer.Update(userNow); err != nil {
-		log.Fatal(err)
+		res = Response{
+			Code:    500,
+			Message: err.Error(),
+			Data:    "",
+		}
+	} else {
+		res = Response{
+			Code:    200,
+			Message: "",
+			Data:    "",
+		}
 	}
 
-	c.Ctx.Output.Body([]byte("ok"))
+	c.Ctx.ResponseWriter.Header().Set("Content-Type", "application/json")
+	c.Ctx.ResponseWriter.WriteHeader(res.Code)
+	c.Data["json"] = &res
+	c.ServeJSON()
 }
 
 func (c *UserController) Add() {
@@ -56,7 +93,7 @@ func (c *UserController) Add() {
 	data := c.Ctx.Input.RequestBody
 	user := &models.User{}
 	if err := json.Unmarshal([]byte(data), user); err != nil {
-		log.Fatal(err)
+		return
 	}
 
 	// 解析参数
@@ -78,7 +115,7 @@ func (c *UserController) Add() {
 	curidInt, _ := strconv.ParseInt(curid, 10, 64)
 	curUser, err := utils.GetUserByID(curidInt)
 	if err != nil {
-		log.Fatal(err)
+		return
 	}
 
 	// 查询标杆用户之后所有的用户, NextID + 1
@@ -87,28 +124,42 @@ func (c *UserController) Add() {
 	qs_users := []*models.User{}
 
 	if _, err := qs.Filter(Filter, curUser.SortID).All(&qs_users); err != nil {
-		log.Fatal(err)
+		return
 	}
 
 	// 开启事务
 	if err := ormer.Begin(); err != nil {
-		log.Fatal(err)
+		return
 	}
 	for _, a := range qs_users {
 		a.SortID += Step
 		if _, err := ormer.Update(a); err != nil {
 			ormer.Rollback()
-			log.Fatal(err)
 		}
 	}
 
 	if err = utils.AddUser(user.Name, "", user.Addr, user.Sex, curUser.SortID); err != nil {
 		ormer.Rollback()
-		log.Fatal(err)
-	}
-	if err := ormer.Commit(); err != nil {
-		log.Fatal(err)
 	}
 
-	c.Redirect("/", 302)
+	var res Response
+	if err := ormer.Commit(); err != nil {
+		res = Response{
+			Code:    500,
+			Message: err.Error(),
+			Data:    "",
+		}
+	} else {
+		res = Response{
+			Code:    200,
+			Message: "",
+			Data:    "",
+		}
+	}
+
+	// 响应
+	c.Ctx.ResponseWriter.Header().Set("Content-Type", "application/json")
+	c.Ctx.ResponseWriter.WriteHeader(res.Code)
+	c.Data["json"] = &res
+	c.ServeJSON()
 }

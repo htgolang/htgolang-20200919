@@ -173,8 +173,10 @@
                                     </ul>
                                 </button>
                             </div>
-                            <button class="layui-btn layui-btn-danger layui-btn-sm deleteBtn">
-                                <a href="/user/delete/?id={{.ID}}">删除</a>
+                            <button class="layui-btn layui-btn-danger layui-btn-sm deleteBtn"
+                                    onclick="trDelete({{.ID}})">
+                                {{/*<a href="/user/delete/?id={{.ID}}" style="color: white">删除</a>*/}}
+                                删除
                             </button>
                         </th>
                     </tr>
@@ -202,13 +204,32 @@
         var form = layui.form;
     });
 
-    // ID为1不允许删除
-    const user = document.getElementById(1);
-    const deleteBtn = user.getElementsByClassName('deleteBtn')[0];
-    deleteBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        alert("超级管理员用户无法删除");
-    }, false)
+    // 全局变量
+    const remoteHostAddr = "127.0.0.1"
+
+    // 删除按钮事件
+    function trDelete(id) {
+        if (id === 1) {
+            alert("超级管理员用户无法删除");
+            return
+        }
+
+        const trEle = document.getElementById(id);
+        const futher = document.getElementById('tbody');
+        const url = "http://" + remoteHostAddr + "/user/delete";
+        axios.post(
+            url,
+            {
+                id: id,
+            }
+        ).then(res => {
+            futher.removeChild(trEle);
+        }).catch(err => {
+            alert("删除失败!\n" + err);
+        })
+
+
+    }
 
     // 更新行
     function ChangeContent(id) {
@@ -242,9 +263,9 @@
                 const sex = trEle.getElementsByClassName("sex")[0].innerHTML;
                 const tel = trEle.getElementsByClassName("tel")[0].innerHTML;
                 const addr = trEle.getElementsByClassName("addr")[0].innerHTML;
-
+                const url = "http://" + remoteHostAddr + "/user/modify";
                 axios.post(
-                    "http://127.0.0.1/user/modify",
+                    url,
                     {
                         "id": id,
                         "name": name,
@@ -271,7 +292,7 @@
                         });
                     });
                 }).catch(err => {
-                    alert("更新失败! msg: " + err)
+                    alert("更新失败!\n" + err);
                 })
             }
         })
@@ -314,7 +335,7 @@
                 const sex = newEle.getElementsByClassName("sex")[0].innerHTML;
                 const tel = newEle.getElementsByClassName("tel")[0].innerHTML;
                 const addr = newEle.getElementsByClassName("addr")[0].innerHTML;
-                const url = "http://127.0.0.1/user/add?curid=" + id.toString() + "&order=" + where;
+                const url = "http://" + remoteHostAddr + "/user/add?curid=" + id.toString() + "&order=" + where;
 
                 axios.post(
                     url,
@@ -328,7 +349,7 @@
                     layui.use('layer', function () {
                         var layer = layui.layer;
                         layer.msg(
-                            '添加成功',
+                            '添加用户成功',
                             {
                                 type: 1,
                                 area: '150px',
@@ -340,6 +361,8 @@
                             }
                         );
                     });
+                }).catch(err => {
+                    alert("添加用户失败!\n" + err);
                 })
             }
         })
