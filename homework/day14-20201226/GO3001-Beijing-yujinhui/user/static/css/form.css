@@ -1,0 +1,67 @@
+/* 表单 */
+.form {
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* 表单项 */
+.form .form-item {
+    font-size: 16px;
+    height: 28px;
+    line-height: 28px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.form .form-item:last-child {
+    margin-bottom: 0;
+}
+
+
+/* 表单项公共样式 */
+.form .form-item .form-item-description,
+.form .form-item .form-item-input,
+.form .form-item .form-item-submit {
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+/* 表单项-描述信息 */
+.form .form-item .form-item-description {
+    border: 1px solid rgba(0, 0, 0, 0);
+    text-align: justify;
+    text-align-last: justify;
+    padding: 0 2px;
+}
+
+/* 表单项-input标签 */
+.form .form-item .form-item-input {
+    border: 1px solid rgba(0, 0, 0, .2);
+    text-align: left;
+    padding-left: 10px;
+}
+
+.form .form-item .form-item-input:focus {
+    border: 1px solid rgba(30, 159, 255, .5);
+}
+
+/* 表单项-记住我 */
+.form .form-item .form-item-remember {
+    margin-right: 5px;
+    font-size: 13px
+}
+
+/* 表单项-提交按钮 */
+.form .form-item .form-item-submit {
+    outline: none;
+    border: 1px solid rgb(0, 150, 136);
+    background-color: rgb(0, 150, 136);
+    color: white;
+}
+
+.form .form-item .form-item-submit:hover {
+    border: 1px solid rgba(0, 150, 136, .8);
+    background-color: rgba(0, 150, 136, .8);
+}

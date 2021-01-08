@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="../../static/css/yui-resetcss-v3.18.1.css">
+    <link rel="stylesheet" href="../../static/css/base-v1.0.0.css">
+    <link rel="stylesheet" href="../../static/css/form.css">
+
+    <style>
+        html {
+            background-color: rgb(50, 62, 78);
+            color: black;
+        }
+
+        .form {
+            /*width: 444px;*/
+            /*height: 300px;*/
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -150px;
+            margin-left: -222px;
+            background-color: rgba(255, 255, 255, .9);
+            padding: 20px 30px;
+        }
+
+        .form .form-item {
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .form .form-item .form-item-description {
+            width: 70px;
+            margin-right: 9px;
+        }
+
+        .form .form-item .form-item-input {
+            width: 300px;
+        }
+
+        .form .form-item .form-item-submit {
+            width: 380px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="form">
+    <div class="form-item" style="text-align: center; font-size: 28px; margin-bottom: 30px">
+        <h2>网站后台管理系统</h2>
+    </div>
+    <form action="/auth/login" method="post">
+        <div class="form-item">
+            <label>
+                <span class="form-item-description">用户名</span>
+                <input class="form-item-input" type="text" placeholder="用户名" name="username">
+            </label>
+        </div>
+        <div class="form-item">
+            <label>
+                <span class="form-item-description">密码</span>
+                <input class="form-item-input" type="password" placeholder="密码" name="password">
+            </label>
+        </div>
+        <div class="form-item">
+            <label>
+                <input type="checkbox" name="remember">
+                <span class="form-item-remember">下次自动登录</span>
+            </label>
+            <!-- 登录失败提醒 -->
+            {{ if .error }}
+                <span class="message" style="color: red">{{  .error  }}</span>
+            {{ end }}
+        </div>
+        <div class="form-item">
+            <input class="form-item-submit" type="submit" value="登录">
+        </div>
+    </form>
+</div>
+</body>
+</html>

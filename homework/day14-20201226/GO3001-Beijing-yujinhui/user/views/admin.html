@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>用户管理平台</title>
+    <link rel="stylesheet" href="../../static/layui/css/layui.css">
+    <script src="../../static/js/axios.min.js"></script>
+    <script src="../../static/js/table.js"></script>
+    <style>
+        .layui-table tr th {
+            text-align: center;
+        }
+
+        .editing {
+            background-color: white !important;
+        }
+
+        .editing .rw {
+            outline: none;
+            color: black;
+            font-size: 18px;
+        }
+
+        .editing .rd {
+            color: rgba(0, 0, 0, .3);
+        }
+
+        .editor-select-button {
+            position: relative;
+            z-index: 9;
+        }
+
+        .editor-select-button:hover {
+            z-index: 99;
+        }
+
+        .editor-select-button .editor-select-container {
+            position: absolute;
+            top: 30px;
+            left: 0;
+            width: 100px;
+            text-align: left;
+            display: none;
+            background-color: white;
+            color: black;
+            z-index: 99999;
+        }
+
+        /* 编辑选择框 */
+        .editor-select-button:hover .editor-select-container {
+            display: block;
+        }
+
+        .editor-select-button .editor-select-container li {
+            z-index: 99999;
+            background-color: rgba(255, 255, 255, 2);
+        }
+
+        .editor-select-button .editor-select-container li:hover {
+            background-color: rgb(242, 242, 242);
+            font-weight: bold;
+        }
+
+
+    </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo"><a href="/" style="color: white; font-weight: bold">用户管理平台</a></div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <!--<ul class="layui-nav layui-layout-left">-->
+        <!--    <li class="layui-nav-item"><a href="">控制台</a></li>-->
+        <!--    <li class="layui-nav-item"><a href="">商品管理</a></li>-->
+        <!--    <li class="layui-nav-item"><a href="">用户</a></li>-->
+        <!--    <li class="layui-nav-item">-->
+        <!--        <a href="javascript:;">其它系统</a>-->
+        <!--        <dl class="layui-nav-child">-->
+        <!--            <dd><a href="">邮件管理</a></dd>-->
+        <!--            <dd><a href="">消息管理</a></dd>-->
+        <!--            <dd><a href="">授权管理</a></dd>-->
+        <!--        </dl>-->
+        <!--    </li>-->
+        <!--</ul>-->
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    {{ .user.Name }}
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="/auth/logout">退出</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">用户管理</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">系统设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">列表一</a></dd>
+                        <dd><a href="javascript:;">列表二</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!--面包屑导航-->
+
+        <div style="margin-top: 20px; margin-left: 20px; background-color: white">
+            <span class="layui-breadcrumb">
+                <!--<a href="">首页</a>-->
+                <!--<a href="">国际新闻</a>-->
+                <!--<a href="">亚太地区</a>-->
+                <!--<a><cite>正文</cite></a>-->
+                <a href="/">首页</a>
+                <a><cite>用户管理</cite></a>
+            </span>
+        </div>
+
+        <hr>
+
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+            <table class="layui-table">
+                <colgroup>
+                    <col width="150">
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>用户ID</th>
+                    <th>用户名</th>
+                    <th>创建时间</th>
+                    <th>性别</th>
+                    <th>电话</th>
+                    <th>地址</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody id="tbody">
+                {{ range .users }}
+                    <tr id={{ .ID }}>
+                        <th class="rd">{{ .ID }}</th>
+                        <th class="rw name">{{ .Name }}</th>
+                        <th class="rd">{{ "2006-01-02 15:04:05" | .CreatedAt.Format  }}</th>
+                        <th class="rw sex">{{ if eq .Sex false }}女{{ else }}男{{end}}</th>
+                        <th class="rw tel">{{ .Tel }}</th>
+                        <th class="rw addr">{{ .Addr }}</th>
+                        <th class="sort_id" style="display: none">{{ .SortID }}</th>
+                        <th width="200px">
+                            <button class="layui-btn layui-btn-sm" onclick="ChangeContent({{ .ID }})">编辑</button>
+                            <div style="display: inline-block">
+                                <button class="layui-btn layui-btn-normal layui-btn-sm editor-select-button">
+                                    插入
+                                    <ul class="editor-select-container">
+                                        <li onclick="trInsertBefore({{.ID}});">向上插一行</li>
+                                        <li onclick="trInsertAfter({{.ID}});">向下插一行</li>
+                                    </ul>
+                                </button>
+                            </div>
+                            <button class="layui-btn layui-btn-danger layui-btn-sm deleteBtn">
+                                <a href="/user/delete/?id={{.ID}}">删除</a>
+                            </button>
+                        </th>
+                    </tr>
+                {{ end }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        ©2021 Power by beego
+    </div>
+</div>
+
+
+<script src="../../static/layui/layui.js"></script>
+<script>
+    // layui
+    layui.use('element', function () {
+        var element = layui.element;
+    });
+
+    layui.use('form', function () {
+        var form = layui.form;
+    });
+
+    // ID为1不允许删除
+    const user = document.getElementById(1);
+    const deleteBtn = user.getElementsByClassName('deleteBtn')[0];
+    deleteBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        alert("超级管理员用户无法删除");
+    }, false)
+
+    // 更新行
+    function ChangeContent(id) {
+        if (id === 1) {
+            alert("超级管理员用户无法编辑");
+            return
+        }
+
+        // 获取元素
+        let trEle = document.getElementById(id);
+        let oldTrEle = trEle.cloneNode(true);
+
+        // 修改为可编辑
+        trContentStatus(trEle, {
+            editable: true,
+            editClass: 'editing',
+        });
+
+        // 保存原始按钮
+        let Btn = trEle.children[trEle.children.length - 1].innerHTML;
+        trEle.children[trEle.children.length - 1].innerHTML = '';
+
+        // 创建保存按钮
+        trContentBtn(trEle, {
+            value: "保存",
+            btnClassArr: ['layui-btn'],
+            clickEvent: (e) => {
+
+                // 发送Ajax请求
+                const name = trEle.getElementsByClassName("name")[0].innerHTML;
+                const sex = trEle.getElementsByClassName("sex")[0].innerHTML;
+                const tel = trEle.getElementsByClassName("tel")[0].innerHTML;
+                const addr = trEle.getElementsByClassName("addr")[0].innerHTML;
+
+                axios.post(
+                    "http://127.0.0.1/user/modify",
+                    {
+                        "id": id,
+                        "name": name,
+                        "sex": sex === "男" ? true : false,
+                        "tel": tel,
+                        "addr": addr
+                    }
+                ).then(res => {
+                    // 恢复现场
+                    trEle.children[trEle.children.length - 1].innerHTML = Btn;
+
+                    trContentStatus(trEle, {
+                        normal: true,
+                        editClass: 'editing'
+                    });
+
+                    layui.use('layer', function () {
+                        var layer = layui.layer;
+                        layer.msg('更新成功', {
+                            type: 1,
+                            area: '150px',
+                            offset: '100px',
+                            time: 2000
+                        });
+                    });
+                }).catch(err => {
+                    alert("更新失败! msg: " + err)
+                })
+            }
+        })
+
+        // 创建取消按钮
+        trContentBtn(trEle, {
+            value: "取消",
+            btnClassArr: ['layui-btn', 'layui-btn-primary'],
+            clickEvent: (e) => {
+                trEle.innerHTML = oldTrEle.innerHTML;
+                trContentStatus(trEle, {
+                    normal: true,
+                    editClass: 'editing',
+                });
+            }
+        })
+    }
+
+    // 插入行
+    function trInsert(id, options) {
+        const {where} = options;
+
+        const futher = document.getElementById('tbody');
+        const cur = document.getElementById(id);
+        const curNext = cur.nextElementSibling;
+        const newEle = cur.cloneNode(true);
+
+        // 清空节点内容
+        for (const item of newEle.children) {
+            item.innerText = "";
+        }
+
+        // 创建保存按钮
+        trContentBtn(newEle, {
+            value: "保存",
+            btnClassArr: ['layui-btn'],
+            clickEvent: (e) => {
+                // 发送Ajax请求
+                const name = newEle.getElementsByClassName("name")[0].innerHTML;
+                const sex = newEle.getElementsByClassName("sex")[0].innerHTML;
+                const tel = newEle.getElementsByClassName("tel")[0].innerHTML;
+                const addr = newEle.getElementsByClassName("addr")[0].innerHTML;
+                const url = "http://127.0.0.1/user/add?curid=" + id.toString() + "&order=" + where;
+
+                axios.post(
+                    url,
+                    {
+                        "name": name,
+                        "sex": sex === "男" ? true : false,
+                        "tel": tel,
+                        "addr": addr,
+                    }
+                ).then(res => {
+                    layui.use('layer', function () {
+                        var layer = layui.layer;
+                        layer.msg(
+                            '添加成功',
+                            {
+                                type: 1,
+                                area: '150px',
+                                offset: '100px',
+                                time: 500
+                            },
+                            function () {
+                                window.location.reload();
+                            }
+                        );
+                    });
+                })
+            }
+        })
+
+        // 创建取消按钮
+        trContentBtn(newEle, {
+            value: "取消",
+            btnClassArr: ['layui-btn', 'layui-btn-primary'],
+            clickEvent: (e) => {
+                futher.removeChild(newEle);
+            }
+        })
+
+        // 修改为可编辑
+        trContentStatus(newEle, {
+            editable: true,
+            editClass: 'editing',
+        });
+
+        // 挂载到DOM节点
+        if (where == "before") {
+            futher.insertBefore(newEle, cur);
+        } else if (where == "after") {
+            futher.insertBefore(newEle, curNext);
+        }
+
+        // 不可编辑区域设置为-
+        let rdColumns = newEle.getElementsByClassName("rd");
+        for (item of Object.values(rdColumns)) {
+            item.innerText = '- - -';
+        }
+    }
+
+    // 向前插入
+    function trInsertBefore(id) {
+        trInsert(id, {
+            where: "before"
+        })
+    }
+
+    // 向后插入
+    function trInsertAfter(id) {
+        trInsert(id, {
+            where: "after"
+        })
+    }
+
+
+</script>
+</body>
+</html>
