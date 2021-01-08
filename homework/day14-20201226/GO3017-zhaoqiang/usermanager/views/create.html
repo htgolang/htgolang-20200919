@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="utf8">
+    <head>
+        <meta charset="utf8">
+        <title>创建用户</title>
+        <link rel="stylesheet" type="text/css" href="/static/vender/bootstrap-4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/create.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/base.css">
+    </head>
+    <body>
+        {{ template "nav/nav.html" . }}
+       <div class="container-fluid">
+           <div class="row">
+               <div class="col-10">
+                    <form action="/user/create" method="POST">
+                        <div class="form-group row">
+                            <label class="col-form-label col-2">用户名: </label>
+                            <div class="col-3">
+                                <input class="form-control" type="text" name="name" value="" placeholder="用户名">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-2">密  码: </label>
+                            <div class="col-3">
+                                <input class="form-control" type="password" name="password" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-2" >性别: </label>
+                            <div class="col-3">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sex" value="true" checked>
+                                    <label class="form-check-label">男</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sex" value="false">
+                                    <label class="form-check-label">女</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-2">电话: </label>
+                            <div class="col-3">
+                                <input class="form-control" type="text" name="tel" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-2">生日: </label>
+                            <div class="col-3">
+                                <input class="form-control" type="text" name="brithday" value="" placeholder="2020-01-02">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-lable col-2">地址: </label>
+                            <div class="col-3">
+                                <textarea class="form-control" name="addr" cols="30" rows="10"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            {{ if .error }}
+                            <div class="text-danger error-size">{{ .error }}</div>
+                            {{ end }}
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-5">
+                                <input class="btn btn-primary btn-block" type="submit" value="创建">
+                            </div>
+                        </div>
+                    </form>
+               </div>
+           </div>
+       </div>
+    </body>
+</html>

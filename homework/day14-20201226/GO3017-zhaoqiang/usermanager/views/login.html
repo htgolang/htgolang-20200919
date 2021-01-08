@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="utf8">
+    <head>
+        <meta charset="utf8">
+        <title>登陆</title>
+        <link rel="stylesheet" href="/static/vender/bootstrap-4.5.0/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="/static/css/login.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4 offset-4 ">
+                    <div class="shadow p-3 mb-5 bg-white rounded login-form">
+                        <h3 class="text-center">登陆</h3>
+                        <hr>
+                        <form action="/auth/login" method="POST">
+                            <div class="form-group">
+                                <label class="sr-only">用户名:</label>
+                                <input class="form-control form-control-sm" type="text" name="name" value="" placeholder="用户名">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only">密码: </label>
+                                <input class="form-control form-control-sm" type="password" name="password" value="" placeholder="密码">
+                            </div>
+                            {{ if .error }}
+                            <p class="text-danger error-size">{{ .error }}</p>
+                            {{ end }}
+                            <input class="btn btn-primary btn-sm btn-lg btn-block" type="submit" value="登陆">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>        
+       
+    </body>
+</html>

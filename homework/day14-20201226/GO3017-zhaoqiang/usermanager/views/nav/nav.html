@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/user/list">用户管理</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link {{ if eq .navkey `list` }}active{{ end }}" href="/user/list">用户列表</a>
+        </li>
+        <li class="nav-item" >
+          <a class="nav-link {{ if eq .navkey `create` }}active{{ end }}" href="/user/create">创建用户</a>
+        </li>
+    </ul>
+
+    <span class="navbar-text bg-dark mr-2">
+        当前登陆用户: {{ .currentuser.Name }}
+    </span>
+
+    <a class="btn btn-outline-success my-2 my-sm-0 navbar-dark bg-dark mr-1" href="/user/password?id={{ .currentuser.ID }}">修改密码</a>
+    <a class="btn btn-outline-success my-2 my-sm-0 navbar-dark bg-dark" href="/auth/logout">退出登陆</a>
+
+    </div>
+</nav>

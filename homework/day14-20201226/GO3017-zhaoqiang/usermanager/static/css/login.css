@@ -1,0 +1,9 @@
+body {
+    background-color: gray;
+}
+div.login-form {
+    margin-top: 280px;
+}
+.error-size {
+    font-size: 1px;
+}
