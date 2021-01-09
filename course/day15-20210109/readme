@@ -1,0 +1,273 @@
+1. 复习
+2. 作业处理
+    修改自己的密码
+        a. 打开修改密码的页面，让用户输入密码信息
+            MVC
+            router: URL => Controller
+            Controller:
+                GET:
+                    Ctx
+                    Tpl
+        b. 输入密码信息，提交并修改
+            旧密码
+            新密码
+            新密码确认
+            router: URL => Controller
+            Controller:
+                POST:
+                    获取用户提交数据
+                    验证数据
+                        旧密码 正确性 ?跟谁比呢? 当前用户 ? SESSION
+                        新密码 =>
+                            长度必须在6-32位之间
+                            新密码不能与(最近的n次)旧密码相同
+                            新密码必须包含小写英文字母，字数，大写英文字母，特殊字符(_.*..)
+                            新密码必须至少包含3种（小写英文字母，字数，大写英文字母，特殊字符(_.*..)）
+                            不能为弱口令 弱口令字典
+                        新密码确认 =>
+                            两次输入密码是否一致
+                    验证成功
+                        修改密码
+                            password => hash
+                            update db
+
+                        修改成功 => 显示修改密码页面 修改密码成功
+                    验证失败:
+                        显示修改密码页面 提示修改密码失败
+3. 新内容
+    知识点：
+        控制器：
+            响应格式
+                功能: 返回所有用户信息的JSON字符串
+
+                URL => Controller.Action
+                user/queryjson => QueryJson
+                TEMPLATE => JSON
+                    a.设置数据
+                    b.更改模板(有默认的)
+                    Render函数 => 加载模板 => html
+
+                JSON
+                    a. 设置数据
+                        Data["json"] => value
+                    b. ServeJSON() // 响应 数据 => JSON
+                        // Beego不会自动执行Render
+
+            HTTP协议
+                WEB安全
+                    浏览器同源限制策略
+                    HTTP协议传递数据
+
+                A 自己的网站  ->  B 外部网站(自己开发的)
+
+                    A -> B 资源(js) => A网站js/操作html标签
+                    B 能不能让A加载 => A
+                    WEB => 告知浏览器
+                    Response HEADER => 使用域名的范围
+                    cors =>
+
+            1. 单体模式 前后端不分离
+
+
+            URL构建
+                router => URL Controller
+                AutoRouter => Controller => URL(controller/action)
+                Controller.Action => URL
+
+                Router => url => Action
+
+                beego.UrlFor => Controller. Redirect => URL => beego.UrlFor
+                            => template a.href/form.action => URL => urlfor
+            FLASH消息
+                消息闪现
+                新建/编辑/删除 => Redirect => 列表页面
+                                            => 显示成功的消息
+
+                                url?msg=xxx
+
+                原理：
+                    新建/编辑/删除 => 存储消息数据
+                        Set-Coookie
+
+                        flash = beego.NewFlash()
+                        flash.Set(key, value)
+                        flash.Store(&c.Controller)
+
+
+                    列表页面显示 => 读取消息数据
+
+                        Cookie:
+                        Set-Cookie
+
+                        flash = beego.ReadFromRequest(&c.Controller)
+                        flash.Data
+
+                新建/编辑 失败 => 打开页面 => 错误提示
+            错误处理
+                ErrorHandler
+                ErrorController
+
+                自定义错误
+                    产生错误
+                        c.Abort(Name)
+                    错误处理
+                        ErrorName() {
+
+                        }
+
+                        必须定义错误模板
+
+                Init
+                Prepare
+                处理函数
+                    有输出 不会找template
+                    没有输出， 会找template
+                Render
+                finsh
+
+            日志处理
+                程序运行中
+                    log 级别
+                        按天记录日志/压缩/保留最近n天
+
+                    syslog 7
+                    8个级别
+                    beego.Debug
+                    beego.Information
+                    beego.Warning
+                    beego.Error
+
+                    设置日志级别
+                    SetLogger(Adpater, "配置")
+
+                    本地文件
+                    SYSLOG
+
+
+
+            过滤器
+        表单：
+            验证
+                用户提交数据
+                获取用户提交数据
+                对数据验证
+                    name =>
+                        db => 字符串类型
+                            字符串长度
+                            格式 regex
+                                    IPv4/IPv6/Email/URL
+                                ["info", "warning", "debug"]
+
+                    age =>
+                        db => 数字/整数类型
+                        格式
+                        范围 最大值/最小值
+
+                    date/datetime =>
+                        yyyy-mm-dd
+                        yyyy-mm-dd HH:MM:SS
+                        范围区间
+
+            A->B->C
+            C -> A
+        模型：
+            关系
+            表 - 表
+            1:1 => user  password
+
+                User-> Password
+                    user->password_id -> select password
+                Password -> User
+                    password id -> select user where password_id
+
+                User
+                    password_id
+
+                Password
+                    user_id
+
+            1:n => user role
+                user->role
+                    user->role_id -> select role
+                role->user
+                    role id -> select user where role_id
+                User
+                    role_id
+
+            m:n => role url
+
+                    A URL1
+                    A URL2
+                    B URL1
+                    B URL3
+
+                role -> url
+                    role->id -> relations -> url_Id
+                    url_id -> url -> urls
+                url -> role
+                    url -> id -> relations -> role_id
+                    role_id -> role -> roles
+
+            第三张表
+                relations
+                    role_id
+                    url_Id
+
+        模板：
+            Layout&LayoutSections
+            函数使用
+                text&html/template
+                    index arg1 arg2 arg3
+                    arg3|index arg1 arg2
+                自定义
+                    注册到template Name 函数
+                    funcs := make(template.FuncMap)
+                    funcs["upper"] = strings.ToUpper
+                    template.New().Funcs(funcs).ParserFiles("").Execute()
+
+                    upper "xxx"
+
+            beego => html/template
+                beego扩展
+                在beego中如何定义模板函数
+                beego.AddFuncMap(key, value)
+
+        安全：
+            必须使用https，在http协议中必须关闭
+            XSRF
+            1. 需要开启CSRF检查 => XSRF
+                EnableXSRF=true
+                XSRFExpire=3600
+                XSRFKEY=
+            2. 生成TOken
+                form => 生成Token c.XSRFToken()
+                <input hidden name="_xsrf" value/>
+            3. 发起请求时需要携带TOken
+                DELETE/PUT/POST
+                GET/HEAD
+
+
+        路由：
+            命名空间
+    部署：
+        构建：
+            编译二进制程序
+            压缩包 （配置，静态，模板，二进制）
+        部署：
+            设置执行权限
+            更改配置
+            启动
+
+        问题：
+            a. 命令行启动，命令行退出，程序跟着退出
+                nohup
+            b. 进程如果崩溃，进程监控
+                systemd
+                supervisord
+            c. go即处理webapi他又处理静态资源
+                nginx + go
+            d. nginx 负载多个GO进程
+                session+go绑定
+                session共享 =》 外部存储 =》 mysql => redis
+            f. docker => docker镜像
+                环境变量
