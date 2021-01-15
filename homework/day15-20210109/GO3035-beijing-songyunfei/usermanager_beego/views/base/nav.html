@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+    <title>Title</title>
+</head>
+<body>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">用户管理</a>
+    <div class="collapse navbar-collapse ">
+        <ul class="navbar-nav mr-auto">
+            {{range .navlist}}
+            <li class="nav-item active">
+                <a class="nav-link" href="{{.Path}}">{{.PName}}</a>
+            </li>
+            {{end}}
+        </ul>
+        <span class="navbar-text text-light" style="margin-right: 20px">
+            欢迎: {{.cuser}}
+        </span>
+        <button class="btn btn-primary" type="button"  onclick="javascrtpt:window.location.href='/authcontroller/logout/'">登出</button>
+    </div>
+
+</nav>
+</body>
+</html>

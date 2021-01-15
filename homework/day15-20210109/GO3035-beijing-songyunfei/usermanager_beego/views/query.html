@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查找用户</title>
+    <link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap-4.5.0/css/bootstrap.min.css" media="screen"/>
+    <style type="text/css">
+        div.container-fluid {
+            padding-top: 57px;
+        }
+    </style>
+</head>
+<body>
+{{ template "base/nav.html" . }}
+<div class="container-fluid">
+    <div class="col-2">
+        {{ if .flash.warn }}
+            <div class="alert alert-warning" role="alert">
+                {{ .flash.warn }}
+            </div>
+        {{ end }}
+    </div>
+<form class="form-inline" action="/usermanager/query" method="POST">
+    <input class="form-control mr-sm-2" type="search" name="querystr" placeholder="关键字..." aria-label="Search">
+    <button class="btn btn-primary" type="submit">Search</button>
+</form>
+{{if .rdata.Ok}}
+<table class="table">
+    <thead >
+    <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>地址</th>
+        <th>电话</th>
+        <th>生日</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{.rdata.Ud.Id}}</td>
+            <td>{{.rdata.Ud.Name}}</td>
+            <td>{{.rdata.Ud.Addr}}</td>
+            <td>{{.rdata.Ud.Tel}}</td>
+            <td>{{.rdata.Ud.Birthday.Format "2006-01-02"}}</td>
+        </tr>
+    </tbody>
+</table>
+{{end}}
+</div>
+</body>
+</html>

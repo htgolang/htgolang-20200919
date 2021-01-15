@@ -1,0 +1,22 @@
+
+<form enctype="multipart/form-data" action="{{ urlfor "LogAnalysis.Upload"}}" method="post">
+    <div class="form-group">
+        <label for="exampleFormControlFile1">上传日志</label>
+        <input type="file" class="form-control-file" name="uploadfile">
+        <input type="submit" value="upload" />
+    </div>
+</form>
+
+<h3>日志文件</h3>
+
+<form action="{{ urlfor "LogAnalysis.Showweb"}}" method="get"  id="myform">
+    <select style="width: 200px" , name="fileid">
+        {{range .fdata}}
+    <option value="{{.Id}}">{{.FileName}}</option>
+        {{end}}
+    </select>
+    <input type="submit" value="查看统计结果">
+
+</form>
+
+

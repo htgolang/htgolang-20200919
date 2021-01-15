@@ -1,0 +1,23 @@
+<div class="list-group col-sm-3">
+    {{range .roleall}}
+    <a href="/usermanager/role?id={{.Id}}" class="list-group-item list-group-item-action ">{{.RoleName}}</a>
+    {{end}}
+    {{ if .roleper}}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>名称</th>
+            <th>URL</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{range .roleper}}
+            <tr>
+                <td>{{.PName}}</td>
+                <td>{{.Path}}</td>
+            </tr>
+        {{end}}
+        </tbody>
+    </table>
+    {{end}}
+</div>
