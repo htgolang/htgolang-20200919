@@ -41,7 +41,7 @@
                             <td>{{ .Brithday }}</td> 
                             <td>
                                 <a class="btn btn-sm btn-warning" href="/user/modify?id={{ .ID }}">修改</a>
-                                <a class="btn btn-sm btn-danger" href="{{ urlfor UserController.Delete }}?id={{ .ID }}">删除</a>
+                                <a class="btn btn-sm btn-danger" href="{{ urlfor `UserController.Delete` }}?id={{ .ID }}">删除</a>
                                 <a class="btn btn-sm btn-info"href="/permission/setting?id={{ .ID }}">修改用户权限</a>
                             </td>
                         </tr>
