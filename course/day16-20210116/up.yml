@@ -1,0 +1,11 @@
+groups: # 规则组
+- name: "target up alert" # 规则组名称
+  rules: # 规则
+  - alert: "target is down" # 告警名称
+    expr: up == 0 # 告警条件
+    for: 1m # 在1分钟之内告警条件都满足则产生告警
+    labels:
+      severity: high
+    annotations:
+      summary: "Node {{ $labels.instance }} is Down"
+      description: "Node {{ $labels.instance }} is Down"

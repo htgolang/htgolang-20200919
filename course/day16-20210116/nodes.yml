@@ -1,0 +1,28 @@
+groups:
+  - name: node_records
+    rules:
+    - record: node_cpu_count # 记录规则，创建新的指标 每个node的CPU数量
+      expr: count(node_cpu_seconds_total{mode="idle"}) by (instance)
+    - record: node_cpu_percent
+      expr: sum(1-irate(node_cpu_seconds_total{mode="idle"}[5m])) by (instance) * 100
+    - record: node_mem_percent
+      expr: (1 - node_memory_MemAvailable_bytes/node_memory_MemTotal_bytes) * 100
+  - name: node_alert
+    rules:
+    - alert: Node cpu usage rate High
+      expr: node_cpu_percent > 80
+      for: 3m
+      labels:
+        serverity: warning
+      annotations:
+        summary: "Node {{ $labels.instance }} CPU usage rate High"
+        description: "Node {{ $labels.instance }} CPU usage rate High, Current Value is {{ $value }}"
+
+    - alert: Node mem usage rate High
+      expr: node_mem_percent > 80
+      for: 3m
+      labels:
+        serverity: warning
+      annotations:
+        summary: "Node {{ $labels.instance }} MEM usage rate High"
+        description: "Node {{ $labels.instance }} MEM usage rate High, Current Value is {{ $value }}"
