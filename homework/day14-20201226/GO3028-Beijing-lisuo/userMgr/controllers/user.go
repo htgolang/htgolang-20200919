@@ -16,21 +16,61 @@ type UserController struct {
 }
 
 func (c *UserController) Prepare() {
+	c.Data["cUser"] = nil
 	user := c.GetSession("user")
 	if user == nil {
 		// not logged
 		c.Redirect("/auth/login/", 302)
+		return
+	}
+	if id, ok := user.(int64); ok {
+		if user, _ := services.IDFindUser(id); user != nil {
+			c.Data["cUser"] = user
+		}
+	}
+	if c.Data["cUser"] == nil {
+		c.DestroySession()
+		c.Redirect("/auth/login/", 302)
+		return
 	}
 }
 
 // Home give a default page, with a list of users
 func (c *UserController) Home() {
+	type dUser struct {
+		ID         int64
+		Name       string
+		Sex        int
+		Address    string
+		Cell       string
+		Born       string
+		Password   string
+		Created_at *time.Time
+		Updated_at *time.Time
+		Deleted_at *time.Time
+	}
+	cUsers := []dUser{}
 	users, err := services.ListAllUser()
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	c.Data["users"] = users
+	for _, user := range users {
+		u := dUser{
+			ID:         user.ID,
+			Name:       user.Name,
+			Sex:        user.Sex,
+			Address:    user.Address,
+			Cell:       user.Cell,
+			Born:       user.Born.Format("2006-01-02"),
+			Password:   user.Password,
+			Created_at: user.CreatedAt,
+			Updated_at: user.UpdatedAt,
+			Deleted_at: user.DeletedAt,
+		}
+		cUsers = append(cUsers, u)
+	}
+	c.Data["users"] = cUsers
 	c.Data["msg"] = "Are you sure to delete the user?"
 	c.TplName = "user/home.html"
 }
@@ -54,13 +94,11 @@ func (c *UserController) Create() {
 		address := c.GetString("address")
 		cell := c.GetString("cell")
 		password := c.GetString("passwd")
-
 		// create user here
 		if errc := services.CreateUser(name, password, address, cell, sex, t); errc != nil {
 			c.ErrorMsg(errc.Error(), r)
 			return
 		}
-
 		// redirect to home after create user
 		c.Redirect("/user/home/", 301)
 	} else {
@@ -111,7 +149,7 @@ func (c *UserController) Edit() {
 		if errf != nil {
 			HandleError(c, errf, r)
 		}
-		cuser := func(models.User) cUser {
+		cuser := func(u models.User) cUser {
 			return cUser{
 				ID:      user.ID,
 				Name:    user.Name,
@@ -121,7 +159,7 @@ func (c *UserController) Edit() {
 				Born:    strings.Split(user.Born.String(), " ")[0],
 				Passwd:  user.Password,
 			}
-		}(user)
+		}(*user)
 		c.Data["user"] = cuser
 		c.TplName = "user/edit.html"
 	} else {
@@ -168,6 +206,18 @@ func (c *UserController) Query() {
 		c.Data["users"] = users
 		c.TplName = "user/display.html"
 	}
+}
+
+// Register register a user
+func (c *UserController) Register() {
+	if c.Ctx.Input.IsPost() {
+	} else {
+		c.TplName = "user/create.html"
+	}
+}
+
+// ResetPass reset a user's pass
+func (c *UserController) ResetPass() {
 }
 
 // HandleError wrap err handle code

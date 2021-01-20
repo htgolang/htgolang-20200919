@@ -113,14 +113,14 @@ func QueryUser(id string, args ...string) ([]*models.User, error) {
 }
 
 // IDFindUser find user based on ID
-func IDFindUser(Id int64) (models.User, error) {
+func IDFindUser(Id int64) (*models.User, error) {
 	var user = models.User{}
 	o := orm.NewOrm()
 	user.ID = Id
 	if err := o.Read(&user); err != nil {
-		return user, err
+		return &user, err
 	}
-	return user, nil
+	return &user, nil
 }
 
 // NameFindUser find user based on Name

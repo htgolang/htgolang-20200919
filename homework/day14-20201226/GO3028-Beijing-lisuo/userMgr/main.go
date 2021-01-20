@@ -1,16 +1,23 @@
 package main
 
 import (
-"fmt"
+	"fmt"
 	"userMgr/logger"
-	_ "userMgr/models"
-	_ "userMgr/routers"
 	"userMgr/services"
 
+	"userMgr/models"
+	_ "userMgr/routers"
+
 	beego "github.com/astaxie/beego"
+	orm "github.com/astaxie/beego/orm"
 )
 
+func init() {
+    models.RegisterDB()
+}
+
 func main() {
+    orm.Debug = true
 	logger.InitLogger()
 	fmt.Printf("dsn: %#v\n", beego.AppConfig.String("db::dsn"))
 	services.IfAdmin()

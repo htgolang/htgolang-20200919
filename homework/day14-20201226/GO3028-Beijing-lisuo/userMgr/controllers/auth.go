@@ -14,6 +14,7 @@ type AuthController struct {
 
 // Login powres user log in
 func (c *AuthController) Login() {
+	var loginForm = &forms.AuthForm{}
 	if user := c.GetSession("user"); user != nil {
 		c.Data["user"] = user
 		c.Redirect("/user/home/", 302)
@@ -22,7 +23,6 @@ func (c *AuthController) Login() {
 	if c.Ctx.Input.IsGet() {
 		c.TplName = "user/login.html"
 	} else {
-		var loginForm = &forms.AuthForm{}
 		if err := c.ParseForm(loginForm); err != nil {
 			panic(err)
 		}
@@ -30,18 +30,17 @@ func (c *AuthController) Login() {
 		if err != nil {
 			HandleAuthError(c, err, "/auth/login/")
 		} else {
-			c.SetSession("user", loginForm.UserName)
-			c.Data["user"] = loginForm.UserName
+			c.SetSession("user", user.ID)
+			c.Data["user"] = user
+			c.Data["form"] = loginForm
 			c.Redirect("/user/home", 302)
 			fmt.Printf("user %#v logged in.\n", user.Name)
 		}
 	}
 }
 
-func LogOut(c *AuthController) {
-	if c.Ctx.Input.IsGet() {
-		c.TplName = "user/logout.html"
-	}
+func (c *AuthController) Logout() {
+	fmt.Println("logout")
 	c.DestroySession()
 	c.Redirect("/auth/login/", 302)
 }

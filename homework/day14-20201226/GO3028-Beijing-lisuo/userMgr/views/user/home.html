@@ -7,86 +7,83 @@
 	</head>
 	<body >
 		<!-- nav -->
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		  <a class="navbar-brand" href="#">Navbar</a>
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		    <span class="navbar-toggler-icon"></span>
-		  </button>
-	  
-		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-		    <ul class="navbar-nav mr-auto">
-		      <li class="nav-item active">
-		        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="#">Link</a>
-		      </li>
-		      <li class="nav-item dropdown">
-		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		          Dropdown
-		        </a>
-		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-		          <a class="dropdown-item" href="#">Action</a>
-		          <a class="dropdown-item" href="#">Another action</a>
-		          <div class="dropdown-divider"></div>
-		          <a class="dropdown-item" href="#">Something else here</a>
-		        </div>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-		      </li>
-		    </ul>
-		    <form class="form-inline my-2 my-lg-0">
-		      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-		      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-		    </form>
-		  </div>
-		</nav>
-		<!-- nav -->
+		<div class="container mt-4">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+				<a class="navbar-brand" href="#"><span style="color: rgb(86, 179, 255);">SUOSUOLI.CN</span></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+				        	<a class="nav-link" href="/user/home/"> HOME <span class="sr-only">(current)</span></a>
+				    	</li>
+				    	<li class="nav-item">
+				    		<a class="nav-link" href="/user/role/"> ROLE </a>
+				    	</li>
+				    	<li class="nav-item">
+				    		<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"> Manage </a>
+				    	</li>
+				    </ul>
+				    <a type="button" class="btn btn-primary" href="/user/detail/?name={{ .Name }}" tabindex="-2" style="margin-left: 10px;"> {{ if .cUser }} {{ .cUser.Name }} {{ else }} NoMan {{ end }} </a>
+				    <a type="button" class="btn btn-danger" href="/user/resetpass/" tabindex="-3" style="margin-left: 10px;"> ResetPasswd </a>
+				    <a type="button" class="btn btn-warning" href="/auth/logout/" tabindex="-3" style="margin-left: 10px;"> Logout </a>
+				  </div>
+			</nav>
+			<!-- nav -->
+		</div>
 
-		<h1> USER MANAGEMENT </h1>
-	    <p>A simple user management system based on beego.</p>
-		<h2>Personal blog: <a href="https://www.suosuoli.cn" target="_blank">suosuoli.cn</a></h2>
+		<div class="container mt-5">
+			<div class="row justify-content-md-center">
+				<div class="col-6">
+					<a type="button" class="btn btn-primary btn-md" href="/user/create/">Creat New User</a>
+				</div>
+				<div class="col-6">
+					<form class="form-inline my-2 my-lg-0" action="/user/query/">
+						<input class="form-control mr-sm-2" type="search" placeholder="Search User" name="id" aria-label="Search">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					</form>
+				</div>
+			</div>
+		</div>
 
-        <a type="button" class="btn btn-primary btn-lg" href="/user/create/">Creat New User</a>
-		<a type="button" class="btn btn-primary btn-lg" href="/user/query/">Query User</a>
 
-	    <table  class="table table-striped table-responsive-lg table-bordered border-danger table-hover">
-            <thead class="table-dark">
-	          <tr>
-	              <th scope="col" >ID</th>
-	              <th scope="col" >Name</th>
-				  <th scope="col" >Sex</th>
-	              <th scope="col" >Address</th>
-	              <th scope="col" >Cell</th>
-	              <th scope="col" >Born</th>
-				  <th scope="col" >Password</th>
-				  <th></th>
-				  <th></th>
-	          </tr>
-            </thead>
-            <tbody style="background-color: #eee;">
-	            {{ range .users }}
-	            <tr>
-	                <td>{{ .ID }}</td>
-	                <td>{{ .Name }}</td>
-                    <td>{{ if eq .Sex 1 }} male {{ else }} female {{ end }}</td>
-	                <td>{{ .Address }}</td>
-	                <td>{{ .Cell }}</td>
-	                <td>{{ .Born }}</td>
-					<td>{{ .Password }}</td>
-					<td>
-                        <a class="btn btn-warning" href="/user/edit/?id={{ .ID }}" role="button">Edit</a>
-                    </td>
-                    <td>
-                        <!-- Do you really want to submit the form? -->
-		    		    <form action="/user/delete/?id={{ .ID }}" onsubmit="return confirm('Are you sure to delete user {{ .Name }} by id {{ .ID }} ?');" method="POST">
-		    			<button class="btn btn-danger" type="submit" formmethod="POST" >Delete</button>
-		    			</form>
-                    </td>
-                </tr>
-                {{ end }}
-            </tbody>
-        </table>
-        
+		<div class="container mt-3">
+			<table  class="table table-striped table-responsive-lg table-bordered border-danger table-hover">
+	            <thead class="table-dark">
+		        	<tr>
+						<th scope="col" >ID</th>
+						<th scope="col" >Name</th>
+						<th scope="col" >Sex</th>
+						<th scope="col" >Address</th>
+						<th scope="col" >Cell</th>
+						<th scope="col" ><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Born&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></th>
+						<th scope="col" >Password</th>
+		        	</tr>
+	            </thead>
+				<tbody>
+					{{ range .users }}
+					<tr>
+						<td>{{ .ID }}</td>
+						<td>{{ .Name }}</td>
+						<td>{{ if eq .Sex 1 }} male {{ else }} female {{ end }}</td>
+						<td>{{ .Address }}</td>
+						<td>{{ .Cell }}</td>
+						<td>{{ .Born }}</td>
+						<td>{{ .Password }}</td>
+						<td>
+							<a class="btn btn-warning" href="/user/edit/?id={{ .ID }}" role="button">Edit</a>
+						</td>
+						<td>
+							<!-- Do you really want to submit the form? -->
+							<form action="/user/delete/?id={{ .ID }}" onsubmit="return confirm('Are you sure to delete user {{ .Name }} by id {{ .ID }} ?');" method="POST">
+								<button class="btn btn-danger" type="submit" formmethod="POST" >Delete</button>
+							</form>
+						</td>
+					</tr>
+					{{ end }}
+				</tbody>
+			</table>
+		</div>
 	</body>
+</html>
