@@ -1,0 +1,217 @@
+2021/01/17 23:47:09 D:/go/src/usermanager_webdb/main.go:45: 启动完成...
+2021/01/17 23:47:18 D:/go/src/usermanager_webdb/main.go:45: 启动完成...
+2021/01/17 23:47:24 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-17 23:47:24 127.0.0.1:61361 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/17 23:47:24 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-17 23:47:24 127.0.0.1:61361 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/17 23:47:24 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:61361: duplicate metrics collector registration attempted
+goroutine 53 [running]:
+net/http.(*conn).serve.func1(0xc00018c0a0)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x9441e0, 0xc0001853e0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+github.com/prometheus/client_golang/prometheus.(*Registry).MustRegister(0xc00009e370, 0xc000186760, 0x1, 0x1)
+	D:/go/pkg/mod/github.com/prometheus/client_golang@v1.9.0/prometheus/registry.go:403 +0xb4
+github.com/prometheus/client_golang/prometheus.MustRegister(...)
+	D:/go/pkg/mod/github.com/prometheus/client_golang@v1.9.0/prometheus/registry.go:178
+usermanager_webdb/controller.PathCounter(0x9a324e, 0x1)
+	D:/go/src/usermanager_webdb/controller/metrics.go:18 +0x1e6
+usermanager_webdb/controller.Index(0xa59a60, 0xc0001fe0e0, 0xc000160100)
+	D:/go/src/usermanager_webdb/controller/index.go:15 +0x60
+net/http.HandlerFunc.ServeHTTP(0x9c99b0, 0xa59a60, 0xc0001fe0e0, 0xc000160100)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xe1b060, 0xa59a60, 0xc0001fe0e0, 0xc000160100)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00018a270, 0xa59a60, 0xc0001fe0e0, 0xc000160100)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00018c0a0, 0xa5a920, 0xc00017e200)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2021/01/17 23:47:24 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-17 23:47:24 127.0.0.1:61362 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/17 23:47:24 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:61362: duplicate metrics collector registration attempted
+goroutine 54 [running]:
+net/http.(*conn).serve.func1(0xc00018c140)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x9441e0, 0xc0001854e0)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+github.com/prometheus/client_golang/prometheus.(*Registry).MustRegister(0xc00009e370, 0xc0001868c0, 0x1, 0x1)
+	D:/go/pkg/mod/github.com/prometheus/client_golang@v1.9.0/prometheus/registry.go:403 +0xb4
+github.com/prometheus/client_golang/prometheus.MustRegister(...)
+	D:/go/pkg/mod/github.com/prometheus/client_golang@v1.9.0/prometheus/registry.go:178
+usermanager_webdb/controller.PathCounter(0x9a324e, 0x1)
+	D:/go/src/usermanager_webdb/controller/metrics.go:18 +0x1e6
+usermanager_webdb/controller.Index(0xa59a60, 0xc0001fe1c0, 0xc0001a4200)
+	D:/go/src/usermanager_webdb/controller/index.go:15 +0x60
+net/http.HandlerFunc.ServeHTTP(0x9c99b0, 0xa59a60, 0xc0001fe1c0, 0xc0001a4200)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xe1b060, 0xa59a60, 0xc0001fe1c0, 0xc0001a4200)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00018a270, 0xa59a60, 0xc0001fe1c0, 0xc0001a4200)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00018c140, 0xa5a920, 0xc00017e300)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2021/01/17 23:47:24 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-17 23:47:24 127.0.0.1:61365 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/17 23:47:24 C:/Go/src/net/http/server.go:3012: http: panic serving 127.0.0.1:61365: duplicate metrics collector registration attempted
+goroutine 59 [running]:
+net/http.(*conn).serve.func1(0xc00018c280)
+	C:/Go/src/net/http/server.go:1769 +0x140
+panic(0x9441e0, 0xc000185600)
+	C:/Go/src/runtime/panic.go:522 +0x1c3
+github.com/prometheus/client_golang/prometheus.(*Registry).MustRegister(0xc00009e370, 0xc000186a40, 0x1, 0x1)
+	D:/go/pkg/mod/github.com/prometheus/client_golang@v1.9.0/prometheus/registry.go:403 +0xb4
+github.com/prometheus/client_golang/prometheus.MustRegister(...)
+	D:/go/pkg/mod/github.com/prometheus/client_golang@v1.9.0/prometheus/registry.go:178
+usermanager_webdb/controller.PathCounter(0x9a324e, 0x1)
+	D:/go/src/usermanager_webdb/controller/metrics.go:18 +0x1e6
+usermanager_webdb/controller.Index(0xa59a60, 0xc0001fe2a0, 0xc0001a4300)
+	D:/go/src/usermanager_webdb/controller/index.go:15 +0x60
+net/http.HandlerFunc.ServeHTTP(0x9c99b0, 0xa59a60, 0xc0001fe2a0, 0xc0001a4300)
+	C:/Go/src/net/http/server.go:1995 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xe1b060, 0xa59a60, 0xc0001fe2a0, 0xc0001a4300)
+	C:/Go/src/net/http/server.go:2375 +0x1dd
+net/http.serverHandler.ServeHTTP(0xc00018a270, 0xa59a60, 0xc0001fe2a0, 0xc0001a4300)
+	C:/Go/src/net/http/server.go:2774 +0xaf
+net/http.(*conn).serve(0xc00018c280, 0xa5a920, 0xc00017e640)
+	C:/Go/src/net/http/server.go:1878 +0x858
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2884 +0x2fb
+2021/01/18 00:31:35 D:/go/src/usermanager_webdb/main.go:46: 启动完成...
+2021/01/18 00:31:40 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 00:31:40 127.0.0.1:63027 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 00:31:40 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 00:31:40 127.0.0.1:63027 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 00:32:05 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 00:32:05 127.0.0.1:63042 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 00:32:22 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 00:32:22 127.0.0.1:63054 GET /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 00:32:22 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 00:32:22 127.0.0.1:63054 GET /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 00:32:22 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 00:32:22 127.0.0.1:63054 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 00:32:24 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 00:32:24 127.0.0.1:63054 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 00:32:24 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 00:32:24 127.0.0.1:63054 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 00:32:24 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 00:32:24 127.0.0.1:63054 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 00:32:27 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 00:32:27 127.0.0.1:63054 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 00:32:45 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 00:32:45 127.0.0.1:63074 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 00:32:45 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 00:32:45 127.0.0.1:63074 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 00:32:47 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 00:32:47 127.0.0.1:63074 GET /modify?Id=9 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 00:32:47 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 00:32:47 127.0.0.1:63074 GET /modify?Id=9 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 00:32:47 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 00:32:47 127.0.0.1:63074 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 00:32:50 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 00:32:50 127.0.0.1:63085 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 00:32:52 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 00:32:52 127.0.0.1:63085 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:22:32 D:/go/src/usermanager_webdb/main.go:46: 启动完成...
+2021/01/18 01:24:29 D:/go/src/usermanager_webdb/main.go:46: 启动完成...
+2021/01/18 01:24:43 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:24:43 127.0.0.1:50256 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:24:43 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:24:43 127.0.0.1:50256 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:24:46 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:24:46 127.0.0.1:50263 GET /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:24:46 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:24:46 127.0.0.1:50263 GET /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:24:46 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:24:46 127.0.0.1:50263 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:24:48 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:24:48 127.0.0.1:50263 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:24:48 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:24:48 127.0.0.1:50263 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:24:48 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:24:48 127.0.0.1:50263 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:24:50 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:24:50 127.0.0.1:50263 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:26:41 D:/go/src/usermanager_webdb/main.go:46: 启动完成...
+2021/01/18 01:26:46 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:26:46 127.0.0.1:50342 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:26:46 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:26:46 127.0.0.1:50342 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:26:49 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:26:49 127.0.0.1:50342 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:26:49 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:26:49 127.0.0.1:50342 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:26:50 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:26:50 127.0.0.1:50342 GET /modify?Id=8 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:26:50 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:26:50 127.0.0.1:50342 GET /modify?Id=8 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:26:50 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:26:50 127.0.0.1:50342 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:26:52 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:26:52 127.0.0.1:50342 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:26:56 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:26:56 127.0.0.1:50357 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:28:57 D:/go/src/usermanager_webdb/main.go:46: 启动完成...
+2021/01/18 01:29:10 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:29:10 127.0.0.1:50597 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:29:10 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:29:10 127.0.0.1:50597 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:29:12 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:29:12 127.0.0.1:50597 GET /modify?Id=9 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:29:12 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:29:12 127.0.0.1:50597 GET /modify?Id=9 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:29:12 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:29:12 127.0.0.1:50597 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:29:12 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:29:12 127.0.0.1:50597 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:40:00 D:/go/src/usermanager_webdb/main.go:46: 启动完成...
+2021/01/18 01:40:04 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:40:04 127.0.0.1:51680 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:40:04 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:40:04 127.0.0.1:51680 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:40:27 D:/go/src/usermanager_webdb/main.go:46: 启动完成...
+2021/01/18 01:40:42 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:40:42 127.0.0.1:51716 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:40:43 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:40:43 127.0.0.1:51716 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:41:08 D:/go/src/usermanager_webdb/main.go:46: 启动完成...
+2021/01/18 01:41:12 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:41:12 127.0.0.1:51739 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:41:12 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:41:12 127.0.0.1:51739 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:41:25 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:41:25 127.0.0.1:51739 GET /modify?Id=9 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:41:25 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:41:25 127.0.0.1:51739 GET /modify?Id=9 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:41:25 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:41:25 127.0.0.1:51739 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:41:26 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:41:26 127.0.0.1:51739 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:43:31 D:/go/src/usermanager_webdb/main.go:46: 启动完成...
+2021/01/18 01:43:40 D:/go/src/usermanager_webdb/main.go:46: 启动完成...
+2021/01/18 01:43:47 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:43:47 127.0.0.1:51843 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:43:47 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:43:47 127.0.0.1:51843 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:44:03 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:44:03 127.0.0.1:51843 GET /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:44:03 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:44:03 127.0.0.1:51843 GET /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:44:03 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:44:03 127.0.0.1:51843 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:44:09 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:44:09 127.0.0.1:51843 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:44:09 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:44:09 127.0.0.1:51843 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:44:09 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:44:09 127.0.0.1:51843 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:44:13 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:44:13 127.0.0.1:51843 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:45:18 D:/go/src/usermanager_webdb/main.go:46: 启动完成...
+2021/01/18 01:45:23 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:45:23 127.0.0.1:51918 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:45:23 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:45:23 127.0.0.1:51918 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:45:23 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:45:23 127.0.0.1:51918 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:45:26 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:45:26 127.0.0.1:51918 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:45:26 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:45:26 127.0.0.1:51918 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:45:26 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:45:26 127.0.0.1:51918 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:45:28 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:45:28 127.0.0.1:51918 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:47:08 D:/go/src/usermanager_webdb/main.go:46: 启动完成...
+2021/01/18 01:47:14 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:47:14 127.0.0.1:51997 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:47:14 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:47:14 127.0.0.1:51997 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:47:14 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:47:14 127.0.0.1:51997 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:47:15 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:47:15 127.0.0.1:51997 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:47:15 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:47:15 127.0.0.1:51997 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/18 01:47:18 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-18 01:47:18 127.0.0.1:51997 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:29:56 D:/go/src/usermanager_webdb/main.go:46: 启动完成...
+2021/01/19 22:30:01 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:30:01 127.0.0.1:55367 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:30:03 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:30:03 127.0.0.1:55367 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:30:12 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:30:12 127.0.0.1:55383 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:30:54 D:/go/src/usermanager_webdb/main.go:46: 启动完成...
+2021/01/19 22:31:58 D:/go/src/usermanager_webdb/main.go:46: 启动完成...
+2021/01/19 22:34:02 D:/go/src/usermanager_webdb/main.go:46: 启动完成...
+2021/01/19 22:34:07 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:34:07 127.0.0.1:55551 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:34:07 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:34:07 127.0.0.1:55551 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:34:10 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:34:10 127.0.0.1:55551 GET /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:34:10 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:34:10 127.0.0.1:55551 GET /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:34:10 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:34:10 127.0.0.1:55551 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:34:12 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:34:12 127.0.0.1:55551 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:34:12 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:34:12 127.0.0.1:55551 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:34:12 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:34:12 127.0.0.1:55551 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:34:13 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:34:13 127.0.0.1:55551 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:34:13 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:34:13 127.0.0.1:55551 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:34:14 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:34:14 127.0.0.1:55551 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:35:16 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:35:16 127.0.0.1:55551 GET /modify?Id=8 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:35:16 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:35:16 127.0.0.1:55551 GET /modify?Id=8 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:35:16 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:35:16 127.0.0.1:55551 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:35:19 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:35:19 127.0.0.1:55551 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:35:21 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:35:21 127.0.0.1:55551 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:36:01 D:/go/src/usermanager_webdb/main.go:46: 启动完成...
+2021/01/19 22:36:09 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:36:09 127.0.0.1:55636 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:36:09 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:36:09 127.0.0.1:55636 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:36:29 D:/go/src/usermanager_webdb/main.go:46: 启动完成...
+2021/01/19 22:36:30 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:36:30 127.0.0.1:55652 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:36:30 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:36:30 127.0.0.1:55652 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:37:46 D:/go/src/usermanager_webdb/main.go:46: 启动完成...
+2021/01/19 22:37:49 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:37:49 127.0.0.1:55700 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:37:49 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:37:49 127.0.0.1:55700 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:37:51 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:37:51 127.0.0.1:55700 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:38:02 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:38:02 127.0.0.1:55700 GET /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:38:02 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:38:02 127.0.0.1:55700 GET /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:38:02 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:38:02 127.0.0.1:55700 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:38:05 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:38:05 127.0.0.1:55700 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:38:05 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:38:05 127.0.0.1:55700 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:38:05 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:38:05 127.0.0.1:55700 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:38:09 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:38:09 127.0.0.1:55700 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:38:18 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:38:18 127.0.0.1:55700 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:38:18 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:38:18 127.0.0.1:55700 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:38:18 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:38:18 127.0.0.1:55700 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:38:22 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:38:22 127.0.0.1:55700 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:40:30 D:/go/src/usermanager_webdb/main.go:46: 启动完成...
+2021/01/19 22:40:37 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:40:37 127.0.0.1:55799 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:40:37 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:40:37 127.0.0.1:55799 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:40:40 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:40:40 127.0.0.1:55799 GET /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:40:40 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:40:40 127.0.0.1:55799 GET /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:40:40 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:40:40 127.0.0.1:55799 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:40:42 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:40:42 127.0.0.1:55799 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:40:42 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:40:42 127.0.0.1:55799 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:40:42 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:40:42 127.0.0.1:55799 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/19 22:40:45 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:40:45 127.0.0.1:55799 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
