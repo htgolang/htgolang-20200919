@@ -1,7 +1,13 @@
 USER MANAGER
 ===
 
-## Getting start with bootstrap and start beautify pages
+## Write html with bootstrap4
+
+- same user name check when create user
+- user can now change there password
+- logout
+- query
+- delete user
 
 ## Demo
 
