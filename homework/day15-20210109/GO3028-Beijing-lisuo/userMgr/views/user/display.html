@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8" />
+		<title> Got users </title>
+        <link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap-4.5.3/css/bootstrap.min.css">
+	</head>
+	<body>
+        <div class="container shadow-lg bg-light rounded py-1 mt-5"> 
+	        <h2 class="text-center"> Got users </h2>
+        </div> 
+	    <table class="table table-striped table-responsive-lg table-bordered border-danger table-hover mt-3">
+            <thead class="table-dark">
+	        <tr>
+	            <th scope="col" >ID</th>
+	            <th scope="col" >Name</th>
+	            <th scope="col" >Sex</th>
+	            <th scope="col" >Address</th>
+	            <th scope="col" >Cell</th>
+	            <th scope="col" >Born</th>
+	            <th scope="col" >Password</th>
+	        </tr>
+        </thead>
+        <tbody>
+	        {{ range .users }}
+	        <tr>
+	            <td>{{ .ID }}</td>
+	            <td>{{ .Name }}</td>
+	            <td>{{ .Sex }}</td>
+	            <td>{{ .Address }}</td>
+	            <td>{{ .Cell }}</td>
+	            <td>{{ .Born }}</td>
+                <td>{{ .Password }}</td>
+            </tr>
+            {{ end }}
+        </tbody>
+        </table>
+        <div class="container mt-5 shadow-lg w-100 p-3 mb-5 bg-white rounded">
+            <h2><a class="btn btn-primary btn-secondary btn-block" href="/user/home/">Home</a><h2>
+            <h2><a class="btn btn-primary btn-secondary btn-block" href="/user/query/">Query Again</a><h2>
+       </div>
+	</body>
+	
+</html>
