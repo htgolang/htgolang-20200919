@@ -16,6 +16,7 @@ type UserController struct {
 	beego.Controller
 }
 
+// Prepare handle user login
 func (c *UserController) Prepare() {
 	c.Data["cUser"] = nil
 	user := c.GetSession("user")
@@ -45,16 +46,16 @@ func (c *UserController) Prepare() {
 // Home give a default page, with a list of users
 func (c *UserController) Home() {
 	type dUser struct {
-		ID         int64
-		Name       string
-		Sex        int
-		Address    string
-		Cell       string
-		Born       string
-		Password   string
-		Created_at *time.Time
-		Updated_at *time.Time
-		Deleted_at *time.Time
+		ID        int64
+		Name      string
+		Sex       int
+		Address   string
+		Cell      string
+		Born      string
+		Password  string
+		CreatedAt *time.Time
+		UpdatedAt *time.Time
+		DeletedAt *time.Time
 	}
 	cUsers := []dUser{}
 	users, err := services.ListAllUser()
@@ -64,16 +65,16 @@ func (c *UserController) Home() {
 	}
 	for _, user := range users {
 		u := dUser{
-			ID:         user.ID,
-			Name:       user.Name,
-			Sex:        user.Sex,
-			Address:    user.Address,
-			Cell:       user.Cell,
-			Born:       user.Born.Format("2006-01-02"),
-			Password:   user.Password,
-			Created_at: user.CreatedAt,
-			Updated_at: user.UpdatedAt,
-			Deleted_at: user.DeletedAt,
+			ID:        user.ID,
+			Name:      user.Name,
+			Sex:       user.Sex,
+			Address:   user.Address,
+			Cell:      user.Cell,
+			Born:      user.Born.Format("2006-01-02"),
+			Password:  user.Password,
+			CreatedAt: user.CreatedAt,
+			UpdatedAt: user.UpdatedAt,
+			DeletedAt: user.DeletedAt,
 		}
 		cUsers = append(cUsers, u)
 	}
@@ -85,19 +86,27 @@ func (c *UserController) Home() {
 // Create add a user to user list if request method is post
 func (c *UserController) Create() {
 	if c.Ctx.Input.IsPost() {
-		//r := c.Ctx.Request.Referer()
 		bornStr := c.GetString("born")
 		t, errP := time.Parse("2006.01.02", bornStr)
-		HandleError(c, errP)
+		if errP != nil {
+			HandleError(c, errP)
+			return
+		}
 		sex, err := c.GetInt("sex")
-		HandleError(c, err)
+		if err != nil {
+			HandleError(c, err)
+			return
+		}
 		name := c.GetString("name")
 		address := c.GetString("address")
 		cell := c.GetString("cell")
 		password := c.GetString("passwd")
 		// create user here
 		errc := services.CreateUser(name, password, address, cell, sex, t)
-		HandleError(c, errc)
+		if errc != nil {
+			HandleError(c, errc)
+			return
+		}
 		// redirect to home after create user
 		c.Redirect("/user/home/", 301)
 	} else {
@@ -107,9 +116,11 @@ func (c *UserController) Create() {
 
 // Delete delete a user based on id
 func (c *UserController) Delete() {
-	//r := c.Ctx.Request.Referer()
 	id, err := c.GetInt64("id")
-	HandleError(c, err)
+	if err != nil {
+		HandleError(c, err)
+		return
+	}
 	if id == models.AdminID {
 		HandleError(c, errors.New("You can't delete admin, who's id is: "+c.GetString("id")))
 		return
@@ -120,13 +131,13 @@ func (c *UserController) Delete() {
 		return
 	} else {
 		HandleError(c, errd)
+		return
 	}
 }
 
 // Edit edit a user by id
 func (c *UserController) Edit() {
 	if c.Ctx.Input.IsGet() {
-		//r := c.Ctx.Request.Referer()
 		type cUser struct {
 			ID      int64
 			Name    string
@@ -159,7 +170,6 @@ func (c *UserController) Edit() {
 		c.Data["user"] = cuser
 		c.TplName = "user/edit.html"
 	} else {
-		//r := c.Ctx.Request.Referer()
 		id, erri := c.GetInt64("id")
 		if erri != nil {
 			HandleError(c, erri)
@@ -195,7 +205,6 @@ func (c *UserController) Query() {
 		fmt.Printf("query input: id: %#v, name: %#v, address: %#v, cell: %#v\n", id, name, address, cell)
 		users, err := services.QueryUser(id, name, address, cell)
 		fmt.Println("users and err in services.QueryUser", users, err)
-		//r := c.Ctx.Request.Referer()
 		if err != nil {
 			HandleError(c, err)
 		}
@@ -208,8 +217,10 @@ func (c *UserController) Detail() {
 	user := c.GetString("name")
 	fmt.Println("user detail: ", user)
 	u, err := services.NameFindUser(user)
-	//r := c.Ctx.Request.Referer()
-	HandleError(c, err)
+	if err != nil {
+		HandleError(c, err)
+		return
+	}
 	c.Data["users"] = []*models.User{u}
 	c.TplName = "user/display.html"
 }
@@ -226,17 +237,23 @@ func (c *UserController) Register() {
 // ResetPass reset a user's pass
 func (c *UserController) ResetPass() {
 	if c.Ctx.Input.IsPost() {
-		fmt.Println("reset pass.....")
 		name := c.GetString("name")
 		oldPass := c.GetString("oldPassword")
 		newPass := c.GetString("newPassword")
 		fmt.Printf("name: %#v, oldpass: %#v, newpass: %#v\n", name, oldPass, newPass)
 		u, err := services.NameFindUser(name)
-		//r := c.Ctx.Request.Referer()
-		HandleError(c, err)
+		if err != nil {
+			HandleError(c, err)
+			return
+		}
 		fmt.Println("user to reset pass: ", u)
-		erru := services.UpdateUserPass(u, newPass)
-		HandleError(c, erru)
+		erru := services.UpdateUserPass(u, oldPass, newPass)
+		if erru != nil {
+			HandleError(c, erru)
+			return
+		} else {
+			c.Redirect("/user/home/", 302)
+		}
 	} else {
 		c.TplName = "user/resetpass.html"
 	}

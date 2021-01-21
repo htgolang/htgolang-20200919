@@ -3,6 +3,7 @@ package controllers
 import (
 	"fmt"
 	"userMgr/forms"
+	"userMgr/logger"
 	"userMgr/services"
 
 	beego "github.com/astaxie/beego"
@@ -35,6 +36,7 @@ func (c *AuthController) Login() {
 			c.Data["form"] = loginForm
 			c.Redirect("/user/home", 302)
 			fmt.Printf("user %#v logged in.\n", user.Name)
+			logger.Logger.Info("loginauth user: " + user.Name + " logged")
 		}
 	}
 }
@@ -43,4 +45,6 @@ func (c *AuthController) Logout() {
 	fmt.Println("logout")
 	c.DestroySession()
 	c.Redirect("/auth/login/", 302)
+	user, _ := c.Data["cUser"].(string)
+	logger.Logger.Info("user: " + user + "logged out")
 }

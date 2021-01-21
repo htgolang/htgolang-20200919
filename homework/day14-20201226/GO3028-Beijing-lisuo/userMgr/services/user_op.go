@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"userMgr/forms"
+	"userMgr/logger"
 	"userMgr/models"
 
 	"github.com/astaxie/beego/orm"
@@ -23,12 +24,14 @@ var (
 func LoginAuth(form *forms.AuthForm) (*models.User, error) {
 	user, err := NameFindUser(form.UserName)
 	fmt.Println("loginauth user, err", user, err)
+	logger.Logger.Info("loginauth user: " + user.Name)
 	if err != nil {
 		// user name wrong
 		return nil, errors.New("user name wrong, no such user")
 	} else {
 		if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(form.PassWord)); err != nil {
 			// user pass wrong
+			logger.Logger.Info("loginauth user: " + user.Name + ", password wrong")
 			return nil, errors.New("user password wrong")
 		} else {
 			return user, nil
@@ -131,6 +134,7 @@ func NameFindUser(n string) (*models.User, error) {
 	if err := o.Read(&user, "Name"); err != nil {
 		return &user, err
 		fmt.Println("name find user: ", &user, err)
+		logger.Logger.Info("name find user: " + user.Name)
 	}
 	return &user, nil
 }
@@ -188,20 +192,32 @@ func IDModUser(name, address, password, cell, sex, born string, id int64) error 
 	if errU != nil {
 		return errU
 	}
+	logger.Logger.Info("mod user by id: " + string(id))
 	return nil
 }
 
-func UpdateUserPass(user *models.User, newPass string) error {
+func UpdateUserPass(user *models.User, oldPass, newPass string) error {
 	o := orm.NewOrm()
+	if user.Name == models.AdminName {
+		return errors.New("Admin pass is immutable")
+	}
+	fmt.Println("user old pass: ", user.Password)
+	logger.Logger.Info("user " + user.Name + " resetting pass")
+	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(oldPass)); err != nil {
+		fmt.Println("err: ", err)
+		logger.Logger.Info("user " + user.Name + " input wrong old pass")
+		return errors.New("Your old password is wrong.")
+	}
 	p, err := EncryptPass(newPass, models.PassCost)
 	if err != nil {
 		return err
 	}
 	user.Password = p
-	_, errU := o.Update(&user)
+	_, errU := o.Update(user)
 	if errU != nil {
 		return errU
 	}
+	logger.Logger.Info("user " + user.Name + " reset pass done")
 	return nil
 }
 
