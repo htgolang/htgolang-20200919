@@ -1,7 +1,14 @@
 USER MANAGER
 ===
 
-## Getting start with bootstrap and start beautify pages
+## Getting start with Role Manage
+
+- template embed
+- to implement form check
+- flash message
+- log level
+- to implement role manage
+- deploy to nginx,docker,binary
 
 ## Demo
 

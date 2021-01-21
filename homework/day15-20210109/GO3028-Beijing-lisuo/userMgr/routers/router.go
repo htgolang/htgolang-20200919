@@ -9,6 +9,7 @@ import (
 func init() {
 	beego.BConfig.WebConfig.DirectoryIndex = true
 
-	beego.AutoRouter(&controllers.UserController{})
+	beego.AutoRouter(&controllers.RoleController{})
 	beego.AutoRouter(&controllers.AuthController{})
+	beego.AutoRouter(&controllers.UserController{})
 }

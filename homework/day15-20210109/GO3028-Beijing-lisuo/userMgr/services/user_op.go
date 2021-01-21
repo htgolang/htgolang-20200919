@@ -142,13 +142,28 @@ func NameFindUser(n string) (*models.User, error) {
 // IDDelUser del user based on ID
 func IDDelUser(id int64) error {
 	o := orm.NewOrm()
-	user := models.User{ID: id}
-	_, err := o.Delete(&user)
+	t := time.Now()
+	user := models.User{
+		ID:        id,
+		DeletedAt: &t,
+	}
+	_, err := o.Update(&user, "DeletedAt")
 	if err != nil {
 		return err
 	}
 	return nil
 }
+
+//// IDDelUser del user based on ID
+//func IDDelUser(id int64) error {
+//	o := orm.NewOrm()
+//	user := models.User{ID: id}
+//	_, err := o.Delete(&user)
+//	if err != nil {
+//		return err
+//	}
+//	return nil
+//}
 
 // NameDelUser del user based on Name
 func NameDelUser(db *sql.DB, Name string) error {

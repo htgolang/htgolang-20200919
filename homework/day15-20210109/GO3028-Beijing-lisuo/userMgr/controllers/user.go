@@ -25,10 +25,11 @@ func (c *UserController) Prepare() {
 		action := c.GetString("action")
 		fmt.Println("action:", action)
 		if action == "register" {
-			c.Redirect("/user/register/", 301)
+			c.Redirect(c.URLFor("UserController.Register"), 301)
 			return
 		}
-		c.Redirect("/auth/login/", 302)
+		//c.Redirect("/auth/login/", 302)
+		c.Redirect(c.URLFor("AuthController.Login"), 302)
 		return
 	}
 	if id, ok := user.(int64); ok {
@@ -38,7 +39,7 @@ func (c *UserController) Prepare() {
 	}
 	if c.Data["cUser"] == nil {
 		c.DestroySession()
-		c.Redirect("/auth/login/", 302)
+		c.Redirect(c.URLFor("AuthController.Login"), 302)
 		return
 	}
 }
@@ -108,7 +109,7 @@ func (c *UserController) Create() {
 			return
 		}
 		// redirect to home after create user
-		c.Redirect("/user/home/", 301)
+		c.Redirect(c.URLFor("UserController.Home"), 301)
 	} else {
 		c.TplName = "user/create.html"
 	}
@@ -134,6 +135,27 @@ func (c *UserController) Delete() {
 		return
 	}
 }
+
+//// Delete delete a user based on id
+//func (c *UserController) Delete() {
+//	id, err := c.GetInt64("id")
+//	if err != nil {
+//		HandleError(c, err)
+//		return
+//	}
+//	if id == models.AdminID {
+//		HandleError(c, errors.New("You can't delete admin, who's id is: "+c.GetString("id")))
+//		return
+//	}
+//	fmt.Println("To delete: ", c.GetString("id"))
+//	if errd := services.IDDelUser(id); errd == nil {
+//		HandleError(c, errors.New("Deleted a user, who's id is: "+c.GetString("id")))
+//		return
+//	} else {
+//		HandleError(c, errd)
+//		return
+//	}
+//}
 
 // Edit edit a user by id
 func (c *UserController) Edit() {
@@ -188,7 +210,7 @@ func (c *UserController) Edit() {
 			HandleError(c, errm)
 			return
 		} else {
-			c.Redirect("/user/home/", 301)
+			c.Redirect(c.URLFor("UserController.Home"), 301)
 		}
 	}
 }
@@ -252,7 +274,7 @@ func (c *UserController) ResetPass() {
 			HandleError(c, erru)
 			return
 		} else {
-			c.Redirect("/user/home/", 302)
+			c.Redirect(c.URLFor("UserController.Home"), 302)
 		}
 	} else {
 		c.TplName = "user/resetpass.html"
