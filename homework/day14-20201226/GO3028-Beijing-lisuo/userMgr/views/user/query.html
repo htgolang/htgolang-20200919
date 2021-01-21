@@ -4,55 +4,26 @@
     <head>
         <meta charset="utf-8"/>
         <title>Query a user</title>
-	<style>
-            * {
-                padding: 0;
-                margin: 0;
-            }
-            body {
-                background-color: #efe;
-            }
-            form {
-                display: block;
-                padding: 5px;
-                background-color: #efe;
-                text-align: center;
-            }
-            label {
-                background-color: #efa;
-                font-size: 2em;
-                display: inline-block;
-                width: 7em;
-            }
-            input {
-                display: inline-block;
-                font-size: 2em;
-                width: 13em;
-                padding: 5px;
-            }
-            a {
-                display: inline-block;
-                padding: 5px auto;
-                width: 10em;
-            }
-            input[type=submit] {
-                width: 10em;
-                background-color: skyblue;
-            }
-        </style>
-
+        <link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap-4.5.3/css/bootstrap.min.css">
     </head>
     <body>
-        <form action="/user/query/" method="POST">
-            <label> ID </label><input name="id" value="{{ .ID }}" /> <br/><br/>
-            <label> Name </label><input name="name" value="{{ .Name }}"/> <br/><br/>
-            <label> Sex </label><input name="sex" value="Disabled" readonly/> <br/><br/>
-            <label> Address </label><input name="address" value="{{ .Address }}"/> <br/><br/>
-            <label> Cell </label><input name="cell" value="{{ .Cell }}"/> <br/><br/>
-            <label> Born </label><input name="born" value="Disabled" readonly/> <br/><br/>
-            <label> Passwd </label><input name="passwd" value="Disabled" readonly/> <br/><br/>
-            <input type="submit" value="Done"></input>
-            <a style="display: inline-block;padding: 5px;width:10em;background-color: skyblue;margin: 1px;font-size:2em;border: 2px solid #000;" href="/user/home">Home</a><br>
-        </form>
+        <div class="container mt-5 shadow-lg w-50 p-3 mb-5 bg-white rounded" style="background-color:#bfa; padding:20px 20px;">
+            <form action="/user/query/" method="POST">
+                <div class="form-group">
+                    <input class="form-control" id="id" type="text" placeholder="id" name="id" value="{{ .ID }}" />
+                    <label for="id"></label>
+                    <input class="form-control" id="name" type="text" placeholder="name" name="name" value="{{ .Name }}" />
+                    <label for="name"></label>
+                    <input class="form-control" id="address" type="text" placeholder="address" name="address" value="{{ .Address }}"/>
+                    <label for="address" ></label>
+                    <input class="form-control" id="cell" type="text" placeholder="cell" name="cell" value="{{ .Cell }}"/> 
+                    <label for="cell" ></label>
+                </div>
+                <div class="container shadow-md bg-white col-12">
+                    <input class="btn btn-primary" type="submit" value="Query"></input>
+                    <a class="btn btn-primary" href="/user/home">Home</a><br>
+                </div>
+            </form>
+        </div>
     </body>
 </html>

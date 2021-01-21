@@ -191,6 +191,20 @@ func IDModUser(name, address, password, cell, sex, born string, id int64) error 
 	return nil
 }
 
+func UpdateUserPass(user *models.User, newPass string) error {
+	o := orm.NewOrm()
+	p, err := EncryptPass(newPass, models.PassCost)
+	if err != nil {
+		return err
+	}
+	user.Password = p
+	_, errU := o.Update(&user)
+	if errU != nil {
+		return errU
+	}
+	return nil
+}
+
 //IfAdmin detect if admin is exists when app run
 // if not exists, create a admin
 func IfAdmin() error {

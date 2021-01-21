@@ -28,7 +28,7 @@ func (c *AuthController) Login() {
 		}
 		user, err := services.LoginAuth(loginForm)
 		if err != nil {
-			HandleAuthError(c, err, "/auth/login/")
+			HandleAuthError(c, err)
 		} else {
 			c.SetSession("user", user.ID)
 			c.Data["user"] = user
@@ -43,19 +43,4 @@ func (c *AuthController) Logout() {
 	fmt.Println("logout")
 	c.DestroySession()
 	c.Redirect("/auth/login/", 302)
-}
-
-// HandleError wrap err handle code
-func HandleAuthError(c *AuthController, err error, refer string) {
-	if err != nil {
-		c.ErrorMsg(err.Error(), refer)
-		return
-	}
-}
-
-// ErrorMsg send errors to client
-func (c *AuthController) ErrorMsg(msg, r string) {
-	c.Data["msg"] = msg
-	c.Data["refer"] = r
-	c.TplName = "user/error.html"
 }

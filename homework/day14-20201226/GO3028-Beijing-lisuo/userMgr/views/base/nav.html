@@ -1,0 +1,26 @@
+<!-- nav -->
+<div class="container mt-4">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#"><span style="color: rgb(86, 179, 255);">SUOSUOLI.CN</span></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+		        	<a class="nav-link" href="/user/home/"> HOME <span class="sr-only">(current)</span></a>
+		    	</li>
+		    	<li class="nav-item">
+		    		<a class="nav-link" href="/user/role/"> ROLE </a>
+		    	</li>
+		    	<li class="nav-item">
+		    		<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"> Manage </a>
+		    	</li>
+		    </ul>
+		    <a type="button" class="btn btn-primary" href="/user/detail/?name={{ .cUser.Name }}" tabindex="-2" style="margin-left: 10px;"> {{ if .cUser }} {{ .cUser.Name }} {{ else }} NoMan {{ end }} </a>
+            <a type="button" class="btn btn-warning" href="/user/resetpass/?name={{ .cUser.Name }}" tabindex="-3" style="margin-left: 10px;"> ResetPasswd </a>
+		    <a type="button" class="btn btn-warning" href="/auth/logout/" tabindex="-3" style="margin-left: 10px;"> Logout </a>
+		  </div>
+	</nav>
+</div>
+<!-- nav -->

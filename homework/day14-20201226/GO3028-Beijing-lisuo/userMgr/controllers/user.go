@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"errors"
 	"fmt"
 	"strings"
 	"time"
@@ -20,6 +21,12 @@ func (c *UserController) Prepare() {
 	user := c.GetSession("user")
 	if user == nil {
 		// not logged
+		action := c.GetString("action")
+		fmt.Println("action:", action)
+		if action == "register" {
+			c.Redirect("/user/register/", 301)
+			return
+		}
 		c.Redirect("/auth/login/", 302)
 		return
 	}
@@ -78,27 +85,19 @@ func (c *UserController) Home() {
 // Create add a user to user list if request method is post
 func (c *UserController) Create() {
 	if c.Ctx.Input.IsPost() {
-		r := c.Ctx.Request.Referer()
+		//r := c.Ctx.Request.Referer()
 		bornStr := c.GetString("born")
 		t, errP := time.Parse("2006.01.02", bornStr)
-		if errP != nil {
-			c.ErrorMsg(errP.Error(), r)
-			return
-		}
+		HandleError(c, errP)
 		sex, err := c.GetInt("sex")
-		if err != nil {
-			c.ErrorMsg(err.Error(), r)
-			return
-		}
+		HandleError(c, err)
 		name := c.GetString("name")
 		address := c.GetString("address")
 		cell := c.GetString("cell")
 		password := c.GetString("passwd")
 		// create user here
-		if errc := services.CreateUser(name, password, address, cell, sex, t); errc != nil {
-			c.ErrorMsg(errc.Error(), r)
-			return
-		}
+		errc := services.CreateUser(name, password, address, cell, sex, t)
+		HandleError(c, errc)
 		// redirect to home after create user
 		c.Redirect("/user/home/", 301)
 	} else {
@@ -108,29 +107,26 @@ func (c *UserController) Create() {
 
 // Delete delete a user based on id
 func (c *UserController) Delete() {
-	r := c.Ctx.Request.Referer()
+	//r := c.Ctx.Request.Referer()
 	id, err := c.GetInt64("id")
-	if err != nil {
-		c.ErrorMsg(err.Error(), r)
-		return
-	}
+	HandleError(c, err)
 	if id == models.AdminID {
-		c.ErrorMsg("You can't delete admin, who's id is: "+c.GetString("id"), r)
+		HandleError(c, errors.New("You can't delete admin, who's id is: "+c.GetString("id")))
 		return
 	}
 	fmt.Println("To delete: ", c.GetString("id"))
 	if errd := services.IDDelUser(id); errd == nil {
-		c.ErrorMsg("Deleted a user, who's id is: "+c.GetString("id"), r)
+		HandleError(c, errors.New("Deleted a user, who's id is: "+c.GetString("id")))
 		return
 	} else {
-		HandleError(c, errd, r)
+		HandleError(c, errd)
 	}
 }
 
 // Edit edit a user by id
 func (c *UserController) Edit() {
 	if c.Ctx.Input.IsGet() {
-		r := c.Ctx.Request.Referer()
+		//r := c.Ctx.Request.Referer()
 		type cUser struct {
 			ID      int64
 			Name    string
@@ -143,11 +139,11 @@ func (c *UserController) Edit() {
 		id, err := c.GetInt64("id")
 		fmt.Println(c.GetInt64("id"))
 		if err != nil {
-			HandleError(c, err, r)
+			HandleError(c, err)
 		}
 		user, errf := services.IDFindUser(id)
 		if errf != nil {
-			HandleError(c, errf, r)
+			HandleError(c, errf)
 		}
 		cuser := func(u models.User) cUser {
 			return cUser{
@@ -163,10 +159,10 @@ func (c *UserController) Edit() {
 		c.Data["user"] = cuser
 		c.TplName = "user/edit.html"
 	} else {
-		r := c.Ctx.Request.Referer()
+		//r := c.Ctx.Request.Referer()
 		id, erri := c.GetInt64("id")
 		if erri != nil {
-			HandleError(c, erri, r)
+			HandleError(c, erri)
 		}
 		name := c.GetString("name")
 		sex := c.GetString("sex")
@@ -175,11 +171,11 @@ func (c *UserController) Edit() {
 		born := c.GetString("born")
 		password := c.GetString("passwd")
 		if id == models.AdminID {
-			c.ErrorMsg("Do not edit admin.", r)
+			HandleError(c, errors.New("Do not edit admin."))
 			return
 		}
 		if errm := services.IDModUser(name, address, password, cell, sex, born, id); errm != nil {
-			HandleError(c, errm, r)
+			HandleError(c, errm)
 			return
 		} else {
 			c.Redirect("/user/home/", 301)
@@ -199,18 +195,29 @@ func (c *UserController) Query() {
 		fmt.Printf("query input: id: %#v, name: %#v, address: %#v, cell: %#v\n", id, name, address, cell)
 		users, err := services.QueryUser(id, name, address, cell)
 		fmt.Println("users and err in services.QueryUser", users, err)
-		r := c.Ctx.Request.Referer()
+		//r := c.Ctx.Request.Referer()
 		if err != nil {
-			HandleError(c, err, r)
+			HandleError(c, err)
 		}
 		c.Data["users"] = users
 		c.TplName = "user/display.html"
 	}
 }
 
+func (c *UserController) Detail() {
+	user := c.GetString("name")
+	fmt.Println("user detail: ", user)
+	u, err := services.NameFindUser(user)
+	//r := c.Ctx.Request.Referer()
+	HandleError(c, err)
+	c.Data["users"] = []*models.User{u}
+	c.TplName = "user/display.html"
+}
+
 // Register register a user
 func (c *UserController) Register() {
 	if c.Ctx.Input.IsPost() {
+		fmt.Println("creat user...")
 	} else {
 		c.TplName = "user/create.html"
 	}
@@ -218,19 +225,19 @@ func (c *UserController) Register() {
 
 // ResetPass reset a user's pass
 func (c *UserController) ResetPass() {
-}
-
-// HandleError wrap err handle code
-func HandleError(c *UserController, err error, refer string) {
-	if err != nil {
-		c.ErrorMsg(err.Error(), refer)
-		return
+	if c.Ctx.Input.IsPost() {
+		fmt.Println("reset pass.....")
+		name := c.GetString("name")
+		oldPass := c.GetString("oldPassword")
+		newPass := c.GetString("newPassword")
+		fmt.Printf("name: %#v, oldpass: %#v, newpass: %#v\n", name, oldPass, newPass)
+		u, err := services.NameFindUser(name)
+		//r := c.Ctx.Request.Referer()
+		HandleError(c, err)
+		fmt.Println("user to reset pass: ", u)
+		erru := services.UpdateUserPass(u, newPass)
+		HandleError(c, erru)
+	} else {
+		c.TplName = "user/resetpass.html"
 	}
-}
-
-// ErrorMsg send errors to client
-func (c *UserController) ErrorMsg(msg, r string) {
-	c.Data["msg"] = msg
-	c.Data["refer"] = r
-	c.TplName = "user/error.html"
 }

@@ -3,80 +3,43 @@
     <head>
         <meta charset="utf-8"/>
         <title>Create New User</title>
-        <style>
-            * {
-                padding: 0;
-                margin: 0;
-            }
-            form {
-                display: block;
-                padding: 5px;
-                background-color: #eee;
-                text-align: center;
-            }
-            label {
-                background-color: #eef;
-                font-size: 2em;
-                display: inline-block;
-                padding: 10px;
-                width: 7em;
-                border: 1px solid #000;
-                margin: 1px;
-            }
-            input {
-                display: inline-block;
-                font-size: 2em;
-                width: 12em;
-                padding: 10px;
-                margin: 1px;
-            }
-            input[type=submit] {
-                width: 10em;
-                background-color: skyblue;
-            }
-            input[type=checkbox] {
-                display: inline-block;
-                transform: scale(2);
-                width: 12em;
-                padding: 10px;
-            }
-			#sex {
-				display: none;
-                border: 5px solid #fef;
-			}
-            div.sex {
-                display: block;
-                padding: 5px;
-                margin-left: -18px;
-            }
-            
-
-        </style>
-        <script type="text/javascript">
-			function onlyOne(checkbox) {
-    			var checkboxes = document.getElementsByName('sex');
-    			checkboxes.forEach((item) => {
-    		    	if (item !== checkbox) 
-						item.checked = false;
-    			})
-           }
-        </script>
+        <link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap-4.5.3/css/bootstrap.min.css">
     </head>
     <body>
-        <form action="/user/create/" method="POST">
-            <label> ID </label><input name="id" value="Disabled" disabled/> <br/><br/>
-            <label> Name </label><input name="name" value="{{ .Name }}"/> <br/><br/>
-            <label id="sex"> Sex </label>
-            <div class="sex">
-            	<label class="sex"> Male </label> <input type="checkbox" name="sex"  onclick="onlyOne(this);" value="1"/> <br/><br/>
-            	<label class="sex"> Female </label> <input type="checkbox" name="sex"  onclick="onlyOne(this);" value="0"/> <br/><br/>
-			</div>
-            <label> Address </label><input name="address" value="{{ .Address }}"/> <br/><br/>
-            <label> Cell </label><input name="cell" value="{{ .Cell }}"/> <br/><br/>
-            <label> Born </label><input name="born" value="2006.01.02"/> <br/><br/>
-            <label> Password </label><input name="passwd" value="{{ .Password }}"/> <br/><br/>
-            <input type="submit" value="Create" />
-            <a id="home" style="display: inline-block;padding: 10px;width:10em;background-color: skyblue;margin: 1px;font-size:2em;border: 2px solid #000;" href="/user/home/">HOME</a>
-        </form>
+        <div class="container mt-5 shadow-lg w-50 p-3 mb-5 bg-white rounded">
+            <form action="/user/create/" method="POST">
+                <input class="form-control" id="id" placeholder="Id" name="id" value="Disabled" disabled/>
+                <label for="id"></label>
+                <input class="form-control" id="name" placeholder="Name" name="name" value="{{ .Name }}"/>
+                <label for="name"></label>
+
+				<!-- sex --> 
+               	<div class="form-check form-check-inline">
+				  <input class="form-check-input" type="radio" name="sex" id="male" value="1">
+				  <label class="form-check-label" for="male">Male</label>
+				</div>
+				<div class="form-check form-check-inline">
+				  <input class="form-check-input" type="radio" name="sex" id="female" value="0">
+				  <label class="form-check-label" for="female">Female</label>
+				</div>
+				<div class="form-check form-check-inline">
+				  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="unknown" value="2" disabled>
+				  <label class="form-check-label" for="unknown">Unknown</label>
+				</div>
+
+                <input class="form-control" id="address" placeholder="Address" name="address" value="{{ .Address }}"/> 
+                <label for="address"></label>
+                <input class="form-control" id="cell" placeholder="Cell" name="cell" value="{{ .Cell }}"/> 
+                <label for="cell"></label>
+                <input class="form-control" id="born" placeholder="Born" name="born" value="Born: 2006.01.02"/>
+                <label for="born"></label>
+                <input class="form-control" id="passwd" placeholder="Passwd" name="passwd" value="{{ .Password }}"/>
+                <label for="passwd"></label>
+				<div class="container shadow-md bg-white col-12">
+                	<input class="btn btn-primary" type="submit" value="Create" />
+                	<a class="btn btn-primary" href="/user/home/">HOME</a>
+				</div>
+            </form>
+        </div>
     </body>
 </html>
