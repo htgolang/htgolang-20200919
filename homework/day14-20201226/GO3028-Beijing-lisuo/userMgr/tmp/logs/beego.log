@@ -53,3 +53,56 @@
 2021/01/21 11:05:50.161 [D] [main.go:24]  App running...
 2021/01/21 11:05:50.924 [I] [error.go:10]  Deleted a user, who's id is: 1744
 2021/01/21 11:05:55.229 [I] [error.go:10]  parsing time "Born: 2006.01.02ss" as "2006.01.02": cannot parse "Born: 2006.01.02ss" as "2006"
+2021/01/21 11:09:14.795 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:09:18.138 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:09:20.498 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:10:58.317 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:11:45.359 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:12:50.032 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:12:59.706 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:13:07.236 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:13:27.793 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:14:17.793 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:14:27.415 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:18:46.688 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:18:55.891 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:18:58.607 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:19:09.378 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:19:36.996 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:19:58.610 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:20:16.398 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:21:50.785 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:21:54.377 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:22:20.306 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:23:18.073 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:23:36.205 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:23:45.358 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:24:08.383 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:24:28.992 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:25:06.001 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:25:47.647 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:25:57.083 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:26:14.655 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:26:29.620 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:26:42.786 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:26:55.000 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:27:02.276 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:27:38.824 [I] [error.go:10]  You can't delete admin, who's id is: 1
+2021/01/21 11:27:53.825 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
+2021/01/21 11:28:16.210 [I] [user_op.go:195]  mod user by id: ۏ
+2021/01/21 11:28:19.777 [I] [auth.go:49]  user: logged out
+2021/01/21 11:28:26.971 [I] [user_op.go:27]  loginauth user: jiege
+2021/01/21 11:28:26.994 [I] [user_op.go:34]  loginauth user: jiege, password wrong
+2021/01/21 11:28:26.995 [I] [error.go:22]  user password wrong
+2021/01/21 11:28:39.944 [I] [user_op.go:27]  loginauth user: jiege
+2021/01/21 11:28:39.966 [I] [user_op.go:34]  loginauth user: jiege, password wrong
+2021/01/21 11:28:39.967 [I] [error.go:22]  user password wrong
+2021/01/21 11:28:47.677 [I] [user_op.go:27]  loginauth user: admin
+2021/01/21 11:28:47.701 [I] [user_op.go:34]  loginauth user: admin, password wrong
+2021/01/21 11:28:47.702 [I] [error.go:22]  user password wrong
+2021/01/21 11:28:53.625 [I] [user_op.go:27]  loginauth user: admin
+2021/01/21 11:28:53.648 [I] [auth.go:39]  loginauth user: admin logged
+2021/01/21 11:32:31.140 [D] [main.go:24]  App running...
+2021/01/21 11:35:42.901 [I] [auth.go:49]  user: logged out
+2021/01/21 11:50:17.120 [I] [user_op.go:27]  loginauth user: admin
+2021/01/21 11:50:17.144 [I] [auth.go:39]  loginauth user: admin logged

@@ -3,44 +3,19 @@
     <head>
         <meta charset="utf-8"/>
         <title>message</title>
-        <style>
-          a{
-			  background-color: #fba;
-              font-size: 2em;
-              color: #111;
-			  width: 400px;
-		      display: inline-block;
-              padding: 10em, auto;
-	          text-align: center;
-			  border: 3px solid #eee;
-              margin: 10px;
-          }
-          a:hover{
-              font-size: 20px;
-              color: #efe;
-          }
-         p[color] {
-           color: blue;
-           font-size: 2em;
-         }
-         h2 {
- 			font-size: 3em;
-            display: block;
-            background-color: #efe;
-            border: 5px solid #eee;
-			text-align: center;
-          
- 		 }
-        body {
- 		text-align: center;
- 		}
-        </style>
+        <link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap-4.5.3/css/bootstrap.min.css">
     </head>
     <body>
-        <h2> Message From Server </h2>
-        <p color="red"> {{ .msg }} </p>
-        <a href={{ .refer }}>BACK</a>
-        <br/>
-        <a href="/user/home/">HOME</a>
+        <div class="container mt-2 bg-info text-white w-25 shadow p-3 rounded">
+            <h3 class="text-center"> Message From Server </h3>
+        </div>
+        <div class="container  mt-2 bg-light text-dark w-25 shadow p-3 rounded">
+            <p color="red"> {{ .msg }} </p>
+        </div>
+        <div class="container mt-2 text-white w-25 shadow p-3 rounded d-flex justify-content-center">
+            <a class="btn btn-lg btn-primary" href={{ .refer }}>BACK</a>
+            <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <a class="btn btn-lg btn-primary" href="/user/home/">HOME</a>
+        </div>
     </body>
 </html>
