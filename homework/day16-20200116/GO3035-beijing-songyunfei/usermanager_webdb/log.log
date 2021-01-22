@@ -215,3 +215,113 @@ created by net/http.(*Server).Serve
 2021/01/19 22:40:42 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:40:42 127.0.0.1:55799 POST /query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
 2021/01/19 22:40:42 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:40:42 127.0.0.1:55799 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
 2021/01/19 22:40:45 D:/go/src/usermanager_webdb/controller/logformat.go:10: 2021-01-19 22:40:45 127.0.0.1:55799 GET /favicon.ico Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36
+2021/01/22 22:36:31 H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/main.go:46: 启动完成...
+2021/01/22 22:36:42 H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/controller/logformat.go:10: 2021-01-22 22:36:42 127.0.0.1:1153 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36
+2021/01/22 22:37:03 c:/go/src/net/http/server.go:3061: http: panic serving 127.0.0.1:1153: runtime error: invalid memory address or nil pointer dereference
+goroutine 27 [running]:
+net/http.(*conn).serve.func1(0xc0000a86e0)
+	c:/go/src/net/http/server.go:1772 +0x140
+panic(0x913c80, 0xdeb370)
+	c:/go/src/runtime/panic.go:975 +0x3f1
+database/sql.(*Rows).Next(0x0, 0xc000006018)
+	c:/go/src/database/sql/sql.go:2744 +0x37
+usermanager_webdb/users.(*Userinfo).Getall(0xc0000a2310, 0xc000107aa8, 0x1, 0x1)
+	H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/users/baseuser.go:145 +0x130
+usermanager_webdb/controller.Index(0xa62c60, 0xc000005a00, 0xc0001a0000)
+	H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/controller/index.go:19 +0x14a
+usermanager_webdb/metrics.MetriscProc.func1(0xa62ba0, 0xc0001a6000, 0xc0001a0000)
+	H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/metrics/metrics.go:74 +0x1b3
+net/http.HandlerFunc.ServeHTTP(0xc000092410, 0xa62ba0, 0xc0001a6000, 0xc0001a0000)
+	c:/go/src/net/http/server.go:2012 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xdffde0, 0xa62ba0, 0xc0001a6000, 0xc0001a0000)
+	c:/go/src/net/http/server.go:2387 +0x1ac
+net/http.serverHandler.ServeHTTP(0xc000280000, 0xa62ba0, 0xc0001a6000, 0xc0001a0000)
+	c:/go/src/net/http/server.go:2807 +0xaa
+net/http.(*conn).serve(0xc0000a86e0, 0xa63be0, 0xc00002c900)
+	c:/go/src/net/http/server.go:1895 +0x873
+created by net/http.(*Server).Serve
+	c:/go/src/net/http/server.go:2933 +0x363
+2021/01/22 22:38:30 H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/main.go:46: 启动完成...
+2021/01/22 22:38:44 H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/controller/logformat.go:10: 2021-01-22 22:38:44 127.0.0.1:1220 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36
+2021/01/22 22:38:44 c:/go/src/net/http/server.go:3061: http: panic serving 127.0.0.1:1220: runtime error: invalid memory address or nil pointer dereference
+goroutine 11 [running]:
+net/http.(*conn).serve.func1(0xc0000660a0)
+	c:/go/src/net/http/server.go:1772 +0x140
+panic(0x913c80, 0xdeb370)
+	c:/go/src/runtime/panic.go:975 +0x3f1
+database/sql.(*Rows).Next(0x0, 0xc0000da008)
+	c:/go/src/database/sql/sql.go:2744 +0x37
+usermanager_webdb/users.(*Userinfo).Getall(0xc0001d9b20, 0xc0000cbaa8, 0x1, 0x1)
+	H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/users/baseuser.go:145 +0x130
+usermanager_webdb/controller.Index(0xa62c60, 0xc00023a000, 0xc000222000)
+	H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/controller/index.go:19 +0x14a
+usermanager_webdb/metrics.MetriscProc.func1(0xa62ba0, 0xc000236000, 0xc000222000)
+	H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/metrics/metrics.go:74 +0x1b3
+net/http.HandlerFunc.ServeHTTP(0xc00004c140, 0xa62ba0, 0xc000236000, 0xc000222000)
+	c:/go/src/net/http/server.go:2012 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xdffde0, 0xa62ba0, 0xc000236000, 0xc000222000)
+	c:/go/src/net/http/server.go:2387 +0x1ac
+net/http.serverHandler.ServeHTTP(0xc000280000, 0xa62ba0, 0xc000236000, 0xc000222000)
+	c:/go/src/net/http/server.go:2807 +0xaa
+net/http.(*conn).serve(0xc0000660a0, 0xa63be0, 0xc000210000)
+	c:/go/src/net/http/server.go:1895 +0x873
+created by net/http.(*Server).Serve
+	c:/go/src/net/http/server.go:2933 +0x363
+2021/01/22 22:38:45 H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/controller/logformat.go:10: 2021-01-22 22:38:45 127.0.0.1:1221 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36
+2021/01/22 22:38:45 c:/go/src/net/http/server.go:3061: http: panic serving 127.0.0.1:1221: runtime error: invalid memory address or nil pointer dereference
+goroutine 25 [running]:
+net/http.(*conn).serve.func1(0xc0000abae0)
+	c:/go/src/net/http/server.go:1772 +0x140
+panic(0x913c80, 0xdeb370)
+	c:/go/src/runtime/panic.go:975 +0x3f1
+database/sql.(*Rows).Next(0x0, 0xc0000da008)
+	c:/go/src/database/sql/sql.go:2744 +0x37
+usermanager_webdb/users.(*Userinfo).Getall(0xc0001d9b20, 0xc0000cbaa8, 0x1, 0x1)
+	H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/users/baseuser.go:145 +0x130
+usermanager_webdb/controller.Index(0xa62c60, 0xc0000a7ca0, 0xc00006a200)
+	H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/controller/index.go:19 +0x14a
+usermanager_webdb/metrics.MetriscProc.func1(0xa62ba0, 0xc00031a000, 0xc00006a200)
+	H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/metrics/metrics.go:74 +0x1b3
+net/http.HandlerFunc.ServeHTTP(0xc00004c140, 0xa62ba0, 0xc00031a000, 0xc00006a200)
+	c:/go/src/net/http/server.go:2012 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xdffde0, 0xa62ba0, 0xc00031a000, 0xc00006a200)
+	c:/go/src/net/http/server.go:2387 +0x1ac
+net/http.serverHandler.ServeHTTP(0xc000280000, 0xa62ba0, 0xc00031a000, 0xc00006a200)
+	c:/go/src/net/http/server.go:2807 +0xaa
+net/http.(*conn).serve(0xc0000abae0, 0xa63be0, 0xc00002c200)
+	c:/go/src/net/http/server.go:1895 +0x873
+created by net/http.(*Server).Serve
+	c:/go/src/net/http/server.go:2933 +0x363
+2021/01/22 22:38:50 H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/controller/logformat.go:10: 2021-01-22 22:38:50 127.0.0.1:1225 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36
+2021/01/22 22:38:50 c:/go/src/net/http/server.go:3061: http: panic serving 127.0.0.1:1225: runtime error: invalid memory address or nil pointer dereference
+goroutine 12 [running]:
+net/http.(*conn).serve.func1(0xc000066140)
+	c:/go/src/net/http/server.go:1772 +0x140
+panic(0x913c80, 0xdeb370)
+	c:/go/src/runtime/panic.go:975 +0x3f1
+database/sql.(*Rows).Next(0x0, 0xc0000da008)
+	c:/go/src/database/sql/sql.go:2744 +0x37
+usermanager_webdb/users.(*Userinfo).Getall(0xc0001d9b20, 0xc0000cbaa8, 0x1, 0x1)
+	H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/users/baseuser.go:145 +0x130
+usermanager_webdb/controller.Index(0xa62c60, 0xc000004aa0, 0xc0001ee300)
+	H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/controller/index.go:19 +0x14a
+usermanager_webdb/metrics.MetriscProc.func1(0xa62ba0, 0xc0002800e0, 0xc0001ee300)
+	H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/metrics/metrics.go:74 +0x1b3
+net/http.HandlerFunc.ServeHTTP(0xc00004c140, 0xa62ba0, 0xc0002800e0, 0xc0001ee300)
+	c:/go/src/net/http/server.go:2012 +0x4b
+net/http.(*ServeMux).ServeHTTP(0xdffde0, 0xa62ba0, 0xc0002800e0, 0xc0001ee300)
+	c:/go/src/net/http/server.go:2387 +0x1ac
+net/http.serverHandler.ServeHTTP(0xc000280000, 0xa62ba0, 0xc0002800e0, 0xc0001ee300)
+	c:/go/src/net/http/server.go:2807 +0xaa
+net/http.(*conn).serve(0xc000066140, 0xa63be0, 0xc000090c80)
+	c:/go/src/net/http/server.go:1895 +0x873
+created by net/http.(*Server).Serve
+	c:/go/src/net/http/server.go:2933 +0x363
+2021/01/22 22:39:14 H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/controller/logformat.go:10: 2021-01-22 22:39:14 127.0.0.1:1234 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36
+2021/01/22 22:39:14 H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/controller/logformat.go:10: 2021-01-22 22:39:14 127.0.0.1:1234 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36
+2021/01/22 22:39:15 H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/controller/logformat.go:10: 2021-01-22 22:39:15 127.0.0.1:1234 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36
+2021/01/22 22:39:15 H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/controller/logformat.go:10: 2021-01-22 22:39:15 127.0.0.1:1234 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36
+2021/01/22 22:39:15 H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/controller/logformat.go:10: 2021-01-22 22:39:15 127.0.0.1:1234 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36
+2021/01/22 22:39:16 H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/controller/logformat.go:10: 2021-01-22 22:39:16 127.0.0.1:1234 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36
+2021/01/22 22:39:16 H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/controller/logformat.go:10: 2021-01-22 22:39:16 127.0.0.1:1234 GET / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36
+2021/01/22 22:39:17 H:/htgolang-20200919/homework/day16-20200116/GO3035-beijing-songyunfei/usermanager_webdb/controller/logformat.go:10: 2021-01-22 22:39:17 127.0.0.1:1234 GET /add Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36

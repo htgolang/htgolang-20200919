@@ -12,3 +12,19 @@
 2021/01/22 15:05:38.363 [D] [main.go:24]  App running...
 2021/01/22 15:24:02.922 [D] [main.go:24]  App running...
 2021/01/22 15:26:42.090 [D] [main.go:24]  App running...
+2021/01/22 21:34:48.548 [D] [main.go:24]  App running...
+2021/01/22 21:35:15.709 [I] [user_op.go:27]  loginauth user: admin
+2021/01/22 21:35:15.726 [I] [user_op.go:34]  loginauth user: admin, password wrong
+2021/01/22 21:35:15.726 [I] [error.go:22]  user password wrong
+2021/01/22 21:35:24.535 [I] [user_op.go:27]  loginauth user: admin
+2021/01/22 21:35:24.552 [I] [user_op.go:34]  loginauth user: admin, password wrong
+2021/01/22 21:35:24.552 [I] [error.go:22]  user password wrong
+2021/01/22 21:35:59.209 [I] [user_op.go:27]  loginauth user: admin
+2021/01/22 21:35:59.225 [I] [auth.go:39]  loginauth user: admin logged
+2021/01/22 21:36:15.554 [I] [error.go:10]  Do not edit admin.
+2021/01/22 21:36:31.321 [I] [error.go:10]  Admin pass is immutable
+2021/01/22 21:36:49.773 [I] [error.go:10]  Admin pass is immutable
+2021/01/22 21:36:51.550 [I] [auth.go:49]  user: logged out
+2021/01/22 21:36:56.123 [I] [user_op.go:27]  loginauth user: admin
+2021/01/22 21:36:56.140 [I] [auth.go:39]  loginauth user: admin logged
+2021/01/22 21:37:11.254 [I] [error.go:10]  parsing time "Born: 2006.01.02" as "2006.01.02": cannot parse "Born: 2006.01.02" as "2006"
