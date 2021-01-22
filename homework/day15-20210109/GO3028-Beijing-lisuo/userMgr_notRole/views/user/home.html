@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8" />
+		<title> Home </title>
+		<link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap-4.5.3/css/bootstrap.min.css">
+	</head>
+	<body >
+        {{ template "base/nav.html" . }}
+		<div class="container mt-5">
+			<div class="row justify-content-md-start">
+				<div class="col-6">
+					<a type="button" class="btn btn-primary btn-md w-25" href="/user/create/">Creat New User</a>
+					<a type="button" class="btn btn-primary btn-md w-25" href="/user/query/"> Query User </a>
+					<!-- 
+                    <form class="form-inline my-2 my-lg-0" action="/user/query/">
+						<input class="form-control mr-sm-2" type="search" placeholder="Search User" name="id" aria-label="Search">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					</form>
+                    -->
+				</div>
+			</div>
+		</div>
+
+
+		<div class="container mt-3">
+			<table  class="table table-striped table-responsive-lg table-bordered border-danger table-hover">
+	            <thead class="table-dark">
+		        	<tr>
+						<th scope="col" >ID</th>
+						<th scope="col" >Name</th>
+						<th scope="col" >Sex</th>
+						<th scope="col" >Address</th>
+						<th scope="col" >Cell</th>
+						<th scope="col" ><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Born&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></th>
+						<th scope="col" >Password</th>
+		        	</tr>
+	            </thead>
+				<tbody>
+					{{ range .users }}
+					<tr>
+						<td>{{ .ID }}</td>
+						<td>{{ .Name }}</td>
+						<td>{{ if eq .Sex 1 }} male {{ else }} female {{ end }}</td>
+						<td>{{ .Address }}</td>
+						<td>{{ .Cell }}</td>
+						<td>{{ .Born }}</td>
+						<td>{{ .Password }}</td>
+						<td>
+							<a class="btn btn-warning" href="/user/edit/?id={{ .ID }}" role="button">Edit</a>
+						</td>
+						<td>
+							<!-- Do you really want to submit the form? -->
+							<form action="/user/delete/?id={{ .ID }}" onsubmit="return confirm('Are you sure to delete user {{ .Name }} by id {{ .ID }} ?');" method="POST">
+								<button class="btn btn-danger" type="submit" formmethod="POST" >Delete</button>
+							</form>
+						</td>
+					</tr>
+					{{ end }}
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!-- nav -->
+<!--<div class="container-fluid mt-4"> -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<div class="container-fluid">
+	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<a class="navbar-brand" href="#"><span style="color: rgb(86, 179, 255);">SUOSUOLI.CN</span></a>
+		<div class="collapse navbar-collapse" id="navbarToggler">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+		        	<a class="nav-link" href="/user/home/"> HOME <span class="sr-only">(current)</span></a>
+		    	</li>
+		    	<li class="nav-item">
+		    		<a class="nav-link" href="/role/role/"> ROLE </a>
+		    	</li>
+		    	<li class="nav-item">
+		    		<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"> ManageRole </a>
+		    	</li>
+		    </ul>
+		    <a type="button" class="btn btn-primary" href="/user/detail/?name={{ .cUser.Name }}" tabindex="-2" style="margin-left: 10px;"> {{ if .cUser }} {{ .cUser.Name }} {{ else }} NoMan {{ end }} </a>
+    	    <a type="button" class="btn btn-warning" href="/user/resetpass/?name={{ .cUser.Name }}" tabindex="-3" style="margin-left: 10px;"> ResetPasswd </a>
+		    <a type="button" class="btn btn-warning" href="/auth/logout/" tabindex="-3" style="margin-left: 10px;"> Logout </a>
+		</div>
+	</div>
+</nav>
+<!-- nav -->

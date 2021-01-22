@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Modify user {{ .Name }}</title>
+        <link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap-4.5.3/css/bootstrap.min.css">
+        <script type="text/javascript">
+		    function onlyOne(checkbox) {
+    	        var checkboxes = document.getElementsByName('sex');
+    	        checkboxes.forEach((item) => {
+      	            if (item !== checkbox) 
+		            item.checked = false;
+    	        })
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container mt-5 shadow-lg w-50 p-3 mb-5 bg-white rounded" style="background-color:#bfa; padding:20px 20px;">
+            <form action="/user/edit/?id={{ .user.ID }}" method="POST">
+                <div class="form-group">
+                   <input class="form-control" id="id" type="text" name="id" value="{{ .user.ID }}" />
+                   <label for="id"></label>
+                   <input class="form-control" id="name" type="text" name="name" value="{{ .user.Name }}" />
+                   <label for="name"></label>
+                   <input class="form-control" id="sex" type="text" name="sex" value="{{ .user.Sex }}"/>
+                   <label for="sex"></label>
+                   <input class="form-control" id="address" type="text" name="address" value="{{ .user.Address }}"/>
+                   <label for="address" ></label>
+                   <input class="form-control" id="cell" type="text" name="cell" value="{{ .user.Cell }}"/>
+                   <label for="cell" ></label>
+                   <input class="form-control" id="born" type="text" name="born" value="{{ .user.Born }}" readonly/>
+                   <label for="born" ></label>
+                   <input class="form-control" id="passwd" type="text" name="passwd" placeholder="Password" value="" disabled/>
+                   <label for="passwd" ></label>
+                </div>
+                <div class="container shadow-md bg-white col-12">
+                    <input class="btn btn-primary" type="submit" value="Modify" />
+                    <a class="btn btn-primary" href="/user/home/">Home</a>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
+
+
+
+
+
+
+

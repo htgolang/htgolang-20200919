@@ -8,6 +8,19 @@ const (
 	PermUser  uint = 17
 )
 
+type Role struct {
+	*User
+	RolePerm  uint
+	RoleTitle string
+}
+
+//type RoleTitle struct {
+//	Admin      string
+//	SuperUser  string
+//	User string
+//	Viewer     string
+//}
+
 type RolePerm struct {
 	View   bool //
 	Create bool // UserController.Create

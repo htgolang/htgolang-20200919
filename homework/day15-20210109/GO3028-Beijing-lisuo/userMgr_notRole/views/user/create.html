@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Create New User</title>
+        <link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap-4.5.3/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container mt-5 shadow-lg w-50 p-3 mb-5 bg-white rounded">
+            <form action="/user/create/" method="POST">
+                <input class="form-control" id="id" placeholder="Id" name="id" value="Disabled" disabled/>
+                <label for="id"></label>
+                <input class="form-control" id="name" placeholder="Name" name="name" value="{{ .Name }}"/>
+                <label for="name"></label>
+
+				<!-- sex --> 
+               	<div class="form-check form-check-inline">
+				  <input class="form-check-input" type="radio" name="sex" id="male" value="1">
+				  <label class="form-check-label" for="male">Male</label>
+				</div>
+				<div class="form-check form-check-inline">
+				  <input class="form-check-input" type="radio" name="sex" id="female" value="0">
+				  <label class="form-check-label" for="female">Female</label>
+				</div>
+				<div class="form-check form-check-inline">
+				  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="unknown" value="2" disabled>
+				  <label class="form-check-label" for="unknown">Unknown</label>
+				</div>
+
+                <input class="form-control" id="address" placeholder="Address" name="address" value="{{ .Address }}"/> 
+                <label for="address"></label>
+                <input class="form-control" id="cell" placeholder="Cell" name="cell" value="{{ .Cell }}"/> 
+                <label for="cell"></label>
+                <input class="form-control" id="born" placeholder="Born" name="born" value="Born: 2006.01.02"/>
+                <label for="born"></label>
+                <input class="form-control" id="passwd" placeholder="Passwd" name="passwd" value="{{ .Password }}"/>
+                <label for="passwd"></label>
+				<div class="container shadow-md bg-white col-12">
+                	<input class="btn btn-primary" type="submit" value="Create" />
+                	<a class="btn btn-primary" href="/user/home/">HOME</a>
+				</div>
+            </form>
+        </div>
+    </body>
+</html>
