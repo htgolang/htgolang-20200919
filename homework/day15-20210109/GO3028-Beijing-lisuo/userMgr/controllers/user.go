@@ -47,16 +47,13 @@ func (c *UserController) Prepare() {
 // Home give a default page, with a list of users
 func (c *UserController) Home() {
 	type dUser struct {
-		ID        int64
-		Name      string
-		Sex       int
-		Address   string
-		Cell      string
-		Born      string
-		Password  string
-		CreatedAt *time.Time
-		UpdatedAt *time.Time
-		DeletedAt *time.Time
+		ID       int64
+		Name     string
+		Sex      int
+		Address  string
+		Cell     string
+		Born     string
+		Password string
 	}
 	cUsers := []dUser{}
 	users, err := services.ListAllUser()
@@ -66,16 +63,13 @@ func (c *UserController) Home() {
 	}
 	for _, user := range users {
 		u := dUser{
-			ID:        user.ID,
-			Name:      user.Name,
-			Sex:       user.Sex,
-			Address:   user.Address,
-			Cell:      user.Cell,
-			Born:      user.Born.Format("2006-01-02"),
-			Password:  user.Password,
-			CreatedAt: user.CreatedAt,
-			UpdatedAt: user.UpdatedAt,
-			DeletedAt: user.DeletedAt,
+			ID:       user.ID,
+			Name:     user.Name,
+			Sex:      user.Sex,
+			Address:  user.Address,
+			Cell:     user.Cell,
+			Born:     user.Born.Format("2006-01-02"),
+			Password: user.Password,
 		}
 		cUsers = append(cUsers, u)
 	}

@@ -44,7 +44,8 @@ func ListAllUser() ([]*models.User, error) {
 	var users []*models.User
 	o := orm.NewOrm()
 	qs := o.QueryTable(tableName)
-	_, err := qs.All(&users)
+	//_, err := qs.All(&users)
+	_, err := qs.Filter("DeletedAt__isnull", true).All(&users)
 	if err != nil {
 		return []*models.User{}, err
 	}
