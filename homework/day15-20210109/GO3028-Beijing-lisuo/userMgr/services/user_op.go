@@ -89,7 +89,7 @@ func QueryUser(id string, args ...string) ([]*models.User, error) {
 		if err != nil {
 			return userList, err
 		}
-		_, errq := qs.Filter("ID", Id).All(&tmpUsers)
+		_, errq := qs.Filter("ID", Id).Filter("DeletedAt__isnull", false).All(&tmpUsers)
 		if errq != nil {
 			return tmpUsers, errq
 		}
@@ -103,7 +103,7 @@ func QueryUser(id string, args ...string) ([]*models.User, error) {
 		for _, v := range args {
 			if v != blank {
 				fmt.Println("filter: ", li[i]+"__icontains", v)
-				_, errN := qs.Filter(li[i]+"__icontains", v).All(&tmpUsers)
+				_, errN := qs.Filter(li[i]+"__icontains", v).Filter("DeletedAt__isnull", true).All(&tmpUsers)
 				if errN != nil {
 					return tmpUsers, errN
 				}

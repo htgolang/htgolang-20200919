@@ -10,7 +10,7 @@ type RoleController struct {
 	beego.Controller
 }
 
-func (c *RoleController) Admin() {
+func (c *RoleController) Role() {
 	if services.Admin() {
 		c.TplName = "role/role.html"
 	}

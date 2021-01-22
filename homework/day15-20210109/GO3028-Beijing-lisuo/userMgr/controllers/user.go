@@ -130,27 +130,6 @@ func (c *UserController) Delete() {
 	}
 }
 
-//// Delete delete a user based on id
-//func (c *UserController) Delete() {
-//	id, err := c.GetInt64("id")
-//	if err != nil {
-//		HandleError(c, err)
-//		return
-//	}
-//	if id == models.AdminID {
-//		HandleError(c, errors.New("You can't delete admin, who's id is: "+c.GetString("id")))
-//		return
-//	}
-//	fmt.Println("To delete: ", c.GetString("id"))
-//	if errd := services.IDDelUser(id); errd == nil {
-//		HandleError(c, errors.New("Deleted a user, who's id is: "+c.GetString("id")))
-//		return
-//	} else {
-//		HandleError(c, errd)
-//		return
-//	}
-//}
-
 // Edit edit a user by id
 func (c *UserController) Edit() {
 	if c.Ctx.Input.IsGet() {
@@ -256,6 +235,11 @@ func (c *UserController) ResetPass() {
 		name := c.GetString("name")
 		oldPass := c.GetString("oldPassword")
 		newPass := c.GetString("newPassword")
+		confirmPass := c.GetString("confirmPassword")
+		if newPass != confirmPass {
+			HandleError(c, errors.New("Your newPassword doesn't match confirmPassword"))
+			return
+		}
 		fmt.Printf("name: %#v, oldpass: %#v, newpass: %#v\n", name, oldPass, newPass)
 		u, err := services.NameFindUser(name)
 		if err != nil {
