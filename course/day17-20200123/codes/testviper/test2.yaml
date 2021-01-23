@@ -1,0 +1,21 @@
+db:
+  host: 1.1.1.1
+log:
+  compress: false
+  filename: logs/mysqld.log
+  max_age: 0
+  max_backups: 14
+  max_size: 1
+mysql:
+  db: user
+  host: 10.0.0.2
+  password: golang@2020
+  port: 3306
+  username: golang
+redis:
+  host: 1.1.1.1
+  port: 6379
+web:
+  auth:
+    password: $2a$05$vMb8qkrMHDIMcnIamIqJ8.9myOd8U1CU82nxrh7gHvGG5NMtDOH0u
+    username: admin

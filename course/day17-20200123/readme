@@ -1,0 +1,64 @@
+1. 复习
+2. 作业处理
+3. 新内容
+    exporter
+
+    a. 运行错误 => 记录日志
+        logrus => 记录日志
+        lumberjack => 控制日志数量
+    b. mysqld_exporter => 配置文件
+        viper
+    c. 认证
+        Prometheus
+        authorization: Bearer Token
+        authorization: Basic base64(username:password)
+
+    配置文件:
+        ini => 解析器
+        json => 解析器
+        自定义格式 =>
+        yaml =>
+        toml =>
+
+
+        viper
+
+    beego Filter
+        beferrouter
+        afterrouter
+        beferexec
+        afterexec
+
+        请求次数:
+            所有请求次数 静态资源/Controller: beferrouter
+            存在的controller: beeferexec
+        响应状态码：
+            afterexec
+        请求时间:
+            开始: beferrouter/afterrouter/beferexec
+                context.Input.SetData(name, value)
+
+            结束: afterexec time - stime
+                context.Input.GetData(name)
+
+        beego.InertFilter(
+            path,
+            position,
+            filter(函数),
+            如果有输出是否停止后续流程
+            重置url参数
+        )
+
+        filter func(*context.Context) {
+
+        }
+
+    告警日志收集
+        web api => db
+        配置alertmanager -> 数据格式
+        xsrf POST/DELETE/PUT
+        prometheus, http.Client xsrf token
+
+        1. 关闭xsrf
+        2. 关闭web sesion认证
+            使用token

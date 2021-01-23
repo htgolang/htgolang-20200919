@@ -1,0 +1,20 @@
+---
+mysql:
+  host: 10.0.0.2
+  port: 3306
+  username: golang
+  password: "golang@2020"
+  db: user
+
+web:
+  addr:
+  auth:
+    username: admin
+    password: "$2a$05$vMb8qkrMHDIMcnIamIqJ8.9myOd8U1CU82nxrh7gHvGG5NMtDOH0u"
+
+logger:
+  filename: "logs/mysqld.log"
+  max_age: 0
+  max_size: 1
+  max_backups: 14
+  compress: false

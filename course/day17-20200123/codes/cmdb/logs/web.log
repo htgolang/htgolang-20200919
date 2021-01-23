@@ -1,0 +1,240 @@
+2021/01/09 17:21:41.786 [I] [asm_amd64.s:1373]  http server Running on http://:8888
+2021/01/09 17:21:41.788 [I] [asm_amd64.s:1373]  https server Running on https://:10443
+2021/01/09 17:22:07.941 [server.go:3088]  [HTTP] http: TLS handshake error from [::1]:59781: remote error: tls: unknown certificate
+2021/01/09 17:22:07.942 [server.go:3088]  [HTTP] http: TLS handshake error from [::1]:59780: remote error: tls: unknown certificate
+2021/01/09 17:22:10.679 [server.go:3088]  [HTTP] http: TLS handshake error from [::1]:59795: remote error: tls: unknown certificate
+2021/01/09 17:22:10.684 [server.go:3088]  [HTTP] http: TLS handshake error from [::1]:59796: remote error: tls: unknown certificate
+2021/01/09 17:22:10.690 [server.go:3088]  [HTTP] http: TLS handshake error from [::1]:59798: remote error: tls: unknown certificate
+2021/01/09 17:22:10.695 [error.go:441]  ::1 - - [01/Jan/0001 12:00:00] "GET / HTTP/2.0 404 0" 0.000000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+2021/01/09 17:22:10.697 [server.go:2836]  ::1 - - [09/Jan/2021 05:22:10] "GET / HTTP/2.0 404 0" 0.002007  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+2021/01/09 17:22:15.166 [required_auth.go:21]  ::1 - - [01/Jan/0001 12:00:00] "GET /user/query HTTP/2.0 302 0" 0.000000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+2021/01/09 17:22:15.167 [server.go:2836]  ::1 - - [09/Jan/2021 05:22:15] "GET /user/query HTTP/2.0 302 0" 0.001001  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+2021/01/09 17:22:15.177 [server.go:2836]  ::1 - - [09/Jan/2021 05:22:15] "GET /auth/login HTTP/2.0 200 0" 0.005005  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+2021/01/09 17:22:16.644 [server.go:2836]  ::1 - - [09/Jan/2021 05:22:16] "POST /auth/login HTTP/2.0 200 0" 0.005008 https://localhost:10443/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+2021/01/09 17:22:21.315 [server.go:2836]  ::1 - - [09/Jan/2021 05:22:21] "POST /auth/login HTTP/2.0 200 0" 0.108000 https://localhost:10443/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+2021/01/09 17:22:31.672 [server.go:2836]  ::1 - - [09/Jan/2021 05:22:31] "GET /auth/login HTTP/2.0 200 0" 0.018998  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+2021/01/09 17:22:32.803 [error.go:441]  ::1 - - [01/Jan/0001 12:00:00] "POST /auth/login HTTP/2.0 422 0" 0.000000 https://localhost:10443/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+2021/01/09 17:22:40.343 [server.go:2836]  ::1 - - [09/Jan/2021 05:22:40] "GET /auth/login HTTP/2.0 200 0" 0.017999  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+2021/01/09 17:22:49.034 [auth.go:40]  ::1 - - [01/Jan/0001 12:00:00] "POST /auth/login HTTP/2.0 302 0" 0.000000 https://localhost:10443/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+2021/01/09 17:22:49.034 [server.go:2836]  ::1 - - [09/Jan/2021 05:22:48] "POST /auth/login HTTP/2.0 302 0" 0.093998 https://localhost:10443/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+2021/01/09 17:22:49.051 [server.go:2836]  ::1 - - [09/Jan/2021 05:22:49] "GET /user/query HTTP/2.0 200 0" 0.007000 https://localhost:10443/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+2021/01/09 17:22:59.454 [server.go:2836]  ::1 - - [09/Jan/2021 05:22:59] "GET /user/add HTTP/2.0 200 0" 0.003987 https://localhost:10443/user/query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+2021/01/09 17:23:16.573 [error.go:441]  ::1 - - [01/Jan/0001 12:00:00] "POST /user/add/ HTTP/2.0 422 0" 0.000000 https://localhost:10443/user/add Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+2021/01/23 17:05:28.806 [I] [asm_amd64.s:1373]  http server Running on http://:8888
+2021/01/23 17:05:28.808 [I] [asm_amd64.s:1373]  https server Running on https://:10443
+2021/01/23 17:05:41.503 [required_auth.go:21]  ::1 - - [01/Jan/0001 12:00:00] "GET /user/query HTTP/1.1 302 0" 0.000000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:05:41.503 [server.go:2836]  ::1 - - [23/Jan/2021 05:05:41] "GET /user/query HTTP/1.1 302 0" 0.001999  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:05:41.528 [server.go:2836]  ::1 - - [23/Jan/2021 05:05:41] "GET /auth/login HTTP/1.1 200 0" 0.012008  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:05:41.701 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:05:45.078 [error.go:441]  ::1 - - [01/Jan/0001 12:00:00] "POST /auth/login HTTP/1.1 417 0" 0.000000 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:05:45.135 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:05:51.967 [error.go:441]  ::1 - - [01/Jan/0001 12:00:00] "GET / HTTP/1.1 404 0" 0.000000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:05:51.969 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:05:51.969 [server.go:2836]  ::1 - - [23/Jan/2021 05:05:51] "GET / HTTP/1.1 404 0" 0.003005  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:05:52.030 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:05:54.567 [error.go:441]  ::1 - - [01/Jan/0001 12:00:00] "GET / HTTP/1.1 404 0" 0.000000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:05:54.568 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:05:54.568 [server.go:2836]  ::1 - - [23/Jan/2021 05:05:54] "GET / HTTP/1.1 404 0" 0.000998  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:05:54.597 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:07:50.162 [I] [asm_amd64.s:1373]  http server Running on http://:8888
+2021/01/23 17:07:50.163 [I] [asm_amd64.s:1373]  https server Running on https://:10443
+2021/01/23 17:08:10.401 [I] [asm_amd64.s:1373]  http server Running on http://:8888
+2021/01/23 17:08:10.403 [I] [asm_amd64.s:1373]  https server Running on https://:8443
+2021/01/23 17:08:15.744 [server.go:3088]  [HTTP] http: TLS handshake error from [::1]:50202: remote error: tls: unknown certificate
+2021/01/23 17:08:15.744 [server.go:3088]  [HTTP] http: TLS handshake error from [::1]:50201: remote error: tls: unknown certificate
+2021/01/23 17:08:21.390 [server.go:3088]  [HTTP] http: TLS handshake error from [::1]:50207: remote error: tls: unknown certificate
+2021/01/23 17:08:21.392 [server.go:3088]  [HTTP] http: TLS handshake error from [::1]:50208: remote error: tls: unknown certificate
+2021/01/23 17:08:21.400 [error.go:441]  ::1 - - [01/Jan/0001 12:00:00] "GET / HTTP/2.0 404 0" 0.000000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:08:21.400 [server.go:2836]  ::1 - - [23/Jan/2021 05:08:21] "GET / HTTP/2.0 404 0" 0.001994  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:08:23.353 [error.go:441]  ::1 - - [01/Jan/0001 12:00:00] "GET / HTTP/2.0 404 0" 0.000000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:08:23.354 [server.go:2836]  ::1 - - [23/Jan/2021 05:08:23] "GET / HTTP/2.0 404 0" 0.002003  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:08:27.178 [error.go:441]  ::1 - - [01/Jan/0001 12:00:00] "GET / HTTP/2.0 404 0" 0.000000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:08:27.179 [server.go:2836]  ::1 - - [23/Jan/2021 05:08:27] "GET / HTTP/2.0 404 0" 0.002001  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:08:31.235 [error.go:441]  ::1 - - [01/Jan/0001 12:00:00] "GET /user/login HTTP/2.0 404 0" 0.000000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:08:31.236 [server.go:2836]  ::1 - - [23/Jan/2021 05:08:31] "GET /user/login HTTP/2.0 404 0" 0.002999  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:08:55.127 [error.go:441]  ::1 - - [01/Jan/0001 12:00:00] "GET /user/login HTTP/2.0 404 0" 0.000000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:08:55.129 [server.go:2836]  ::1 - - [23/Jan/2021 05:08:55] "GET /user/login HTTP/2.0 404 0" 0.030009  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:08:58.146 [error.go:441]  ::1 - - [01/Jan/0001 12:00:00] "GET / HTTP/2.0 404 0" 0.000000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:08:58.147 [server.go:2836]  ::1 - - [23/Jan/2021 05:08:58] "GET / HTTP/2.0 404 0" 0.001000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:09:01.817 [server.go:2836]  ::1 - - [23/Jan/2021 05:09:01] "GET /auth/login HTTP/2.0 200 0" 0.007992  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:09:06.771 [server.go:2836]  ::1 - - [23/Jan/2021 05:09:06] "POST /auth/login HTTP/2.0 200 0" 0.088004 https://localhost:8443/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:09:09.787 [server.go:2836]  ::1 - - [23/Jan/2021 05:09:09] "POST /auth/login HTTP/2.0 200 0" 0.086997 https://localhost:8443/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:09:20.773 [auth.go:40]  ::1 - - [01/Jan/0001 12:00:00] "POST /auth/login HTTP/2.0 302 0" 0.000000 https://localhost:8443/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:09:20.773 [server.go:2836]  ::1 - - [23/Jan/2021 05:09:20] "POST /auth/login HTTP/2.0 302 0" 0.092998 https://localhost:8443/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:09:20.789 [server.go:2836]  ::1 - - [23/Jan/2021 05:09:20] "GET /user/query HTTP/2.0 200 0" 0.007009 https://localhost:8443/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:12:06.475 [I] [asm_amd64.s:1373]  http server Running on http://:8888
+2021/01/23 17:12:06.476 [I] [asm_amd64.s:1373]  https server Running on https://:8443
+2021/01/23 17:12:12.540 [server.go:3088]  [HTTP] http: TLS handshake error from [::1]:50365: remote error: tls: unknown certificate
+2021/01/23 17:12:12.557 [server.go:2836]  ::1 - - [23/Jan/2021 05:12:12] "GET /user/query HTTP/2.0 200 0" 0.009999  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:12:18.845 [server.go:2836]  ::1 - - [23/Jan/2021 05:12:18] "GET /metrics HTTP/2.0 200 0" 0.005002  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:12:31.151 [server.go:2836]  ::1 - - [23/Jan/2021 05:12:31] "GET /metrics HTTP/2.0 200 0" 0.001000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:12:31.670 [server.go:2836]  ::1 - - [23/Jan/2021 05:12:31] "GET /metrics HTTP/2.0 200 0" 0.002001  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:12:32.169 [server.go:2836]  ::1 - - [23/Jan/2021 05:12:32] "GET /metrics HTTP/2.0 200 0" 0.000987  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:12:32.679 [server.go:2836]  ::1 - - [23/Jan/2021 05:12:32] "GET /metrics HTTP/2.0 200 0" 0.010011  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:29:29.703 [I] [asm_amd64.s:1373]  http server Running on http://:8888
+2021/01/23 17:29:29.705 [I] [asm_amd64.s:1373]  https server Running on https://:8443
+2021/01/23 17:29:33.819 [server.go:3088]  [HTTP] http: TLS handshake error from [::1]:52599: remote error: tls: unknown certificate
+2021/01/23 17:29:36.900 [server.go:3088]  [HTTP] http: TLS handshake error from [::1]:52602: remote error: tls: unknown certificate
+2021/01/23 17:29:36.904 [server.go:2836]  ::1 - - [23/Jan/2021 05:29:36] "GET /metrics HTTP/2.0 200 0" 0.002004  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:29:48.100 [server.go:2836]  ::1 - - [23/Jan/2021 05:29:48] "GET /user/query HTTP/2.0 200 0" 0.016994  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:29:48.678 [server.go:2836]  ::1 - - [23/Jan/2021 05:29:48] "GET /user/query HTTP/2.0 200 0" 0.008001  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:29:49.114 [server.go:2836]  ::1 - - [23/Jan/2021 05:29:49] "GET /user/query HTTP/2.0 200 0" 0.007994  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:29:49.553 [server.go:2836]  ::1 - - [23/Jan/2021 05:29:49] "GET /user/query HTTP/2.0 200 0" 0.006996  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:29:49.974 [server.go:2836]  ::1 - - [23/Jan/2021 05:29:49] "GET /user/query HTTP/2.0 200 0" 0.006000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:29:50.335 [server.go:2836]  ::1 - - [23/Jan/2021 05:29:50] "GET /user/query HTTP/2.0 200 0" 0.006999  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:29:52.357 [server.go:2836]  ::1 - - [23/Jan/2021 05:29:52] "GET /metrics HTTP/2.0 200 0" 0.000999  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:30:59.254 [I] [asm_amd64.s:1373]  http server Running on http://:8888
+2021/01/23 17:30:59.256 [I] [asm_amd64.s:1373]  https server Running on https://:8443
+2021/01/23 17:31:02.073 [server.go:3088]  [HTTP] http: TLS handshake error from [::1]:52638: remote error: tls: unknown certificate
+2021/01/23 17:31:02.082 [server.go:2836]  ::1 - - [23/Jan/2021 05:31:02] "GET /metrics HTTP/2.0 200 0" 0.002984  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:31:08.690 [server.go:2836]  ::1 - - [23/Jan/2021 05:31:08] "GET /metrics HTTP/2.0 200 0" 0.001001  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:31:28.134 [server.go:2836]  ::1 - - [23/Jan/2021 05:31:28] "GET /user/query HTTP/2.0 200 0" 0.010989  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:31:31.755 [server.go:2836]  ::1 - - [23/Jan/2021 05:31:31] "GET /metrics HTTP/2.0 200 0" 0.000977  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:31:46.028 [server.go:2836]  ::1 - - [23/Jan/2021 05:31:46] "GET /metrics HTTP/2.0 200 0" 0.002000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:31:46.453 [server.go:2836]  ::1 - - [23/Jan/2021 05:31:46] "GET /metrics HTTP/2.0 200 0" 0.003017  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:31:46.797 [server.go:2836]  ::1 - - [23/Jan/2021 05:31:46] "GET /metrics HTTP/2.0 200 0" 0.003081  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:31:47.134 [server.go:2836]  ::1 - - [23/Jan/2021 05:31:47] "GET /metrics HTTP/2.0 200 0" 0.003996  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:31:47.483 [server.go:2836]  ::1 - - [23/Jan/2021 05:31:47] "GET /metrics HTTP/2.0 200 0" 0.002003  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:31:48.766 [server.go:2836]  ::1 - - [23/Jan/2021 05:31:48] "GET /user/query HTTP/2.0 200 0" 0.016996  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:31:49.275 [server.go:2836]  ::1 - - [23/Jan/2021 05:31:49] "GET /user/query HTTP/2.0 200 0" 0.006983  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:31:49.821 [server.go:2836]  ::1 - - [23/Jan/2021 05:31:49] "GET /user/query HTTP/2.0 200 0" 0.006999  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:31:50.366 [server.go:2836]  ::1 - - [23/Jan/2021 05:31:50] "GET /user/query HTTP/2.0 200 0" 0.005997  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:31:51.039 [server.go:2836]  ::1 - - [23/Jan/2021 05:31:51] "GET /user/query HTTP/2.0 200 0" 0.006000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:31:51.583 [server.go:2836]  ::1 - - [23/Jan/2021 05:31:51] "GET /user/query HTTP/2.0 200 0" 0.007999  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:31:52.090 [server.go:2836]  ::1 - - [23/Jan/2021 05:31:52] "GET /user/query HTTP/2.0 200 0" 0.012000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:31:54.802 [server.go:2836]  ::1 - - [23/Jan/2021 05:31:54] "GET /user/add HTTP/2.0 200 0" 0.003996 https://localhost:8443/user/query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:31:55.965 [error.go:441]  ::1 - - [01/Jan/0001 12:00:00] "POST /user/add/ HTTP/2.0 422 0" 0.000000 https://localhost:8443/user/add Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:31:58.146 [server.go:2836]  ::1 - - [23/Jan/2021 05:31:58] "GET /user/add HTTP/2.0 200 0" 0.006993 https://localhost:8443/user/query Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:31:58.868 [server.go:2836]  ::1 - - [23/Jan/2021 05:31:58] "GET /user/add HTTP/2.0 200 0" 0.005000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:31:59.346 [server.go:2836]  ::1 - - [23/Jan/2021 05:31:59] "GET /user/add HTTP/2.0 200 0" 0.006000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:32:01.634 [server.go:2836]  ::1 - - [23/Jan/2021 05:32:01] "GET /metrics HTTP/2.0 200 0" 0.001970  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:32:47.419 [I] [asm_amd64.s:1373]  http server Running on http://:8888
+2021/01/23 17:32:47.421 [I] [asm_amd64.s:1373]  https server Running on https://:8443
+2021/01/23 17:32:50.027 [server.go:3088]  [HTTP] http: TLS handshake error from [::1]:52683: remote error: tls: unknown certificate
+2021/01/23 17:32:50.035 [server.go:2836]  ::1 - - [23/Jan/2021 05:32:50] "GET /metrics HTTP/2.0 200 0" 0.002999  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:32:50.632 [server.go:2836]  ::1 - - [23/Jan/2021 05:32:50] "GET /metrics HTTP/2.0 200 0" 0.010026  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:33:36.086 [server.go:2836]  ::1 - - [23/Jan/2021 05:33:36] "GET /metrics HTTP/2.0 200 0" 0.001989  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:33:36.836 [server.go:2836]  ::1 - - [23/Jan/2021 05:33:36] "GET /metrics HTTP/2.0 200 0" 0.003000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:33:37.398 [server.go:2836]  ::1 - - [23/Jan/2021 05:33:37] "GET /metrics HTTP/2.0 200 0" 0.005999  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:33:38.044 [server.go:2836]  ::1 - - [23/Jan/2021 05:33:38] "GET /metrics HTTP/2.0 200 0" 0.002001  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:45:17.566 [server.go:2836]  ::1 - - [23/Jan/2021 05:45:17] "GET /user/add HTTP/2.0 200 0" 0.008983  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:46:56.521 [I] [asm_amd64.s:1373]  http server Running on http://:8888
+2021/01/23 17:46:56.522 [I] [asm_amd64.s:1373]  https server Running on https://:8443
+2021/01/23 17:52:33.578 [I] [asm_amd64.s:1373]  http server Running on http://:8888
+2021/01/23 17:52:33.580 [I] [asm_amd64.s:1373]  https server Running on https://:8443
+2021/01/23 17:53:17.748 [I] [asm_amd64.s:1373]  http server Running on http://:8888
+2021/01/23 17:53:17.750 [I] [asm_amd64.s:1373]  https server Running on https://:8443
+2021/01/23 17:53:41.425 [server.go:3088]  [HTTP] http: TLS handshake error from [::1]:53150: remote error: tls: unknown certificate
+2021/01/23 17:53:41.436 [required_auth.go:21]  ::1 - - [01/Jan/0001 12:00:00] "GET /user/query HTTP/1.1 302 0" 0.000000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:53:41.436 [server.go:2836]  ::1 - - [23/Jan/2021 05:53:41] "GET /user/query HTTP/1.1 302 0" 0.013010  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:53:41.456 [server.go:2836]  ::1 - - [23/Jan/2021 05:53:41] "GET /auth/login HTTP/1.1 200 0" 0.002003  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:53:41.725 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:53:46.436 [auth.go:40]  ::1 - - [01/Jan/0001 12:00:00] "POST /auth/login HTTP/1.1 302 0" 0.000000 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:53:46.436 [server.go:2836]  ::1 - - [23/Jan/2021 05:53:46] "POST /auth/login HTTP/1.1 302 0" 0.098001 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:53:46.447 [required_auth.go:21]  ::1 - - [01/Jan/0001 12:00:00] "GET /user/query HTTP/1.1 302 0" 0.000000 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:53:46.447 [server.go:2836]  ::1 - - [23/Jan/2021 05:53:46] "GET /user/query HTTP/1.1 302 0" 0.004999 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:53:46.464 [server.go:2836]  ::1 - - [23/Jan/2021 05:53:46] "GET /auth/login HTTP/1.1 200 0" 0.004001 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:53:46.531 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:53:51.040 [auth.go:40]  ::1 - - [01/Jan/0001 12:00:00] "POST /auth/login HTTP/1.1 302 0" 0.000000 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:53:51.040 [server.go:2836]  ::1 - - [23/Jan/2021 05:53:50] "POST /auth/login HTTP/1.1 302 0" 0.092997 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:53:51.045 [required_auth.go:21]  ::1 - - [01/Jan/0001 12:00:00] "GET /user/query HTTP/1.1 302 0" 0.000000 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:53:51.046 [server.go:2836]  ::1 - - [23/Jan/2021 05:53:51] "GET /user/query HTTP/1.1 302 0" 0.002001 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:53:51.054 [server.go:2836]  ::1 - - [23/Jan/2021 05:53:51] "GET /auth/login HTTP/1.1 200 0" 0.004016 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:53:51.105 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:53:53.157 [server.go:2836]  ::1 - - [23/Jan/2021 05:53:53] "GET /auth/login HTTP/1.1 200 0" 0.002000 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:53:53.224 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:53:56.206 [server.go:2836]  ::1 - - [23/Jan/2021 05:53:56] "POST /auth/login HTTP/1.1 200 0" 0.006995 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:53:56.266 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:54:01.333 [auth.go:40]  ::1 - - [01/Jan/0001 12:00:00] "POST /auth/login HTTP/1.1 302 0" 0.000000 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:01.334 [server.go:2836]  ::1 - - [23/Jan/2021 05:54:01] "POST /auth/login HTTP/1.1 302 0" 0.089974 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:01.338 [required_auth.go:21]  ::1 - - [01/Jan/0001 12:00:00] "GET /user/query HTTP/1.1 302 0" 0.000000 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:01.338 [server.go:2836]  ::1 - - [23/Jan/2021 05:54:01] "GET /user/query HTTP/1.1 302 0" 0.000999 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:01.349 [server.go:2836]  ::1 - - [23/Jan/2021 05:54:01] "GET /auth/login HTTP/1.1 200 0" 0.007999 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:01.405 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:54:07.143 [server.go:2836]  ::1 - - [23/Jan/2021 05:54:07] "POST /auth/login HTTP/1.1 200 0" 0.090995 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:07.237 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:54:18.383 [error.go:441]  ::1 - - [01/Jan/0001 12:00:00] "GET / HTTP/1.1 404 0" 0.000000  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:18.383 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:54:18.383 [server.go:2836]  ::1 - - [23/Jan/2021 05:54:18] "GET / HTTP/1.1 404 0" 0.006993  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:18.516 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:54:22.417 [server.go:2836]  ::1 - - [23/Jan/2021 05:54:22] "GET /auth/login HTTP/1.1 200 0" 0.003008  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:22.543 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:54:27.657 [auth.go:40]  ::1 - - [01/Jan/0001 12:00:00] "POST /auth/login HTTP/1.1 302 0" 0.000000 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:27.657 [server.go:2836]  ::1 - - [23/Jan/2021 05:54:27] "POST /auth/login HTTP/1.1 302 0" 0.099999 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:27.663 [required_auth.go:21]  ::1 - - [01/Jan/0001 12:00:00] "GET /user/query HTTP/1.1 302 0" 0.000000 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:27.663 [server.go:2836]  ::1 - - [23/Jan/2021 05:54:27] "GET /user/query HTTP/1.1 302 0" 0.002000 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:27.700 [server.go:2836]  ::1 - - [23/Jan/2021 05:54:27] "GET /auth/login HTTP/1.1 200 0" 0.031003 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:27.801 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:54:38.619 [server.go:2836]  ::1 - - [23/Jan/2021 05:54:38] "GET /auth/login HTTP/1.1 200 0" 0.038992 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:38.751 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:54:39.434 [server.go:2836]  ::1 - - [23/Jan/2021 05:54:39] "GET /auth/login HTTP/1.1 200 0" 0.008993 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:39.538 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:54:39.730 [server.go:2836]  ::1 - - [23/Jan/2021 05:54:39] "GET /auth/login HTTP/1.1 200 0" 0.006027 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:39.865 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:54:39.929 [server.go:2836]  ::1 - - [23/Jan/2021 05:54:39] "GET /auth/login HTTP/1.1 200 0" 0.005023 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:40.074 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:54:40.109 [server.go:2836]  ::1 - - [23/Jan/2021 05:54:40] "GET /auth/login HTTP/1.1 200 0" 0.003998 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:40.221 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:54:40.336 [server.go:2836]  ::1 - - [23/Jan/2021 05:54:40] "GET /auth/login HTTP/1.1 200 0" 0.036999 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:40.426 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:54:46.418 [auth.go:40]  ::1 - - [01/Jan/0001 12:00:00] "POST /auth/login HTTP/1.1 302 0" 0.000000 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:46.419 [server.go:2836]  ::1 - - [23/Jan/2021 05:54:46] "POST /auth/login HTTP/1.1 302 0" 0.088995 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:46.424 [required_auth.go:21]  ::1 - - [01/Jan/0001 12:00:00] "GET /user/query HTTP/1.1 302 0" 0.000000 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:46.424 [server.go:2836]  ::1 - - [23/Jan/2021 05:54:46] "GET /user/query HTTP/1.1 302 0" 0.001000 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:46.431 [server.go:2836]  ::1 - - [23/Jan/2021 05:54:46] "GET /auth/login HTTP/1.1 200 0" 0.001997 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:54:46.556 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:55:10.582 [server.go:2836]  ::1 - - [23/Jan/2021 05:55:10] "GET /auth/login HTTP/1.1 200 0" 0.008997  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:55:10.688 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:55:14.769 [server.go:2836]  ::1 - - [23/Jan/2021 05:55:14] "POST /auth/login HTTP/1.1 200 0" 0.098994 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:55:14.857 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:55:22.107 [server.go:2836]  ::1 - - [23/Jan/2021 05:55:22] "GET /auth/login HTTP/1.1 200 0" 0.006989  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:55:22.293 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:55:27.351 [auth.go:40]  ::1 - - [01/Jan/0001 12:00:00] "POST /auth/login HTTP/1.1 302 0" 0.000000 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:55:27.351 [server.go:2836]  ::1 - - [23/Jan/2021 05:55:27] "POST /auth/login HTTP/1.1 302 0" 0.092995 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:55:27.367 [server.go:2836]  ::1 - - [23/Jan/2021 05:55:27] "GET /user/query HTTP/1.1 200 0" 0.009986 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 17:55:27.493 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:55:55.102 [C] [panic.go:969]  the request url is  /prometheus/alert
+2021/01/23 17:55:55.102 [C] [panic.go:969]  Handler crashed with error can't find templatefile in the path:views/prometheuscontroller/alert.tpl
+2021/01/23 17:55:55.102 [C] [panic.go:969]  c:/go/src/runtime/panic.go:969
+2021/01/23 17:55:55.102 [C] [panic.go:969]  C:/Users/Administrator/go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
+2021/01/23 17:55:55.102 [C] [panic.go:969]  C:/Users/Administrator/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:306
+2021/01/23 17:55:55.102 [C] [panic.go:969]  C:/Users/Administrator/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:257
+2021/01/23 17:55:55.103 [C] [panic.go:969]  C:/Users/Administrator/go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
+2021/01/23 17:55:55.103 [C] [panic.go:969]  C:/Users/Administrator/go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
+2021/01/23 17:55:55.103 [C] [panic.go:969]  c:/go/src/net/http/server.go:2836
+2021/01/23 17:55:55.103 [C] [panic.go:969]  c:/go/src/net/http/server.go:1924
+2021/01/23 17:55:55.103 [C] [panic.go:969]  c:/go/src/runtime/asm_amd64.s:1373
+2021/01/23 17:55:55.103 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 17:56:53.270 [I] [asm_amd64.s:1373]  http server Running on http://:8888
+2021/01/23 17:56:53.271 [I] [asm_amd64.s:1373]  https server Running on https://:8443
+2021/01/23 17:56:56.562 [server.go:2836]  ::1 - - [23/Jan/2021 05:56:56] "POST /prometheus/alert HTTP/1.1 200 0" 0.005000  PostmanRuntime/7.26.8
+2021/01/23 18:00:20.143 [server.go:2836]  10.0.0.2 - - [23/Jan/2021 06:00:20] "POST /prometheus/alert/ HTTP/1.1 200 0" 0.002001  Alertmanager/0.21.0
+2021/01/23 18:02:40.161 [server.go:2836]  10.0.0.2 - - [23/Jan/2021 06:02:40] "POST /prometheus/alert/ HTTP/1.1 200 0" 0.017900  Alertmanager/0.21.0
+2021/01/23 18:04:20.142 [server.go:2836]  10.0.0.2 - - [23/Jan/2021 06:04:20] "POST /prometheus/alert/ HTTP/1.1 200 0" 0.001997  Alertmanager/0.21.0
+2021/01/23 18:05:10.144 [server.go:2836]  10.0.0.2 - - [23/Jan/2021 06:05:10] "POST /prometheus/alert/ HTTP/1.1 200 0" 0.001998  Alertmanager/0.21.0
+2021/01/23 18:15:41.384 [I] [asm_amd64.s:1373]  http server Running on http://:8888
+2021/01/23 18:15:41.385 [I] [asm_amd64.s:1373]  https server Running on https://:8443
+2021/01/23 18:15:53.680 [server.go:2836]  ::1 - - [23/Jan/2021 06:15:53] "GET /user/query HTTP/1.1 200 0" 0.007999 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 18:15:53.750 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 18:15:57.496 [server.go:2836]  ::1 - - [23/Jan/2021 06:15:57] "GET /user/query HTTP/1.1 200 0" 0.004000 http://localhost:8888/auth/login Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36
+2021/01/23 18:15:57.560 [server.go:3088]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
+2021/01/23 18:17:20.142 [server.go:2836]  10.0.0.2 - - [23/Jan/2021 06:17:20] "POST /prometheus/alert/ HTTP/1.1 200 0" 0.002001  Alertmanager/0.21.0
+2021/01/23 18:17:50.807 [I] [asm_amd64.s:1373]  http server Running on http://:8888
+2021/01/23 18:17:50.808 [I] [asm_amd64.s:1373]  https server Running on https://:8443
+2021/01/23 18:18:10.143 [server.go:2836]  10.0.0.2 - - [23/Jan/2021 06:18:10] "POST /prometheus/alert/ HTTP/1.1 200 0" 0.002002  Alertmanager/0.21.0
+2021/01/23 18:21:34.633 [I] [asm_amd64.s:1373]  http server Running on http://:8888
+2021/01/23 18:21:34.634 [I] [asm_amd64.s:1373]  https server Running on https://:8443
+2021/01/23 18:22:20.143 [server.go:2836]  10.0.0.2 - - [23/Jan/2021 06:22:20] "POST /prometheus/alert/ HTTP/1.1 200 0" 0.002000  Alertmanager/0.21.0
+2021/01/23 18:24:15.127 [I] [asm_amd64.s:1373]  http server Running on http://:8888
+2021/01/23 18:24:15.128 [I] [asm_amd64.s:1373]  https server Running on https://:8443
+2021/01/23 18:24:40.158 [server.go:2836]  10.0.0.2 - - [23/Jan/2021 06:24:40] "POST /prometheus/alert/ HTTP/1.1 200 0" 0.014995  Alertmanager/0.21.0
+2021/01/23 18:25:22.683 [I] [asm_amd64.s:1373]  http server Running on http://:8888
+2021/01/23 18:25:22.689 [I] [asm_amd64.s:1373]  https server Running on https://:8443
+2021/01/23 18:26:10.150 [server.go:2836]  10.0.0.2 - - [23/Jan/2021 06:26:10] "POST /prometheus/alert/ HTTP/1.1 200 0" 0.006030  Alertmanager/0.21.0
+2021/01/23 18:26:36.420 [I] [asm_amd64.s:1373]  http server Running on http://:8888
+2021/01/23 18:26:36.422 [I] [asm_amd64.s:1373]  https server Running on https://:8443
+2021/01/23 18:27:10.149 [server.go:2836]  10.0.0.2 - - [23/Jan/2021 06:27:10] "POST /prometheus/alert/ HTTP/1.1 200 0" 0.004015  Alertmanager/0.21.0
+2021/01/23 18:27:47.159 [I] [asm_amd64.s:1373]  http server Running on http://:8888
+2021/01/23 18:27:47.160 [I] [asm_amd64.s:1373]  https server Running on https://:8443
+2021/01/23 18:28:10.191 [server.go:2836]  10.0.0.2 - - [23/Jan/2021 06:28:10] "POST /prometheus/alert/ HTTP/1.1 200 0" 0.036998  Alertmanager/0.21.0
+2021/01/23 18:29:10.152 [server.go:2836]  10.0.0.2 - - [23/Jan/2021 06:29:10] "POST /prometheus/alert/ HTTP/1.1 200 0" 0.003999  Alertmanager/0.21.0
