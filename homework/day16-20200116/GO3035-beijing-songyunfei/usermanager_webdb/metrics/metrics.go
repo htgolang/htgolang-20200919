@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/prometheus/client_golang/prometheus"
 	"net/http"
+	"runtime"
 	"strconv"
 	"time"
 )
@@ -44,9 +45,11 @@ func Initmetrics(namespace, subsystem, name string )  {
 		},
 		[]string{"request_path"},
 		)
+
 	prometheus.MustRegister(Pathcounter)
 	prometheus.MustRegister(StatusCodecounter)
 	prometheus.MustRegister(RequestTimeProc)
+	prometheus.MustRegister(NewgoroutineCollector())
 }
 
 //继承ResponseWriter用于获取响应状态码
@@ -58,6 +61,34 @@ type response struct {
 func (w *response) WriteHeader(code int)  {
 	w.StatusCode = code
 	w.ResponseWriter.WriteHeader(code)
+}
+
+//GoroutineNum
+type GoroutineCollector struct {
+	GoroutineSum *prometheus.Desc
+}
+
+func (g *GoroutineCollector) Describe(descs chan<- *prometheus.Desc)  {
+	descs <- g.GoroutineSum
+}
+func (g *GoroutineCollector) Collect(metrics chan<- prometheus.Metric)  {
+	metrics <- prometheus.MustNewConstMetric(
+		g.GoroutineSum,
+		prometheus.GaugeValue,
+		float64(runtime.NumGoroutine()),
+		"GoroutineNum",
+		)
+}
+
+func NewgoroutineCollector() *GoroutineCollector{
+	return &GoroutineCollector{
+		GoroutineSum:prometheus.NewDesc(
+			"userweb_Goroutine_Num",
+			"Goroutine_Num",
+			[]string{"name"},
+			nil,
+			),
+	}
 }
 
 //PathCounter
