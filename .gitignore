@@ -3,5 +3,7 @@
 .idea/*
 
 *.exe
+*.log
+tmp
 
 homework/*/GO3028-Beijing-lisuo/userMgr/tmp/session/

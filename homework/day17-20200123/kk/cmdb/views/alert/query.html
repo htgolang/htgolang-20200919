@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-12">
-        <form class="form-inline" action="{{ urlfor `AlertController.Query` }}" method="GET">
+        <form class="form-inline float-right" action="{{ urlfor `AlertController.Query` }}" method="GET">
             <label class="sr-only">查询</label>
             <input type="text" class="form-control mb-2 mr-sm-2" name="q" placeholder="查询" value="{{ .q }}" />
             <button type="submit" class="btn btn-primary mb-2">查询</button>
