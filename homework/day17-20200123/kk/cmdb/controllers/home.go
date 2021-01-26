@@ -1,15 +1,17 @@
 package controllers
 
 import (
+	"net/http"
+
+	"github.com/astaxie/beego"
+
 	base "cmdb/base/controllers"
-	"fmt"
 )
 
 type HomeController struct {
-	base.RequiredAuthController
+	base.AuthorizationController
 }
 
 func (c *HomeController) Index() {
-	fmt.Println("home")
-	c.Ctx.WriteString("home")
+	c.Redirect(beego.URLFor("UserController.Query"), http.StatusFound)
 }

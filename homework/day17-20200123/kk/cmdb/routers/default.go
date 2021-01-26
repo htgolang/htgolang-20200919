@@ -25,9 +25,11 @@ func init() {
 
 	beego.Handler("/metrics/", promhttp.Handler())
 
-	beego.AutoRouter(&controllers.HomeController{})
+	beego.Router("/", &controllers.HomeController{}, "*:Index")
+
 	beego.AutoRouter(&controllers.AuthController{})
 	beego.AutoRouter(&controllers.UserController{})
+	beego.AutoRouter(&controllers.AlertController{})
 
 	beego.AutoRouter(&api.PrometheusController{})
 

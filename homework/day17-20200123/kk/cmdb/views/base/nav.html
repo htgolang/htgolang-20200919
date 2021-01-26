@@ -8,6 +8,9 @@
             <li class="nav-item {{ if eq .navKey `role` }}active{{ end }}">
                 <a class="nav-link" href="#">角色管理</a>
             </li>
+            <li class="nav-item {{ if eq .navKey `alert` }}active{{ end }}">
+                <a class="nav-link" href="{{ urlfor `AlertController.Query` }}">告警管理</a>
+            </li>
         </ul>
         <span class="navbar-text mr-5">
             当前登陆用户: {{ .currentUser.Name }}

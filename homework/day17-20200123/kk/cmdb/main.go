@@ -3,7 +3,6 @@ package main
 import (
 	_ "cmdb/routers"
 	"cmdb/services"
-	"fmt"
 	"log"
 	"strings"
 
@@ -14,11 +13,11 @@ import (
 )
 
 func main() {
-	fmt.Printf("%q\n", beego.AppConfig.Strings("Token"))
-	fmt.Println(beego.AppConfig.String("RunMode"))
-	fmt.Println(beego.AppConfig.String("db::Db_Host"))
+	if beego.AppConfig.String("RunMode") == "dev" {
+		orm.Debug = true
+	}
 	dsn := beego.AppConfig.String("db::dsn")
-	fmt.Print(dsn)
+
 	orm.RegisterDriver("mysql", orm.DRMySQL)
 	if err := orm.RegisterDataBase("default", "mysql", dsn); err != nil {
 		log.Fatal(err)

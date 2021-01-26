@@ -1,20 +1,19 @@
 package controllers
 
 import (
+	"cmdb/models"
 	"cmdb/services"
 
 	"github.com/astaxie/beego"
 )
 
-type RequiredAuthController struct {
+type AuthorizationController struct {
 	beego.Controller
+
+	currentUser *models.User
 }
 
-func (c *RequiredAuthController) Prepare() {
-
-	c.Data["currentUser"] = nil
-	c.Data["navKey"] = ""
-
+func (c *AuthorizationController) Prepare() {
 	user := c.GetSession("user")
 	if user == nil {
 		// 未登录
@@ -23,14 +22,14 @@ func (c *RequiredAuthController) Prepare() {
 	}
 	if pk, ok := user.(int64); ok {
 		if user := services.GetUserById(pk); user != nil {
-			c.Data["currentUser"] = user
+			c.currentUser = user
 		}
 	}
 
-	if c.Data["currentUser"] == nil {
+	if c.currentUser == nil {
 		c.DestroySession()
-		// 未登录
 		c.Redirect("/auth/login", 302)
-		return
+	} else {
+		c.Data["currentUser"] = c.currentUser
 	}
 }

@@ -28,3 +28,21 @@ func (s *alertService) Notify(alert *models.Alert) {
 		})
 	}
 }
+
+func (s *alertService) Query(q string) []*models.Alert {
+	var alerts []*models.Alert
+	queryset := orm.NewOrm().QueryTable(&models.Alert{})
+	cond := orm.NewCondition()
+	cond = cond.And("DeletedAt__isnull", true)
+	if q != "" {
+		qCond := orm.NewCondition()
+		qCond = qCond.Or("Instance__icontains", q)
+		qCond = qCond.Or("AlertName__icontains", q)
+		qCond = qCond.Or("Summary__icontains", q)
+		qCond = qCond.Or("Description__icontains", q)
+		cond = cond.AndCond(qCond)
+	}
+
+	queryset.SetCond(cond).All(&alerts)
+	return alerts
+}
