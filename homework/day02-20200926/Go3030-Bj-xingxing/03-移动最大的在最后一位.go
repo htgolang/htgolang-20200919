@@ -1,15 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	num := []int{108,107,105,109,103,102}
-	max :=num[0]
-	for _,v :=range num{
-		if v > max {
-			max = v
+
+    for i := 0; i <len(num)-1; i++ {
+    	if num[i] > num[i+1]{
+    		num[i],num[i+1] = num[i+1],num[i]
 		}
 	}
-	fmt.Println(max)
+	fmt.Println(num)
+	
 }
 
