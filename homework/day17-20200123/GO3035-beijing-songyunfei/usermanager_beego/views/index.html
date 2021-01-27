@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap-4.5.0/css/bootstrap.min.css" />
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+    <style type="text/css">
+        div.container-fluid {
+            padding-top: 56px;
+        }
+    </style>
+</head>
+<body>
+{{ template "base/nav.html" . }}
+<div class="container-fluid">
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>地址</th>
+        <th>电话</th>
+        <th>生日</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{range .users}}
+    <tr>
+        <td>{{.Id}}</td>
+        <td>{{.Name}}</td>
+        <td>{{ if eq .Sex "1" }}男{{ else }}女{{ end }}</td>
+        <td>{{.Addr}}</td>
+        <td>{{.Tel}}</td>
+        <td>{{.Birthday.Format "2006-01-02"}}</td>
+        <td><a class="btn btn-danger" href="/usermanager/del?Id={{.Id}}">删除</a> <a class="btn btn-warning" href="/usermanager/modify?Id={{.Id}}">修改</a></td>
+    </tr>
+    {{end}}
+    </tbody>
+</table>
+</div>
+<!--
+<input type="button" value="添加新用户" onclick="javascrtpt:window.location.href='/usermanager/add'">
+<input type="button" value="查找用户" onclick="javascrtpt:window.location.href='/usermanager/query'">
+-->
+
+</body>
+</html>

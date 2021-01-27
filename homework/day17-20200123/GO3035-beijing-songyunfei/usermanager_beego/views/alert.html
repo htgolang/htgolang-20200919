@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-12">
+        <form class="form-inline float-right" action="{{ urlfor `Alert.Query` }}" method="GET">
+            <label class="sr-only">查询</label>
+            <input type="text" class="form-control mb-2 mr-sm-2" name="queystr" placeholder="查询" value="{{ .queystr }}" />
+            <button type="submit" class="btn btn-primary mb-2">查询</button>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <table class="table">
+            <thead >
+            <tr>
+                <th>告警时间</th>
+                <th>告警对象</th>
+                <th>告警名称</th>
+                <th>严重级别</th>
+                <th>状态</th>
+                <th>概要</th>
+                <th>详情</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{ range .alerts }}
+                <tr>
+                    <td>{{ dateformat .StartsAt `2006-01-02 15:04:05` }}</td>
+                    <td>{{ .Instance }}</td>
+                    <td>{{ .AlertName }}</td>
+                    <td>{{ .Severity }}</td>
+                    <td>{{ .Status }} {{ if .EndsAt }} ({{ dateformat .EndsAt `2006-01-02 15:04:05` }}){{ end }}</td>
+                    <td>{{ .Summary }}</td>
+                    <td>{{ .Description }}</td>
+                </tr>
+            {{ end }}
+            </tbody>
+        </table>
+    </div>
+</div>

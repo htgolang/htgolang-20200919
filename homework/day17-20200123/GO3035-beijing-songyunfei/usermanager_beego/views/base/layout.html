@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap-4.5.0/css/bootstrap.min.css" />
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+    <style type="text/css">
+        div.container-fluid {
+            padding-top: 56px;
+        }
+    </style>
+</head>
+<body>
+{{ template "base/nav.html" . }}
+<div class="container-fluid">
+    {{ .LayoutContent }}
+    <div>{{ .LayoutSectionFooter }}</div>
+</div>
+<!--
+<input type="button" value="添加新用户" onclick="javascrtpt:window.location.href='/usermanager/add'">
+<input type="button" value="查找用户" onclick="javascrtpt:window.location.href='/usermanager/query'">
+-->
+
+</body>
+</html>
