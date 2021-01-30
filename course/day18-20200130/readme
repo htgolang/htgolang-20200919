@@ -1,0 +1,137 @@
+1. 复习
+2. 作业
+    a. 函数/方法多个参数封装为结构体
+    b. 设计模式 单例: 一个(类)结构体在程序声明周期中只有一个对象
+    c. 封装对某一个Model(业务逻辑)的增，删，改，查操作为一个Service
+
+    流程
+        api controller:
+            a. 接收数据 => 反序列化为Form
+            b. 使用services对数据库进行处理, form中的数据传递(转换为model)
+            c. 响应
+        controller
+            a. 接收数据 => 反序列化为Form
+            b.
+3. 新内容
+    a. 告警管理 分页
+
+        i. 总数量
+        ii. 调用pagination => offset, ....
+        iii. offset 查询数据
+        iiii. 页面展示
+
+        数据量太多 分批 展示
+        页面 => 请求 => controller
+            第几页 page(p) 1..n
+            每页显示多少条 pageSize 10
+        services查询数据库
+            limit pageSize offset 0 => 1
+            limit pageSize offset 10  => 2
+            limit pageSize offset 20  => 3
+            ( page - 1 ) * pageSize
+        响应:
+            渲染页面
+
+                首页 1 是否可用
+                上一页 page 是否可用
+                显示页列表
+                当前页码
+                下一页 page 是否可用
+                最后一页 page 是否可用
+
+                page total pageSize
+
+                objects 查询结果
+                查询条件
+
+                q = aaa
+
+                q=x&p=xx
+                q=x p=0(1)
+
+
+                有多少页 => 98 10 = 98 / 10(9) + 1 => 9.8向上取整
+                           90 10 = 90/ 10(9) => 9.0 向上取整
+                           pageNum = 0
+                           if total % pageSize == 0{
+                               pageNum = total / pageSize
+                           } else {
+                               pageNum = total / pageSize + 1
+                           }
+
+                           pageNum = total / pageSize
+                           if total % pageSize != 0{
+                               pageNum += 1
+                           }
+
+
+
+
+
+                第一页
+                    p=1
+                    if current == 1 disabled
+                上一页
+                    p= current-1
+                    if current == 1 disabled
+
+                [1] [2] [3] [4] ..... [n]
+
+
+                    current - n
+                    current + n
+
+                    5 6 7 8 9 [10] 11 12 13 14 15
+                    -1 0        [4]
+                    p = 1 - pageNum
+
+                    if current == page disabled
+
+                下一页
+                    p= current+1
+
+                    if current == pageNum disabled
+                最后一页
+                    p=pageNum
+                    if current == pageNum disabled
+
+    html/template:
+        i. $.
+        ii. 结构体 方法调用(不加括号)
+
+        .VarName
+
+        .currentUser
+        .users
+
+        range .[]User {
+            . => User
+
+            $.currentUser
+        }
+
+    b. promagentd
+        prometheus.yml
+
+        配置 => cmdb 页面进行
+        promagentd => 定时从cmdb获取配置 应用(修改配置并重新加载)
+
+
+        prometheus配置：
+            命令行 启动后无法更改
+            prometheus.yaml 启动后 发生变化 需要通知prometheus进程进行热加载
+            prometheus scrapy, alertmanager job 支持服务发现 自动更新
+                本地文件
+
+        针对配置
+            web展示
+            验证
+
+        配置文件更新频率
+        1. 减少延迟时间
+        2. callback cmdb -> promagentd 网络正常
+        3. web连接 => 消息队列(redis), rabbitmq/ nsq
+
+        例程退出方式
+        1. 工作例程, 发生终端信号, 主例程结束
+        2. 让工作例程正常退出, 再退出主例程

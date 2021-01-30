@@ -1,0 +1,28 @@
+global:
+  evaluation_interval: 30s
+  query_log_file: ./promql.log
+  scrape_interval: 30s
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - localhost:9093
+rule_files:
+- rules/*.yml
+scrape_config:
+- job_name: node
+  basic_auth:
+    username: ""
+    password: ""
+  static_configs:
+  - targets:
+    - localhost:9100
+    - localhost:9101
+- job_name: prometheus
+  basic_auth:
+    username: ""
+    password: ""
+  static_configs:
+  - targets:
+    - localhost:9100
+    - localhost:9101
