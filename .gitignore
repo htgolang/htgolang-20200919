@@ -4,6 +4,8 @@
 
 *.exe
 *.log
-tmp
+tmp/
+log/
+logs/
 
 homework/*/GO3028-Beijing-lisuo/userMgr/tmp/session/
