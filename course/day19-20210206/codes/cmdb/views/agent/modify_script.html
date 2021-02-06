@@ -1,0 +1,19 @@
+{{ assets_js "/static/vendor/codemirror-5.59.2/lib/codemirror.js" }}
+{{ assets_js "/static/vendor/codemirror-5.59.2/addon/mode/overlay.js" }}
+{{ assets_js "/static/vendor/codemirror-5.59.2/addon/selection/active-line.js" }}
+{{ assets_js "/static/vendor/codemirror-5.59.2/mode/markdown/markdown.js" }}
+{{ assets_js "/static/vendor/codemirror-5.59.2/mode/gfm/gfm.js" }}
+{{ assets_js "/static/vendor/codemirror-5.59.2/mode/yaml/yaml.js" }}
+{{ assets_js "/static/vendor/codemirror-5.59.2/mode/yaml-frontmatter/yaml-frontmatter.js" }}
+
+<script type="text/javascript">
+var editor = CodeMirror.fromTextArea(
+    document.getElementById("config"),
+    {
+        mode: "yaml-frontmatter",
+        lineNumbers: true,
+        theme: "bespin",
+        styleActiveLine: true
+    }
+);
+</script>

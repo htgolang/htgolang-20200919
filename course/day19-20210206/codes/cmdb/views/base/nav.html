@@ -1,0 +1,25 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">用户管理</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item {{ if eq .navKey `user` }}active{{ end }}">
+                <a class="nav-link" href="{{ urlfor `UserController.Query` }}">用户管理</a>
+            </li>
+            <li class="nav-item {{ if eq .navKey `role` }}active{{ end }}">
+                <a class="nav-link" href="#">角色管理</a>
+            </li>
+            <li class="nav-item {{ if eq .navKey `alert` }}active{{ end }}">
+                <a class="nav-link" href="{{ urlfor `AlertController.Query` }}">告警管理</a>
+            </li>
+            <li class="nav-item {{ if eq .navKey `agent` }}active{{ end }}">
+                <a class="nav-link" href="{{ urlfor `AgentController.Query` }}">Prometheus终端管理</a>
+            </li>
+        </ul>
+        <span class="navbar-text mr-5">
+            当前登陆用户: {{ .currentUser.Name }}
+        </span>
+        <form class="form-inline">
+            <a class="btn btn-outline-success" href="{{ urlfor `AuthController.Logout` }}">退出</a>
+        </form>
+    </div>
+</nav>
