@@ -1,0 +1,193 @@
+1. 复习
+    gitlab-ce
+        webhook -> 自动化编译和发布系统
+        ci/cd
+    redis
+    cobra
+2. 作业
+3. 新内容
+    针对组件进行二次开发
+        a. 需要对组件提供的功能熟悉
+        b. 提供的api
+    prometheus
+        基础知识
+        http api
+    k8s操作
+        基础
+            docker
+            kubernetes
+                node
+                service
+                    暴露服务
+                pod 3 A service-A 2 B
+                    创建容器
+                    template
+                deployment controller
+                    控制pod
+            操作：
+                命令式
+                    创建/删除/修改
+                声明式
+                    告诉最终期望 k8s自动通过平衡机制达到期望结果
+
+
+            资源: 操作
+                含义:
+                属性:
+
+        api: http rest api => sdk
+            腾讯云/阿里云 => rest api => sdk
+            deployment
+            service:
+                1. api-resources => api-version
+        开发:
+            deployment+service
+            sdk
+            context.Background()
+            context.WithTimeout
+            context.WithCancel()
+
+            context.TODO()
+
+            用户增删改查
+            增加：
+                打开页面
+                    controller->template
+                提交
+                    controller->service->db
+            修改
+                打开页面
+                    controller->service->db->template
+                提交
+                    controller->service->db
+            删除
+                提交
+                    controller->service->db
+            用户列表
+                提交
+                    controller->service->db->template
+
+            deployment(service)
+            增加:
+                打开页面
+                    controller->template
+                提交数据
+                    controller->service->k8s sdk
+
+            修改:
+                打开页面
+                    controller->service->k8s sdk->template
+                提交修改
+                    controller->service->k8s sdk
+            删除:
+                提交数据
+                    controller->service->k8s sdk
+            列表:
+                contreoller->sercvice->k8s sdk -> template
+
+    beego:
+        namespace
+            在不同包下定义相同名称Controller方法名称也相同
+            通过AutoRouter注册后
+
+
+            beego.AutoRouter()
+
+            Acontroller,B
+            /a/b
+            /namespace/a/b
+            路由
+            创建Namespace 定义前缀
+            将namespace加入路由
+            controller注册给Namespace
+
+            ns := beego.NewNamespace("/v1/"
+                beego.NSAutoRouter(&AController{})
+            )
+            /v1/a/b
+            beego.AddNamespace(ns)
+
+        version 1.12 => 2.0.0
+            包的调整：
+            beego.Run/beego.Router => web
+
+
+        github.com/astaixe/beego
+        beego.Run
+
+        github.com/beego/beego/v2/server/web
+        github.com/beego/beego/v2/client/orm
+
+    正则
+        语法
+            格式化的字符串
+            ^ 开头
+            $ 结尾
+            [a-z]
+            [a-zA-Z]
+            [0-9]
+            [0-9a-zA-Z]
+            [abc0123]
+            . 任意一个
+            * 任意多个0-N
+            + 1个或多个
+            ? 0个或1个
+            {n,m}n个字符到m个字符之间
+            \d 数字  [0-9]
+            \w 字符 [a-zA-Z]
+            | 或
+
+
+        常用功能：
+            1. 匹配(验证)
+            2. 替换
+            3. 查找
+            4. 分隔
+
+        id 验证 1位到10位的数字 ^[0-9]{1,10}$
+        name 长度位0-10只能由数字英文字母组成，并且以英文字母开头
+        非空: ^[a-zA-Z][0-9a-zA-Z]{0,9}$
+
+        手机号，IPv4地址, 验证名称
+
+简历和面试
+1. 收集信息
+    a. 招聘网站
+    b. 朋友
+    c. 目标企业官方网站
+    d. 猎头
+2. 准备
+    面试知识
+    面试对象:
+        a. 要求技能
+        b. 正在做哪些东西
+    自身知识整理和准备
+        a. 技能
+            不要写自己不会的
+        b. 项目 责任心，解决问题的能力
+            突出你解决的难题
+3. 简历
+    禁止从招聘网站导出
+    排版
+    格式: pdf
+    模板: https://github.com/geekcompany/ResumeSample
+4. 投递
+    a. 朋友
+    b. 微信群(公司名称搜)
+    c. 目标企业/部门 技术专家 博客
+        留言 技术 => 关注到你
+    e. 官方网站
+    f. boss招聘网站
+    g. 猎头
+
+5. 邀请面试
+    打扮：精神
+    提前: 20-30分钟
+    书包: 1-2本技术书
+    打印: 2-3份简历
+
+6. 面试过程
+    主导说
+
+7. 面试结束
+    进去的什么样子/走的时候什么样

@@ -1,0 +1,42 @@
+
+<div class="row">
+    <div class="col-5 table-btn">
+        <a class="btn btn-primary" href="{{ urlfor `DeploymentController.Add` }}">新建</a>
+    </div>
+    <div class="col-2">
+        {{ if .flash.success }}
+        <div class="alert alert-success" role="alert">
+            {{ .flash.success }}
+        </div>
+        {{ end }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>deployment</th>
+                    <th>namespace</th>
+                    <th>副本数量</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ range .objects }}
+                    <tr>
+                        <td>{{ .Name }}</td>
+                        <td>{{ .Namespace }}</td>
+                        <td>{{ .Status.AvailableReplicas  }}/{{ .Status.Replicas }}</td>
+                        <td>{{ dateformat .CreationTimestamp.Time `2006-01-02 15:04:05`  }}</td>
+                        <td>
+                            <a class="btn btn-sm btn-warning" href="{{ urlfor `DeploymentController.Modify` }}?namespace={{ .Namespace }}&name={{ .Name }}">编辑</a>
+                            <a class="btn btn-sm btn-danger" href="{{ urlfor `DeploymentController.Delete` }}?namespace={{ .Namespace }}&name={{ .Name }}">删除</a>
+                        </td>
+                    </tr>
+                {{ end }}
+            </tbody>
+        </table>
+    </div>
+</div>

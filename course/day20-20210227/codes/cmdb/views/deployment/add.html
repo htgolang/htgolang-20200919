@@ -1,0 +1,52 @@
+
+<div class="row">
+    <div class="col-4">
+        <form action="{{ urlfor `DeploymentController.Add` }}" method="POST">
+            <div class="form-group row">
+                <label class="col-form-label col-2">命令空间</label>
+                <div class="col-6">
+                    <select class="form-control" name="namespace">
+                        {{ range .namespaces }}
+                        <option value="{{ .Name }}">{{ .Name }}</option>
+                        {{ end }}
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-form-label col-2">名称</label>
+                <div class="col-6">
+                    <input class="form-control" name="name" value="{{ .form.Name }}"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-form-label col-2">标签</label>
+                <div class="col-6">
+                    <textarea class="form-control" name="label" >{{ .form.Label }}</textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-form-label col-2 pt-0">镜像</label>
+                <div class="col-6">
+                    <input class="form-control" name="image" value="{{ .form.Image }}"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-form-label col-2 pt-0">副本数量</label>
+                <div class="col-6">
+                    <input class="form-control" type="number" name="replicas" value="{{ .form.Replicas }}"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-form-label col-2">暴露端口</label>
+                <div class="col-6">
+                    <textarea class="form-control" name="expose" >{{ .form.Expose }}</textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-8 offset-2">
+                    <input class="btn btn-primary" type="submit" value="创建"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

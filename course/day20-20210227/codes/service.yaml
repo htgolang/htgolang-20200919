@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: nginx-dev
+    labels:
+        app: nginx
+        env: dev
+spec:
+    ports:
+        - name: http
+          port: 80
+          targetPort: 80
+    selector:
+        app: nginx
+        env: dev
+    type: NodePort
